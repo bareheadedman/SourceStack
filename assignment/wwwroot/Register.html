@@ -10,27 +10,33 @@
 <body>
     <h1>注册</h1>
     <hr />
-    <a href="/FAQ/Account.html#invite">为什么需要邀请</a>
+    
     <form method="post">
-        <label>邀请人：（* 必填，没有邀请人）</label>
-        <br />
-        <input type="text" name="InviterName" />
-        <br />
-        <label>邀请码：（* 必填）</label>
-        <br />
-        <input type="text" name="InviterCode" />
-        <br />
+
+        <div style="background-color:yellow">
+            <a href="/FAQ/Account.html#invite">为什么需要邀请</a>
+            <br />
+            <label >邀请人：（* 必填，没有邀请人）</label>
+            <br />
+            <input type="text" name="InviterName "placeholder="他的用户名，模糊查询只能从头开始" />
+            <br />
+            <label>邀请码：（* 必填）</label>
+            <br />
+            <input type="text" name="InviterCode" placeholder="4位数字" />
+            <br />
+        </div>
+     
         <label>用户名：（* 必填）</label>
         <br />
-        <input type="text" name="UserName " />
+        <input type="text" name="UserName " placeholder="登录用户名，可修改，不能重复" />
         <br />
         <label>密码：（* 必填）</label>
         <br />
-        <input type="password" name=" Password" />
+        <input type="password" name=" Password" placeholder="不少于4个字符" />
         <br />
         <label>验证密码：（* 必填）</label>
         <br />
-        <input type="password" name="ConfirmPassword" />
+        <input type="password" name="ConfirmPassword" placeholder="和密码相同" />
         <br />
         <label>验证码：（* 必填） </label>
         <br />
