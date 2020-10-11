@@ -5,7 +5,13 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "assignment", "assignment\assignment.csproj", "{7084E351-D4D4-4DCF-8B3E-FF832AE55E97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp", "CSharp\CSharp.csproj", "{0EE06B75-C44A-413A-8F56-60087691D826}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp", "CSharp\CSharp.csproj", "{0EE06B75-C44A-413A-8F56-60087691D826}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{0289B3F8-29D9-4A78-8382-22C258D02C87}"
+	ProjectSection(SolutionItems) = preProject
+		SQL\SQL.txt = SQL\SQL.txt
+		SQL\SQLQuery1.sql = SQL\SQLQuery1.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
