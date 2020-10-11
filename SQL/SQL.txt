@@ -1,0 +1,110 @@
+NVARCHAR( )  不会自动补足 编码不同 MAX  最大值8000
+NCHAR( )      会自动补足   
+
+NOT<AND<OR 提高代码的可读性 任何带有优先级的都使用括号指明优先级
+ 
+NOT 取反  ADN 全真为真 一假为假  OR一真为真 全假为假
+ 
+数值类型
+tinyint<smallint<int<bigint（小到大）
+
+进行比较时末尾空格会自动忽略
+
+用NULL值进行比较（运算）返回值都是（NULL）unkown （不确定）
+
+用 IS NULL 来 找到NULL值
+
+LIKE 通配符  用_ 和% 表示 %表示任意个字符串 _表示一个字符串
+
+ESCAPE 转移字符   ESCAPE（#）#后面跟的字符为原意 #可自定义任意符号      
+
+小数精度
+decimal<numeric（5,3 ）小数精度不同。前面代表整体长度，后面代表小数长度。不足会补足，多出会四舍五入。
+
+float<real  输入多少就是多少，不会补足。
+
+date 日期  time 时间  datetime 日期时间
+
+bit 只能存0/1  0表示假falst 1表示真true
+
+NULL为空 不与任何相等，与任何相加也为NULL。
+
+
+CREATE DATABASE[]  ;
+创建数据库
+
+DROP DATABASE[] ;
+ 删除数据库
+
+ALTER DATABASE[]
+SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+将数据库回滚到原始配置状态
+
+BACKUP DATABASE[] TO DISK = 'E:\\17BANG.BAK'
+将数据库备份到E盘17bang.bak
+
+RESTORE DATABASE[] FROM DISK = 'E:\\17BANG.BAK'
+根据E盘17bang.bak恢复数据库
+
+USE[];
+切换数据库/
+
+CREATE TABLE [表名]
+(
+  [列名] 属性 可否允许为空 ,
+);
+创建表
+
+DROP TABLE[]
+删除表
+
+ALTER TABLE []
+ADD 表名 类型 ;
+增加表列
+
+ALTER TABLE[]
+DROP COLUMN 表名;
+删除表列
+
+ALTER TABLE[]
+ALTER COLUMN ~ ~ ~;
+修改表列
+
+(
+    BEGIN TRANSACTION
+    开始事务
+
+    ROLLBACK
+    回滚
+
+    commit
+    提交
+)
+
+SELECT  *  FROM 表名
+查询命令
+
+INSERT 表名 （ [列名]，[列名] ) VALUES(值,值)
+插入
+
+UPdate 表明 SET 表行 = 值 ；
+修改整行 注意加上事务
+
+DELETE 表名
+删除表的所有行 能接条件
+
+TRUNCATE TABLE 表名
+删除表的所有行（内容） 不能接条件
+
++可以用来连接字符串
+
+WHERE子句 +判断 提高精度
+
+BETWEEN   *   AND   *
+在 什么 与 什么 之间
+
+INSERT 表名 SELECT 行名 FROM 表名
+   复制表数据
+
+
+
