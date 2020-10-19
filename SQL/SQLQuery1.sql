@@ -1100,6 +1100,19 @@ BEGIN TRAN
 
 --7777777
 
+DECLARE @i INT
+SET @i = 1
+WHILE @i<5
+BEGIN
+     PRINT  REPLICATE(' ',4-@i)+ REPLICATE(2*@i-1,2*@i-1)
+     SET @i += 1
+END
+
+
+
+
+
+
 --定义一个函数GetBigger(INT a, INT b)，可以取a和b之间的更大的一个值
 --创建一个单行表值函数GetLatestPublish(INT n)，返回最近发布的n篇求助
 --创建一个多行表值函数GetByReward(INT n, BIT asc)，如果asc为1，返回悬赏最少的n位同学；否则，返回悬赏最多的n位同学。
@@ -1202,11 +1215,17 @@ SELECT AuthorId,ROUND(AVG(reward),2) FROM Problem  GROUP BY AuthorId
 SELECT * FROM Problem
 
 UPDATE Problem SET Title=
-
-WHERE Title LIKE (N'test%') OR Title LIKE(N'[test]%') OR Title LIKE (N'Test-%')
-
-
-
+(
+     CASE 
+         WHEN SUBSTRING(Title,1,4) = N'test' 
+             THEN N'TEST'+ SUBSTRING(Title,5,LEN(Title)-4)
+         WHEN SUBSTRING(Title,1,6) = N'[test]'
+             THEN N'[TEST]' + SUBSTRING(Title,7,LEN(Title)-6)
+         WHEN SUBSTRING(Title,1,4) = N'Test'
+             THEN N'TEST'+SUBSTRING(Title,5,LEN(Title)-4)
+    END
+)
+WHERE Title LIKE (N'test%') OR Title LIKE(N'_test]%') OR Title LIKE (N'Test-%')
 
 
 
@@ -1240,6 +1259,65 @@ WHERE Title LIKE (N'test%') OR Title LIKE(N'[test]%') OR Title LIKE (N'Test-%')
 
 
 
+DECLARE @r INT 
+EXECUTE @r = UserRegister asdKK,999999,1005,666
+PRINT @r
+
+
+SELECT UserName FROM [User] WHERE  UserName = N'asdKK'
+
+SELECT * FROM [User]
+
+GO
+
+ALTER PROCEDURE UserRegister
+@UserName NVARCHAR(20) ,
+@PassWord NVARCHAR(20) ,
+@Inviter INT ,
+@InviterCode INT 
+AS
+IF(EXISTS (SELECT UserName FROM [User] WHERE UserName != @UserName ))
+BEGIN
+     IF (LEN(@Password)>4 AND LEN(@UserName)>4)
+     BEGIN
+            IF (EXISTS (SELECT Id FROM [User] WHERE Id = @Inviter))
+            BEGIN
+                   IF (EXISTS (SELECT Id , InviterCode FROM [User] WHERE Id = @Inviter AND  InviterCode = @InviterCode))
+                   BEGIN
+                          BEGIN TRAN
+                                BEGIN TRY
+                                      INSERT [User](UserName,[PassWord],Inviter) VALUES(@UserName,@PassWord,@Inviter)
+                                      INSERT [TMessage](Content,ReceiveId) VALUES (@UserName+ N'使用了他作为邀请人',@Inviter)
+                                      COMMIT
+                                END TRY
+                                BEGIN CATCH
+                                      THROW;
+                                      ROLLBACK;
+                                END CATCH
+                     END
+                     ELSE
+                     BEGIN
+                     RETURN 11
+                     END
+              END
+              ELSE
+              BEGIN
+              RETURN 10
+              END
+       END
+       ELSE
+       BEGIN
+       RETURN 2
+       END 
+END
+ELSE
+BEGIN
+RETURN 1
+END
+
+GO
+
+SELECT * FROM [User]
 
 
 
@@ -1252,6 +1330,33 @@ WHERE Title LIKE (N'test%') OR Title LIKE(N'[test]%') OR Title LIKE (N'Test-%')
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--通知邀请人（TMessage中生成一条数据）某人使用了他作为邀请人。
+CREATE TABLE [TMessage]
+(
+   Id INT IDENTITY ,
+   Content NVARCHAR (MAX) ,
+   ReceiveId INT CONSTRAINT FK_TMessage_ReceiveId FOREIGN KEY REFERENCES [User](Id) ,
+)
 
 
 
