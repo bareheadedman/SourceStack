@@ -250,8 +250,9 @@ namespace CSharp
             //         相邻两个元素之间的最大差值gap（默认为5）
             //         元素个数length（默认为10个）
 
-            //int[] array = GetArray();
-            //for (int i = 0; i <array.Length ; i++)
+            //int[] array = new int[10];
+            //GetArray(array, 5);
+            //for (int i = 0; i < array.Length; i++)
             //{
             //    Console.WriteLine(array[i]);
             //}
@@ -269,10 +270,10 @@ namespace CSharp
             // 冒泡排序
 
             //int[] array = { 5, 1, 8, 4, 90, 100, 300, 500, 20, 30, 900, 400, 65 };
-            //int[] jkl = bubbleSort(array,true);
-            //for (int i = 0; i < jkl.Length; i++)
+            //bubbleSort(array, true);
+            //for (int i = 0; i < array.Length; i++)
             //{
-            //    Console.WriteLine(jkl[i]);
+            //    Console.WriteLine(array[i]);
             //}
 
 
@@ -297,36 +298,31 @@ namespace CSharp
 
 
 
+
         }
 
         static int Sum(int a, int b)
         {
-
-            int sum = a + b;
-            return sum;
+            return a+b;
         }
 
         static int Difference(int a, int b)
         {
-
-            int Difference = a - b;
-            return Difference;
+            return a-b;
         }
 
         static int Product(int a, int b)
         {
-            int Product = a * b;
-            return Product;
+            return a*b;
         }
 
         static int Division(int a, int b)
         {
-            int Division = a / b;
-            return Division;
+            return a/b;
         }
 
 
-        static bool Users(string UserSecurityCode, string UserName, string UserPassWord,out string cause)
+        static bool Users(string UserSecurityCode, string UserName, string UserPassWord, out string cause)
         {
             string SecurityCode = "qz12s";
             string Name = "jkl123";
@@ -356,11 +352,10 @@ namespace CSharp
 
         static int SumStudent(string[] student)
         {
-            int Sum = student.Length;
-            return Sum;
+            return student.Length;
         }
 
-        static void OneStudents(string[] student)
+        static void Students(string[] student)
         {
             for (int i = 0; i < student.Length; i++)
             {
@@ -370,7 +365,7 @@ namespace CSharp
         }
 
 
-        static void TwoStudentS(string[,] student)
+        static void Students(string[,] student)
         {
             for (int i = 0; i < student.GetLength(0); i++)
             {
@@ -410,7 +405,7 @@ namespace CSharp
                 }//else
             }
 
-            if (maxormin == true)
+            if (maxormin)
             {
                 return max;
             }
@@ -522,6 +517,14 @@ namespace CSharp
             b = temp;
         }
 
+        static void Swap(int[] array, int a, int b)
+        {
+            int temp;
+            temp = array[a];
+            array[a] = array[b];
+            array[b] = temp;
+        }
+
 
         static bool Logon(string userName, string userPassWord, out string reason)
         {
@@ -541,16 +544,14 @@ namespace CSharp
         }
 
 
-        static int[] GetArray()
+        static void GetArray(int[] array, int a)
         {
             Random random = new Random();
-            int[] array = new int[10];
-            array[0] = random.Next(0, 5);
+            array[0] = random.Next(a);
             for (int i = 1; i < array.Length; i++)
             {
-                array[i] = random.Next(0, 5) + array[i - 1];
+                array[i] = random.Next(a) + array[i - 1];
             }
-            return array;
         }
 
         static int BinarySeek(int[] numbers, int target)
@@ -577,42 +578,34 @@ namespace CSharp
             return -1;
         }
 
-        static int[] bubbleSort(int[] array, bool lowToHigh)
+        static void bubbleSort(int[] array, bool lowToHigh)
         {
-            int temp;
-            if (lowToHigh == true)
+            for (int i = 1; i < array.Length; i++)
             {
-                for (int i = 1; i < array.Length; i++)
+                for (int j = 0; j < array.Length - i; j++)
                 {
-                    for (int j = 0; j < array.Length - i; j++)
+                    if (lowToHigh)
                     {
                         if (array[j] > array[j + 1])
                         {
-                            temp = array[j + 1];
-                            array[j + 1] = array[j];
-                            array[j] = temp;
+                            Swap(array, j, j + 1);
                         }//else
                     }
-                }
-                return array;
-            }
-            else
-            {
-                for (int i = 1; i < array.Length; i++)
-                {
-                    for (int j = 0; j < array.Length - i; j++)
+                    else
                     {
                         if (array[j] < array[j + 1])
                         {
-                            temp = array[j + 1];
-                            array[j + 1] = array[j];
-                            array[j] = temp;
-                        }//else
+                            Swap(array, j, j + 1);
+                        }//else 
                     }
                 }
-                return array;
             }
-
         }
+
+
+
     }
+
+
 }
+
