@@ -90,7 +90,15 @@ namespace CSharp
             //以上全部正确无误，输出：“恭喜！登录成功！”
             //PS：验证码 / 用户名 / 密码直接预设在源代码中，输入由Console.ReadLine()完成
 
-            //Console.WriteLine(Users("qz12s", "jkl123", "q123"));
+            //string cause;
+            //if (Users("qz12s", "jkl123", "q123", out cause))
+            //{
+            //    Console.WriteLine(cause);
+            //}
+            //else
+            //{
+            //    Console.WriteLine(cause);
+            //}
 
 
 
@@ -113,7 +121,7 @@ namespace CSharp
 
             //并输出共有多少名同学。
 
-            //Console.WriteLine(student);
+            //Console.WriteLine(student.Length);
 
 
 
@@ -258,6 +266,35 @@ namespace CSharp
             //Console.WriteLine(BinarySeek(seek,12));
 
 
+            // 冒泡排序
+
+            //int[] array = { 5, 1, 8, 4, 90, 100, 300, 500, 20, 30, 900, 400, 65 };
+            //int[] jkl = bubbleSort(array,true);
+            //for (int i = 0; i < jkl.Length; i++)
+            //{
+            //    Console.WriteLine(jkl[i]);
+            //}
+
+
+
+
+            //            观察“一起帮”的：
+            //注册 / 登录功能，定义一个User类，包含字段：Name（用户名）、Password（密码）和 邀请人（InvitedBy），和方法：Register()、Login()
+            //求助版块，定义一个类Problem，包含字段：标题（Title）、正文（Body）、悬赏（Reward）、发布时间（PublishDateTime）和作者（Author），和方法Publish()
+            //帮帮币版块，定义一个类HelpMoney，表示一行帮帮币交易数据，包含你认为应该包含的字段和方法
+            //为这些类的字段和方法设置合适的访问修饰符。
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         }
@@ -289,29 +326,30 @@ namespace CSharp
         }
 
 
-        static string Users(string UserSecurityCode, string UserName, string UserPassWord)
+        static bool Users(string UserSecurityCode, string UserName, string UserPassWord,out string cause)
         {
             string SecurityCode = "qz12s";
             string Name = "jkl123";
             string PassWord = "q123";
-            string Out;
             if (UserSecurityCode == SecurityCode)
             {
                 if (UserName == Name && UserPassWord == PassWord)
                 {
-                    Out = "恭喜！登录成功";
+                    cause = "恭喜！登录成功";
+                    return true;
                 }
                 else
                 {
-                    Out = "用户名或密码错误";
+                    cause = "用户名或密码错误";
+                    return false;
                 }
 
             }
             else
             {
-                Out = "验证码错误";
+                cause = "验证码错误";
+                return false;
             }
-            return Out;
         }
 
 
@@ -515,31 +553,66 @@ namespace CSharp
             return array;
         }
 
-        static int BinarySeek(int[]numbers,int target)
+        static int BinarySeek(int[] numbers, int target)
         {
             int left = 0;
             int right = numbers.Length - 1;
-            int middle ; 
+            int middle;
             while (left <= right)
             {
                 middle = (left + right) / 2;
-                if (target>numbers[middle])
+                if (target > numbers[middle])
                 {
                     left = middle + 1;
                 }
-                else if (target<numbers[middle])
+                else if (target < numbers[middle])
                 {
                     right = middle - 1;
                 }
                 else
                 {
                     return middle;
-                }             
+                }
             }
             return -1;
         }
 
+        static int[] bubbleSort(int[] array, bool lowToHigh)
+        {
+            int temp;
+            if (lowToHigh == true)
+            {
+                for (int i = 1; i < array.Length; i++)
+                {
+                    for (int j = 0; j < array.Length - i; j++)
+                    {
+                        if (array[j] > array[j + 1])
+                        {
+                            temp = array[j + 1];
+                            array[j + 1] = array[j];
+                            array[j] = temp;
+                        }//else
+                    }
+                }
+                return array;
+            }
+            else
+            {
+                for (int i = 1; i < array.Length; i++)
+                {
+                    for (int j = 0; j < array.Length - i; j++)
+                    {
+                        if (array[j] < array[j + 1])
+                        {
+                            temp = array[j + 1];
+                            array[j + 1] = array[j];
+                            array[j] = temp;
+                        }//else
+                    }
+                }
+                return array;
+            }
 
-
+        }
     }
 }
