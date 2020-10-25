@@ -10,13 +10,24 @@ namespace CSharp
         public string Title;
         public string Body;
         public string Reward;
-        public string PublicDateTime;
+        public DateTime PublicDateTime;
         public string Author;
 
-        public bool Publish(string title,string body,int Reward,int publishdatetime,out string cause)
-        {
-            cause = "1";
-            return false;
-        }
+    //    public bool Publish(Problem problem,out string cause)
+    //    {
+    //        if (problem.Title.Length<255)
+    //        {
+    //            if () 
+    //            {
+
+    //            }
+    //        }
+    //        else
+    //        {
+    //            cause = "标题的长度不能超过255";
+    //            return false;
+    //        }
+    //    }
+    //    Problem Title = new title();
     }
 }

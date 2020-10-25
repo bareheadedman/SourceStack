@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
 using System.Globalization;
 using System.Security.Cryptography;
+using System.Xml;
 
 namespace CSharp
 {
@@ -269,27 +270,38 @@ namespace CSharp
 
             // 冒泡排序
 
-            //int[] array = { 5, 1, 8, 4, 90, 100, 300, 500, 20, 30, 900, 400, 65 };
+
             //bubbleSort(array, true);
             //for (int i = 0; i < array.Length; i++)
             //{
             //    Console.WriteLine(array[i]);
             //}
 
+            //HelpMoney money = new HelpMoney { };
 
-
-
+            //money.Sava(money);
             //            观察“一起帮”的：
             //注册 / 登录功能，定义一个User类，包含字段：Name（用户名）、Password（密码）和 邀请人（InvitedBy），和方法：Register()、Login()
             //求助版块，定义一个类Problem，包含字段：标题（Title）、正文（Body）、悬赏（Reward）、发布时间（PublishDateTime）和作者（Author），和方法Publish()
             //帮帮币版块，定义一个类HelpMoney，表示一行帮帮币交易数据，包含你认为应该包含的字段和方法
             //为这些类的字段和方法设置合适的访问修饰符。
 
+            //DateTime dt = DateTime.Now;
+            //Console.WriteLine(string.Format("{0:f}", dt));
 
 
+            //快排
 
 
+            int[] array = { 4, 2, 9, 11, 5, 0, 55, 6, 4 };
 
+            Sort(array, 0, array.Length - 1);
+
+            //QuickSort(array, 0, array.Length - 1);
+            //for (int i = 0; i < array.Length; i++)
+            //{
+            //    Console.WriteLine(array[i]);
+            //}
 
 
 
@@ -303,22 +315,22 @@ namespace CSharp
 
         static int Sum(int a, int b)
         {
-            return a+b;
+            return a + b;
         }
 
         static int Difference(int a, int b)
         {
-            return a-b;
+            return a - b;
         }
 
         static int Product(int a, int b)
         {
-            return a*b;
+            return a * b;
         }
 
         static int Division(int a, int b)
         {
-            return a/b;
+            return a / b;
         }
 
 
@@ -602,7 +614,87 @@ namespace CSharp
             }
         }
 
+        static void QuickSort(int[] array, int left, int right)
+        {
+            if (left >= right)
+            {
+                return;
+            }
+            int pivot = array[left];
+            int l = left, r = right;
 
+            while (l < r)
+            {
+                while (l < r)
+                {
+                    if (pivot <= array[r])
+                    {
+                        r--;
+                    }
+                    else
+                    {
+                        Swap(array, l, r);
+                        break;
+                    }
+                }
+                while (l < r)
+                {
+                    if (array[l] <= pivot)
+                    {
+                        l++;
+                    }
+                    else
+                    {
+                        Swap(array, l, r);
+                        break;
+                    }
+                }
+            }
+
+            QuickSort(array, left, r - 1);
+            QuickSort(array, r + 1, right);
+
+        }
+
+
+        static int Partition(int[] array, int low, int high)
+        {
+            //1. Select a pivot point.
+            int pivot = array[high];
+
+            int lowIndex = (low - 1);
+
+            //2. Reorder the collection.
+            for (int j = low; j < high; j++)
+            {
+                if (array[j] <= pivot)
+                {
+                    lowIndex++;
+
+                    int temp = array[lowIndex];
+                    array[lowIndex] = array[j];
+                    array[j] = temp;
+                }
+            }
+
+            int temp1 = array[lowIndex + 1];
+            array[lowIndex + 1] = array[high];
+            array[high] = temp1;
+
+            return lowIndex + 1;
+        }
+
+        static void Sort(int[] array, int low, int high)
+        {
+            if (low < high)
+            {
+                int partitionIndex = Partition(array, low, high);
+
+                //3. Recursively continue sorting the array
+                Sort(array, low, partitionIndex - 1);
+                Sort(array, partitionIndex + 1, high);
+            }
+        }
 
     }
 
