@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
 using System.Globalization;
+using System.Net.WebSockets;
 using System.Security.Cryptography;
 using System.Xml;
 
@@ -293,9 +294,9 @@ namespace CSharp
             //快排
 
 
-            int[] array = { 4, 2, 9, 11, 5, 0, 55, 6, 4 };
+            //int[] array = { 4, 2, 9, 11, 5, 0, 55, 6, 4 };
 
-            Sort(array, 0, array.Length - 1);
+            //Sort(array, 0, array.Length - 1);
 
             //QuickSort(array, 0, array.Length - 1);
             //for (int i = 0; i < array.Length; i++)
@@ -303,6 +304,104 @@ namespace CSharp
             //    Console.WriteLine(array[i]);
             //}
 
+
+
+
+
+
+
+
+
+
+            //            将之前User / Problem / HelpMoney类的字段封装成属性，其中：
+            //user.Password在类的外部只能改不能读
+            //如果user.Name为“admin”，输入时修改为“系统管理员”
+
+            //User lw = new User("admin", "1552");
+            //lw.Name = "admin";
+            //Console.WriteLine();
+
+
+
+            //problem.Reward不能为负数
+
+            //Problem lw = new Problem("512");
+            //lw.Reward = (-32);
+
+
+
+            //调用这些类的有参 / 无参构造函数，生成这些类的对象，调用他们的方法
+            //  一起帮的求助可以有多个（最多10个）关键字，请为其设置索引器，以便于我们通过其整数下标进行读写。
+
+            //Problem lw = new Problem("123");
+            //lw[1] = "关键字256";
+            //lw[2] = "关键字985";
+            //Console.WriteLine(lw[2]);
+
+            //设计一种方式，保证：
+            //每一个Problem对象一定有Body赋值
+            //每一个User对象一定有Name和Password赋值
+
+
+
+
+
+
+
+            //            定义一个仓库（Repoistory）类，用于存取对象，其中包含：
+            //一个int类型的常量version
+            //一个静态只读的字符串connection，以后可用于连接数据库
+
+            //思考Respoitory应该是static类还是实例类更好
+            //考虑求助（Problem）的以下方法 / 属性，哪些适合实例，哪些适合静态，然后添加到类中：
+            //Publish()：发布一篇求助，并将其保存到数据库
+            //Load(int Id)：根据Id从数据库获取一条求助
+            //Delete(int Id)：根据Id删除某个求助
+            //repoistory：可用于在底层实现上述方法和数据库的连接操作等
+
+            //设计一个类FactoryContext，保证整个程序运行过程中，无论如何，外部只能获得它的唯一的一个实例化对象。（提示：设计模式之单例）
+
+            //FactoryContext lw = FactoryContext.GetFactoryContext();
+
+
+
+            //想一想，为什么Publish()方法不是放置在User类中呢？用户（user）发布（Publish）一篇文章（article），不正好是user.Publish(article)么？
+
+            //自己实现一个模拟栈（MimicStack）类，入栈出栈数据均为int类型，包含如下功能：
+            //出栈Pop()，弹出栈顶数据
+            //入栈Push()，可以一次性压入多个数据
+            //出 / 入栈检查，
+            //如果压入的数据已超过栈的深度（最大容量），提示“栈溢出”
+            //如果已弹出所有数据，提示“栈已空”
+
+            //for (int i = 100; i < 110; i++)
+            //{
+            //    MimicStack.Push(i);
+
+            //}
+
+
+            //for (int i = 0; i < 11; i++)
+            //{
+            //    MimicStack.Pop();
+
+            //}
+
+
+
+            //            让User类无法被继承
+
+            //观察一起帮的求助（Problem）、文章（Article）和意见建议（Suggest），根据他们的特点，抽象出一个父类：内容（Content）
+
+            //Content中有一个字段：kind，记录内容的种类（problem / article / suggest等），只能被子类使用
+
+            //    确保每个Content对象都有kind的非空值
+            //Content中的createTime，不能被子类使用，但只读属性PublishTime使用它为外部提供内容的发布时间
+            //其他方法和属性请自行考虑，尽量贴近一起帮的功能实现。
+            //实例化文章和意见建议，调用他们：
+            //继承自父类的属性和方法
+            //自己的属性和方法
+            //再为之前所有类（含User、HelpMoney等）抽象一个基类：Entity，包含一个只读的Id属性。试一试，Suggest能有Id属性么？
 
 
 
