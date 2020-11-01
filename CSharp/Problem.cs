@@ -4,11 +4,31 @@ using System.Text;
 
 namespace CSharp
 {
-    //标题（Title）、正文（Body）、悬赏（Reward）、发布时间（PublishDateTime）和作者（Author），和方法Publish()
-    class Problem
+    //求助版块，定义一个类Problem，包含字段：标题（Title）、正文（Body）、悬赏（Reward）、发布时间（PublishDateTime）和作者（Author），和方法Publish()
+
+
+    //一起帮的求助可以有多个（最多10个）关键字，请为其设置索引器，以便于我们通过其整数下标进行读写。
+
+
+    //每一个Problem对象一定有Body赋值
+
+
+
+    //    考虑求助（Problem）的以下方法/属性，哪些适合实例，哪些适合静态，然后添加到类中：
+    //Publish()：发布一篇求助，并将其保存到数据库
+    //Load(int Id)：根据Id从数据库获取一条求助
+    //Delete(int Id)：根据Id删除某个求助
+    //repoistory：可用于在底层实现上述方法和数据库的连接操作等
+
+
+    class Problem:Content,Iestimate
     {
-        private string _title;
-        private string _body;
+
+
+
+
+
+
 
         private int _reward;
 
@@ -32,17 +52,11 @@ namespace CSharp
         }
 
 
-        private DateTime _publicDateTime;
-        private string _author;
 
-        private Problem()
+
+        public Problem(string body):base("problem")
         {
-
-        }
-
-        public Problem(string body)
-        {
-            _body = body;
+            Body = body;
         }
 
         private string[] _keyWord = new string[10];
@@ -55,28 +69,53 @@ namespace CSharp
             }
             set
             {
-                _keyWord[index-1] = value;
+                _keyWord[index - 1] = value;
             }
         }
 
 
 
-        //public bool Publish(Problem problem, out string cause)
-        //{
 
-        //}
 
-        public  void Load(int id)
+        public void Load(int id)
         {
 
         }
 
-        public   void  Delete(int id)
+        public void Delete(int id)
         {
 
         }
 
+        public void repoistory()
+        {
+
+        }
+
+       override public  void Publish( )
+        {
+            Author.HelpMoney -= Reward;
+            Console.WriteLine("消耗悬赏的帮帮币");
+        }
 
 
+
+        public int Agree { get; set; }
+
+        public int Disagree { get; set; }
+
+        public void DisagreeAdd(User Estimate)
+        {
+            Estimate.HelpPoint++;
+            Author.HelpPoint++;
+            Disagree++;
+        }
+
+        public void AgreeAdd(User Estimate)
+        {
+            Estimate.HelpPoint++;
+            Author.HelpPoint++;
+            Agree++;
+        }
     }
 }

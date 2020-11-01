@@ -5,8 +5,22 @@ using System.Text;
 
 namespace CSharp
 {
-    //Name（用户名）、Password（密码）和 邀请人（InvitedBy），和方法：Register()、Login()
-    sealed public class User
+    //注册/登录功能，定义一个User类，包含字段：Name（用户名）、Password（密码）和 邀请人（InvitedBy），和方法：Register()、Login()
+
+
+    //    将之前User/Problem/HelpMoney类的字段封装成属性，其中：
+    //user.Password在类的外部只能改不能读
+    //如果user.Name为“admin”，输入时修改为“系统管理员”
+    //problem.Reward不能为负数
+
+    //每一个User对象一定有Name和Password赋值
+
+    //让User类无法被继承
+
+
+    //观察一起帮的求助（Problem）、文章（Article）和意见建议（Suggest），根据他们的特点，抽象出一个父类：内容（Content）
+
+    sealed public class User : Entity, ISendMessage, IChat
     {
         private string _name;
 
@@ -20,9 +34,13 @@ namespace CSharp
             {
                 if (value == "admin")
                 {
-                    Console.WriteLine("系统管理员");
+                    _name = "系统管理员";
                 }
-                _name = value;
+                else
+                {
+                    _name = value;
+
+                }
             }
         }
 
@@ -41,14 +59,28 @@ namespace CSharp
         private string _invitedBy;
         private string _invitedCode;
         private string _securityCode;
+        private int _reward;
 
+        public int HelpMoney { get; set; }
+        public int HelpPoint { get; set; }
 
+        public int HelpBean { get; set; }
 
-
-        private User()
+        public int Reward
         {
-
+            get
+            {
+                return _reward;
+            }
+            set
+            {
+                _reward -= value;
+            }
         }
+
+
+
+
 
         private User(string name)
         {
@@ -58,10 +90,20 @@ namespace CSharp
         public User(string name, string password)
             : this(name)
         {
+
             Password = password;
         }
 
 
+        void ISendMessage.Send()
+        {
+
+        }
+
+        void IChat.Send()
+        {
+            
+        }
 
 
         //public bool Register(User user, out string cause)

@@ -365,6 +365,9 @@ namespace CSharp
 
 
 
+
+
+
             //想一想，为什么Publish()方法不是放置在User类中呢？用户（user）发布（Publish）一篇文章（article），不正好是user.Publish(article)么？
 
             //自己实现一个模拟栈（MimicStack）类，入栈出栈数据均为int类型，包含如下功能：
@@ -387,6 +390,14 @@ namespace CSharp
 
             //}
 
+            //MimicStack lw = new MimicStack(10);
+            //lw.Push(3, 5, 7);
+            //lw.Pop();
+
+
+
+
+
 
 
             //            让User类无法被继承
@@ -406,6 +417,21 @@ namespace CSharp
 
 
 
+
+
+            //Article lw = new Article();
+            //lw.Publish();
+            //lw.AgreeAdd();
+            //Console.WriteLine(lw.Agree);
+
+            //ContentService jk = new ContentService();
+            //jk.Publish(lw);
+
+
+
+
+            Console.WriteLine(DateTime.Now.DayOfWeek);
+            Console.WriteLine(new DateTime(2020/10/29).DayOfWeek);
 
 
 
