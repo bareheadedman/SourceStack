@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CSharp
 {
-    class DBMessage:ISendMessage
+    class DBMessage : ISendMessage
     {
         public void Send()
         {

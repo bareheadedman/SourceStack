@@ -4,14 +4,14 @@ using System.Text;
 
 namespace CSharp
 {
-    public interface Iestimate
+    public interface IEstimate
     {
-        int Agree { get; set; }
-        int Disagree { get; set; }
+        int AgreeAmount { get; set; }
+        int DisagreeAmount { get; set; }
 
-        void AgreeAdd(User Estimate);
+        void AgreeBy(User voter);
 
-        void DisagreeAdd(User Estimate);
+        void DisagreeBy(User voter);
 
 
     }

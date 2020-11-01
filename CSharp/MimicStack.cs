@@ -17,19 +17,19 @@ namespace CSharp
 
 
 
-     public class MimicStack
+    public class MimicStack
     {
-         int[] stack ;
-         int top = 0;
-       const  int bottom = 0;
+        int[] stack;
+        int top = 0;
+        const int bottom = 0;
 
 
-        public MimicStack( int size )
+        public MimicStack(int size)
         {
             stack = new int[size];
         }
 
-        public  void Push(int element)
+        public void Push(int element)
         {
             if (top <= stack.Length - 1)
             {
@@ -43,7 +43,7 @@ namespace CSharp
         }
 
 
-        public void Push (params int[] array)
+        public void Push(params int[] array)
         {
             for (int i = 0; i < array.Length; i++)
             {
@@ -51,7 +51,7 @@ namespace CSharp
             }
         }
 
-        public  int Pop()
+        public int Pop()
         {
             if (top != bottom)
             {

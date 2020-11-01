@@ -4,8 +4,8 @@ using System.Text;
 
 namespace CSharp
 {
-    /*internal*/
-    class Article : Content, Iestimate
+
+    class Article : Content, IEstimate
     {
 
 
@@ -22,24 +22,24 @@ namespace CSharp
             Console.WriteLine("消耗一个帮帮币");
         }
 
-        public int Agree { get; set; }
+        public int AgreeAmount { get; set; }
 
-        public int Disagree { get; set; }
+        public int DisagreeAmount { get; set; }
 
-        public void DisagreeAdd(User Estimate)
+        public void DisagreeBy(User Estimate)
         {
             Estimate.HelpPoint++;
             Author.HelpPoint++;
-            Disagree++;
+            DisagreeAmount++;
         }
 
-        public void AgreeAdd(User Estimate)
+        public void AgreeBy(User Estimate)
         {
             Estimate.HelpPoint++;
             Author.HelpPoint++;
-            Agree++;
+            AgreeAmount++;
         }
 
-        
+
     }
 }

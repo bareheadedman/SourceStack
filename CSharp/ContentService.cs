@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharp
 {
-    class ContentService 
+    class ContentService
     {
 
         //        添加一个新类ContentService，其中有一个发布（Publish()）方法：
@@ -14,8 +14,8 @@ namespace CSharp
         //如果发布Suggest，不需要消耗帮帮币
 
 
-    
-        public  void Publish(Content content)
+
+        public void Publish(Content content)
         {
             content.Publish();
             Console.WriteLine("保存到数据库");

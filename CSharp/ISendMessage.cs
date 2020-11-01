@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharp
 {
-   public interface ISendMessage
+    public interface ISendMessage
     {
         void Send();
     }

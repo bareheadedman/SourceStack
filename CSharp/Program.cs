@@ -427,11 +427,16 @@ namespace CSharp
             //ContentService jk = new ContentService();
             //jk.Publish(lw);
 
+            //ISendMessage lw = new User("sss", "sss");
+            //lw.Send();
+
+            //Article lw = new Article();
+            //lw.AgreeBy(new User("ss","ss"));
 
 
 
             Console.WriteLine(DateTime.Now.DayOfWeek);
-            Console.WriteLine(new DateTime(2020/10/29).DayOfWeek);
+            Console.WriteLine(new DateTime(2020 / 10 / 29).DayOfWeek);
 
 
 

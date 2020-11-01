@@ -102,7 +102,7 @@ namespace CSharp
 
         void IChat.Send()
         {
-            
+
         }
 
 

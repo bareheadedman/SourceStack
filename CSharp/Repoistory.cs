@@ -12,7 +12,7 @@ namespace CSharp
 
 
 
-   static class Repoistory
+    static class Repoistory
     {
 
 
@@ -21,10 +21,10 @@ namespace CSharp
 
 
 
-      static  private string _connection;
+        static private string _connection;
 
 
-      static  public string Connection
+        static public string Connection
         {
             get
             {

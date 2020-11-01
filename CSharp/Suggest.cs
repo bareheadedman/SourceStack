@@ -4,40 +4,40 @@ using System.Text;
 
 namespace CSharp
 {
-    class Suggest:Content,Iestimate
+    class Suggest : Content, IEstimate
     {
 
 
 
 
-        public Suggest():base("suggest")
+        public Suggest() : base("suggest")
         {
 
         }
 
 
-      override  public  void Publish( )
+        override public void Publish()
         {
             Console.WriteLine("不消耗帮帮币");
         }
 
 
-        public int Agree { get; set; }
+        public int AgreeAmount { get; set; }
 
-        public int Disagree { get; set; }
+        public int DisagreeAmount { get; set; }
 
-        public void DisagreeAdd(User Estimate)
+        public void DisagreeBy(User Estimate)
         {
             Estimate.HelpPoint++;
             Author.HelpPoint++;
-            Disagree++;
+            DisagreeAmount++;
         }
 
-        public void AgreeAdd(User Estimate)
+        public void AgreeBy(User Estimate)
         {
             Estimate.HelpPoint++;
             Author.HelpPoint++;
-            Agree++;
+            AgreeAmount++;
         }
 
 
