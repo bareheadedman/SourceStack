@@ -61,6 +61,7 @@ namespace CSharp
         private string _securityCode;
         private int _reward;
 
+        public TokenManager Tokens { get; set; }
         public int HelpMoney { get; set; }
         public int HelpPoint { get; set; }
 

@@ -435,6 +435,17 @@ namespace CSharp
 
 
 
+            User lw = new User("1230", "ss");
+            lw.Tokens = new TokenManager();
+            lw.Tokens.Add(Token.Admin);
+            lw.Tokens.Add(Token.Blogger);
+            lw.Tokens.Remove(Token.Admin);
+            lw.Tokens.Remove(Token.Registered);
+
+            Console.WriteLine(lw.Tokens.Tokens);
+
+
+
             Console.WriteLine(DateTime.Now.DayOfWeek);
             Console.WriteLine(new DateTime(2020 / 10 / 29).DayOfWeek);
 
