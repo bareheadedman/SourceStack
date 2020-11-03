@@ -435,15 +435,21 @@ namespace CSharp
 
 
 
-            User lw = new User("1230", "ss");
-            lw.Tokens = new TokenManager();
-            lw.Tokens.Add(Token.Admin);
-            lw.Tokens.Add(Token.Blogger);
-            lw.Tokens.Remove(Token.Admin);
-            lw.Tokens.Remove(Token.Registered);
+            //User lw = new User("1230", "ss");
+            //lw.Tokens = new TokenManager();
+            //lw.Tokens.Add(Token.Admin);
+            //lw.Tokens.Add(Token.Blogger);
+            //lw.Tokens.Remove(Token.Admin);
+            //lw.Tokens.Remove(Token.Registered);
 
-            Console.WriteLine(lw.Tokens.Tokens);
+            //Console.WriteLine(lw.Tokens.Tokens);
 
+
+            //MimicStack lw = new MimicStack(20);
+            //User abc = new User("jkl", "sss");
+            //lw.Push(abc);
+            //User u = (User)lw.Pop();
+            //Console.WriteLine(u.Name);
 
 
             Console.WriteLine(DateTime.Now.DayOfWeek);
