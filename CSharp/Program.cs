@@ -452,6 +452,20 @@ namespace CSharp
             //Console.WriteLine(u.Name);
 
 
+
+            DateTimeManager tm = new DateTimeManager();
+
+            tm.WeekOfYear(2020);
+
+            DateTime dt = new DateTime(2020, 2, 1);
+
+
+
+            Console.WriteLine(tm.GetDate(dt, 29, Time.Day));
+
+
+
+
             Console.WriteLine(DateTime.Now.DayOfWeek);
             Console.WriteLine(new DateTime(2020 / 10 / 29).DayOfWeek);
 
