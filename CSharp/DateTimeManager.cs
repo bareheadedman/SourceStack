@@ -69,9 +69,9 @@ namespace CSharp
             {
                 if (countDate < endDate)
                 {
-                    countDate = baseDate.AddDays(7);
-                    Console.WriteLine($"第{i}周：{baseDate}-{countDate}");
-                    baseDate = countDate;
+                    countDate = baseDate.AddDays(6);
+                    Console.WriteLine($"第{i}周：{baseDate.ToString("yyyy-MM-dd")}-{countDate.ToString("yyyy-MM-dd")}");
+                    baseDate = countDate.AddDays(1);
                     i++;
                 }
                 else

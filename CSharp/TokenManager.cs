@@ -6,31 +6,32 @@ namespace CSharp
 {
     public class TokenManager
     {
-        private Token _tokens = 0;
+
         public Token Tokens { get; private set; }
 
 
         public void Add(Token authority)
         {
-            if ((Tokens & authority) == authority)
+            if (!(Has(authority)))
             {
-                return;
+                Tokens = Tokens | authority;
+
             }
             else
             {
-                Tokens = Tokens | authority;
+                //
             }
         }
 
         public void Remove(Token authority)
         {
-            if ((Tokens & authority) == authority)
+            if (Has(authority))
             {
                 Tokens = Tokens ^ authority;
             }
             else
             {
-                return;
+                //
             }
 
         }
