@@ -18,6 +18,7 @@ namespace CSharp
 
         override public void Publish()
         {
+            PublishTime = DateTime.Now;
             Console.WriteLine("不消耗帮帮币");
         }
 

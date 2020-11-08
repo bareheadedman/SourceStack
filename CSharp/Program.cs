@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
 using System.Globalization;
 using System.Net.WebSockets;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Xml;
 using System.Xml.Schema;
@@ -458,18 +459,45 @@ namespace CSharp
 
 
 
-            DateTimeManager tm = new DateTimeManager();
+            //DateTimeManager tm = new DateTimeManager();
 
-            tm.WeekOfYear(2020);
+            //tm.WeekOfYear(2020);
 
-            DateTime dt = new DateTime(2020, 2, 1);
-
- 
-
-            Console.WriteLine(tm.GetDate(dt, 29, Time.Day));
+            //DateTime dt = new DateTime(2020, 2, 1);
 
 
 
+            //Console.WriteLine(tm.GetDate(dt, 29, Time.Day));
+
+
+            //Article lw = new Article();
+            //DateTime jk = new DateTime(2020, 1, 7);
+            //ContentDateTime kk = new ContentDateTime();
+            //Console.WriteLine(lw.PublishTime);
+            //kk.AlterPublishTime(lw, jk);
+            //Console.WriteLine(lw.PublishTime);
+
+
+
+
+
+
+
+
+
+            //Attribute lw = HelpMoneyChangedAttribute.GetCustomAttribute(
+
+            //    typeof(Article).GetMethod("Publish"),
+            //    typeof(HelpMoneyChangedAttribute)
+
+            //    );
+            //Console.WriteLine(((HelpMoneyChangedAttribute)lw).Amount);
+
+
+
+
+
+       
 
             Console.WriteLine(DateTime.Now.DayOfWeek);
             Console.WriteLine(new DateTime(2020 / 10 / 29).DayOfWeek);

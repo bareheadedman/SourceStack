@@ -18,20 +18,16 @@ namespace CSharp
         public string Body { get; set; }
 
         protected private string kind;
-        private DateTime _createTime = DateTime.Now;
+        public DateTime CreateTime { get; private set; }
 
 
-        public DateTime PublishTime
-        {
-            get
-            {
-                return _createTime;
-            }
-        }
+        public DateTime PublishTime { get; protected set; }
+
 
 
         protected private Content(string kind)
         {
+            CreateTime = DateTime.Now;
             this.kind = kind;
         }
 

@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{0289B3F8-29D
 		SQL\SQLQuery1.sql = SQL\SQLQuery1.sql
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfStudy", "SelfStudy\SelfStudy.csproj", "{8DED7F7F-E6FE-44C5-A78F-619772D848B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0EE06B75-C44A-413A-8F56-60087691D826}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EE06B75-C44A-413A-8F56-60087691D826}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EE06B75-C44A-413A-8F56-60087691D826}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DED7F7F-E6FE-44C5-A78F-619772D848B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DED7F7F-E6FE-44C5-A78F-619772D848B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DED7F7F-E6FE-44C5-A78F-619772D848B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DED7F7F-E6FE-44C5-A78F-619772D848B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

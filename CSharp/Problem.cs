@@ -24,12 +24,6 @@ namespace CSharp
     class Problem : Content, IEstimate
     {
 
-
-
-
-
-
-
         private int _reward;
 
         public int Reward
@@ -50,8 +44,6 @@ namespace CSharp
                 }
             }
         }
-
-
 
 
         public Problem(string body) : base("problem")
@@ -75,8 +67,6 @@ namespace CSharp
 
 
 
-
-
         public void Load(int id)
         {
 
@@ -92,8 +82,11 @@ namespace CSharp
 
         }
 
+
+        [HelpMoneyChanged(Amount =(-1)/*Reward*/,Message ="发布悬赏")]
         override public void Publish()
         {
+            PublishTime = DateTime.Now;
             Author.HelpMoney -= Reward;
             Console.WriteLine("消耗悬赏的帮帮币");
         }

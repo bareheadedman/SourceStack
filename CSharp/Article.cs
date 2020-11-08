@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharp
 {
-
+    
     class Article : Content, IEstimate
     {
 
@@ -15,9 +15,11 @@ namespace CSharp
 
         }
 
-
+        
+        [HelpMoneyChanged(Amount =(-1),Message ="发布文章")]
         override public void Publish()
         {
+            PublishTime = DateTime.Now;
             Author.HelpMoney--;
             Console.WriteLine("消耗一个帮帮币");
         }
