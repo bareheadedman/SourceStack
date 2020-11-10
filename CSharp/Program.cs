@@ -11,7 +11,7 @@ using System.Xml.Schema;
 
 namespace CSharp
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -497,7 +497,7 @@ namespace CSharp
 
 
 
-       
+
 
             Console.WriteLine(DateTime.Now.DayOfWeek);
             Console.WriteLine(new DateTime(2020 / 10 / 29).DayOfWeek);
@@ -507,7 +507,7 @@ namespace CSharp
 
         }
 
-        static int Sum(int a, int b)
+        public static int Sum(int a, int b)
         {
             return a + b;
         }
