@@ -9,6 +9,7 @@ namespace CSharp
         public DLinkNode Previous { get; set; }
         public DLinkNode Next { get; set; }
 
+
         public void AddAfter(DLinkNode dLink)
         {
             if (this.Next != null)
@@ -21,7 +22,7 @@ namespace CSharp
             dLink.Previous = this;
         }
 
-        public void AddFront(DLinkNode dLink)
+        public void AddBefore(DLinkNode dLink)
         {
             if (this.Previous != null)
             {
@@ -35,41 +36,55 @@ namespace CSharp
         }
 
 
-        public void DeleteAfter()
+        public void Delete()
         {
-            if (this.Next.Next != null)
-            {
-                this.Next.Next.Previous = this;
-                this.Next = this.Next.Next;
-            }
-            else
+            if (this.Previous == null)
             {
                 this.Next.Previous = null;
                 this.Next = null;
-            }
-        }
 
-        public void DeleteFront()
-        {
-            if (this.Previous.Previous != null)
-            {
-                this.Previous.Previous.Next = this;
-                this.Previous = this.Previous.Previous;
             }
-            else
+            else if (this.Next == null)
             {
                 this.Previous.Next = null;
                 this.Previous = null;
             }
-        }
+            else
+            {
+                this.Next.Previous = this.Previous;
+                this.Previous.Next = this.Next;
+                this.Previous = null;
+                this.Next = null;
 
-        public void Delete()
-        {
+            }
 
         }
 
         public void Swap(DLinkNode dlink)
         {
+            DLinkNode t = this;
+            DLinkNode d = dlink;
+
+            if (this.Next != null)
+            {
+                this.AddAfter(d);
+            }
+            else
+            {
+                this.AddBefore(d);
+            }
+            if (dlink.Next != null)
+            {
+                dlink.AddAfter(t);
+            }
+            else
+            {
+                dlink.AddBefore(t);
+
+            }
+            this.Delete();
+            dlink.Delete();
+
 
         }
 
