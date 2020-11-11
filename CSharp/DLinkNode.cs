@@ -68,22 +68,24 @@ namespace CSharp
             if (this.Next != null)
             {
                 this.AddAfter(d);
+                d.Previous.Delete();
             }
             else
             {
                 this.AddBefore(d);
+                d.Next.Delete();
             }
             if (dlink.Next != null)
             {
                 dlink.AddAfter(t);
+                t.Previous.Delete();
             }
             else
             {
                 dlink.AddBefore(t);
-
+                t.Next.Delete();
             }
-            this.Delete();
-            dlink.Delete();
+
 
 
         }

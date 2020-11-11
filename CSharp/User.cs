@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace CSharp
 {
@@ -32,15 +34,13 @@ namespace CSharp
             }
             set
             {
-                if (value == "admin")
+                if (value.Contains("admin") || value.Contains("17bang") || value.Contains("管理员"))
                 {
-                    _name = "系统管理员";
+                    Console.WriteLine("请不要使用敏感词");
                 }
-                else
-                {
-                    _name = value;
+                _name = value;
 
-                }
+
             }
         }
 
@@ -50,6 +50,14 @@ namespace CSharp
         {
             set
             {
+                if (value.Length < 6)
+                {
+                    Console.WriteLine("密码长度不能低于6");
+                }
+                if (!(PassWordIsMeet(value)))
+                {
+                    Console.WriteLine("密码必须由大小写英语字母、数字和特殊符号（~!@#$%^&*()_+）组成");
+                }
                 _password = value;
             }
         }
@@ -95,6 +103,103 @@ namespace CSharp
             Password = password;
         }
 
+        public bool PassWordIsUpper(string a)
+        {
+            char[] temp = a.ToCharArray();
+            string condition = "QWERTYUIOPASDFGHJKLZXCVBNM";
+
+            for (int i = 0; i < temp.Length; i++)
+            {
+                if (condition.Contains(temp[i]))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool PassWordIsLower(string a)
+        {
+            char[] temp = a.ToCharArray();
+            string condition = "qwertyuiopasdfghjklzxcvbnm";
+
+            for (int i = 0; i < temp.Length; i++)
+            {
+                if (condition.Contains(temp[i]))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool PassWordIsNumber(string a)
+        {
+            char[] temp = a.ToCharArray();
+            string condition = "0123456789";
+
+            for (int i = 0; i < temp.Length; i++)
+            {
+                if (condition.Contains(temp[i]))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool PassWordIsSymbol(string a)
+        {
+            char[] temp = a.ToCharArray();
+            string condition = "~!@#$%^&*()_+";
+
+            for (int i = 0; i < temp.Length; i++)
+            {
+                if (condition.Contains(temp[i]))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool PassWordIsMeet(string a)
+        {
+            return
+            (PassWordIsUpper(a)
+              && PassWordIsLower(a)
+              && PassWordIsNumber(a)
+              && PassWordIsSymbol(a));
+
+        }
+
+
+        public int GetCount(string container, string target)
+        {
+
+
+            //return Regex.Matches(container,target).Count;
+
+            return container.Split(target).Length - 1;
+
+        }
+
+        public string mimicJoin(string splice, params string[] container)
+        {
+            string temp = null;
+
+            for (int i = 0; i < container.Length; i++)
+            {
+                temp += container[i];
+                if (i != container.Length-1)
+                {
+                    temp += splice;
+                }
+ 
+            }
+
+            return temp;
+        }
 
         void ISendMessage.Send()
         {
