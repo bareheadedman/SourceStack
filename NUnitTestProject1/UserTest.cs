@@ -42,7 +42,8 @@ namespace NUnitTestProject1
             Assert.AreEqual(3, lw.GetCount(",,,6321", ","));
             Assert.AreEqual(3, lw.GetCount("12,,2,4", ","));
             Assert.AreEqual(3, lw.GetCount("12,,2,", ","));
-            //Assert.AreEqual(3, lw.GetCount("123232321", "23"));
+            Assert.AreEqual(0, lw.GetCount("1234", "5"));
+
 
 
 

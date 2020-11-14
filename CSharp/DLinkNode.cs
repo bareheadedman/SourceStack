@@ -62,29 +62,23 @@ namespace CSharp
 
         public void Swap(DLinkNode dlink)
         {
-            DLinkNode t = this;
-            DLinkNode d = dlink;
+            DLinkNode PrvThis = this.Previous;
+            DLinkNode NextThis = this.Previous;
 
-            if (this.Next != null)
+            this.Delete();
+
+            dlink.AddAfter(this);
+
+            dlink.Delete();
+            if (PrvThis != null)
             {
-                this.AddAfter(d);
-                d.Previous.Delete();
+                PrvThis.AddAfter(dlink);
             }
             else
             {
-                this.AddBefore(d);
-                d.Next.Delete();
+                NextThis.AddBefore(dlink);
             }
-            if (dlink.Next != null)
-            {
-                dlink.AddAfter(t);
-                t.Previous.Delete();
-            }
-            else
-            {
-                dlink.AddBefore(t);
-                t.Next.Delete();
-            }
+
 
 
 

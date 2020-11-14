@@ -150,6 +150,7 @@ namespace NUnitTestProject1
 
 
             //   [6] [2] 3 4 5 1
+
             // => [2] [6] 3 4 5 1
             node2.Swap(node6);
             Assert.AreEqual(node3, node6.Next);
@@ -160,6 +161,7 @@ namespace NUnitTestProject1
 
 
             //    2 6 3 4 [5] [1]
+
             // => 2 6 3 4 [1] [5]
             node5.Swap(node1);
             Assert.AreEqual(node5, node1.Next);
@@ -170,6 +172,7 @@ namespace NUnitTestProject1
 
 
             //    [2] 6 [3] 4 1 5
+
             // => [3] 6 [2] 4 1 5 
             node2.Swap(node3);
             Assert.AreEqual(node4, node2.Next);
@@ -182,6 +185,7 @@ namespace NUnitTestProject1
 
 
             //    3 6 2 [4] 1 [5]
+
             // => 3 6 2 [5] 1 [4]
             node4.Swap(node5);
             Assert.AreEqual(node1, node5.Next);
@@ -194,6 +198,7 @@ namespace NUnitTestProject1
 
 
             //    3 [6] [2] 5 1 4 
+
             // => 3 [2] [6] 5 1 4
             node6.Swap(node2);
             Assert.AreEqual(node5, node6.Next);
@@ -204,6 +209,7 @@ namespace NUnitTestProject1
             Assert.AreEqual(node6, node5.Previous);
 
             //    3 [2] 6 [5] 1 4 
+
             // => 3 [5] 6 [2] 1 4
             node2.Swap(node5);
             Assert.AreEqual(node6, node5.Next);
@@ -212,8 +218,8 @@ namespace NUnitTestProject1
             Assert.AreEqual(node5, node6.Previous);
             Assert.AreEqual(node6, node2.Previous);
             Assert.AreEqual(node1, node2.Next);
-            Assert.AreEqual(node5, node3.Previous);
-            Assert.AreEqual(node2, node1.Next);
+            Assert.AreEqual(node5, node3.Next);
+            Assert.AreEqual(node2, node1.Previous);
 
 
             //    [3] 5 6 2 1 [4]先

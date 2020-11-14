@@ -4,25 +4,18 @@ using System.Text;
 
 namespace CSharp
 {
-    public class Entity
+    public class Entity<T>
     {
 
+        private T _Id;
 
-
-
-        private int _Id;
-
-
-
-
-        public int id
+        public T id
         {
             get
             {
                 return _Id;
             }
         }
-
 
 
         protected private Entity()

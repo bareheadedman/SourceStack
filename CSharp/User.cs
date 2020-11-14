@@ -22,7 +22,7 @@ namespace CSharp
 
     //观察一起帮的求助（Problem）、文章（Article）和意见建议（Suggest），根据他们的特点，抽象出一个父类：内容（Content）
 
-    sealed public class User : Entity, ISendMessage, IChat
+    sealed public class User : Entity<int>, ISendMessage, IChat
     {
         private string _name;
 
