@@ -37,6 +37,7 @@ namespace CSharp
                 if (value.Contains("admin") || value.Contains("17bang") || value.Contains("管理员"))
                 {
                     Console.WriteLine("请不要使用敏感词");
+                    return;
                 }
                 _name = value;
 
@@ -53,10 +54,12 @@ namespace CSharp
                 if (value.Length < 6)
                 {
                     Console.WriteLine("密码长度不能低于6");
+                    return;
                 }
-                if (!(PassWordIsMeet(value)))
+                if (! PassWordCondition(value))
                 {
                     Console.WriteLine("密码必须由大小写英语字母、数字和特殊符号（~!@#$%^&*()_+）组成");
+                    return;
                 }
                 _password = value;
             }
@@ -103,10 +106,9 @@ namespace CSharp
             Password = password;
         }
 
-        public bool PassWordIsUpper(string a)
+        public bool PassWordHasAny(string passWord, string condition)
         {
-            char[] temp = a.ToCharArray();
-            string condition = "QWERTYUIOPASDFGHJKLZXCVBNM";
+            char[] temp = passWord.ToCharArray();
 
             for (int i = 0; i < temp.Length; i++)
             {
@@ -118,58 +120,17 @@ namespace CSharp
             return false;
         }
 
-        public bool PassWordIsLower(string a)
-        {
-            char[] temp = a.ToCharArray();
-            string condition = "qwertyuiopasdfghjklzxcvbnm";
-
-            for (int i = 0; i < temp.Length; i++)
-            {
-                if (condition.Contains(temp[i]))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public bool PassWordIsNumber(string a)
-        {
-            char[] temp = a.ToCharArray();
-            string condition = "0123456789";
-
-            for (int i = 0; i < temp.Length; i++)
-            {
-                if (condition.Contains(temp[i]))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public bool PassWordIsSymbol(string a)
-        {
-            char[] temp = a.ToCharArray();
-            string condition = "~!@#$%^&*()_+";
-
-            for (int i = 0; i < temp.Length; i++)
-            {
-                if (condition.Contains(temp[i]))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public bool PassWordIsMeet(string a)
+        public bool PassWordCondition(string passWord)
         {
             return
-            (PassWordIsUpper(a)
-              && PassWordIsLower(a)
-              && PassWordIsNumber(a)
-              && PassWordIsSymbol(a));
+            (
+
+            PassWordHasAny(passWord, "abcdefghijklmnopqrstuvwxyz") &&
+            PassWordHasAny(passWord, "ABCDEFGHIJKLMNOPQRSTUVWXYZ") &&
+            PassWordHasAny(passWord, "0123456789") &&
+            PassWordHasAny(passWord, "~!@#$%^&*()_+")
+
+            );
 
         }
 
@@ -191,11 +152,11 @@ namespace CSharp
             for (int i = 0; i < container.Length; i++)
             {
                 temp += container[i];
-                if (i != container.Length-1)
+                if (i != container.Length - 1)
                 {
                     temp += splice;
                 }
- 
+
             }
 
             return temp;

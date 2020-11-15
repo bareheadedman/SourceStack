@@ -15,21 +15,24 @@ namespace NUnitTestProject1
             User lw = new User("", "");
 
 
+            //"abcdefghijklmnopqrstuvwxyz"
+            //"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            //"0123456789"
+            //"~!@#$%^&*()_+"
+
+            Assert.IsFalse(lw.PassWordHasAny("ABCD186%$", "abcdefghijklmnopqrstuvwxyz"));
+            Assert.IsFalse(lw.PassWordHasAny("asd153$#", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"));
+            Assert.IsFalse(lw.PassWordHasAny("ASDasd@##", "0123456789"));
+            Assert.IsFalse(lw.PassWordHasAny("adasdAD123", "~!@#$%^&*()_+"));
+
+            Assert.IsTrue(lw.PassWordHasAny("a1234841", "abcdefghijklmnopqrstuvwxyz"));
+            Assert.IsTrue(lw.PassWordHasAny("A18341", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"));
+            Assert.IsTrue(lw.PassWordHasAny("asdaASD1", "0123456789"));
+            Assert.IsTrue(lw.PassWordHasAny("asdASD13$", "~!@#$%^&*()_+"));
 
 
-            Assert.IsFalse(lw.PassWordIsUpper("asdzxcv"));
-            Assert.IsFalse(lw.PassWordIsLower("ASDFGHJ"));
-            Assert.IsFalse(lw.PassWordIsNumber("asdASDF"));
-            Assert.IsFalse(lw.PassWordIsSymbol("ASDasd123"));
-
-            Assert.IsTrue(lw.PassWordIsUpper("A123dff"));
-            Assert.IsTrue(lw.PassWordIsLower("asd123"));
-            Assert.IsTrue(lw.PassWordIsNumber("123ASDasd"));
-            Assert.IsTrue(lw.PassWordIsSymbol("!@#123ASDad"));
-
-
-            Assert.IsTrue(lw.PassWordIsMeet("asAS1212@#"));
-            Assert.IsFalse(lw.PassWordIsMeet("AS12as112"));
+            Assert.IsTrue(lw.PassWordCondition("asAS1212@#"));
+            Assert.IsFalse(lw.PassWordCondition("AS12as112"));
 
 
         }
