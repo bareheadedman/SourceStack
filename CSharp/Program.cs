@@ -556,16 +556,23 @@ namespace CSharp
             lw.keywords = new List<Keyword> { keyword1, keyword2, keyword3 };
 
 
-
             lw.Appraise = appraise5;
 
+            lw.Author = new User("刘伟", "Aa$5112");
 
 
 
 
+            Person lzb = new Person() { Name = "李智博" };
 
 
+            ProvideWater pw = Person.GoWater;
+            //ProvideWater pw = delegate { return lzb.Water += 5; };
 
+            //ProvideWater pw = (a) => a.Water += 5;
+
+            //int result = pw(lzb);
+            Person.GetWater(pw,lzb);
 
 
 
