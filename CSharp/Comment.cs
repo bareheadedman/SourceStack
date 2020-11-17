@@ -16,7 +16,7 @@ namespace CSharp
     {
         public string Content;
         public T Refer;
-        public List<Appraise<Comment<T>>> Appraises;
+        public List<Appraise> Appraises;
         public IList<Comment<T>> Comments;
 
         public Comment() : base("comment")

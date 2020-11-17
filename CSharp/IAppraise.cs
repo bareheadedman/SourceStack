@@ -4,12 +4,12 @@ using System.Text;
 
 namespace CSharp
 {
-    public interface IAppraise<T> where T : Content
+    public interface IAppraise 
     {
 
-        void Agree(T refer);
+        void AgreeBy(User vote);
 
-        void DisAgree(T refer);
+        void DisAgreeBy(User vote);
 
 
     }

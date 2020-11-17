@@ -21,505 +21,12 @@ namespace CSharp
         {
 
 
-
-
-            //观察一起帮个人资料页面，用合适的变量类型存储页面用户输入信息，并解释为什么。
-
-            //String UserImages = Console.ReadLine();
-            // 用户 头像
-
-            //String Female = Console.ReadLine();
-            // 性别
-
-            //int Birthday = Convert.ToInt32(Console.ReadLine());
-            //出生日期
-
-            //String KeyWord = Console.ReadLine();
-            //关键字
-
-            //String SelfIntroduction = Console.ReadLine();
-            //自我介绍
-
-
-
-
-
-
-
-            //            输出两个整数 / 小数的和 / 差 / 积 / 商
-
-            //Console.WriteLine(Sum(5,5));
-            //Console.WriteLine(Difference(5,5));
-            //Console.WriteLine(Product(5,5));
-            //Console.WriteLine(Division(5,5));
-
-            //电脑计算并输出：[(23 + 7)x12-8]÷6的小数值（挑战：精确到小数点以后2位）
-            //Console.WriteLine(((23 + 7) * 12 - 8) / 6F);
-
-            //想一想以下语句输出的结果：
-            //    int i = 15;
-            //            Console.WriteLine(i++);
-            //            i -= 5;
-            //            Console.WriteLine(i);
-            //            Console.WriteLine(i >= 10);
-
-            //            Console.WriteLine("i值的最终结果为：" + i);
-
-            //             i=11
-
-            //            int j = 20;
-            //            Console.WriteLine($"{i}+{j}={i + j}");
-
-
-
-            //            想一想如下代码的结果是什么，并说明原因：
-            //    int a = 10;
-            //            Console.WriteLine(a > 9 && (!(a < 11) || a > 10));
-
-            // false
-
-            //            当a为何值时，结果为true？
-            //int a = 10;
-            //bool result = (a + 3 > 12) && a < 3.14 * 4 && a != 11;
-
-
-
-
-
-
-
-
-
-            //            观察一起帮登录页面，用if...else ...完成以下功能。
-
-            //用户依次由控制台输入：验证码、用户名和密码：
-
-            //如果验证码输入错误，直接输出：“*验证码错误”；
-            //如果用户名不存在，直接输出：“*用户名不存在”；
-            //如果用户名或密码错误，输出：“*用户名或密码错误”
-            //以上全部正确无误，输出：“恭喜！登录成功！”
-            //PS：验证码 / 用户名 / 密码直接预设在源代码中，输入由Console.ReadLine()完成
-
-            //string cause;
-            //if (Users("qz12s", "jkl123", "q123", out cause))
-            //{
-            //    Console.WriteLine(cause);
-            //}
-            //else
-            //{
-            //    Console.WriteLine(cause);
-            //}
-
-
-
-
-
-            //            将源栈同学姓名 / 昵称分别：
-            //按进栈时间装入一维数组，
-
-            //string[] student = { "刘", "周", "李", "邹", "龚", "廖" };
-
-            //按座位装入二维数组，
-
-            //string[,] student = new string[3, 3];
-            //student[0, 1] = "刘";
-            //student[0, 2] = "龚";
-            //student[1, 0] = "李";
-            //student[1, 1] = "周";
-            //student[1, 2] = "廖";
-            //student[2, 1] = "邹";
-
-            //并输出共有多少名同学。
-
-            //Console.WriteLine(student.Length);
-
-
-
-
-
-            //            分别用for循环和while循环输出：1,2,3,4,5 和 1,3,5,7,9
-
-            //for (int i = 1; i < 6; i++)
-            //{
-            //    Console.WriteLine(i);
-            //}
-
-            //int i = 1;
-            //while (i<10)
-            //{
-            //    Console.WriteLine(i);
-            //    i += 2;
-
-            //}
-
-            //用for循环输出存储在一维 / 二维数组里的源栈所有同学姓名 / 昵称
-            //OneStudents(student);
-
-
-
-
-            //TwoStudentS(student);
-
-
-
-
-
-            //让电脑计算并输出：99 + 97 + 95 + 93 + ...+1的值
-
-            //Console.WriteLine(Accumulation(99));chen
-
-
-            //        将源栈同学的成绩存入一个double数组中，用循环找到最高分和最低分
-
-            //double[] score = { 23.5, 15.4, 35.7, 54.8, 96.8, 84.3, 99.1 };
-
-            //Console.WriteLine(maxormin(score,false));
-
-            //        找到100以内的所有质数（只能被1和它自己整除的数）
-
-            //for (int i = 0; i < 100; i++)
-            //{
-            //    for (int j = 2; j < i; j++)
-            //    {
-            //        if (i % j > 0)
-            //        {
-            //            if (j == i - 1)
-            //            {
-            //                Console.WriteLine(i);
-
-            //            }// else
-            //        }
-            //        else
-            //        {
-            //            break;
-            //        }
-
-            //    }
-            //}
-
-
-            //生成一个元素（值随机）从小到大排列的数组
-            //int[] student = new int[5];
-            //student=random(student);
-
-
-            //设立并显示一个多维数组的值，元素值等于下标之和。Console.Write()
-
-            //MoreArray();
-
-
-            //            将之前作业封装成方法（自行思考参数和返回值），并调用执行。且以后作业，如无特别声明，皆需使用方法封装。
-
-
-            //计算得到源栈同学的平均成绩（精确到两位小数），方法名GetAverage()
-
-            //double [] student = { 95.3, 92.6 };
-
-            //Console.WriteLine(GetAverage(student));
-
-
-            //完成“猜数字”游戏，方法名GuessMe()：
-            //GuessMe();
-            //随机生成一个大于0小于1000的整数
-            //用户输入一个猜测值，系统进行判断，告知用户猜测的数是“大了”，还是“小了”
-            //没猜中可以继续猜，但最多不能超过10次
-            //如果5次之内猜中，输出：你真牛逼！
-            //如果8次之内猜中，输出：不错嘛！
-            //10次还没猜中，输出：(～￣(OO)￣)ブ
-
-
-
-
-
-
-            //            利用ref调用Swap()方法交换两个同学的床位号
-            //int lw = 1001;
-            //int gty = 6001;
-            //Swap(ref lw, ref gty);
-
-
-            //将登陆的过程封装成一个方法LogOn()，调用之后能够获得：
-            //true / false，表示登陆是否成功
-            //string，表示登陆失败的原因
-
-
-            //string reason;
-            //if (Logon("lw","12345", out reason))
-            //{
-            //    Console.WriteLine(reason);
-            //}
-            //else
-            //{
-            //    Console.WriteLine(reason);
-            //}
-
-
-
-            //定义一个生成数组的方法：int[] GetArray()，其元素随机生成从小到大排列。利用可选参数控制：
-            //最小值min（默认为1）
-            //         相邻两个元素之间的最大差值gap（默认为5）
-            //         元素个数length（默认为10个）
-
-            //int[] array = new int[10];
-            //GetArray(array, 5);
-            //for (int i = 0; i < array.Length; i++)
-            //{
-            //    Console.WriteLine(array[i]);
-            //}
-
-
-            //实现二分查找，方法名BinarySeek(int[] numbers, int target)：
-            //         传入一个有序（从大到小 / 从小到大）数组和数组中要查找的元素
-            //         如果找到，返回该元素所在的下标；否则，返回 - 1
-
-            //int[] seek = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-
-            //Console.WriteLine(BinarySeek(seek,12));
-
-
-            // 冒泡排序
-
-
-            //bubbleSort(array, true);
-            //for (int i = 0; i < array.Length; i++)
-            //{
-            //    Console.WriteLine(array[i]);
-            //}
-
-            //HelpMoney money = new HelpMoney { };
-
-            //money.Sava(money);
-            //            观察“一起帮”的：
-            //注册 / 登录功能，定义一个User类，包含字段：Name（用户名）、Password（密码）和 邀请人（InvitedBy），和方法：Register()、Login()
-            //求助版块，定义一个类Problem，包含字段：标题（Title）、正文（Body）、悬赏（Reward）、发布时间（PublishDateTime）和作者（Author），和方法Publish()
-            //帮帮币版块，定义一个类HelpMoney，表示一行帮帮币交易数据，包含你认为应该包含的字段和方法
-            //为这些类的字段和方法设置合适的访问修饰符。
-
-            //DateTime dt = DateTime.Now;
-            //Console.WriteLine(string.Format("{0:f}", dt));
-
-
-            //快排
-
-
-            //int[] array = { 4, 2, 9, 11, 5, 0, 55, 6, 4 };
-
-            //Sort(array, 0, array.Length - 1);
-
-            //QuickSort(array, 0, array.Length - 1);
-            //for (int i = 0; i < array.Length; i++)
-            //{
-            //    Console.WriteLine(array[i]);
-            //}
-
-
-
-
-
-
-
-
-
-
-            //            将之前User / Problem / HelpMoney类的字段封装成属性，其中：
-            //user.Password在类的外部只能改不能读
-            //如果user.Name为“admin”，输入时修改为“系统管理员”
-
-            //User lw = new User("admin", "1552");
-            //lw.Name = "admin";
-            //Console.WriteLine();
-
-
-
-            //problem.Reward不能为负数
-
-            //Problem lw = new Problem("512");
-            //lw.Reward = (-32);
-
-
-
-            //调用这些类的有参 / 无参构造函数，生成这些类的对象，调用他们的方法
-            //  一起帮的求助可以有多个（最多10个）关键字，请为其设置索引器，以便于我们通过其整数下标进行读写。
-
-            //Problem lw = new Problem("123");
-            //lw[1] = "关键字256";
-            //lw[2] = "关键字985";
-            //Console.WriteLine(lw[2]);
-
-            //设计一种方式，保证：
-            //每一个Problem对象一定有Body赋值
-            //每一个User对象一定有Name和Password赋值
-
-
-
-
-
-
-
-            //            定义一个仓库（Repoistory）类，用于存取对象，其中包含：
-            //一个int类型的常量version
-            //一个静态只读的字符串connection，以后可用于连接数据库
-
-            //思考Respoitory应该是static类还是实例类更好
-            //考虑求助（Problem）的以下方法 / 属性，哪些适合实例，哪些适合静态，然后添加到类中：
-            //Publish()：发布一篇求助，并将其保存到数据库
-            //Load(int Id)：根据Id从数据库获取一条求助
-            //Delete(int Id)：根据Id删除某个求助
-            //repoistory：可用于在底层实现上述方法和数据库的连接操作等
-
-            //设计一个类FactoryContext，保证整个程序运行过程中，无论如何，外部只能获得它的唯一的一个实例化对象。（提示：设计模式之单例）
-
-            //FactoryContext lw = FactoryContext.GetFactoryContext();
-
-
-
-
-
-
-            //想一想，为什么Publish()方法不是放置在User类中呢？用户（user）发布（Publish）一篇文章（article），不正好是user.Publish(article)么？
-
-            //自己实现一个模拟栈（MimicStack）类，入栈出栈数据均为int类型，包含如下功能：
-            //出栈Pop()，弹出栈顶数据
-            //入栈Push()，可以一次性压入多个数据
-            //出 / 入栈检查，
-            //如果压入的数据已超过栈的深度（最大容量），提示“栈溢出”
-            //如果已弹出所有数据，提示“栈已空”
-
-            //for (int i = 100; i < 110; i++)
-            //{
-            //    MimicStack.Push(i);
-
-            //}
-
-
-            //for (int i = 0; i < 11; i++)
-            //{
-            //    MimicStack.Pop();
-
-            //}
-
-            //MimicStack lw = new MimicStack(10);
-            //lw.Push(3, 5, 7);
-            //lw.Pop();
-
-
-
-
-
-
-
-            //            让User类无法被继承
-
-            //观察一起帮的求助（Problem）、文章（Article）和意见建议（Suggest），根据他们的特点，抽象出一个父类：内容（Content）
-
-            //Content中有一个字段：kind，记录内容的种类（problem / article / suggest等），只能被子类使用
-
-            //    确保每个Content对象都有kind的非空值
-            //Content中的createTime，不能被子类使用，但只读属性PublishTime使用它为外部提供内容的发布时间
-            //其他方法和属性请自行考虑，尽量贴近一起帮的功能实现。
-            //实例化文章和意见建议，调用他们：
-            //继承自父类的属性和方法
-            //自己的属性和方法
-            //再为之前所有类（含User、HelpMoney等）抽象一个基类：Entity，包含一个只读的Id属性。试一试，Suggest能有Id属性么？
-
-
-
-
-
-
-            //Article lw = new Article();
-            //lw.Publish();
-            //lw.AgreeAdd();
-            //Console.WriteLine(lw.Agree);
-
-            //ContentService jk = new ContentService();
-            //jk.Publish(lw);
-
-            //ISendMessage lw = new User("sss", "sss");
-            //lw.Send();
-
-            //Article lw = new Article();
-            //lw.AgreeBy(new User("ss","ss"));
-
-
-
-            //User lw = new User("1230", "ss");
-            //lw.Tokens = new TokenManager();
-            //lw.Tokens.Add(Token.Admin);
-            //lw.Tokens.Add(Token.Blogger);
-            //lw.Tokens.Remove(Token.Admin);
-            //lw.Tokens.Remove(Token.Registered);
-
-            //Console.WriteLine(lw.Tokens.Tokens);
-
-
-            //MimicStack lw = new MimicStack(20);
-            //User abc = new User("jkl", "sss");
-            //lw.Push(abc);
-            //User u = (User)lw.Pop();
-            //Console.WriteLine(u.Name);
-
-
-
-            //Console.WriteLine(new DateTime(2020, 10, 29).ToString("yyyy-MM-dd"));
-
-
-
-            //DateTimeManager tm = new DateTimeManager();
-
-            //tm.WeekOfYear(2020);
-
-            //DateTime dt = new DateTime(2020, 2, 1);
-
-
-
-            //Console.WriteLine(tm.GetDate(dt, 29, Time.Day));
-
-
-            //Article lw = new Article();
-            //DateTime jk = new DateTime(2020, 1, 7);
-            //ContentDateTime kk = new ContentDateTime();
-            //Console.WriteLine(lw.PublishTime);
-            //kk.AlterPublishTime(lw, jk);
-            //Console.WriteLine(lw.PublishTime);
-
-
-
-
-
-
-
-
-
-            //Attribute lw = HelpMoneyChangedAttribute.GetCustomAttribute(
-
-            //    typeof(Article).GetMethod("Publish"),
-            //    typeof(HelpMoneyChangedAttribute)
-
-            //    );
-            //Console.WriteLine(((HelpMoneyChangedAttribute)lw).Amount);
-
-
-
-            //Person lzb = new Person() { Name = "李智博" };
-
-            //ProvideWater pw = Person.GoWater;
-            //ProvideWater pw = delegate { return lzb.Water += 5; };
-
-            //ProvideWater pw = (a) => a.Water += 5;
-
-            //int result = pw(lzb);
-            //Person.GetWater(pw,lzb);
-
-
-
-
-            User lw = new User("刘伟", "") { Reward = 10, HelpMoney = 10 };
-            User xy = new User("小鱼", "") { Reward = 10, HelpMoney = 10 };
-            User fg = new User("飞哥", "") { Reward = 10, HelpMoney = 10 };
-            User gty = new User("龚廷义", "") { Reward = 10, HelpMoney = 10 };
-            User lgy = new User("廖光银", "") { Reward = 10, HelpMoney = 10 };
-            User zl = new User("邹丽", "") { Reward = 10, HelpMoney = 10 };
+            User lw = new User("刘伟", "") { Reward = 100, HelpMoney = 10 };
+            User xy = new User("小鱼", "") { Reward = 100, HelpMoney = 10 };
+            User fg = new User("飞哥", "") { Reward = 100, HelpMoney = 10 };
+            User gty = new User("龚廷义", "") { Reward = 100, HelpMoney = 10 };
+            User lgy = new User("廖光银", "") { Reward = 100, HelpMoney = 10 };
+            User zl = new User("邹丽", "") { Reward = 100, HelpMoney = 10 };
 
 
 
@@ -571,34 +78,34 @@ namespace CSharp
             articles.Add(fgarticle4);
 
 
-            Appraise<Article> zlappraise = new Appraise<Article>() { Author = zl };
-            zlappraise.DisAgree(lwarticle);
+            Appraise zlappraise = new Appraise() { vote = zl };
+            zlappraise.Agree();
 
-            lwarticle.AppraiseS = new List<Appraise<Article>>();
+            lwarticle.AppraiseS = new List<Appraise>();
             lwarticle.AppraiseS.Add(zlappraise);
 
-            Appraise<Article> xyappraise = new Appraise<Article>() { Author = xy };
-            xyappraise.Agree(fgarticle);
+            Appraise xyappraise = new Appraise() { vote = xy };
+            xyappraise.Agree();
 
-            fgarticle.AppraiseS = new List<Appraise<Article>>();
+            fgarticle.AppraiseS = new List<Appraise>();
             fgarticle.AppraiseS.Add(xyappraise);
 
-            Appraise<Article> fgappraise = new Appraise<Article>() { Author = fg };
-            fgappraise.DisAgree(xyarticle);
+            Appraise fgappraise = new Appraise() { vote = fg };
+            fgappraise.Disagree();
 
-            xyarticle.AppraiseS = new List<Appraise<Article>>();
+            xyarticle.AppraiseS = new List<Appraise>();
             xyarticle.AppraiseS.Add(fgappraise);
 
-            Appraise<Article> lwappraise = new Appraise<Article>() { Author = lw };
-            lwappraise.Agree(fgarticle);
+            Appraise lwappraise = new Appraise() { vote = lw };
+            lwappraise.Agree();
             fgarticle.AppraiseS.Add(lwappraise);
 
-            Appraise<Article> lgyappraise = new Appraise<Article>() { Author = lgy };
-            lgyappraise.Agree(xyarticle);
+            Appraise lgyappraise = new Appraise() { vote = lgy };
+            lgyappraise.Agree();
             xyarticle.AppraiseS.Add(lgyappraise);
 
-            Appraise<Article> gtyappraise = new Appraise<Article>() { Author = gty };
-            gtyappraise.DisAgree(fgarticle);
+            Appraise gtyappraise = new Appraise() { vote = gty };
+            gtyappraise.Disagree();
             fgarticle.AppraiseS.Add(gtyappraise);
 
             Comment<Article> lwcomment = new Comment<Article>() { Author = lw, Body = "写得好,我是刘伟" };
@@ -637,9 +144,9 @@ namespace CSharp
             fgarticle4.Comments.Add(lwcomment);
 
 
-            Keyword<Article> k1 = new Keyword<Article>() { Word = "C#" };
-            Keyword<Article> k2 = new Keyword<Article>() { Word = ".NET" };
-            Keyword<Article> k3 = new Keyword<Article>() { Word = "66666" };
+            Keyword<Article> k1 = new Keyword<Article>() { Name = "C#" };
+            Keyword<Article> k2 = new Keyword<Article>() { Name = ".NET" };
+            Keyword<Article> k3 = new Keyword<Article>() { Name = "66666" };
 
 
             lwarticle.Keywords = new List<Keyword<Article>>();
@@ -656,7 +163,8 @@ namespace CSharp
             zlarticle.Keywords.Add(k1);
             xyarticle.Keywords.Add(k1);
             fgarticle.Keywords.Add(k2);
-            xyarticle2.Keywords.Add(k2);
+            xyarticle2.Keywords.Add(k3);
+            fgarticle2.Keywords.Add(k2);
             fgarticle3.Keywords.Add(k1);
             fgarticle4.Keywords.Add(k3);
 
@@ -689,17 +197,43 @@ namespace CSharp
             //    Console.WriteLine(item.Body);
             //}
 
+
+
+            //var result = articles.Where(a => a.Author.Name == "飞哥");
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item.Body);
+            //}
+
+
             //找出2019年1月1日以后“小鱼”发布的文章
 
             //var result = from a in articles
-            //             where a.Author.Name == "小鱼"
-            //             where a.PublishTime > new DateTime(2019, 1, 1)
+            //             where a.Author.Name == "小鱼" &&
+            //                   a.PublishTime > new DateTime(2019, 1, 1)
             //             select a;
 
             //foreach (var item in result)
             //{
             //    Console.WriteLine(item.Body);
             //}
+
+
+
+
+            //var result = articles.Where(a => a.Author.Name == "小鱼"  && 
+            //                            a.PublishTime > new DateTime(2019, 1, 1)
+            //                            );
+
+
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item.Body);
+            //}
+
+
+
 
             //按发布时间升序 / 降序排列显示文章
 
@@ -719,6 +253,24 @@ namespace CSharp
 
 
 
+
+            //var result = articles.OrderBy(a => a.PublishTime);
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine($"{item.Body }+{"：得发布时间："}+{item.PublishTime}");
+            //}
+
+
+            //var result = articles.OrderByDescending(a => a.PublishTime);
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine($"{item.Body }+{"：得发布时间："}+{item.PublishTime}");
+            //}
+
+
+
             //统计每个用户各发布了多少篇文章
 
             //var result = from a in articles
@@ -734,7 +286,37 @@ namespace CSharp
             //    }
             //}
 
+
+
+            //var result = articles.GroupBy(a=>a.Author);
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item.Key.Name);
+            //    Console.WriteLine(item.Count());
+            //    foreach (var i in item)
+            //    {
+            //        Console.WriteLine(i.Body);
+            //    }
+            //}
+
+
+
+
             //找出包含关键字“C#”或“.NET”的文章
+
+
+
+            //var result = from a in articles
+            //             where a.Keywords.Any(a => a.Word == "C#" || a.Word == ".NET")
+            //             select a;
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item.Body);
+            //}
+
+
 
 
 
@@ -749,26 +331,103 @@ namespace CSharp
             //}
 
 
+
+
             //找出评论数量最多的文章
 
+            //var result = from a in articles
+            //             orderby a.Comments.Count() descending
+            //             select a;
+            //Console.WriteLine(result.First().Body);
 
 
+
+            //var result = articles.OrderByDescending(a => a.Comments.Count);
+
+            //Console.WriteLine(result.First().Body+"：数量："+result.First().Comments.Count);
 
 
             //找出每个作者评论数最多的文章
 
 
+            //var result = from a in articles
+            //             group a by a.Author;
+
+            //foreach (var item in result)
+            //{
+            //    var kk = from i in item
+            //             orderby i.Comments.Count() descending
+            //             select i;
+            //    Console.WriteLine(kk.First().Body,kk.First().Author);
+            //}
+
+
+
+            //var result = articles.GroupBy(a => a.Author);
+
+            //foreach (var item in result)
+            //{
+            //    var kk = item.OrderByDescending(a => a.Comments.Count());
+            //    Console.WriteLine(kk.First().Body+":"+kk.First().Author.Name);
+            //}
+
+
+            //            将之前作业的Linq查询表达式用Linq方法实现
+
+            //找出每个作者最近发布的一篇文章
+            //为求助（Problem）添加悬赏（Reward）属性，并找出每一篇求助的悬赏都大于5个帮帮币的求助作者
+
+            Problem lwproblem = new Problem("求组C#我是刘伟") { Reward = 10, Author = lw };
+            Problem zlproblem = new Problem("求组JAVA我是邹丽") { Reward = 3, Author = zl };
+            Problem fgproblem = new Problem("求组.NET我是飞哥") { Reward = 7, Author = fg };
+            Problem xyproblem = new Problem("求组!!!我是小鱼") { Reward = 1, Author = xy };
+            Problem gtyproblem = new Problem("求组啊我是龚廷义") { Reward = 8, Author = gty };
+
+            IList<Problem> problems = new List<Problem>() { lwproblem, zlproblem, fgproblem, xyproblem, gtyproblem };
+
+
+            //var result = from p in problems
+            //             where p.Reward > 5
+            //             select p;
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item.Body+"悬赏:"+item.Reward);
+            //}
+
+
+            //var result = problems.Where(a => a.Reward > 5);
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item.Body+"悬赏："+item.Reward);
+            //}
+
+
+
+
+            //var result = from a in articles
+            //             group a by a.Author;
+
+
+            //foreach (var item in result)
+            //{
+            //    var kk = from i in item
+            //             orderby i.PublishTime descending
+            //             select i;
+            //    Console.WriteLine(kk.First().Body + ":" + kk.First().PublishTime);
+            //}
 
 
 
 
 
+            //var result = articles.GroupBy(a => a.Author);
 
-
-
-
-
-
+            //foreach (var item in result)
+            //{
+            //    var kk = item.OrderByDescending(a =>a.PublishTime);
+            //    Console.WriteLine(kk.First().Body + ":" + kk.First().PublishTime);
+            //}
 
 
 

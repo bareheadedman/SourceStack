@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharp
 {
-    class Suggest : Content
+    class Suggest : Content,IAppraise
     {
         public string Title { get; set; }
 
@@ -16,15 +16,23 @@ namespace CSharp
 
         public IList<Comment<Suggest>> Comments;
         public IList<Keyword<Suggest>> Keywords;
-        public Appraise<Suggest> Appraise;
+        public IList<Appraise> Appraises;
         override public void Publish()
         {
             PublishTime = DateTime.Now;
             Console.WriteLine("不消耗帮帮币");
         }
 
+        public void AgreeBy(User vote)
+        {
+            this.Author.HelpPoint++;
+            vote.HelpPoint++;
+        }
 
-
-
+        public void DisAgreeBy(User vote)
+        {
+            this.Author.HelpPoint++;
+            vote.HelpPoint++;
+        }
     }
 }

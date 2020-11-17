@@ -9,7 +9,7 @@ namespace CSharp
 
         //一篇文章可以有多个关键字，一个关键字可以对应多篇文章
 
-        public string Word;
+        public string Name;
 
         public IList<T> contents;
 

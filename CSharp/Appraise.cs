@@ -4,27 +4,25 @@ using System.Text;
 
 namespace CSharp
 {
-    public class Appraise<T> : IAppraise<T> where T : Content
+    public class Appraise
     {
         //每个文章和评论都有一个评价
 
 
-        public User Author;
-        public UpOrdown IsAgree;
+        public User vote { get; set; }
+        public UpOrdown Direction { get; private set; }
 
 
-        public void DisAgree(T refer)
+
+        public void Disagree()
         {
-            this.Author.HelpPoint++;
-            refer.Author.HelpPoint++;
-            IsAgree = UpOrdown.Down;
+            Direction = UpOrdown.Down;
         }
 
-        public void Agree(T refer)
+        public void Agree()
         {
-            this.Author.HelpPoint++;
-            refer.Author.HelpPoint++;
-            IsAgree = UpOrdown.Up;
+
+            Direction = UpOrdown.Up;
         }
 
 
