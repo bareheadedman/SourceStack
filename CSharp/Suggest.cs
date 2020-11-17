@@ -4,10 +4,9 @@ using System.Text;
 
 namespace CSharp
 {
-    class Suggest : Content, IEstimate
+    class Suggest : Content
     {
-
-
+        public string Title { get; set; }
 
 
         public Suggest() : base("suggest")
@@ -15,7 +14,9 @@ namespace CSharp
 
         }
 
-
+        public IList<Comment<Suggest>> Comments;
+        public IList<Keyword<Suggest>> Keywords;
+        public Appraise<Suggest> Appraise;
         override public void Publish()
         {
             PublishTime = DateTime.Now;
@@ -23,23 +24,6 @@ namespace CSharp
         }
 
 
-        public int AgreeAmount { get; set; }
-
-        public int DisagreeAmount { get; set; }
-
-        public void DisagreeBy(User Estimate)
-        {
-            Estimate.HelpPoint++;
-            Author.HelpPoint++;
-            DisagreeAmount++;
-        }
-
-        public void AgreeBy(User Estimate)
-        {
-            Estimate.HelpPoint++;
-            Author.HelpPoint++;
-            AgreeAmount++;
-        }
 
 
     }

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
 using System.Globalization;
+using System.Linq;
 using System.Net.WebSockets;
 using System.Reflection;
 using System.Security.Cryptography;
@@ -500,6 +501,169 @@ namespace CSharp
 
 
 
+            //Person lzb = new Person() { Name = "李智博" };
+
+            //ProvideWater pw = Person.GoWater;
+            //ProvideWater pw = delegate { return lzb.Water += 5; };
+
+            //ProvideWater pw = (a) => a.Water += 5;
+
+            //int result = pw(lzb);
+            //Person.GetWater(pw,lzb);
+
+
+
+
+            User lw = new User("刘伟", "") { Reward = 10, HelpMoney = 10 };
+            User xy = new User("小鱼", "") { Reward = 10, HelpMoney = 10 };
+            User fg = new User("飞哥", "") { Reward = 10, HelpMoney = 10 };
+            User gty = new User("龚廷义", "") { Reward = 10, HelpMoney = 10 };
+            User lgy = new User("廖光银", "") { Reward = 10, HelpMoney = 10 };
+            User zl = new User("邹丽", "") { Reward = 10, HelpMoney = 10 };
+
+
+
+            ContentService fb = new ContentService();
+
+            ContentDateTime alter = new ContentDateTime();
+
+
+            Article lwarticle = new Article() { Title = "刘伟好帅", Body = "我是刘伟就是帅", Author = lw };
+            fb.Publish(lwarticle);
+            alter.AlterPublishTime(lwarticle, new DateTime(2018, 2, 3));
+
+            Article xyarticle = new Article() { Title = "C#", Body = "我是小鱼C#", Author = xy };
+            fb.Publish(xyarticle);
+            alter.AlterPublishTime(xyarticle, new DateTime(2020, 7, 18));
+
+            Article fgarticle = new Article() { Title = ".NET", Body = "我是飞哥,NET", Author = fg };
+            fb.Publish(fgarticle);
+            alter.AlterPublishTime(fgarticle, new DateTime(2014, 6, 3));
+
+            Article zlarticle = new Article() { Title = "C#", Body = "我是邹丽C#", Author = zl };
+            fb.Publish(zlarticle);
+            alter.AlterPublishTime(zlarticle, new DateTime(2012, 7, 6));
+
+            Article fgarticle2 = new Article() { Title = ".NET", Body = "我是飞哥2.NET", Author = fg };
+            fb.Publish(fgarticle2);
+            alter.AlterPublishTime(fgarticle2, new DateTime(2008, 8, 9));
+
+            Article xyarticle2 = new Article() { Title = "", Body = "我是小鱼 小鱼儿", Author = xy };
+            fb.Publish(xyarticle2);
+            alter.AlterPublishTime(xyarticle2, new DateTime(2010, 12, 23));
+
+            Article fgarticle3 = new Article() { Title = "C#", Body = "我是飞哥3.C#", Author = fg };
+            fb.Publish(fgarticle3);
+            alter.AlterPublishTime(fgarticle3, new DateTime(2018, 8, 13));
+
+            Article fgarticle4 = new Article() { Title = "飞哥好帅", Body = "我是飞哥就是帅", Author = fg };
+            fb.Publish(fgarticle4);
+
+
+            IList<Article> articles = new List<Article>();
+            articles.Add(lwarticle);
+            articles.Add(xyarticle);
+            articles.Add(fgarticle);
+            articles.Add(zlarticle);
+            articles.Add(fgarticle2);
+            articles.Add(xyarticle2);
+            articles.Add(fgarticle3);
+            articles.Add(fgarticle4);
+
+
+            Appraise<Article> zlappraise = new Appraise<Article>() { Author = zl };
+            zlappraise.DisAgree(lwarticle);
+
+            lwarticle.AppraiseS = new List<Appraise<Article>>();
+            lwarticle.AppraiseS.Add(zlappraise);
+
+            Appraise<Article> xyappraise = new Appraise<Article>() { Author = xy };
+            xyappraise.Agree(fgarticle);
+
+            fgarticle.AppraiseS = new List<Appraise<Article>>();
+            fgarticle.AppraiseS.Add(xyappraise);
+
+            Appraise<Article> fgappraise = new Appraise<Article>() { Author = fg };
+            fgappraise.DisAgree(xyarticle);
+
+            xyarticle.AppraiseS = new List<Appraise<Article>>();
+            xyarticle.AppraiseS.Add(fgappraise);
+
+            Appraise<Article> lwappraise = new Appraise<Article>() { Author = lw };
+            lwappraise.Agree(fgarticle);
+            fgarticle.AppraiseS.Add(lwappraise);
+
+            Appraise<Article> lgyappraise = new Appraise<Article>() { Author = lgy };
+            lgyappraise.Agree(xyarticle);
+            xyarticle.AppraiseS.Add(lgyappraise);
+
+            Appraise<Article> gtyappraise = new Appraise<Article>() { Author = gty };
+            gtyappraise.DisAgree(fgarticle);
+            fgarticle.AppraiseS.Add(gtyappraise);
+
+            Comment<Article> lwcomment = new Comment<Article>() { Author = lw, Body = "写得好,我是刘伟" };
+            Comment<Article> gtycomment = new Comment<Article>() { Author = gty, Body = "写得好，我是龚廷义" };
+            Comment<Article> lgycomment = new Comment<Article>() { Author = lgy, Body = "写得好，写得好我是廖光银" };
+            Comment<Article> zlycomment = new Comment<Article>() { Author = zl, Body = "写得好，写得好我是邹丽" };
+
+
+
+            fgarticle.Comments = new List<Comment<Article>>();
+            fgarticle.Comments.Add(lwcomment);
+            fgarticle.Comments.Add(gtycomment);
+            fgarticle.Comments.Add(zlycomment);
+
+
+            xyarticle.Comments = new List<Comment<Article>>();
+            xyarticle.Comments.Add(lgycomment);
+            xyarticle.Comments.Add(zlycomment);
+
+            lwarticle.Comments = new List<Comment<Article>>();
+            lwarticle.Comments.Add(zlycomment);
+
+            zlarticle.Comments = new List<Comment<Article>>();
+            zlarticle.Comments.Add(lwcomment);
+
+            xyarticle2.Comments = new List<Comment<Article>>();
+            xyarticle2.Comments.Add(lwcomment);
+
+            fgarticle2.Comments = new List<Comment<Article>>();
+            fgarticle2.Comments.Add(zlycomment);
+
+            fgarticle3.Comments = new List<Comment<Article>>();
+            fgarticle3.Comments.Add(zlycomment);
+
+            fgarticle4.Comments = new List<Comment<Article>>();
+            fgarticle4.Comments.Add(lwcomment);
+
+
+            Keyword<Article> k1 = new Keyword<Article>() { Word = "C#" };
+            Keyword<Article> k2 = new Keyword<Article>() { Word = ".NET" };
+            Keyword<Article> k3 = new Keyword<Article>() { Word = "66666" };
+
+
+            lwarticle.Keywords = new List<Keyword<Article>>();
+            xyarticle.Keywords = new List<Keyword<Article>>();
+            zlarticle.Keywords = new List<Keyword<Article>>();
+            fgarticle.Keywords = new List<Keyword<Article>>();
+
+            xyarticle2.Keywords = new List<Keyword<Article>>();
+            fgarticle2.Keywords = new List<Keyword<Article>>();
+            fgarticle3.Keywords = new List<Keyword<Article>>();
+            fgarticle4.Keywords = new List<Keyword<Article>>();
+
+            lwarticle.Keywords.Add(k3);
+            zlarticle.Keywords.Add(k1);
+            xyarticle.Keywords.Add(k1);
+            fgarticle.Keywords.Add(k2);
+            xyarticle2.Keywords.Add(k2);
+            fgarticle3.Keywords.Add(k1);
+            fgarticle4.Keywords.Add(k3);
+
+
+
+
+
 
 
             //            一篇文章可以有多个评论
@@ -507,72 +671,104 @@ namespace CSharp
             //每个文章和评论都有一个评价
             //一篇文章可以有多个关键字，一个关键字可以对应多篇文章
 
-            //评论（Comment）类  Speak(评论内容) Content(文章) appraise(评价)
-            //评价（Appraise）类
-            //关键字（Keyword）类  word(关键字)
-
-
-            Content lw = new Article();
-            lw.Comments = new List<Comment>();
-
-
-
-            Comment comment1 = new Comment { Speak = "写得好", };
-            Comment comment2 = new Comment { Speak = "写得烂", };
-            Comment comment3 = new Comment { Speak = "写得差", };
-            Comment comment4 = new Comment { Speak = "你猜", };
-
-            comment1.Content = lw;
-            comment2.Content = lw;
-            comment3.Content = lw;
-            comment4.Content = lw;
-
-            lw.Comments.Add(comment1);
-            lw.Comments.Add(comment2);
-            lw.Comments.Add(comment3);
-            lw.Comments.Add(comment4);
-
-
-            Appraise appraise1 = new Appraise { Agree = 54, Disagree = 65 };
-            Appraise appraise2 = new Appraise { Agree = 15, Disagree = 61 };
-            Appraise appraise3 = new Appraise { Agree = 52, Disagree = 687 };
-            Appraise appraise4 = new Appraise { Agree = 55, Disagree = 641 };
-            Appraise appraise5 = new Appraise { Agree = 59, Disagree = 647 };
-
-            comment1.appraise = appraise1;
-            comment2.appraise = appraise2;
-            comment3.appraise = appraise3;
-            comment4.appraise = appraise4;
-
-
-            Keyword keyword1 = new Keyword { Word = "精品文章" };
-            Keyword keyword2 = new Keyword { Word = "学习类" };
-            Keyword keyword3 = new Keyword { Word = "CSharp" };
-
-            keyword1.contents = new List<Content> { lw };
-            keyword2.contents = new List<Content> { lw };
-            keyword3.contents = new List<Content> { lw };
-
-            lw.keywords = new List<Keyword> { keyword1, keyword2, keyword3 };
-
-
-            lw.Appraise = appraise5;
-
-            lw.Author = new User("刘伟", "Aa$5112");
 
 
 
 
-            Person lzb = new Person() { Name = "李智博" };
+            //            在之前“文章 / 评价 / 评论 / 用户 / 关键字”对象模型的基础上，添加相应的数据，然后完成以下操作：
+
+            //找出“飞哥”发布的文章
 
 
-            ProvideWater pw = Person.GoWater;
-            //ProvideWater pw = delegate { return lzb.Water += 5; };
+            //var result = from a in articles
+            //             where a.Author.Name == "飞哥"
+            //             select a;
 
-            //ProvideWater pw = (a) => a.Water += 5;
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item.Body);
+            //}
 
-            //int result = pw(lzb);
-            Person.GetWater(pw,lzb);
+            //找出2019年1月1日以后“小鱼”发布的文章
+
+            //var result = from a in articles
+            //             where a.Author.Name == "小鱼"
+            //             where a.PublishTime > new DateTime(2019, 1, 1)
+            //             select a;
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item.Body);
+            //}
+
+            //按发布时间升序 / 降序排列显示文章
+
+            //var result = from a in articles
+            //             orderby a.PublishTime
+            //             select a;
+
+            //var result = from a in articles
+            //             orderby a.PublishTime descending
+            //             select a;
+
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item.PublishTime);
+            //}        
+
+
+
+            //统计每个用户各发布了多少篇文章
+
+            //var result = from a in articles
+            //             group a by a.Author;
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item.Key.Name);
+            //    Console.WriteLine(item.Count());
+            //    foreach (var i in item)
+            //    {
+            //        Console.WriteLine(i.Body);
+            //    }
+            //}
+
+            //找出包含关键字“C#”或“.NET”的文章
+
+
+
+            //var result = articles.SelectMany(
+            //    a => a.Keywords,
+            //    (a, k) => new { a.Body, k.Word }
+            //    ).Where(k => k.Word == "C#" || k.Word == ".NET");
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item.Body,item.Word);
+            //}
+
+
+            //找出评论数量最多的文章
+
+
+
+
+
+            //找出每个作者评论数最多的文章
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

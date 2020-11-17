@@ -13,17 +13,10 @@ namespace CSharp
         //Content中的createTime，不能被子类使用，但只读属性PublishTime使用它为外部提供内容的发布时间
 
 
-        //一篇文章可以有多个评论
-        //每个文章和评论都有一个评价
 
-
-        public IList<Comment> Comments;
-        public IList<Keyword> keywords;
-        public Appraise Appraise;
 
 
         public User Author { get; set; }
-        public string Title { get; set; }
 
         public string Body { get; set; }
 

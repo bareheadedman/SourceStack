@@ -5,9 +5,20 @@ using System.Text;
 namespace CSharp
 {
     
-    class Article : Content, IEstimate
+    class Article : Content
     {
 
+
+        //一篇文章可以有多个评论
+        //每个文章和评论都有一个评价
+
+
+        public IList<Comment<Article>> Comments;
+        public IList<Keyword<Article>> Keywords;
+        public IList<Appraise<Article>> AppraiseS;
+
+
+        public string Title { get; set; }
 
 
         public Article() : base("article")
@@ -24,23 +35,6 @@ namespace CSharp
             Console.WriteLine("消耗一个帮帮币");
         }
 
-        public int AgreeAmount { get; set; }
-
-        public int DisagreeAmount { get; set; }
-
-        public void DisagreeBy(User Estimate)
-        {
-            Estimate.HelpPoint++;
-            Author.HelpPoint++;
-            DisagreeAmount++;
-        }
-
-        public void AgreeBy(User Estimate)
-        {
-            Estimate.HelpPoint++;
-            Author.HelpPoint++;
-            AgreeAmount++;
-        }
 
 
     }

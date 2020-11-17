@@ -21,8 +21,9 @@ namespace CSharp
     //repoistory：可用于在底层实现上述方法和数据库的连接操作等
 
 
-    class Problem : Content, IEstimate
+    class Problem : Content
     {
+        public string Title { get; set; }
 
         private int _reward;
 
@@ -93,22 +94,6 @@ namespace CSharp
 
 
 
-        public int AgreeAmount { get; set; }
 
-        public int DisagreeAmount { get; set; }
-
-        public void DisagreeBy(User Estimate)
-        {
-            Estimate.HelpPoint++;
-            Author.HelpPoint++;
-            DisagreeAmount++;
-        }
-
-        public void AgreeBy(User Estimate)
-        {
-            Estimate.HelpPoint++;
-            Author.HelpPoint++;
-            AgreeAmount++;
-        }
     }
 }

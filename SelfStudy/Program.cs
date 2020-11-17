@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.WebSockets;
 using System.Text.Json;
 
@@ -43,15 +44,19 @@ namespace SelfStudy
 
             };
 
-            foreach (var item in kk)
-            {
-                Console.WriteLine(item.age);
-            }
 
 
 
 
+            //foreach (var item in kk)
+            //{
+            //    Console.WriteLine(item.age);
+            //}
 
+
+
+
+            
         }
     }
 

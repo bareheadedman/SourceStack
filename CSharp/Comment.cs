@@ -12,11 +12,16 @@ namespace CSharp
 
 
 
-    public class Comment //评论
+    public class Comment<T> : Content //评论
     {
-        public string Speak;
-        public Content Content;
-        public Appraise appraise;
+        public string Content;
+        public T Refer;
+        public List<Appraise<Comment<T>>> Appraises;
+        public IList<Comment<T>> Comments;
+
+        public Comment() : base("comment")
+        {
+        }
 
 
     }
