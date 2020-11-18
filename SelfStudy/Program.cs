@@ -36,13 +36,13 @@ namespace SelfStudy
 
 
 
-            IList<Student> kk = new List<Student>
-            {
-            new Student(){name= "ss",age =22},
-            new Student(){name= "qq",age =23},
-            new Student(){name= "zz",age =72},
+            //IList<Student> kk = new List<Student>
+            //{
+            //new Student(){name= "ss",age =22},
+            //new Student(){name= "qq",age =23},
+            //new Student(){name= "zz",age =72},
 
-            };
+            //};
 
 
 
@@ -56,7 +56,7 @@ namespace SelfStudy
 
 
 
-            
+
         }
     }
 

@@ -5,17 +5,17 @@ namespace NUnitTestProject1
 {
     class DLinkNodeTest
     {
-        DLinkNode node1, node2, node3, node4, node5, node6;
+        DLinkNode<int> node1, node2, node3, node4, node5, node6;
 
         [SetUp]
         public void SetUp()
         {
-            node1 = new DLinkNode();
-            node2 = new DLinkNode();
-            node3 = new DLinkNode();
-            node4 = new DLinkNode();
-            node5 = new DLinkNode();
-            node6 = new DLinkNode();
+            node1 = new DLinkNode<int>() { Content = 1 };
+            node2 = new DLinkNode<int>() { Content = 2 };
+            node3 = new DLinkNode<int>() { Content = 3 };
+            node4 = new DLinkNode<int>() { Content = 4 };
+            node5 = new DLinkNode<int>() { Content = 5 };
+            node6 = new DLinkNode<int>() { Content = 6 };
 
             node1.Next = node2;
             node2.Previous = node1;
@@ -37,7 +37,7 @@ namespace NUnitTestProject1
         {
             // 1 2 3 4 5 6 [7]
 
-            DLinkNode node7 = new DLinkNode();
+            DLinkNode<int> node7 = new DLinkNode<int>();
             node6.AddAfter(node7);
 
             Assert.AreEqual(node6, node7.Previous);
@@ -46,7 +46,7 @@ namespace NUnitTestProject1
 
             // 1 2 3 4 [8] 5 6 7
 
-            DLinkNode node8 = new DLinkNode();
+            DLinkNode<int> node8 = new DLinkNode<int>();
             node4.AddAfter(node8);
 
             Assert.AreEqual(node3, node4.Previous);
@@ -74,7 +74,7 @@ namespace NUnitTestProject1
 
 
             // [7] 1 2 3 4 5 6
-            DLinkNode node7 = new DLinkNode();
+            DLinkNode<int> node7 = new DLinkNode<int>();
             node1.AddBefore(node7);
 
             Assert.AreEqual(node7, node1.Previous);
@@ -83,7 +83,7 @@ namespace NUnitTestProject1
             Assert.IsNull(node7.Previous);
 
             // 7 1 2 [8] 3 4 5 6
-            DLinkNode node8 = new DLinkNode();
+            DLinkNode<int> node8 = new DLinkNode<int>();
             node3.AddBefore(node8);
 
             Assert.AreEqual(node8, node3.Previous);
@@ -285,6 +285,8 @@ namespace NUnitTestProject1
 
 
         }
+
+
 
     }
 }

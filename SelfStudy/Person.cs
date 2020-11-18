@@ -23,29 +23,42 @@ namespace SelfStudy
             return new Enumerator(this);
         }
 
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return new Enumerator(this);
+        }
+
         struct Enumerator : IEnumerator
         {
 
             private object _current;
             public object Current => _current;
 
+
+            //T IEnumerator<T>.Current => throw new NotImplementedException();
+
             private int _index;
-            Student[] students;
+            public Person Person1;
+
 
             public Enumerator(Person person)
             {
-                students = person.students;
+                Person1 = person;
                 _index = 0;
-                _current = students[_index];
+                //_current = students[_index];
+                _current = Person1.students[_index];
+
             }
+
+
             public bool MoveNext()
             {
-                if (_index >= students.Length)
+                if (_index >= Person1.students.Length)
                 {
                     return false;
                 }
 
-                _current = students[_index];
+                _current = Person1.students[_index];
                 _index++;
 
                 return true;
@@ -53,6 +66,11 @@ namespace SelfStudy
 
 
             public void Reset()
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Dispose()
             {
                 throw new NotImplementedException();
             }

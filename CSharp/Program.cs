@@ -431,6 +431,51 @@ namespace CSharp
 
 
 
+            //MimicStack<int> mimic = new MimicStack<int>(10);
+            //mimic.Push(3, 5, 5);
+            //int a;
+            //a = mimic.Pop();
+            //Console.WriteLine(a);
+            //a = mimic.Pop();
+            //Console.WriteLine(a);
+            //a = mimic.Pop();
+            //Console.WriteLine(a);
+            //a = mimic.Pop();
+            //Console.WriteLine(a);
+
+
+
+            //DLinkNode<int> dLink1 = new DLinkNode<int>() { Content = 1 };
+            //DLinkNode<int> dLink2 = new DLinkNode<int>() { Content = 2 };
+            //DLinkNode<int> dLink3 = new DLinkNode<int>() { Content = 3 };
+            //DLinkNode<int> dLink4 = new DLinkNode<int>() { Content = 4 };
+            //DLinkNode<int> dLink5 = new DLinkNode<int>() { Content = 5 };
+            //DLinkNode<int> dLink6 = new DLinkNode<int>() { Content = 6 };
+            //DLinkNode<int> dLink7 = new DLinkNode<int>() { Content = 7 };
+
+
+            DLinkNode<string> dLink1 = new DLinkNode<string>() { Content = "1" };
+            DLinkNode<string> dLink2 = new DLinkNode<string>() { Content = "2" };
+            DLinkNode<string> dLink3 = new DLinkNode<string>() { Content = "3" };
+            DLinkNode<string> dLink4 = new DLinkNode<string>() { Content = "4" };
+            DLinkNode<string> dLink5 = new DLinkNode<string>() { Content = "5" };
+            DLinkNode<string> dLink6 = new DLinkNode<string>() { Content = "6" };
+            DLinkNode<string> dLink7 = new DLinkNode<string>() { Content = "7" };
+
+
+
+            dLink1.AddAfter(dLink2);
+            dLink2.AddAfter(dLink3);
+            dLink3.AddAfter(dLink4);
+            dLink4.AddAfter(dLink5);
+            dLink5.AddAfter(dLink6);
+            dLink6.AddAfter(dLink7);
+
+            foreach (var item in dLink4)
+            {
+                Console.WriteLine(item.Content);
+            }
+
 
 
         }

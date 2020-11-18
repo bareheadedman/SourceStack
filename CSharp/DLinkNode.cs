@@ -1,16 +1,19 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CSharp
 {
-    public class DLinkNode
+    public class DLinkNode<T> : IEnumerable<DLinkNode<T>>
     {
-        public DLinkNode Previous { get; set; }
-        public DLinkNode Next { get; set; }
+        //List<int>
+        public DLinkNode<T> Previous { get; set; }
+        public DLinkNode<T> Next { get; set; }
+        public T Content { get; set; }
 
-
-        public void AddAfter(DLinkNode dLink)
+        public void AddAfter(DLinkNode<T> dLink)
         {
             if (this.Next != null)
             {
@@ -21,8 +24,7 @@ namespace CSharp
             this.Next = dLink;
             dLink.Previous = this;
         }
-
-        public void AddBefore(DLinkNode dLink)
+        public void AddBefore(DLinkNode<T> dLink)
         {
             if (this.Previous != null)
             {
@@ -34,10 +36,10 @@ namespace CSharp
             dLink.Next = this;
 
         }
-
-
         public void Delete()
         {
+
+
             if (this.Previous == null)
             {
                 this.Next.Previous = null;
@@ -60,28 +62,98 @@ namespace CSharp
 
         }
 
-        public void Swap(DLinkNode dlink)
+        public void Swap(DLinkNode<T> dlink)
         {
-            DLinkNode PrvThis = this.Previous;
-            DLinkNode NextThis = this.Previous;
-
+            DLinkNode<T> PrvThis = this.Previous;
+            DLinkNode<T> NextThis = this.Next;
             this.Delete();
 
-            dlink.AddAfter(this);
-
-            dlink.Delete();
-            if (PrvThis != null)
+            if (PrvThis == dlink)
             {
-                PrvThis.AddAfter(dlink);
+                dlink.AddBefore(this);
+            }
+            else if (NextThis == dlink)
+            {
+                dlink.AddAfter(this);
             }
             else
             {
-                NextThis.AddBefore(dlink);
+                dlink.AddAfter(this);
+                dlink.Delete();
+                if (PrvThis != null)
+                {
+                    PrvThis.AddAfter(dlink);
+                }
+                else
+                {
+                    NextThis.AddBefore(dlink);
+                }
+
             }
 
 
 
 
+
+        }
+
+
+        //让之前的双向链表，能够：被foreach迭代
+
+        public IEnumerator<DLinkNode<T>> GetEnumerator()
+        {
+            return new Enumerator<T>(this);
+
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            //throw new NotImplementedException();
+            return GetEnumerator();
+        }
+
+        struct Enumerator<T> : IEnumerator<DLinkNode<T>>
+        {
+
+            public Enumerator(DLinkNode<T> dLink)
+            {
+                _index = dLink;
+                _current = _index;
+
+            }
+
+            private DLinkNode<T> _current;
+            public object Current => _current;
+
+            DLinkNode<T> IEnumerator<DLinkNode<T>>.Current => _current;
+
+            private DLinkNode<T> _index;
+
+
+            public bool MoveNext()
+            {
+
+                if (_index == null)
+                {
+                    return false;
+                }
+
+                _current = _index;
+                _index = _index.Next;
+
+                return true;
+
+            }
+
+            public void Reset()
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Dispose()
+            {
+                
+            }
         }
 
     }

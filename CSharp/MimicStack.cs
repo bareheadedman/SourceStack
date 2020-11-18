@@ -17,19 +17,19 @@ namespace CSharp
 
 
 
-    public class MimicStack
+    public class MimicStack<T>
     {
-        object[] element;
+        T[] element;
         int top = 0;
         const int bottom = 0;
 
 
         public MimicStack(int size)
         {
-            element = new object[size];
+            element = new T[size];
         }
 
-        public void Push(object element)
+        public void Push(T element)
         {
             if (top <= this.element.Length - 1)
             {
@@ -43,7 +43,7 @@ namespace CSharp
         }
 
 
-        public void Push(params object[] array)
+        public void Push(params T[] array)
         {
             for (int i = 0; i < array.Length; i++)
             {
@@ -51,7 +51,7 @@ namespace CSharp
             }
         }
 
-        public object Pop()
+        public T Pop()
         {
             if (top != bottom)
             {
@@ -61,7 +61,7 @@ namespace CSharp
             else
             {
                 Console.WriteLine("栈已空");
-                return -1;
+                throw new NullReferenceException("未找到对象");
             }
         }
     }
