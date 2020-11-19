@@ -11,7 +11,7 @@ namespace CSharp
             DLinkNode<T> temp = new DLinkNode<T>();
             foreach (var item in dLink)
             {
-                if (temp.Content.CompareTo(temp.Content) >dLink.Content.CompareTo(temp.Content))
+                if (temp.Content.CompareTo(temp) >dLink.Content.CompareTo(temp))
                 {
                     temp.Content = dLink.Content;
                 }

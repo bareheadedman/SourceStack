@@ -477,7 +477,7 @@ namespace CSharp
             //}
 
 
-            Console.WriteLine(dLink1.Max());
+            //Console.WriteLine(dLink1.Max());
         }
     }
 

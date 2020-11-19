@@ -124,7 +124,7 @@ namespace CSharp
             return GetEnumerator();
         }
 
-        struct Enumerator<T> : IEnumerator<DLinkNode<T>> 
+        struct Enumerator<T> : IEnumerator<DLinkNode<T>>  
         {
 
             public Enumerator(DLinkNode<T> dLink)

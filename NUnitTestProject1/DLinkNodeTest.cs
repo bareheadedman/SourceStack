@@ -1,5 +1,6 @@
 ﻿using CSharp;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace NUnitTestProject1
 {
@@ -287,6 +288,25 @@ namespace NUnitTestProject1
         }
 
 
+        [Test]
+        public void ForeachTest()
+        {
+            IList<DLinkNode<int>> dLinks = new List<DLinkNode<int>>();
+            foreach (var item in node2)
+            {
+                dLinks.Add(item);
+            }
+
+
+            // 2 3 4 5 6 1
+            Assert.AreEqual(dLinks[0].Content, node2.Content);
+            Assert.AreEqual(dLinks[1].Content, node3.Content);
+            Assert.AreEqual(dLinks[2].Content, node4.Content);
+            Assert.AreEqual(dLinks[3].Content, node5.Content);
+            Assert.AreEqual(dLinks[4].Content, node6.Content);
+            Assert.AreEqual(dLinks[5].Content, node1.Content);
+
+        }
 
     }
 }
