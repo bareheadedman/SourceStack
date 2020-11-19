@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CSharp
 {
-    public class DLinkNode<T> : IEnumerable<DLinkNode<T>>
+    public class DLinkNode<T> : IEnumerable<DLinkNode<T>> 
     {
         //List<int>
         public DLinkNode<T> Previous { get; set; }
@@ -106,20 +106,33 @@ namespace CSharp
 
         }
 
+
+        private DLinkNode<T> getFirstDlink()
+        {
+            DLinkNode<T> head = this;
+            while (head.Previous != null)
+            {
+                head = head.Previous;
+            }
+
+            return head;
+        }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             //throw new NotImplementedException();
             return GetEnumerator();
         }
 
-        struct Enumerator<T> : IEnumerator<DLinkNode<T>>
+        struct Enumerator<T> : IEnumerator<DLinkNode<T>> 
         {
 
             public Enumerator(DLinkNode<T> dLink)
             {
                 _index = dLink;
                 _current = _index;
-
+                ThisDlink = dLink;
+                FirstDlink = dLink.getFirstDlink();
             }
 
             private DLinkNode<T> _current;
@@ -130,18 +143,43 @@ namespace CSharp
             private DLinkNode<T> _index;
 
 
+            public DLinkNode<T> FirstDlink;
+
+            public DLinkNode<T> ThisDlink;
+
+
+
+
             public bool MoveNext()
             {
 
-                if (_index == null)
+
+
+                if (_index != null)
                 {
-                    return false;
+                    _current = _index;
+                    _index = _index.Next;
+
+                    return true;
+                }
+                else
+                {
+
+
+                    if (FirstDlink == ThisDlink)
+                    {
+                        return false;
+
+                    }
+
+                    _current = FirstDlink;
+                    FirstDlink = FirstDlink.Next; ;
+
+                    return true;
+
                 }
 
-                _current = _index;
-                _index = _index.Next;
 
-                return true;
 
             }
 
@@ -152,9 +190,12 @@ namespace CSharp
 
             public void Dispose()
             {
-                
+
             }
         }
+
+
+
 
     }
 }

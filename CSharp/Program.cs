@@ -471,13 +471,13 @@ namespace CSharp
             dLink5.AddAfter(dLink6);
             dLink6.AddAfter(dLink7);
 
-            foreach (var item in dLink4)
-            {
-                Console.WriteLine(item.Content);
-            }
+            //foreach (var item in dLink2)
+            //{
+            //    Console.WriteLine(item.Content);
+            //}
 
 
-
+            Console.WriteLine(dLink1.Max());
         }
     }
 
