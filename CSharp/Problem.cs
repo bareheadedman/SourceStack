@@ -26,7 +26,7 @@ namespace CSharp
                 }
                 else
                 {
-                    Console.WriteLine("Reward不能为负数");
+                    throw new ArgumentOutOfRangeException("参数越界");
                 }
             }
         }
@@ -75,6 +75,10 @@ namespace CSharp
         [HelpMoneyChanged(Amount = (-1)/*Reward*/, Message = "发布悬赏")]
         override public void Publish()
         {
+            if (Author == null)
+            {
+                throw new ArgumentNullException("参数为空");
+            }
             PublishTime = DateTime.Now;
             Author.HelpMoney -= Reward;
             Console.WriteLine("消耗悬赏的帮帮币");

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharp
 {
-    class Suggest : Content,IAppraise
+    class Suggest : Content, IAppraise
     {
         public string Title { get; set; }
 
@@ -19,6 +19,10 @@ namespace CSharp
         public IList<Appraise> Appraises;
         override public void Publish()
         {
+            if (Author == null)
+            {
+                throw new ArgumentNullException("参数为空");
+            }
             PublishTime = DateTime.Now;
             Console.WriteLine("不消耗帮帮币");
         }

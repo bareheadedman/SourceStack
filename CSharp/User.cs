@@ -70,7 +70,7 @@ namespace CSharp
         private string _invitedBy;
         private string _invitedCode;
         private string _securityCode;
-        private int _reward;
+
 
         public TokenManager Tokens { get; set; }
         public int HelpMoney { get; set; }
@@ -78,17 +78,7 @@ namespace CSharp
 
         public int HelpBean { get; set; }
 
-        public int Reward
-        {
-            get
-            {
-                return _reward;
-            }
-            set
-            {
-                _reward -= value;
-            }
-        }
+
 
 
 

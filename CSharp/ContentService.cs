@@ -17,8 +17,24 @@ namespace CSharp
 
         public void Publish(Content content)
         {
-            content.Publish();
-            Console.WriteLine("保存到数据库");
+            try
+            {
+                content.Publish();
+                Console.WriteLine("保存到数据库");
+            }
+            catch (ArgumentNullException a)
+            {
+                Console.WriteLine("内容的作者不能为空");
+                throw new Exception("内容的作者不能为空", a);
+            }
+            catch (ArgumentOutOfRangeException b)
+            {
+                Console.WriteLine("求助的Reward为负数" + b.Message + b.Source);
+            }
+            finally 
+            {
+                Console.WriteLine($"{DateTime.Now}请求发布内容Id:{content.id}" );
+            }
         }
 
 

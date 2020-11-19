@@ -30,6 +30,10 @@ namespace CSharp
         [HelpMoneyChanged(Amount = (-1), Message = "发布文章")]
         override public void Publish()
         {
+            if (Author == null)
+            {
+                throw new ArgumentNullException("参数为空");
+            }
             PublishTime = DateTime.Now;
             Author.HelpMoney--;
             Console.WriteLine("消耗一个帮帮币");
