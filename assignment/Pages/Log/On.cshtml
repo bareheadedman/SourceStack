@@ -1,0 +1,139 @@
+﻿@page
+@model assignment.Pages.Log.OnModel
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>用户登录.一起帮</title>
+    <link rel="shortcut icon" type="image/ico" href="/Images/logo.ico" media="screen" />
+    <link rel="stylesheet" href="/css/font-awesome.css" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel=" stylesheet" href=" /css/bootstraplw.css" />
+
+</head>
+<body>
+
+    <div class="navbar navbar-expand-lg navbar-light bg-light fixed-top " style="height:74px"></div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top container">
+        <div>
+            <a class="navbar-brand" href="#">
+                <img src="/Images/logo-big.ico" width="48" height="48" class="d-inline-block align-content-center" alt="" loading="lazy">
+            </a>
+            <span class="navbar-text">
+                <span style="font-size:18px; font-weight:600;">一起帮</span>
+                <span>.网络互助平台</span>
+            </span>
+
+        </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-question-circle" aria-hidden="true"></i>
+                        求助
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                        督促
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                        文章
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user-secret" aria-hidden="true"></i>
+                        未登录
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="body-containet" class="container" style="margin-top:100px">
+        <h2>
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+            登录
+        </h2>
+        <hr />
+        <div class="row">
+            <div class="col-lg-4 col-md-5">
+                <form method="post">
+                    <div class="form-group">
+                        <label for="UserName" name="UserName">用户名：（*必填）</label>
+                        <input type="text" class="form-control" id="UserName" placeholder="登录用户名，可修改，不能重复">
+                    </div>
+                    <div class="form-group">
+                        <label for="Password" name="Password">密码：（*必填）</label>
+                        <input type="Password" class="form-control" id="Password" placeholder="不少于4个字符">
+                    </div>
+                    <div class="form-group">
+                        <label>验证码：（* 必填） </label>
+                        <br />
+                        <input type="text" />
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">提交</button>
+                        <label class="form-check-label" for="checkbox" style="padding-left:15px">
+                            <input type="checkbox" class="" id="checkbox">记住我
+                        </label>
+                        <div class=" pull-right" style="padding-top:7px">
+                            <a href="#">(｡ŏ_ŏ) 忘了</a>
+                            <a href="/Register.html">
+                                <i class="fa fa-registered" aria-hidden="true"></i>
+                                注册
+                            </a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-lg-4 col-md-5" style="margin-left:40px">
+                <h4>
+                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                    说明
+                </h4>
+                <ol>
+                    <li style="margin-bottom:10px">我们希望通过一起帮，能直接解决大家在电脑操作/软件使用/编程学习等方面的具体问题。</li>
+                    <li style="margin-bottom:10px">现在互联网远程技术（比如QQ桌面共享）已经非常成熟，当我们再遇到上述问题，如果别人能直接远程给予帮助，岂不是好？</li>
+                    <li style="margin-bottom:10px">当然，你也可以在你熟悉的领域去帮助别人。由此而形成我们这个“你帮他他帮我我帮你，大家一起帮”的网上互助社区平台。</li>
+                    <li style="margin-bottom:10px">公平起见，我们还引入了 帮帮点/币/豆 三级概念，以记录和衡量社区成员的收获和贡献。</li>
+                    <li style="margin-bottom:10px">赶快加入我们，赚取帮帮币吧！</li>
+                </ol>
+            </div>
+        </div>
+        <hr />
+    </div>
+</body>
+</html>

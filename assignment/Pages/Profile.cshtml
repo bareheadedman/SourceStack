@@ -1,0 +1,254 @@
+﻿@page
+@model assignment.Pages.ProfileModel
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>个人资料.一起帮</title>
+    <link rel="shortcut icon" type="image/ico" href="/Images/logo.ico" media="screen" />
+    <link rel="stylesheet" href="/css/font-awesome.css" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel=" stylesheet" href=" /css/bootstraplw.css" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <div>
+                <a class="navbar-brand" href="#">
+                    <img src="/Images/logo-big.ico" width="48" height="48" class="d-inline-block align-content-center" alt="" loading="lazy">
+                </a>
+                <span class="navbar-text">
+                    <span style="font-size:18px; font-weight:600;">一起帮</span>
+                    <span>.网络互助平台</span>
+                    <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
+                </span>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-question-circle" aria-hidden="true"></i>
+                            求助
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                            督促
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-book" aria-hidden="true"></i>
+                            文章
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                            DK
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-tachometer" aria-hidden="true"></i>
+                            后台
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            源栈
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-cogs" aria-hidden="true"></i>
+                            管理员
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="container" style="margin-top:100px">
+            <div class="row ">
+                <h2 class="col-12">
+                    <i class="fa fa-user-circle-o"></i>
+                    个人资料
+                </h2>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-lg-4 col-md-5">
+                    <form method="post" style="margin-top:16px">
+                        <div class="form-group">
+                            <label for="UserName" name="UserName">头像：（* 仅限jpg/png/gif）</label>
+                            <input type="text" class="form-control" id="UserName" placeholder="页面提交时上传文件">
+                        </div>
+                        <div class="form-group form-inline">
+                            <label>性别：</label>
+                            <div class="form-inline" style="margin-left:50px">
+                                <input class="form-check-input" type="radio" name="IsFemal" id="IsFemal" value="option1" checked>
+                                <label class="form-check-label" for="Isfemal">
+                                    男
+                                </label>
+                            </div>
+                            <div class="form-inline" style="margin-left:50px">
+                                <input class="form-check-input" type="radio" name="IsFemal" id="IsFemal" value="option2" checked>
+                                <label class="form-check-label" for="Isfemal">
+                                    女
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>生日：</label>
+                            <div class="input-group">
+                                <select class="form-control" name="BirthYear">
+                                    <option>--</option>
+                                    <option>1987</option>
+                                    <option>1986</option>
+                                    <option>1985</option>
+                                    <option>1984</option>
+                                    <option>1983</option>
+                                </select>
+                                <div class="input-group-append">
+                                    <span class="input-group-text" style="border-radius:0px">年</span>
+                                </div>
+                                <select class="form-control" name="BirthMonth">
+                                    <option>--</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                                <div class="input-group-append">
+                                    <span class="input-group-text" style="border-radius:0px">月</span>
+                                </div>
+                                <select class="form-control" name="Constellation">
+                                    <option>--</option>
+                                    <option>白羊座</option>
+                                    <option>金牛座</option>
+                                    <option>双子座</option>
+                                    <option>巨蟹座</option>
+                                    <option>狮子座</option>
+                                </select>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">星座</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>关键字：（* 使用空格分隔）</label><br />
+                            <span class="badge badge-pill badge-dark">Python</span>
+                            <span class="badge badge-pill badge-dark">编程开发语言</span>
+                            <span class="badge badge-pill badge-dark">C#</span>
+                            <span class="badge badge-pill badge-dark">单位</span>
+                            <span class="badge badge-pill badge-dark">Excel</span>
+                            <span class="badge badge-pill badge-dark">工具软件</span>
+                            <span class="badge badge-pill badge-dark">DF</span>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="btn-group input-group-prepend">
+                                    <button type="button" class="btn btn-light">--一级--</button>
+                                    <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Separated link</a>
+                                    </div>
+                                </div>
+                                <div class="btn-group input-group-prepend">
+                                    <button type="button" class="btn btn-light">--二级--</button>
+                                    <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Separated link</a>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" placeholder="自定义关键字，使用空格分隔">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>自我介绍</label>
+                            <textarea class="form-control" name="SelfDescription" rows="4" placeholder="简单的介绍一下自己吧，不超过255字"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">提交</button>
+                    </form>
+                </div>
+                <div class="col-lg-6 col-md-5 " style=" margin-left:40px">
+                    <div class="container" style="margin-bottom:16px"></div>
+                    <h3>
+                        <i class="fa fa-question-circle" aria-hidden="true"></i>
+                        说明
+                    </h3>
+                    <ol>
+                        <li style="margin-bottom:10px">头像仅接受jpg/png/gif格式，大小不超过256KB。</li>
+                        <li style="margin-bottom:10px">头像图片的建议宽度为300像素左右，过宽或过窄都有可能失真。</li>
+                        <li style="margin-bottom:10px">头像图片的建议宽度为300像素左右，过宽或过窄都有可能失真。</li>
+                    </ol>
+                </div>
+            </div>
+            <a href="#" class="btn btn-primary text-center" style="position: fixed;bottom: 150px;right:338px">
+                <span class="fa fa-question-circle-o"></span>
+                <br />
+                帮助
+            </a>
+            <a href="#" class=" btn btn-primary  text-center" style="position:fixed;bottom:85px; right:338px">
+                <span class="fa fa-comments-o"></span>
+                <br />
+                反馈
+            </a>
+            <hr />
+        </div>
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>
