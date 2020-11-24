@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.WebSockets;
 using System.Text.Json;
@@ -12,48 +13,17 @@ namespace SelfStudy
 
         static void Main(string[] args)
         {
+            string directory = @"D:\";
+            string directoryName = "lw";
+            string fileName = "log.txt";
+          string path= Path.Combine(directory, directoryName);
+            Directory.CreateDirectory(path);
 
-            //Queue<Student> kk = new Queue<Student>();
+            path = Path.Combine(directory, directoryName, fileName);
 
-            //Student lw = new Student();
-            //Student gty = new Student();
-            //Student lzb = new Student();
-
-
-            //kk.Enqueue(lw);
-            //kk.Enqueue(gty);
-            //kk.Enqueue(lzb);
-            //Console.WriteLine(kk.TryPeek(out Student result));
-
-
-
-
-            foreach (var item in new Person())
-            {
-                Console.WriteLine(item);
-            }
-
-
-
-
-            //IList<Student> kk = new List<Student>
-            //{
-            //new Student(){name= "ss",age =22},
-            //new Student(){name= "qq",age =23},
-            //new Student(){name= "zz",age =72},
-
-            //};
-
-
-
-
-
-            //foreach (var item in kk)
-            //{
-            //    Console.WriteLine(item.age);
-            //}
-
-
+            File.CreateText(path);
+           
+            File.WriteAllText(path,"Hello,word");
 
 
 
