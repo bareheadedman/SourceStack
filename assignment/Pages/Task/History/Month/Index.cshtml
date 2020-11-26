@@ -2,7 +2,7 @@
 @model assignment.Pages.Task.History.Month.IndexModel
 @{
     DateTime star = firstDay(2020, 10);
-    DateTime end;
+    DateTime end = new DateTime(2020, 11, 1);
 }
     新建 / Task / History / Month 页面，利用表格，输出按月按周组织的任意一个月份的日历。可参考：一起帮·任务历史月表
 
@@ -19,26 +19,18 @@
         </tr>
     </thead>
     <tbody>
-        @while (true)
+        @while (star < end)
         {
-            end = new DateTime(2020, 11, 1);
+            <tr>
+                @for (int i = 1; i <= 7; i++)
+                {
+                    <td> @star.ToString("yyyy年MM月dd日")</td>
+                    star = star.AddDays(1);
+                }
 
-            if (star < end)
-            {
-                <tr>
-                    @for (int i = 1; i <= 7; i++)
-                    {
-                        <td> @star.ToString("yyyy年MM月dd日")</td>
-                        star = star.AddDays(1);
-                    }
-
-                </tr>
-            }
-            else
-            {
-                break;
-            }
+            </tr>
         }
+
     </tbody>
 </table>
 
