@@ -1,0 +1,70 @@
+﻿@page
+@model assignment.Pages.Task.History.Month.IndexModel
+@{
+    DateTime star = firstDay(2020, 10);
+    DateTime end;
+}
+    新建 / Task / History / Month 页面，利用表格，输出按月按周组织的任意一个月份的日历。可参考：一起帮·任务历史月表
+
+
+2020 10
+
+<table border="1">
+    <thead>
+        <tr>
+            @for (int i = 1; i <= 7; i++)
+            {
+                <td>星期@(i)</td>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @while (true)
+        {
+            end = new DateTime(2020, 11, 1);
+
+            if (star < end)
+            {
+                <tr>
+                    @for (int i = 1; i <= 7; i++)
+                    {
+                        <td> @star.ToString("yyyy年MM月dd日")</td>
+                        star = star.AddDays(1);
+                    }
+
+                </tr>
+            }
+            else
+            {
+                break;
+            }
+        }
+    </tbody>
+</table>
+
+@functions{
+    int cnDayOfWeek(DayOfWeek dayOfWeek)
+    {
+        if (dayOfWeek == 0)
+        {
+            return 7;
+        }
+        else
+        {
+            return (int)dayOfWeek;
+        }
+
+
+    }
+
+    DateTime firstDay(int year, int month)
+    {
+        DateTime start = new DateTime(year, month, 1);
+
+        while (cnDayOfWeek(start.DayOfWeek) != 1)
+        {
+            start = start.AddDays(-1);
+        }
+        return start;
+    }
+}
