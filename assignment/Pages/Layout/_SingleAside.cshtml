@@ -1,0 +1,121 @@
+﻿
+@{
+    Layout = "_Layout";
+}
+<div class="container">
+    <div class="row">
+        <article class="col-md-8">
+            @RenderBody()
+        </article>
+        <aside class="col-md-4">
+            <div style="border-width:1px;border-style:dashed">
+                <div style="margin:15px">
+                    <div style="font-size:24px">
+                        <span class="fa fa-tags"></span>
+                        关键字
+                    </div>
+                    <hr />
+                    <a href="#"><span class="badge badge-pill badge-dark" style="font-size:21px;margin:5px 7px 5px 0px;">编程开发语言</span></a>
+                    <a href="#"><span class="badge badge-pill badge-dark" style="font-size:20px;margin:5px 7px 5px 0px;">C#</span></a>
+                    <a href="#"><span class="badge badge-pill badge-dark" style="font-size:20px;margin:5px 7px 5px 0px;">JAVA</span></a>
+                    <a href="#"><span class="badge badge-pill badge-dark" style="font-size:19px;margin:5px 7px 5px 0px;">工具软件</span></a>
+                    <a href="#"><span class="badge badge-pill badge-dark" style="font-size:19px;margin:5px 7px 5px 0px;">Javascript</span></a>
+                    <a href="#"><span class="badge badge-pill badge-dark" style="font-size:18px;margin:5px 7px 5px 0px;">顾问咨询</span></a>
+                    <a href="#"><span class="badge badge-pill badge-dark" style="font-size:18px;margin:5px 7px 5px 0px;">html</span></a>
+                    <a href="#"><span class="badge badge-pill badge-dark" style="font-size:18px;margin:5px 7px 5px 0px;">VisualStudio</span></a>
+                    <a href="#"><span class="badge badge-pill badge-dark" style="font-size:17px;margin:5px 7px 5px 0px;">操作系统</span></a>
+                    <a href="#"><span class="badge badge-pill badge-dark" style="font-size:17px;margin:5px 7px 5px 0px;">SQL</span></a>
+                    <a href="#"><span class="badge badge-pill badge-dark" style="font-size:17px;margin:5px 7px 5px 0px;">职场</span></a>
+                    <a href="#"><span class="badge badge-pill badge-dark" style="font-size:17px;margin:5px 7px 5px 0px;">法律</span></a>
+                    <a href="#"><span class="badge badge-pill badge-dark" style="font-size:15px;margin:5px 7px 5px 0px;">Python</span></a>
+                    <a href="#"><span class="badge badge-pill badge-dark" style="font-size:15px;margin:5px 7px 5px 0px;">.net</span></a>
+                    <a href="#"><span class="badge badge-pill badge-dark" style="font-size:15px;margin:5px 7px 5px 0px;">css</span></a>
+                    <a href="#"><span class="badge badge-pill badge-dark" style="font-size:15px;margin:5px 7px 5px 0px;">linux</span></a>
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="直接输入关键字查找" />
+                                <span class="input-group-append">
+                                    <button type="button" class="btn btn-light">
+                                        <span class="fa fa-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <button type="button" class="btn btn-light">
+                                    <span class="fa fa-random" style="font-size:15px">换一批</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:30px">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <span class="fa fa-eye"></span>每日督促
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="fa fa-heart"></span>排行榜
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="fa fa-user-circle-o"></span>新注册
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content" style="padding-top:15px;border-bottom:1px solid;border-left:1px solid;border-right:1px solid">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col" colspan="2">
+                                    <span class="fa fa-calendar-check-o fa-fw"></span>2020年9月1日
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">共扫描目标：</th>
+                                <td>
+                                    <span class="fa fa-flag-o fa-fw"></span>一个
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">当天休息：</th>
+                                <td>
+                                    <span class="fa fa-ban fa-fw "></span>0人
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">已交作业：</th>
+                                <td>
+                                    <span class="fa fa-check fa-fw"></span>0份
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">请假：</th>
+                                <td>
+                                    <span class="fa fa-coffee fa-fw"></span>0人
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">未交作业：</th>
+                                <td>
+                                    <span class="fa fa-remove fa-fw"></span>0人
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+</div>

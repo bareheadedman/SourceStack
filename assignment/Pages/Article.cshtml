@@ -2,603 +2,79 @@
 @model assignment.Pages.ArticleModel
 @{
     ViewData["Title"] = "精品文章";
+    Layout = "Layout/_SingleAside";
 }
 
 
 <body>
-    <main class="container" >
-        <div class="row">
-            <article class="col-md-8">
-                <div style="border-bottom-width:1px;border-bottom-style:dashed;padding-top:10px">
-                    <div>
-                        <small class="text-muted">
-                            <span class="fa fa-calculator"></span>
-                            <span>2020年8月20日21点02分</span>
-                        </small>
-                        <small class="pull-right">
-                            <span>作者：</span>
-                            <a href="#">叶飞</a>
-                        </small>
-                    </div>
-                    <h5>
-                        <a href="#">VS中的第一个页面</a>
-                    </h5>
-                    <p style="word-break: break-all; clear: both; margin-top: 8px;">
-                        学习HTML，其实就是学习一系列的标记（markup），而标记的核心就是元素（element）HTML标记语言的核心就是元素。
-                        元素由标签、属性和文本内容组成，比如：&lt;h1 style="color:red"	&gt;一起帮·源栈欢迎您！&lt;/h1&gt;其中：元素（element）
-                        ：整个这一行就是一个标签（tag）：h1，又分为开始标签（&lt;h1&gt;）和结束 （&lt;/h1&gt;）标签文本（text）：一起帮·源栈欢迎您！
-                        ，放置在开始标签和结束标签之间 属性（attribute）：st
-                        <a href="#" title="全文">……</a>
-                    </p>
-                    <div>
-                        <label>
-                            <span class="fa fa-tags"></span>
-                            关键字：
-                        </label>
-                        <span class="badge badge-pill badge-dark">VS</span>
-                        <span class="badge badge-pill badge-dark">html</span>
-                        <span class="badge badge-pill badge-dark">入门</span>
-                    </div>
-                    <div class="pull-right" style="margin-bottom:10px">
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-comments-o"></span>
-                            <span>评论：</span>0
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-up"></span>
-                            <span>赞：</span>18
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-down"></span>
-                            <span>踩：</span>0
-                        </a>
-                    </div>
-                    <div style="clear:both"></div>
-                </div>
-                <div style="border-bottom-width:1px;border-bottom-style:dashed;padding-top:10px">
-                    <div>
-                        <small class="text-muted">
-                            <span class="fa fa-calculator"></span>
-                            <span>2020年8月03日08点12分</span>
-                        </small>
-                        <small class="pull-right">
-                            <span>作者：</span>
-                            <a href="#">叶飞</a>
-                        </small>
-                    </div>
-                    <h5>
-                        <a href="#">Promise：回调地狱/then()/fulfiled/reject……</a>
-                    </h5>
-                    <p style="word-break: break-all; clear: both; margin-top: 8px;">
-                        回调地狱在JavaScript中，异步通常就伴随着回调（复习：异步和回调）。为什么呢？看下面的代码
-                        let result = false;function loadSuccess() {setTimeout(function () {result = true;},
-                        1000)}loadSuccess();console.log(result ? 'oh yeah!' : 'what happen?');@@想一想@@：结果是什么？
-                        （演示：并在控制台看一下result的值）如果我们想要保持loadSucces
-                        <a href="#" title="全文">……</a>
-                    </p>
-                    <div>
-                        <label>
-                            <span class="fa fa-tags"></span>
-                            关键字：
-                        </label>
-                        <span class="badge badge-pill badge-dark">ES6</span>
-                        <span class="badge badge-pill badge-dark">promise</span>
-                        <span class="badge badge-pill badge-dark">回调地狱</span>
-                    </div>
-                    <div class="pull-right" style="margin-bottom:10px">
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-comments-o"></span>
-                            <span>评论：</span>0
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-up"></span>
-                            <span>赞：</span>52
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-down"></span>
-                            <span>踩：</span>0
-                        </a>
-                    </div>
-                    <div style="clear:both"></div>
-                </div>
-                <div style="border-bottom-width:1px;border-bottom-style:dashed;padding-top:10px">
-                    <div>
-                        <small class="text-muted">
-                            <span class="fa fa-calculator"></span>
-                            <span>2020年07月17日16点03分</span>
-                        </small>
-                        <small class="pull-right">
-                            <span>作者：</span>
-                            <a href="#">叶飞</a>
-                        </small>
-                    </div>
-                    <h5>
-                        <a href="#">JQuery：表单/Ajax/其他……</a>
-                    </h5>
-                    <p style="word-break: break-all; clear: both; margin-top: 8px;">
-                        表单简写:<inputType>
-                            / :submit / :text ……prop()以及val()文本：text 和 textarea选择
-                            ：check 和 radio下拉列表：select常用：取值赋值：选中只读/禁用JQuery效果hide()/show()/toggle()
-                            淡入淡出：fade...() 滑动：slide 自定义动画：animiate 其他方法 静态：$.trim()/$.isNumeric()/…….data(name)：取属性中data-name的值noConflic
-                            <a href="#" title="全文">……</a>
-                    </p>
-                    <div>
-                        <label>
-                            <span class="fa fa-tags"></span>
-                            关键字：
-                        </label>
-                        <span class="badge badge-pill badge-dark">Jquery</span>
-                        <span class="badge badge-pill badge-dark">Ajax</span>
-                        <span class="badge badge-pill badge-dark">表单</span>
-                    </div>
-                    <div class="pull-right" style="margin-bottom:10px">
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-comments-o"></span>
-                            <span>评论：</span>0
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-up"></span>
-                            <span>赞：</span>18
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-down"></span>
-                            <span>踩：</span>0
-                        </a>
-                    </div>
-                    <div style="clear:both"></div>
-                </div>
-                <div style="border-bottom-width:1px;border-bottom-style:dashed;padding-top:10px">
-                    <div>
-                        <small class="text-muted">
-                            <span class="fa fa-calculator"></span>
-                            <span>2020年07月17日16点03分</span>
-                        </small>
-                        <small class="pull-right">
-                            <span>作者：</span>
-                            <a href="#">叶飞</a>
-                        </small>
-                    </div>
-                    <h5>
-                        <a href="#">RazorPage：其他IActionResult：JsonResult</a>
-                    </h5>
-                    <p style="word-break: break-all; clear: both; margin-top: 8px;">
-                        当JsonResult首先HttpMethod的返回值不能是void，可以是：public JsonResult OnGet() //推荐，
-                        可读性更高或者:public IActionResult OnGet()然后返回一个JsonResult实例即可：return new JsonResult
-                        (new{sname = "阿泰",age = 23,isMale = true,});JsonSerializerOptions最新的ASP.NET core版本默认（仅测试也仅能）使用System.Tex
-                        <a href="#" title="全文">……</a>
-                    </p>
-                    <div>
-                        <label>
-                            <span class="fa fa-tags"></span>
-                            关键字：
-                        </label>
-                        <span class="badge badge-pill badge-dark">Ajax</span>
-                        <span class="badge badge-pill badge-dark">Json</span>
-                        <span class="badge badge-pill badge-dark">后台</span>
-                    </div>
-                    <div class="pull-right" style="margin-bottom:10px">
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-comments-o"></span>
-                            <span>评论：</span>0
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-up"></span>
-                            <span>赞：</span>17
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-down"></span>
-                            <span>踩：</span>0
-                        </a>
-                    </div>
-                    <div style="clear:both"></div>
-                </div>
-                <div style="border-bottom-width:1px;border-bottom-style:dashed;padding-top:10px">
-                    <div>
-                        <small class="text-muted">
-                            <span class="fa fa-calculator"></span>
-                            <span>2020年07月12日13点50分</span>
-                        </small>
-                        <small class="pull-right">
-                            <span>作者：</span>
-                            <a href="#">叶飞</a>
-                        </small>
-                    </div>
-                    <h5>
-                        <a href="#">Bootstrap.js：引入/Modal/</a>
-                    </h5>
-                    <p style="word-break: break-all; clear: both; margin-top: 8px;">
-                        JS插件 引入bootstrap.js（基于jquery）复习：压缩.min 和 CDN第一个例子：Modaldata-js方法：modal()和option事件总结：（其他演示，略） dropdown和select的区别
-                        <a href="#" title="全文">……</a>
-                    </p>
-                    <div>
-                        <label>
-                            <span class="fa fa-tags"></span>
-                            关键字：
-                        </label>
-                        <span class="badge badge-pill badge-dark">bootstrap.js</span>
-                        <span class="badge badge-pill badge-dark">插件</span>
-                    </div>
-                    <div class="pull-right" style="margin-bottom:10px">
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-comments-o"></span>
-                            <span>评论：</span>0
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-up"></span>
-                            <span>赞：</span>20
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-down"></span>
-                            <span>踩：</span>0
-                        </a>
-                    </div>
-                    <div style="clear:both"></div>
-                </div>
-                <div style="border-bottom-width:1px;border-bottom-style:dashed;padding-top:10px">
-                    <div>
-                        <small class="text-muted">
-                            <span class="fa fa-calculator"></span>
-                            <span>2020年07月12日13点50分</span>
-                        </small>
-                        <small class="pull-right">
-                            <span>作者：</span>
-                            <a href="#">叶飞</a>
-                        </small>
-                    </div>
-                    <h5>
-                        <a href="#">ES6和JS进阶：新的集合对象</a>
-                    </h5>
-                    <p style="word-break: break-all; clear: both; margin-top: 8px;">
-                        for...in或许是为了模拟其他语言（如C#的foreach），JavaScript推出了for...in循环，可以：遍历对象的全部属性for
-                        (var i in student) {console.log(i); //想一想如何取到每个元素的值}或者数组的全部元素for (var n in numbers)
-                        {console.log(x); }但是，JavaScript自作聪明的“一心两用”却给我们带来一个意外惊喜：numbers.name = 'Hello'; //数组仍然是一个对象，对
-                        <a href="#" title="全文">……</a>
-                    </p>
-                    <div>
-                        <label>
-                            <span class="fa fa-tags"></span>
-                            关键字：
-                        </label>
-                        <span class="badge badge-pill badge-dark">ES6</span>
-                        <span class="badge badge-pill badge-dark">集合</span>
-                    </div>
-                    <div class="pull-right" style="margin-bottom:10px">
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-comments-o"></span>
-                            <span>评论：</span>0
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-up"></span>
-                            <span>赞：</span>4
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-down"></span>
-                            <span>踩：</span>0
-                        </a>
-                    </div>
-                    <div style="clear:both"></div>
-                </div>
-                <div style="border-bottom-width:1px;border-bottom-style:dashed;padding-top:10px">
-                    <div>
-                        <small class="text-muted">
-                            <span class="fa fa-calculator"></span>
-                            <span>2020年07月12日13点50分</span>
-                        </small>
-                        <small class="pull-right">
-                            <span>作者：</span>
-                            <a href="#">叶飞</a>
-                        </small>
-                    </div>
-                    <h5>
-                        <a href="#">Javascript的昨天今天和明天</a>
-                    </h5>
-                    <p style="word-break: break-all; clear: both; margin-top: 8px;">
-                        生于仓促1995年，网景公司的Brendan Eich在两周之内设计出了JavaScript语言：所以JavaScript先天不足，缺陷很多。
-                        “有哪些bug用久了成了特性的例子？”Javascript里到处都是。和Java的关系？就北大青鸟和北大的关系一样 —— 完全没有关系，
-                        就是蹭Java的热点。又名ECMAScript：ECMA（European Computer Manufacturers Association）组织定制了JavaScript语言的标准。ES6已经在2015年6月正式发布，但浏览器
-                        <a href="#" title="全文">……</a>
-                    </p>
-                    <div>
-                        <label>
-                            <span class="fa fa-tags"></span>
-                            关键字：
-                        </label>
-                        <span class="badge badge-pill badge-dark">JavaScript</span>
-                        <span class="badge badge-pill badge-dark">介绍</span>
-                        <span class="badge badge-pill badge-dark">历史</span>
+    @foreach (var item in Model.articles)
+    {
+        <div style="border-bottom-width:1px;border-bottom-style:dashed;padding-top:10px">
+            <div>
+                <small class="text-muted">
+                    <span class="fa fa-calculator"></span>
+                    <span>@item.PublishTime.ToString("yyyy年MM月dd日hh点mm分")</span>
+                </small>
+                <small class="pull-right">
+                    <span>作者：</span>
+                    <a href="#">@item.Author.Name</a>
+                </small>
+            </div>
+            <h5>
+                <a href="#">@item.Title</a>
+            </h5>
+            <p style="word-break: break-all; clear: both; margin-top: 8px;">
+                @item.Body
+                <a href="#" title="全文">……</a>
+            </p>
+            <div>
+                <label>
+                    <span class="fa fa-tags"></span>
+                    关键字：
+                </label>
+                @for (int i = 0; i < item.keyWords.Count; i++)
+                {
+                    <span class="badge badge-pill badge-dark">@item.keyWords[i].Content</span>
 
-                    </div>
-                    <div class="pull-right" style="margin-bottom:10px">
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-comments-o"></span>
-                            <span>评论：</span>0
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-up"></span>
-                            <span>赞：</span>0
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-down"></span>
-                            <span>踩：</span>0
-                        </a>
-                    </div>
-                    <div style="clear:both"></div>
-                </div>
-                <div style="border-bottom-width:1px;border-bottom-style:dashed;padding-top:10px">
-                    <div>
-                        <small class="text-muted">
-                            <span class="fa fa-calculator"></span>
-                            <span>2020年07月12日13点50分</span>
-                        </small>
-                        <small class="pull-right">
-                            <span>作者：</span>
-                            <a href="#">叶飞</a>
-                        </small>
-                    </div>
-                    <h5>
-                        <a href="#">JavaScript：事件：冒泡和捕获机制</a>
-                    </h5>
-                    <p style="word-break: break-all; clear: both; margin-top: 8px;">
-                        一般的事件处理不需要考虑这种情况。但是，这不仅是一个常见面试题，而且有其实际使用场景。演示准备 有父子两个元素&lt;div id="propagate"&gt;
-                        &lt;p&gt;源栈欢迎您&lt;/p&gt;&lt;/div&gt;为了便于演示，加上一点CSS效果：&lt;style&gt;#propagate {padding: 30px;border: 1px solid;}
-                        #propagate > p {background-color: blue;border: 1px dashed;}&
-                        <a href="#" title="全文">……</a>
-                    </p>
-                    <div>
-                        <label>
-                            <span class="fa fa-tags"></span>
-                            关键字：
-                        </label>
-                        <span class="badge badge-pill badge-dark">JavaScript</span>
-                        <span class="badge badge-pill badge-dark">事件</span>
-                        <span class="badge badge-pill badge-dark">冒泡</span>
-                        <span class="badge badge-pill badge-dark">捕获</span>
-                    </div>
-                    <div class="pull-right" style="margin-bottom:10px">
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-comments-o"></span>
-                            <span>评论：</span>0
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-up"></span>
-                            <span>赞：</span>3
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-down"></span>
-                            <span>踩：</span>0
-                        </a>
-                    </div>
-                    <div style="clear:both"></div>
-                </div>
-                <div style="border-bottom-width:1px;border-bottom-style:dashed;padding-top:10px">
-                    <div>
-                        <small class="text-muted">
-                            <span class="fa fa-calculator"></span>
-                            <span>2020年07月12日13点50分</span>
-                        </small>
-                        <small class="pull-right">
-                            <span>作者：</span>
-                            <a href="#">叶飞</a>
-                        </small>
-                    </div>
-                    <h5>
-                        <a href="#">999天晚上聊一聊：检索目录：001-111</a>
-                    </h5>
-                    <p style="word-break: break-all; clear: both; margin-top: 8px;">
-                        哪怕是行为艺术，我也要坚持999天！ 每天晚7点，欢迎围观。
-                        <a href="#" title="全文">……</a>
-                    </p>
-                    <div>
-                        <label>
-                            <span class="fa fa-tags"></span>
-                            关键字：
-                        </label>
-                        <span class="badge badge-pill badge-dark">飞哥</span>
-                        <span class="badge badge-pill badge-dark">999天</span>
-                        <span class="badge badge-pill badge-dark">晚7点</span>
-                    </div>
-                    <div class="pull-right" style="margin-bottom:10px">
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-comments-o"></span>
-                            <span>评论：</span>2
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-up"></span>
-                            <span>赞：</span>0
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-down"></span>
-                            <span>踩：</span>0
-                        </a>
-                    </div>
-                    <div style="clear:both"></div>
-                </div>
-                <div style="border-bottom-width:1px;border-bottom-style:dashed;padding-top:10px">
-                    <div>
-                        <small class="text-muted">
-                            <span class="fa fa-calculator"></span>
-                            <span>2020年07月12日13点50分</span>
-                        </small>
-                        <small class="pull-right">
-                            <span>作者：</span>
-                            <a href="#">叶飞</a>
-                        </small>
-                    </div>
-                    <h5>
-                        <a href="#">JavaScript：作用域：函数作用域/全局变量污染/命名空间</a>
-                    </h5>
-                    <p style="word-break: break-all; clear: both; margin-top: 8px;">
-                        在C#中我们都基本上不讲作用域，因为一切都是自然而然的（用语言描述反而有些困难）。但JavaScript的作用域，让人非常头大！局部变量如果一个变量在函数体内部申明，
-                        则该变量的作用域为整个函数体，在函数体外不可引用该变量。不同函数内部的同名变量互相独立，互不影响。这样被声明的变量被称之为：局部变量。function scope()
-                        {var sname = '李志博';console.log('in function:' + sname);}scope();console.log('out functio
-                        <a href="#" title="全文">……</a>
-                    </p>
-                    <div>
-                        <label>
-                            <span class="fa fa-tags"></span>
-                            关键字：
-                        </label>
-                        <span class="badge badge-pill badge-dark">作用域</span>
-                        <span class="badge badge-pill badge-dark">全局变量污染</span>
-                        <span class="badge badge-pill badge-dark">词法</span>
-                        <span class="badge badge-pill badge-dark">IIFE</span>
-                    </div>
-                    <div class="pull-right" style="margin-bottom:10px">
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-comments-o"></span>
-                            <span>评论：</span>0
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-up"></span>
-                            <span>赞：</span>0
-                        </a>
-                        <a href="#" style="margin-left:14px;color:#31708f">
-                            <span class="fa fa-thumbs-o-down"></span>
-                            <span>踩：</span>0
-                        </a>
-                    </div>
-                    <div style="clear:both"></div>
-                </div>
-                <nav aria-label="Page navigation example" style="margin-top:40px;margin-bottom:30px">
-                    <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item"><a class="page-link" href="#">6</a></li>
-                        <li class="page-item"><a class="page-link" href="#">7</a></li>
-                        <li class="page-item"><a class="page-link" href="#">8</a></li>
-                        <li class="page-item"><a class="page-link" href="#">9</a></li>
-                        <li class="page-item"><a class="page-link" href="#">10</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </article>
-            <aside class="col-md-4">
-                <div style="border-width:1px;border-style:dashed">
-                    <div style="margin:15px">
-                        <div style="font-size:24px">
-                            <span class="fa fa-tags"></span>
-                            关键字
-                        </div>
-                        <hr />
-                        <a href="#"><span class="badge badge-pill badge-dark" style="font-size:21px;margin:5px 7px 5px 0px;">编程开发语言</span></a>
-                        <a href="#"><span class="badge badge-pill badge-dark" style="font-size:20px;margin:5px 7px 5px 0px;">C#</span></a>
-                        <a href="#"><span class="badge badge-pill badge-dark" style="font-size:20px;margin:5px 7px 5px 0px;">JAVA</span></a>
-                        <a href="#"><span class="badge badge-pill badge-dark" style="font-size:19px;margin:5px 7px 5px 0px;">工具软件</span></a>
-                        <a href="#"><span class="badge badge-pill badge-dark" style="font-size:19px;margin:5px 7px 5px 0px;">Javascript</span></a>
-                        <a href="#"><span class="badge badge-pill badge-dark" style="font-size:18px;margin:5px 7px 5px 0px;">顾问咨询</span></a>
-                        <a href="#"><span class="badge badge-pill badge-dark" style="font-size:18px;margin:5px 7px 5px 0px;">html</span></a>
-                        <a href="#"><span class="badge badge-pill badge-dark" style="font-size:18px;margin:5px 7px 5px 0px;">VisualStudio</span></a>
-                        <a href="#"><span class="badge badge-pill badge-dark" style="font-size:17px;margin:5px 7px 5px 0px;">操作系统</span></a>
-                        <a href="#"><span class="badge badge-pill badge-dark" style="font-size:17px;margin:5px 7px 5px 0px;">SQL</span></a>
-                        <a href="#"><span class="badge badge-pill badge-dark" style="font-size:17px;margin:5px 7px 5px 0px;">职场</span></a>
-                        <a href="#"><span class="badge badge-pill badge-dark" style="font-size:17px;margin:5px 7px 5px 0px;">法律</span></a>
-                        <a href="#"><span class="badge badge-pill badge-dark" style="font-size:15px;margin:5px 7px 5px 0px;">Python</span></a>
-                        <a href="#"><span class="badge badge-pill badge-dark" style="font-size:15px;margin:5px 7px 5px 0px;">.net</span></a>
-                        <a href="#"><span class="badge badge-pill badge-dark" style="font-size:15px;margin:5px 7px 5px 0px;">css</span></a>
-                        <a href="#"><span class="badge badge-pill badge-dark" style="font-size:15px;margin:5px 7px 5px 0px;">linux</span></a>
-                        <hr />
-                        <div class="row">
-                            <div class="col-sm-8">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="直接输入关键字查找" />
-                                    <span class="input-group-append">
-                                        <button type="button" class="btn btn-light">
-                                            <span class="fa fa-search"></span>
-                                        </button>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="input-group">
-                                    <button type="button" class="btn btn-light">
-                                        <span class="fa fa-random" style="font-size:15px">换一批</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="margin-top:30px">
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                <span class="fa fa-eye"></span>每日督促
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span class="fa fa-heart"></span>排行榜
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span class="fa fa-user-circle-o"></span>新注册
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" style="padding-top:15px;border-bottom:1px solid;border-left:1px solid;border-right:1px solid">
-                        <table class="table table-borderless">
-                            <thead>
-                                <tr>
-                                    <th scope="col" colspan="2">
-                                        <span class="fa fa-calendar-check-o fa-fw"></span>2020年9月1日
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">共扫描目标：</th>
-                                    <td>
-                                        <span class="fa fa-flag-o fa-fw"></span>一个
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">当天休息：</th>
-                                    <td>
-                                        <span class="fa fa-ban fa-fw "></span>0人
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">已交作业：</th>
-                                    <td>
-                                        <span class="fa fa-check fa-fw"></span>0份
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">请假：</th>
-                                    <td>
-                                        <span class="fa fa-coffee fa-fw"></span>0人
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">未交作业：</th>
-                                    <td>
-                                        <span class="fa fa-remove fa-fw"></span>0人
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </aside>
+                }
+            </div>
+            <div class="pull-right" style="margin-bottom:10px">
+                <a href="#" style="margin-left:14px;color:#31708f">
+                    <span class="fa fa-comments-o"></span>
+                    <span>评论：</span>@item.comments.Count
+                </a>
+                <a href="#" style="margin-left:14px;color:#31708f">
+                    <span class="fa fa-thumbs-o-up"></span>
+                    <span>赞：</span>@item.appraises.Where(a => a.Direction ==Entities.UpOrdown.Up).Count()
+                </a>
+                <a href="#" style="margin-left:14px;color:#31708f">
+                    <span class="fa fa-thumbs-o-down"></span>
+                    <span>踩：</span>@item.appraises.Where(a => a.Direction == Entities.UpOrdown.Down).Count()
+                </a>
+            </div>
+            <div style="clear:both"></div>
         </div>
-        <a href="#" class="btn btn-primary text-center" style="position: fixed;bottom: 150px;right:338px">
-            <span class="fa fa-question-circle-o"></span>
-            <br />
-            帮助
-        </a>
-        <a href="#" class=" btn btn-primary  text-center" style="position:fixed;bottom:85px; right:338px">
-            <span class="fa fa-comments-o"></span>
-            <br />
-            反馈
-        </a>
-        <hr />
-    </main>
+
+    }
+
+    <nav aria-label="Page navigation example" style="margin-top:40px;margin-bottom:30px">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">5</a></li>
+            <li class="page-item"><a class="page-link" href="#">6</a></li>
+            <li class="page-item"><a class="page-link" href="#">7</a></li>
+            <li class="page-item"><a class="page-link" href="#">8</a></li>
+            <li class="page-item"><a class="page-link" href="#">9</a></li>
+            <li class="page-item"><a class="page-link" href="#">10</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
 </body>
