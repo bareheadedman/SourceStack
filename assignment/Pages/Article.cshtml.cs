@@ -11,16 +11,22 @@ namespace assignment.Pages
 {
     public class ArticleModel : PageModel
     {
-        public List<Article> articles;
+        public List<Article> articles { get; set; }
+        private ArticleRepository articleRepository { get; set; }
+        public int ArticlePage { get; set; }
+        public int pageSize { get; set; }
 
         public ArticleModel()
         {
-            articles = new ArticleRepository().Get();
+            articleRepository = new ArticleRepository();
 
         }
         public void OnGet()
         {
-
+            pageSize = 2;
+            int pageIndex = Convert.ToInt32(Request.Query["pageIndex"][0]);
+            articles = new ArticleRepository().Get(pageIndex, pageSize);
+            ArticlePage = articleRepository.ArticlesCount;
         }
 
     }
