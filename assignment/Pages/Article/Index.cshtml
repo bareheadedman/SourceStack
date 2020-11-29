@@ -1,5 +1,5 @@
 ﻿@page
-@model assignment.Pages.ArticleModel
+@model assignment.Pages.Article.IndexModel
 @{
     ViewData["Title"] = "精品文章";
     Layout = "Layout/_SingleAside";
@@ -45,7 +45,7 @@
                 </a>
                 <a href="#" style="margin-left:14px;color:#31708f">
                     <span class="fa fa-thumbs-o-up"></span>
-                    <span>赞：</span>@item.appraises.Where(a => a.Direction ==Entities.UpOrdown.Up).Count()
+                    <span>赞：</span>@item.appraises.Where(a => a.Direction == Entities.UpOrdown.Up).Count()
                 </a>
                 <a href="#" style="margin-left:14px;color:#31708f">
                     <span class="fa fa-thumbs-o-down"></span>
