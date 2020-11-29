@@ -59,7 +59,7 @@
 
     <nav aria-label="Page navigation example" style="margin-top:40px;margin-bottom:30px">
         <ul class="pagination">
-            @if (Convert.ToInt32(Request.Query["pageIndex"][0]) != 1)
+            @if (Model.PageIndex != 1)
             {
                 <li class="page-item">
                     <a class="page-link" href="/Article?pageIndex=@(Convert.ToInt32(Request.Query["pageIndex"][0])-1)" aria-label="Next">
@@ -73,10 +73,10 @@
                 <li class="page-item"><a class="page-link" href="/Article?pageIndex=@(i+1)">@(i+1)</a></li>
 
             }
-            @if (Convert.ToInt32(Request.Query["pageIndex"][0]) <= Model.ArticlePage / Model.pageSize)
+            @if (Model.PageIndex <= Model.ArticlePage / Model.pageSize)
             {
                 <li class="page-item">
-                    <a class="page-link" href="/Article?pageIndex=@(Convert.ToInt32(Request.Query["pageIndex"][0])+1)" aria-label="Next">
+                    <a class="page-link" href="/Article?pageIndex=@(Model.PageIndex+1)" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
