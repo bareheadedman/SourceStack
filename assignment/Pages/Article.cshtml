@@ -3,8 +3,8 @@
 @{
     ViewData["Title"] = "精品文章";
     Layout = "Layout/_SingleAside";
-}
 
+}
 
 <body>
     @foreach (var item in Model.articles)
@@ -59,16 +59,29 @@
 
     <nav aria-label="Page navigation example" style="margin-top:40px;margin-bottom:30px">
         <ul class="pagination">
-            @for (int i = 0; i <= Model.ArticlePage/Model.pageSize; i++)
+            @if (Convert.ToInt32(Request.Query["pageIndex"][0]) != 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="/Article?pageIndex=@(Convert.ToInt32(Request.Query["pageIndex"][0])-1)" aria-label="Next">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+            }
+            @for (int i = 0; i <= Model.ArticlePage / Model.pageSize; i++)
             {
                 <li class="page-item"><a class="page-link" href="/Article?pageIndex=@(i+1)">@(i+1)</a></li>
 
             }
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
+            @if (Convert.ToInt32(Request.Query["pageIndex"][0]) <= Model.ArticlePage / Model.pageSize)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="/Article?pageIndex=@(Convert.ToInt32(Request.Query["pageIndex"][0])+1)" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+
+            }
         </ul>
     </nav>
 

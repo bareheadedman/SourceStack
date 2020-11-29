@@ -14,7 +14,7 @@ namespace assignment.Pages
         public List<Article> articles { get; set; }
         private ArticleRepository articleRepository { get; set; }
         public int ArticlePage { get; set; }
-        public int pageSize { get; set; }
+        public  int pageSize { get; } = 2;
 
         public ArticleModel()
         {
@@ -23,7 +23,6 @@ namespace assignment.Pages
         }
         public void OnGet()
         {
-            pageSize = 2;
             int pageIndex = Convert.ToInt32(Request.Query["pageIndex"][0]);
             articles = new ArticleRepository().Get(pageIndex, pageSize);
             ArticlePage = articleRepository.ArticlesCount;
