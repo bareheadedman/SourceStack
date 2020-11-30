@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace assignment.Pages.Entities
 {
-    public class Appraise:Entity
+    public class Appraise : Entity
     {
         public User vote { get; set; }
-        public UpOrdown Direction { get;  set; }
-
+        public UpOrdown Direction { get; set; }
+        public DateTime PublishTime { get; set; }
 
 
         public void Disagree() //待实现

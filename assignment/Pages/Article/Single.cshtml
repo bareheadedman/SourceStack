@@ -1,0 +1,80 @@
+﻿@page
+@model assignment.Pages.Article.SingleModel
+@{
+    Layout = "Layout/_SingleAside";
+    ViewData["Title"] = Model.article.Title;
+}
+
+<div>
+    <img src="~/Images/源栈上课啦.jpg" />
+    <h2>@Model.article.Title</h2>
+    <hr />
+    <div>
+        <small class="text-muted">
+            <span class="fa fa-calculator"></span>
+            <span>@Model.article.PublishTime.ToString("yyyy年MM月dd日hh点mm分")</span>
+        </small>
+        <small class="pull-right">
+            <span>作者：</span>
+            <a href="#">@Model.article.Author.Name</a>
+        </small>
+    </div>
+    <div>
+        @Model.article.Body
+    </div>
+    <div>
+        <label>
+            <span class="fa fa-tags"></span>
+            关键字：
+            @foreach (var item in Model.article.keyWords)
+            {
+                <span class="badge badge-pill badge-dark">@item.Content</span>
+            }
+        </label>
+    </div>
+    <div class="article-appraise appraise-status pull-right">
+        <a href="#" style="margin-left:14px;color:#31708f">
+            <span class="fa fa-thumbs-o-up"></span>
+            <span>赞：</span>@Model.article.appraises.Where(a => a.Direction == Entities.UpOrdown.Up).Count()
+        </a>
+        <a href="#" style="margin-left:14px;color:#31708f">
+            <span class="fa fa-thumbs-o-down"></span>
+            <span>踩：</span>@Model.article.appraises.Where(a => a.Direction == Entities.UpOrdown.Down).Count()
+        </a>
+    </div>
+    <div style="margin-top:50px">
+        <span>评论</span>
+        <span>
+            （ <span>@Model.article.comments.Count</span>）
+        </span>
+    </div>
+    @foreach (var item in Model.article.comments)
+    {
+        <div style="margin-top:50px">
+            <div>
+                <small class="text-muted">
+                    <span class="fa fa-calculator"></span>
+                    <span>@item.PublishTime.ToString("yyyy年MM月dd日hh点mm分")</span>
+                </small>
+                <small class="pull-right">
+                    <span>作者：</span>
+                    <a href="#">@item.Author.Name</a>
+                </small>
+            </div>
+            <div>
+                @item.Content
+            </div>
+            <div class="article-appraise appraise-status pull-right">
+                <a href="#" style="margin-left:14px;color:#31708f">
+                    <span class="fa fa-thumbs-o-up"></span>
+                    <span>赞：</span>@item.Appraises.Where(a => a.Direction == Entities.UpOrdown.Up).Count()
+                </a>
+                <a href="#" style="margin-left:14px;color:#31708f">
+                    <span class="fa fa-thumbs-o-down"></span>
+                    <span>踩：</span>@item.Appraises.Where(a => a.Direction == Entities.UpOrdown.Down).Count()
+                </a>
+            </div>
+        </div>
+        
+    }
+</div>

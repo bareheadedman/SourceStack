@@ -12,9 +12,9 @@ namespace assignment.Pages.Article
     {
         public List<E.Article> articles { get; set; }
         private ArticleRepository articleRepository { get; set; }
-        public int ArticlePage { get; set; }
         public int pageSize { get; } = 2;
         public int PageIndex { get; set; }
+        public int PageCount { get; set; }
         public IndexModel()
         {
             articleRepository = new ArticleRepository();
@@ -23,13 +23,12 @@ namespace assignment.Pages.Article
         public void OnGet()
         {
             PageIndex = 1;
-            if (Request.Query.ContainsKey("pageIndex"))
+            if (RouteData.Values.ContainsKey("id"))
             {
-                PageIndex = Convert.ToInt32(Request.Query["pageIndex"][0]);
-
+                PageIndex = Convert.ToInt32(RouteData.Values["id"]);
             }
             articles = new ArticleRepository().Get(PageIndex, pageSize);
-            ArticlePage = articleRepository.ArticlesCount;
+            PageCount = articleRepository.ArticlesCount / pageSize;
         }
 
     }

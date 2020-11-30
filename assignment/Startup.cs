@@ -26,7 +26,9 @@ namespace assignment
             services.AddRazorPages().
                 AddRazorPagesOptions(opt =>
                 {
-                    opt.Conventions.AddPageRoute("/Register", "/Register/1");
+                    opt.Conventions.AddPageRoute("/Article/Single", "/Article/{id:int}");
+                    opt.Conventions.AddPageRoute("/Article/Index", "/Article/paged-{id:int}");
+
                 });
         }
 

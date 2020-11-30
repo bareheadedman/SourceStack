@@ -23,7 +23,7 @@ namespace assignment.Pages.Repository
                       Title ="2-Promise：回调地狱/then()/fulfiled/reject……",
                       Body = "回调地狱在JavaScript中，异步通常就伴随着回调（复习：异步和回调）。为什么呢？看下面的代码 let result = false;function loadSuccess() {setTimeout(function () {result = true;}",
                       keyWords = new List<KeyWord>(){ new KeyWord() {Content = "ES6" },new KeyWord() {Content = "promise" },new KeyWord() {Content = "回调地狱" } },
-                      comments = new List<Comment>(){},
+                      comments = new List<Comment>(){ new Comment() {Content = "我是刘伟飞哥说的好",PublishTime=new DateTime(2015,1,1),Author=new User() {Id=9527,Name="刘伟" },Appraises = new List<Appraise>() { new Appraise() {Direction=UpOrdown.Down },new Appraise() { Direction=UpOrdown.Up} }, Comments = new List<Comment>() { new Comment() { Content="这个评论太对了",PublishTime = new DateTime(2015,1,2),Author= new User() { Id=666,Name="龚廷义"} } } },new Comment() { Author= new User() {Id=777,Name="李智博" },Content="我是李智博飞哥写的好",PublishTime=new DateTime(2015,1,3),Appraises = new List<Appraise>() { new Appraise() { Direction=UpOrdown.Up} }  } },
                       appraises = new List<Appraise>(){ new Appraise() {Direction=UpOrdown.Up },new Appraise() {Direction=UpOrdown.Up },new Appraise() {Direction=UpOrdown.Up } },
                       Author = new User(){Name ="叶飞" },
                      },
@@ -94,9 +94,13 @@ namespace assignment.Pages.Repository
         public int ArticlesCount = articles.Count;
 
 
-        public List<E.Article> Get(int pageIndex,int pageSize)
+        public List<E.Article> Get(int pageIndex, int pageSize)
         {
-            return articles.OrderBy(a=>a.Id).Skip((pageIndex-1)*pageSize).Take(pageSize).ToList();
+            return articles.OrderBy(a => a.Id).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+        }
+        public E.Article Find(int id)
+        {
+            return articles.Where(a => a.Id == id).FirstOrDefault();
         }
     }
 }

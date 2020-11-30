@@ -5,10 +5,14 @@ using System.Threading.Tasks;
 
 namespace assignment.Pages.Entities
 {
-    public class Comment:Entity
+    public class Comment : Entity
     {
         public string Content { get; set; }
-        public Article Refer;
+        public DateTime PublishTime { get; set; }
+        public User Author { get; set; }
+
+
+
         public List<Appraise> Appraises;
         public IList<Comment> Comments;
     }

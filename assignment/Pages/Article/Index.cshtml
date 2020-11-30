@@ -21,7 +21,7 @@
                 </small>
             </div>
             <h5>
-                <a href="#">@item.Title</a>
+                <a href="@item.Id">@item.Title</a>
             </h5>
             <p style="word-break: break-all; clear: both; margin-top: 8px;">
                 @item.Body
@@ -62,21 +62,30 @@
             @if (Model.PageIndex != 1)
             {
                 <li class="page-item">
-                    <a class="page-link" href="/Article?pageIndex=@(Convert.ToInt32(Request.Query["pageIndex"][0])-1)" aria-label="Next">
+                    <a class="page-link" href="/Article/paged-@(Model.PageIndex-1)" aria-label="Next">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
 
             }
-            @for (int i = 0; i <= Model.ArticlePage / Model.pageSize; i++)
+            @for (int i = 0; i <= Model.PageCount; i++)
             {
-                <li class="page-item"><a class="page-link" href="/Article?pageIndex=@(i+1)">@(i+1)</a></li>
+                if (Model.PageIndex == i+1)
+                {
+                    <li class="page-item active"><a class="page-link" href="/Article/paged-@(i+1)">@(i+1)</a></li>
+                }
+                else
+                {
+                    <li class="page-item"><a class="page-link" href="/Article/paged-@(i+1)">@(i+1)</a></li>
+
+                }
+
 
             }
-            @if (Model.PageIndex <= Model.ArticlePage / Model.pageSize)
+            @if (Model.PageIndex <= Model.PageCount)
             {
-                <li class="page-item">
-                    <a class="page-link" href="/Article?pageIndex=@(Model.PageIndex+1)" aria-label="Next">
+                <li class="page-item ">
+                    <a class="page-link" href="/Article/paged-@(Model.PageIndex+1)" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
