@@ -90,42 +90,4 @@
     }
 
 
- 
-    <nav aria-label="Page navigation example" style="margin-top:40px;margin-bottom:30px">
-        <ul class="pagination">
-            @if (Model.PageIndex != 1)
-            {
-                <li class="page-item">
-                    <a class="page-link" href="/Article/paged-@(Model.PageIndex-1)" aria-label="Next">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-
-            }
-            @for (int i = 0; i <= Model.PageCount; i++)
-            {
-                if (Model.PageIndex == i + 1)
-                {
-                    <li class="page-item active"><a class="page-link" href="/Article/paged-@(i+1)">@(i+1)</a></li>
-                }
-                else
-                {
-                    <li class="page-item"><a class="page-link" href="/Article/paged-@(i+1)">@(i+1)</a></li>
-
-                }
-
-
-            }
-            @if (Model.PageIndex <= Model.PageCount)
-            {
-                <li class="page-item ">
-                    <a class="page-link" href="/Article/paged-@(Model.PageIndex+1)" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-
-            }
-        </ul>
-    </nav>
-    
 </body>

@@ -20,7 +20,7 @@ namespace assignment.Pages.Article
         public void OnGet()
         {
 
-            id = Convert.ToInt32(RouteData.Values["aid"]);
+            id = Convert.ToInt32(RouteData.Values["id"]);
 
             article = articleRepository.Find(id);
         }
