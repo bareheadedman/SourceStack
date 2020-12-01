@@ -1,0 +1,131 @@
+﻿@page
+@model assignment.Pages.Article.UserModel
+@{
+    Layout = "Layout/_SingleAside";
+}
+
+@section ArticleSeries{
+    <div style="border-width:1px;border-style:dashed;margin-bottom:30px">
+        <div style="margin-left:15px;margin-top:15px">
+            <h3>
+                <span class="fa fa-folder-open"></span>
+                <a>@Model.user.Name</a>
+                <span>的系列文章</span>
+            </h3>
+            <hr />
+        </div>
+        @foreach (var item in Model.user.Categorys)
+        {
+            <div style="margin-left:15px;margin-top:15px">
+                <h5>
+                    <span class="fa fa-folder-open"></span>
+                    <a href="#">@item.Title</a>
+                </h5>
+                <p>@item.Content</p>
+            </div>
+        }
+
+        <div style="padding-bottom:40px;margin-right:30px">
+            <a href="#" style="float:right">
+                <span class="fa fa-hand-o-right"></span>
+                全部
+            </a>
+        </div>
+        <div class="clearfix;">
+
+        </div>
+    </div>
+
+}
+
+<body>
+    @foreach (var item in Model.user.Articles)
+    {
+        <div style="border-bottom-width:1px;border-bottom-style:dashed;padding-top:10px">
+            <div>
+                <small class="text-muted">
+                    <span class="fa fa-calculator"></span>
+                    <span>@item.PublishTime.ToString("yyyy年MM月dd日hh点mm分")</span>
+                </small>
+                <small class="pull-right">
+                    <span>作者：</span>
+                    <a href="#">@item.Author.Name</a>
+                </small>
+            </div>
+            <h5>
+                <a href="@item.Id">@item.Title</a>
+            </h5>
+            <p style="word-break: break-all; clear: both; margin-top: 8px;">
+                @item.Body
+                <a href="#" title="全文">……</a>
+            </p>
+            <div>
+                <label>
+                    <span class="fa fa-tags"></span>
+                    关键字：
+                </label>
+                @for (int i = 0; i < item.keyWords.Count; i++)
+                {
+                    <span class="badge badge-pill badge-dark">@item.keyWords[i].Content</span>
+
+                }
+            </div>
+            <div class="pull-right" style="margin-bottom:10px">
+                <a href="#" style="margin-left:14px;color:#31708f">
+                    <span class="fa fa-comments-o"></span>
+                    <span>评论：</span>@item.comments.Count
+                </a>
+                <a href="#" style="margin-left:14px;color:#31708f">
+                    <span class="fa fa-thumbs-o-up"></span>
+                    <span>赞：</span>@item.appraises.Where(a => a.Direction == Entities.UpOrdown.Up).Count()
+                </a>
+                <a href="#" style="margin-left:14px;color:#31708f">
+                    <span class="fa fa-thumbs-o-down"></span>
+                    <span>踩：</span>@item.appraises.Where(a => a.Direction == Entities.UpOrdown.Down).Count()
+                </a>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+
+    }
+
+
+ 
+    <nav aria-label="Page navigation example" style="margin-top:40px;margin-bottom:30px">
+        <ul class="pagination">
+            @if (Model.PageIndex != 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="/Article/paged-@(Model.PageIndex-1)" aria-label="Next">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+            }
+            @for (int i = 0; i <= Model.PageCount; i++)
+            {
+                if (Model.PageIndex == i + 1)
+                {
+                    <li class="page-item active"><a class="page-link" href="/Article/paged-@(i+1)">@(i+1)</a></li>
+                }
+                else
+                {
+                    <li class="page-item"><a class="page-link" href="/Article/paged-@(i+1)">@(i+1)</a></li>
+
+                }
+
+
+            }
+            @if (Model.PageIndex <= Model.PageCount)
+            {
+                <li class="page-item ">
+                    <a class="page-link" href="/Article/paged-@(Model.PageIndex+1)" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+
+            }
+        </ul>
+    </nav>
+    
+</body>

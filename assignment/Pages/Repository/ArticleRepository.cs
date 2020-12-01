@@ -8,7 +8,11 @@ namespace assignment.Pages.Repository
 {
     public class ArticleRepository
     {
-        public static List<E.Article> articles = new List<E.Article>() {
+        private static List<E.Article> articles;
+        static ArticleRepository()
+        {
+            articles = new List<E.Article>()
+            {
                 new E.Article(){PublishTime=new DateTime(2020,8,20,8,7,20),
                       Id=1,
                       Title ="1-VS中的第一个页面",
@@ -16,7 +20,7 @@ namespace assignment.Pages.Repository
                       keyWords = new List<KeyWord>(){ new KeyWord() {Content = "VS" },new KeyWord() {Content = "HTML" },new KeyWord() {Content = "入门" } },
                       comments = new List<Comment>(){},
                       appraises = new List<Appraise>(){ new Appraise() {Direction=UpOrdown.Up },new Appraise() {Direction=UpOrdown.Up } },
-                      Author = new User(){Name ="叶飞" },
+                      Author = new User(){Id=1,Name ="叶飞" },
                      },
                 new E.Article(){PublishTime=new DateTime(2020,8,21,5,4,20),
                       Id=2,
@@ -25,7 +29,7 @@ namespace assignment.Pages.Repository
                       keyWords = new List<KeyWord>(){ new KeyWord() {Content = "ES6" },new KeyWord() {Content = "promise" },new KeyWord() {Content = "回调地狱" } },
                       comments = new List<Comment>(){ new Comment() {Content = "我是刘伟飞哥说的好",PublishTime=new DateTime(2015,1,1),Author=new User() {Id=9527,Name="刘伟" },Appraises = new List<Appraise>() { new Appraise() {Direction=UpOrdown.Down },new Appraise() { Direction=UpOrdown.Up} }, Comments = new List<Comment>() { new Comment() { Content="这个评论太对了",PublishTime = new DateTime(2015,1,2),Author= new User() { Id=666,Name="龚廷义"} } } },new Comment() { Author= new User() {Id=777,Name="李智博" },Content="我是李智博飞哥写的好",PublishTime=new DateTime(2015,1,3),Appraises = new List<Appraise>() { new Appraise() { Direction=UpOrdown.Up} }  } },
                       appraises = new List<Appraise>(){ new Appraise() {Direction=UpOrdown.Up },new Appraise() {Direction=UpOrdown.Up },new Appraise() {Direction=UpOrdown.Up } },
-                      Author = new User(){Name ="叶飞" },
+                      Author = new User(){Id=1,Name ="叶飞" },
                      },
                 new E.Article(){PublishTime=new DateTime(2020,8,5,15,20,15),
                       Id=3,
@@ -34,7 +38,7 @@ namespace assignment.Pages.Repository
                       keyWords = new List<KeyWord>(){ new KeyWord() {Content = "AJAX" },new KeyWord() {Content = "json" },new KeyWord() {Content = "后台" } },
                       comments = new List<Comment>(){},
                       appraises = new List<Appraise>(){ new Appraise() {Direction=UpOrdown.Up },new Appraise() {Direction=UpOrdown.Down } },
-                      Author = new User(){Name ="叶飞" },
+                      Author = new User(){Id=1,Name ="叶飞" },
                      },
                 new E.Article(){PublishTime=new DateTime(2020,7,21,11,52,3),
                       Id=4,
@@ -43,7 +47,7 @@ namespace assignment.Pages.Repository
                       keyWords = new List<KeyWord>(){ new KeyWord() {Content = "bootstrap.js" },new KeyWord() {Content = "插件" } },
                       comments = new List<Comment>(){},
                       appraises = new List<Appraise>(){ new Appraise() {Direction=UpOrdown.Up },new Appraise() {Direction=UpOrdown.Down } },
-                      Author = new User(){Name ="叶飞" },
+                      Author = new User(){Id=1,Name ="叶飞" },
                      },
                 new E.Article(){PublishTime=new DateTime(2020,1,2,1,5,2),
                       Id=5,
@@ -52,7 +56,7 @@ namespace assignment.Pages.Repository
                       keyWords = new List<KeyWord>(){ new KeyWord() {Content = "ES6" },new KeyWord() {Content = "集合" } },
                       comments = new List<Comment>(){},
                       appraises = new List<Appraise>(){ new Appraise() {Direction=UpOrdown.Up },new Appraise() {Direction=UpOrdown.Down } },
-                      Author = new User(){Name ="叶飞" },
+                      Author = new User(){Id=1,Name ="叶飞" },
                      },
                 new E.Article(){PublishTime=new DateTime(2020,9,1,1,5,33),
                       Id=6,
@@ -61,7 +65,7 @@ namespace assignment.Pages.Repository
                       keyWords = new List<KeyWord>(){ new KeyWord() {Content = "JavaScript" },new KeyWord() {Content = "介绍" },new KeyWord() {Content = "历史" } },
                       comments = new List<Comment>(){},
                       appraises = new List<Appraise>(){},
-                      Author = new User(){Name ="叶飞" },
+                      Author = new User(){Id=2,Name ="马保国" },
                      },
                 new E.Article(){PublishTime=new DateTime(2020,9,9,3,52,20),
                       Id=7,
@@ -70,7 +74,7 @@ namespace assignment.Pages.Repository
                       keyWords = new List<KeyWord>(){ new KeyWord() {Content = "JavaScript" },new KeyWord() {Content = "事件" },new KeyWord() {Content = "冒泡" },new KeyWord() {Content = "捕获" } },
                       comments = new List<Comment>(){},
                       appraises = new List<Appraise>(){ new Appraise() {Direction=UpOrdown.Up },new Appraise() {Direction=UpOrdown.Down },new Appraise() {Direction=UpOrdown.Down } },
-                      Author = new User(){Name ="叶飞" },
+                      Author = new User(){Id=2,Name ="马保国" },
                      },
                 new E.Article(){PublishTime=new DateTime(2020,7,1,23,30,30),
                       Id=8,
@@ -79,7 +83,7 @@ namespace assignment.Pages.Repository
                       keyWords = new List<KeyWord>(){ new KeyWord() {Content = "飞哥" },new KeyWord() {Content = "999天" },new KeyWord() {Content = "晚7点" } },
                       comments = new List<Comment>(){ new Comment() {Content="支持" } },
                       appraises = new List<Appraise>(){},
-                      Author = new User(){Name ="叶飞" },
+                      Author = new User(){Id=2,Name ="马保国"},
                      },
                 new E.Article(){PublishTime=new DateTime(2020,11,21,6,22,38),
                       Id=9,
@@ -88,9 +92,10 @@ namespace assignment.Pages.Repository
                       keyWords = new List<KeyWord>(){ new KeyWord() {Content = "作用域" },new KeyWord() {Content = "全局变量污染" },new KeyWord() {Content = "词法" },new KeyWord() {Content = "IIFE" } },
                       comments = new List<Comment>(){},
                       appraises = new List<Appraise>(){},
-                      Author = new User(){Name ="叶飞" },
+                      Author = new User(){Id=2,Name ="马保国" },
                      },
-        };
+            };
+        }
         public int ArticlesCount = articles.Count;
 
 
@@ -100,7 +105,7 @@ namespace assignment.Pages.Repository
         }
         public E.Article Find(int id)
         {
-            return articles.Where(a => a.Id == id).FirstOrDefault();
+            return articles.Where(a => a.Id == id).SingleOrDefault();
         }
     }
 }

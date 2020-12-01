@@ -8,7 +8,8 @@
         @RenderBody()
     </article>
     <aside class="col-md-4 ">
-        <div style="border-width:1px;border-style:dashed">
+        @RenderSection("ArticleSeries", required: false)
+        <div style="border-width:1px;border-style:dashed;margin-top:30px">
             <div style="margin:15px">
                 <div style="font-size:24px">
                     <span class="fa fa-tags"></span>

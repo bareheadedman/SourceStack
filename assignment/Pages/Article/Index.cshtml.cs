@@ -23,9 +23,9 @@ namespace assignment.Pages.Article
         public void OnGet()
         {
             PageIndex = 1;
-            if (RouteData.Values.ContainsKey("id"))
+            if (RouteData.Values.ContainsKey("pid"))
             {
-                PageIndex = Convert.ToInt32(RouteData.Values["id"]);
+                PageIndex = Convert.ToInt32(RouteData.Values["pid"]);
             }
             articles = new ArticleRepository().Get(PageIndex, pageSize);
             PageCount = articleRepository.ArticlesCount / pageSize;
