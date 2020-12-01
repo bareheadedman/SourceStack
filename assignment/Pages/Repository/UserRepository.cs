@@ -101,6 +101,16 @@ namespace assignment.Pages.Repository
                                       appraises = new List<Appraise>(){},
                                       Author = new User(){Id=2,Name ="马保国" },
                                      },
+                                new E.Article(){PublishTime=new DateTime(2020,11,21,6,22,38),
+                                      Id=10,
+                                      Title ="10闪电五连鞭",
+                                      Body = "年轻人速度快。不讲武德，耗子尾汁",
+                                      keyWords = new List<KeyWord>(){ new KeyWord() {Content = "作用域" },new KeyWord() {Content = "全局变量污染" },new KeyWord() {Content = "词法" },new KeyWord() {Content = "IIFE" } },
+                                      comments = new List<Comment>(){},
+                                      appraises = new List<Appraise>(){},
+                                      Author = new User(){Id=2,Name ="马保国" },
+                                     },
+
 
                } },
 
