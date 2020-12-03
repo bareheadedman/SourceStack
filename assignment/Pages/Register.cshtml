@@ -5,101 +5,7 @@
 
 }
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top ">
-        <div class="container">
-            <div>
-                <a class="navbar-brand" href="#">
-                    <img src="/Images/logo-big.ico" width="48" height="48" class="d-inline-block align-content-center" alt="" loading="lazy">
-                </a>
-                <span class="navbar-text">
-                    <span style="font-size:18px; font-weight:600;">一起帮</span>
-                    <span>.网络互助平台</span>
-                    <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
-                </span>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-question-circle" aria-hidden="true"></i>
-                            求助
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                            督促
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-book" aria-hidden="true"></i>
-                            文章
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                            DK
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-tachometer" aria-hidden="true"></i>
-                            后台
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            源栈
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-cogs" aria-hidden="true"></i>
-                            管理员
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<div>
     <main class="container" style="margin-top:100px">
         <div class="row col-12">
             <h2>
@@ -110,7 +16,7 @@
         <hr />
         <div class="row" style="margin-top:30px">
             <div class="col-lg-4 col-md-5">
-                <form method="post">
+                <form method="post" asp-page="/Register">
                     <div style="background-color:lightyellow;border-width:2px;border-style:dashed;border-color:#eee;border-radius:10px">
                         <div class="text-right" style="padding-top:10px;padding-right:10px">
                             <a href="#">
@@ -119,29 +25,29 @@
                             </a>
                         </div>
                         <div class="form-group mx-2">
-                            <label for="InviterName" name="InviterName">邀请人：（*必填）</label>
-                            <input type="text" class="form-control" name="InviterName" placeholder="他的用户名，模糊查询只能从头开始">
+                            <label>邀请人：（*必填）</label>
+                            <input  asp-for="User.InviterName"  class="form-control"  placeholder="他的用户名，模糊查询只能从头开始">
                         </div>
                         <div class="form-group mx-2">
-                            <label for="InviterCode" name="InviterCode">邀请码：（*必填）</label>
-                            <input type="text" class="form-control" name="InviterCode" placeholder="4位数字">
+                            <label >邀请码：（*必填）</label>
+                            <input asp-for="User.InviterCode" class="form-control"  placeholder="4位数字">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label name="UserName">用户名：（*必填）</label>
-                        <input type="text" class="form-control" name="UserName" placeholder="登录用户名，可修改，不能重复">
+                        <label >用户名：（*必填）</label>
+                        <input  asp-for="User.Name" class="form-control"  placeholder="登录用户名，可修改，不能重复">
                     </div>
                     <div class="form-group">
-                        <label name="Password">密码：（*必填）</label>
-                        <input type="Password" class="form-control" name="Password" placeholder="不少于4个字符">
+                        <label>密码：（*必填）</label>
+                        <input asp-for="User.PassWord"  class="form-control"  placeholder="不少于4个字符">
                     </div>
                     <div class="form-group">
-                        <label name="ConfirmPassword">验证密码：（*必填）</label>
-                        <input type="Password" class="form-control" name="ConfirmPassword" placeholder="和密码相同">
+                        <label >验证密码：（*必填）</label>
+                        <input asp-for="ConfirmPassWord"  class="form-control"  placeholder="和密码相同">
                     </div>
                     <div class="form-group">
-                        <label name="InputImageCode">验证码：（*必填）</label><br />
-                        <input type="text" class="form-control form-check-inline" style="width:100px" name="InputImageCode">
+                        <label>验证码：（*必填）</label><br />
+                        <input type="text" class="form-control form-check-inline" style="width:100px" >
                         <span class="">看不清楚</span>
                     </div>
                     <div class="form-group">
@@ -183,4 +89,4 @@
     </main>
     <footer>
     </footer>
-</body>
+</div>
