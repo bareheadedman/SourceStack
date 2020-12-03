@@ -27,8 +27,17 @@
 </div>
 
 <img src="~/Images/源栈上课啦.jpg" asp-append-version="true" />
-<a asp-page="/Article/Index" asp-route-id="2">登录</a>
-<a asp-page="/Article/Index" >有问题</a> 
+<a asp-page="/Article/Index" asp-route-id="2">文章</a>
+
+<a asp-page="/Article/Index">有问题</a>
 
 
+<a asp-page="/log/On">登录</a>
+
+
+<paged path="Article" pagedIndex="3">分页</paged>
+
+<span class="fa fa-calendar"></span>
+
+<dateTime asp-showicon="true" asp-only="date">@DateTime.Now</dateTime>
 
