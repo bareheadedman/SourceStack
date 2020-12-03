@@ -13,7 +13,9 @@ namespace assignment.Pages.Entities
         [DataType(DataType.Password)]
         public string PassWord { get; set; }
         public string InviterName { get; set; }
-        public int InviterCode { get; set; }
+        public string InviterCode { get; set; }
+
+        public bool IsMale { get; set; }
 
         public List<Article> Articles { get; set; }
         public List<Category> Categorys { get; set; }

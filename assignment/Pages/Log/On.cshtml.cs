@@ -13,6 +13,7 @@ namespace assignment.Pages.Log
 
         public E.User User { get; set; }
         public string InvidInputImageCode { get; set; }
+        public bool RememberMe { get; set; }
         public void OnGet()
         {
         }
