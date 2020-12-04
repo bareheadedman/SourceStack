@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using E = assignment.Pages.Entities;
+using E = assignment.Entities;
 
 namespace assignment.Pages.Log
 {
