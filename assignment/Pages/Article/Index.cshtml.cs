@@ -6,6 +6,7 @@ using assignment.Pages.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using E = assignment.Pages.Entities;
+
 namespace assignment.Pages.Article
 {
     public class IndexModel : PageModel

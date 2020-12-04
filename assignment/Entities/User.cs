@@ -15,9 +15,12 @@ namespace assignment.Pages.Entities
         public User InviterBy { get; set; }
         public string InviterCode { get; set; }
 
+
+
         public int BMony { get; set; }
         public bool IsMale { get; set; }
 
+        public List<Message> messages { get; set; }
         public List<Article> Articles { get; set; }
         public List<Category> Categorys { get; set; }
 
