@@ -1,10 +1,10 @@
-﻿using assignment.Pages.Entities;
+﻿using assignment.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using E = assignment.Pages.Entities;
-namespace assignment.Pages.Repository
+using E = assignment.Entities;
+namespace assignment.Repository
 {
     public class ArticleRepository
     {
