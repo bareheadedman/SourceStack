@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace assignment.Pages.Entities
 {
-    public class KeyWord:Entity
+    public class KeyWord : Entity
     {
         public string Content { get; set; }
+        public List<Article> ByEmploys { get; set; }
     }
 }

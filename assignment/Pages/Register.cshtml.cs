@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using E = assignment.Pages.Entities;
 
 namespace assignment.Pages
@@ -16,6 +17,7 @@ namespace assignment.Pages
         [DataType(DataType.Password)]
         public string ConfirmPassWord { get; set; }
         public string InputImageCode { get; set; }
+
         public void OnGet()
         {
 
