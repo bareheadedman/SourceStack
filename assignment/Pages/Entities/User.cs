@@ -12,13 +12,19 @@ namespace assignment.Pages.Entities
 
         [DataType(DataType.Password)]
         public string PassWord { get; set; }
-        public string InviterName { get; set; }
+        public User InviterBy { get; set; }
         public string InviterCode { get; set; }
 
+        public int BMony { get; set; }
         public bool IsMale { get; set; }
 
         public List<Article> Articles { get; set; }
         public List<Category> Categorys { get; set; }
+
+        public void Register()
+        {
+            InviterBy.BMony += 10;
+        }
 
     }
 }

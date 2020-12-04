@@ -13,7 +13,7 @@ namespace assignment.Pages.Repository
         {
             users = new List<User>()
             {
-               new User(){ Id = 1,Name="叶飞",Articles =new List<E.Article>()
+               new User(){ Id = 1,Name="叶飞",InviterCode="666",Articles =new List<E.Article>()
                {
                                 new E.Article(){PublishTime=new DateTime(2020,8,20,8,7,20),
                       Id=1,
@@ -63,7 +63,7 @@ namespace assignment.Pages.Repository
 
                } },
 
-               new User(){ Id=2,Name="马保国" ,Articles = new List<E.Article>(){
+               new User(){ Id=2,Name="马保国" ,InviterCode="888",Articles = new List<E.Article>(){
 
                                 new E.Article(){PublishTime=new DateTime(2020,9,1,1,5,33),
                       Id=6,
@@ -122,5 +122,14 @@ namespace assignment.Pages.Repository
             return users.Where(u => u.Id == id).SingleOrDefault();
         }
 
+        public void Save(User user)
+        {
+            users.Add(user);
+        }
+
+        public User GetByName(string name)
+        {
+            return users.Where(u => u.Name == name).SingleOrDefault();
+        }
     }
 }
