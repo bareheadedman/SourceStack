@@ -3,3 +3,18 @@
 @{
     ViewData["Title"] = "我的消息";
 }
+
+
+<form method="post" asp-action="/">
+    @for (int i = 0; i < Model.messages.Count; i++)
+    {
+        <input asp-for="@Model.messages[i].Selected" />
+        <input type="hidden" asp-for="@Model.messages[i].Id" />
+        <span>@Model.messages[i].CreateTime</span>
+        <span>@Model.messages[i].Reason</span>
+        <span>@Model.messages[i].Content</span>
+        <br />
+    }
+
+    <button type="submit">提交</button>
+</form>

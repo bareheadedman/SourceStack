@@ -43,9 +43,13 @@ namespace assignment.Repository
             };
         }
 
-        public List<Message> GetByUserName(string name)
+        public List<Message> GetByUserId(int userId)
         {
-            return messages.Where(m => m.Reason == name).ToList();
+            return messages.Where(m => m.Belong.Id == userId).ToList();
+        }
+        public Message Find(int id)
+        {
+            return messages.Where(m => m.Id == id).SingleOrDefault();
         }
     }
 }
