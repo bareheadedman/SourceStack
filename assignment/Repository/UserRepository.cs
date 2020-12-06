@@ -14,7 +14,7 @@ namespace assignment.Repository
         {
             users = new List<User>()
             {
-               new User(){ Id = 1,Name="叶飞",InviterCode="6666",Articles =new List<E.Article>()
+               new User(){ Id = 1,Name="叶飞",PassWord="12345",InviterCode="6666",Articles =new List<E.Article>()
                {
                                 new E.Article(){PublishTime=new DateTime(2020,8,20,8,7,20),
                       Id=1,
@@ -64,7 +64,7 @@ namespace assignment.Repository
 
                } },
 
-               new User(){ Id=2,Name="马保国" ,InviterCode="8888",Articles = new List<E.Article>(){
+               new User(){ Id=2,Name="马保国",PassWord="1234" ,InviterCode="8888",Articles = new List<E.Article>(){
 
                                 new E.Article(){PublishTime=new DateTime(2020,9,1,1,5,33),
                       Id=6,
