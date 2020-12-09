@@ -26,55 +26,94 @@
         <label>
             <span class="fa fa-tags"></span>
             关键字：
-            @foreach (var item in Model.article.keyWords)
+            @if (Model.article.keyWords != null)
             {
-                <span class="badge badge-pill badge-dark">@item.Content</span>
+                @foreach (var item in Model.article.keyWords)
+                {
+                    <span class="badge badge-pill badge-dark">@item.Content</span>
+                }
             }
+
         </label>
     </div>
     <div class="article-appraise appraise-status pull-right">
         <a href="#" style="margin-left:14px;color:#31708f">
             <span class="fa fa-thumbs-o-up"></span>
-            <span>赞：</span>@Model.article.appraises.Where(a => a.Direction == Entities.UpOrdown.Up).Count()
+            <span>赞：</span>
+            @if (Model.article.appraises != null)
+            {
+                @Model.article.appraises.Where(a => a.Direction == Entities.UpOrdown.Up).Count()
+
+            }
+            else
+            {
+                <span>0</span>
+            }
         </a>
         <a href="#" style="margin-left:14px;color:#31708f">
             <span class="fa fa-thumbs-o-down"></span>
-            <span>踩：</span>@Model.article.appraises.Where(a => a.Direction == Entities.UpOrdown.Down).Count()
+            <span>踩：</span>
+            @if (Model.article.appraises != null)
+            {
+                @Model.article.appraises.Where(a => a.Direction == Entities.UpOrdown.Down).Count()
+
+            }
+            else
+            {
+                <span>0</span>
+            }
         </a>
     </div>
     <div style="margin-top:50px">
         <span>评论</span>
         <span>
-            （ <span>@Model.article.comments.Count</span>）
+            （ <span>
+                @if (Model.article.comments != null)
+                {
+                    @Model.article.comments.Count
+
+                }
+                else
+                {
+                    <span>0</span>
+                }
+            </span>）
         </span>
     </div>
-    @foreach (var item in Model.article.comments)
+
+    @if (Model.article.comments != null)
     {
-        <div style="margin-top:50px">
-            <div>
-                <small class="text-muted">
-                    <span class="fa fa-calculator"></span>
-                    <span>@item.PublishTime.ToString("yyyy年MM月dd日hh点mm分")</span>
-                </small>
-                <small class="pull-right">
-                    <span>作者：</span>
-                    <a href="#">@item.Author.Name</a>
-                </small>
+        @foreach (var item in Model.article.comments)
+        {
+            <div style="margin-top:50px">
+                <div>
+                    <small class="text-muted">
+                        <span class="fa fa-calculator"></span>
+                        <span>@item.PublishTime.ToString("yyyy年MM月dd日hh点mm分")</span>
+                    </small>
+                    <small class="pull-right">
+                        <span>作者：</span>
+                        <a href="#">@item.Author.Name</a>
+                    </small>
+                </div>
+                <div>
+                    @item.Content
+                </div>
+                <div class="article-appraise appraise-status pull-right">
+                    <a href="#" style="margin-left:14px;color:#31708f">
+                        <span class="fa fa-thumbs-o-up"></span>
+                        <span>赞：</span>
+                        @item.Appraises.Where(a => a.Direction == Entities.UpOrdown.Up).Count()
+                    </a>
+                    <a href="#" style="margin-left:14px;color:#31708f">
+                        <span class="fa fa-thumbs-o-down"></span>
+                        <span>踩：</span>
+                        @item.Appraises.Where(a => a.Direction == Entities.UpOrdown.Down).Count()
+                    </a>
+                </div>
             </div>
-            <div>
-                @item.Content
-            </div>
-            <div class="article-appraise appraise-status pull-right">
-                <a href="#" style="margin-left:14px;color:#31708f">
-                    <span class="fa fa-thumbs-o-up"></span>
-                    <span>赞：</span>@item.Appraises.Where(a => a.Direction == Entities.UpOrdown.Up).Count()
-                </a>
-                <a href="#" style="margin-left:14px;color:#31708f">
-                    <span class="fa fa-thumbs-o-down"></span>
-                    <span>踩：</span>@item.Appraises.Where(a => a.Direction == Entities.UpOrdown.Down).Count()
-                </a>
-            </div>
-        </div>
-        
+
+        }
+
     }
 </div>

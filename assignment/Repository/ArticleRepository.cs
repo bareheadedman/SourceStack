@@ -1,6 +1,8 @@
 ﻿using assignment.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using E = assignment.Entities;
@@ -8,6 +10,9 @@ namespace assignment.Repository
 {
     public class ArticleRepository
     {
+        private string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=17BANG;Integrated Security=True;";
+
+
         private static List<E.Article> articles;
         static ArticleRepository()
         {
@@ -115,7 +120,35 @@ namespace assignment.Repository
         }
         public E.Article Find(int id)
         {
-            return articles.Where(a => a.Id == id).SingleOrDefault();
+            E.Article article = new Article();
+            using (IDbConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (IDbCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandText = $"SELECT * FROM [Article] WHERE Id = '{id}'";
+                    IDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        article.Id = Convert.ToInt32(reader["Id"]);
+                        article.Title = reader["Title"].ToString();
+                        article.Body = reader["Content"].ToString();
+                        article.PublishTime = (DateTime)reader["PublishDateTime"];
+                        article.Author = new UserRepository().Find(Convert.ToInt32(reader["AuthorId"]));
+                        article.keyWords = new KeyWordRepository().FindsArticle(id);
+
+                    }
+                    else
+                    {
+                        article = null;
+                    }
+
+
+                }
+            }
+
+            return article;
         }
     }
 }
