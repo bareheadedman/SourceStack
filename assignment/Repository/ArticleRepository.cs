@@ -111,12 +111,37 @@ namespace assignment.Repository
 
             };
         }
-        public int ArticlesCount = articles.Count;
-
 
         public List<E.Article> Get(int pageIndex, int pageSize)
         {
-            return articles.OrderBy(a => a.Id).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+            List<E.Article> articles = new List<Article>();
+            using (IDbConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (IDbCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandText = $"SELECT Id FROM Article ORDER BY PublishDateTime OFFSET {(pageIndex - 1) * pageSize} ROWS FETCH NEXT {pageSize} ROWS ONLY";
+                    IDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            articles.Add(Find(Convert.ToInt32(reader["Id"])));
+                        }
+                    }
+
+
+                }
+
+
+
+            }
+
+            return articles;
+
+
         }
         public E.Article Find(int id)
         {
@@ -149,6 +174,25 @@ namespace assignment.Repository
             }
 
             return article;
+        }
+
+        public int ArticlesCount()
+        {
+            int result = 0;
+            using (IDbConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (IDbCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandText = "SELECT count(*) FROM [Article] ";
+                    result = Convert.ToInt32(command.ExecuteScalar());
+                }
+
+
+            }
+
+            return result;
         }
     }
 }

@@ -29,13 +29,13 @@ namespace assignment.Pages.Article
                 PageIndex = Convert.ToInt32(RouteData.Values["id"]);
             }
             articles = new ArticleRepository().Get(PageIndex, pageSize);
-            if (articleRepository.ArticlesCount % pageSize == 0)
+            if (articleRepository.ArticlesCount() % pageSize == 0)
             {
-                PageCount = articleRepository.ArticlesCount / pageSize;
+                PageCount = articleRepository.ArticlesCount() / pageSize;
             }
             else
             {
-                PageCount = articleRepository.ArticlesCount / pageSize + 1;
+                PageCount = articleRepository.ArticlesCount() / pageSize + 1;
             }
 
         }

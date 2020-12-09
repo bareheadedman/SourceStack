@@ -27,29 +27,61 @@
                 @item.Body
                 <a href="#" title="全文">……</a>
             </p>
-            <div>   
+            <div>
                 <label>
                     <span class="fa fa-tags"></span>
                     关键字：
                 </label>
-                @for (int i = 0; i < item.keyWords.Count; i++)
+                @if (item.keyWords != null)
                 {
-                    <span class="badge badge-pill badge-dark">@item.keyWords[i].Content</span>
+                    @for (int i = 0; i < item.keyWords.Count; i++)
+                    {
+                        <span class="badge badge-pill badge-dark">@item.keyWords[i].Content</span>
+
+                    }
 
                 }
+
             </div>
             <div class="pull-right" style="margin-bottom:10px">
                 <a href="#" style="margin-left:14px;color:#31708f">
                     <span class="fa fa-comments-o"></span>
-                    <span>评论：</span>@item.comments.Count
+                    <span>评论：</span>
+                    @if (item.comments != null)
+                    {
+                        @item.comments.Count
+
+                    }
+                    else
+                    {
+                        <span>0</span>
+                    }
                 </a>
                 <a href="#" style="margin-left:14px;color:#31708f">
                     <span class="fa fa-thumbs-o-up"></span>
-                    <span>赞：</span>@item.appraises.Where(a => a.Direction == Entities.UpOrdown.Up).Count()
+                    <span>赞：</span>
+                    @if (item.appraises != null)
+                    {
+                        @item.appraises.Where(a => a.Direction == Entities.UpOrdown.Up).Count()
+
+                    }
+                    else
+                    {
+                        <span>0</span>
+                    }
                 </a>
                 <a href="#" style="margin-left:14px;color:#31708f">
                     <span class="fa fa-thumbs-o-down"></span>
-                    <span>踩：</span>@item.appraises.Where(a => a.Direction == Entities.UpOrdown.Down).Count()
+                    <span>踩：</span>
+                    @if (item.appraises != null)
+                    {
+                        @item.appraises.Where(a => a.Direction == Entities.UpOrdown.Down).Count()
+
+                    }
+                    else
+                    {
+                        <span>0</span>
+                    }
                 </a>
             </div>
             <div style="clear:both"></div>
