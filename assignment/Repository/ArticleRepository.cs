@@ -10,6 +10,13 @@ namespace assignment.Repository
 {
     public class ArticleRepository
     {
+        private const string id = "Id";
+        private const string title = "Title";
+        private const string content = "Content";
+        private const string authorId = "AuthorId";
+        private const string publishDateTime = "PublishDateTime";
+        private const string category = "Category";
+
         private string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=17BANG;Integrated Security=True;";
 
         public List<E.Article> Get(int pageIndex, int pageSize)
@@ -28,7 +35,7 @@ namespace assignment.Repository
                     {
                         for (int i = 0; i < reader.FieldCount; i++)
                         {
-                            articles.Add(Find(Convert.ToInt32(reader["Id"])));
+                            articles.Add(Find(Convert.ToInt32(reader[ArticleRepository.id])));
                         }
                     }
 
@@ -44,6 +51,32 @@ namespace assignment.Repository
 
         }
 
+        public List<Article> FindAuthorId(int id)
+        {
+            List<Article> articles = new List<Article>();
+
+            using (IDbConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (IDbCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandText = $" SELECT {ArticleRepository.id} FROM Article WHERE {authorId}= {id} ";
+                    IDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        articles.Add(Find(Convert.ToInt32(reader[ArticleRepository.id])));
+                    }
+
+                }
+
+
+            }
+
+            return articles;
+        }
+
         public E.Article Find(int id)
         {
             E.Article article = new Article();
@@ -53,17 +86,17 @@ namespace assignment.Repository
                 using (IDbCommand command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = $"SELECT * FROM [Article] WHERE Id = '{id}'";
+                    command.CommandText = $"SELECT {ArticleRepository.id},{title},{content},{authorId},{publishDateTime},{category} FROM [Article] WHERE Id = '{id}'";
                     IDataReader reader = command.ExecuteReader();
                     if (reader.Read())
                     {
-                        article.Id = Convert.ToInt32(reader["Id"]);
-                        article.Title = reader["Title"].ToString();
-                        article.Body = reader["Content"].ToString();
-                        article.PublishTime = (DateTime)reader["PublishDateTime"];
-                        article.Author = new UserRepository().Find(Convert.ToInt32(reader["AuthorId"]));
+                        article.Id = Convert.ToInt32(reader[ArticleRepository.id]);
+                        article.Title = reader[title].ToString();
+                        article.Body = reader[content].ToString();
+                        article.PublishTime = (DateTime)reader[publishDateTime];
+                        article.Author = new User() { Id = Convert.ToInt32(reader[authorId]) };
 
-                        article.keyWords = new KeyWordRepository().FindsArticle(id);
+                        article.keyWords = new List<KeyWord>();
 
                     }
                     else

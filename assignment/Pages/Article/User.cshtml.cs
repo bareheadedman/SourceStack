@@ -12,18 +12,18 @@ namespace assignment.Pages.Article
 {
     public class UserModel : PageModel
     {
-        public User user { get; set; }
-        private static UserRepository userRepository { get; set; }
-        private static CategoryRepository categoryRepository { get; set; }
-
-
-
-        public int Id { get; set; }
-        static UserModel()
+        private static UserRepository userRepository;
+        private static CategoryRepository categoryRepository;
+        public UserModel()
         {
             userRepository = new UserRepository();
             categoryRepository = new CategoryRepository();
         }
+
+
+        public User User { get; set; }
+        public int Id { get; set; }
+
 
         public void OnGet()
         {
@@ -33,13 +33,15 @@ namespace assignment.Pages.Article
             {
                 Id = Convert.ToInt32(RouteData.Values["id"]);
             }
-            user = userRepository.Find(Id);
-            user.Categorys = categoryRepository.Find(Id);
+            User = userRepository.Find(Id);
+            User.Categorys = categoryRepository.Find(Id);
 
+            User.Articles = new ArticleRepository().FindAuthorId(User.Id);
 
-            for (int i = 0; i < user.Articles.Count; i++)
+            foreach (var item in User.Articles)
             {
-                user.Articles[i] = new ArticleRepository().Find(user.Articles[i].Id);
+                item.keyWords = new KeyWordRepository().FindsArticle(item.Id);
+                item.Author = new UserRepository().Find(item.Author.Id);
             }
 
         }

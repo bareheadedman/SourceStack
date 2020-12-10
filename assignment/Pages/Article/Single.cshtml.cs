@@ -11,18 +11,23 @@ namespace assignment.Pages.Article
     public class SingleModel : PageModel
     {
         private ArticleRepository articleRepository { get; set; }
-        public E.Article article { get; set; }
-        private int id { get; set; }
         public SingleModel()
         {
             articleRepository = new ArticleRepository();
         }
+
+        public E.Article Article { get; set; }
+        private int id { get; set; }
+
+
         public void OnGet()
         {
 
             id = Convert.ToInt32(RouteData.Values["id"]);
 
-            article = articleRepository.Find(id);
+            Article = articleRepository.Find(id);
+            Article.keyWords = new KeyWordRepository().FindsArticle(Article.Id);
+            Article.Author = new UserRepository().Find(Article.Author.Id);
         }
         public void OnPost()
         {

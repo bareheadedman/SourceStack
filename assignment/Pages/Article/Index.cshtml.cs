@@ -11,16 +11,19 @@ namespace assignment.Pages.Article
 {
     public class IndexModel : PageModel
     {
-        public List<E.Article> articles { get; set; }
-        private ArticleRepository articleRepository { get; set; }
-        public int pageSize { get; } = 2;
-        public int PageIndex { get; set; }
-        public int PageCount { get; set; }
+        private ArticleRepository articleRepository;
+
         public IndexModel()
         {
             articleRepository = new ArticleRepository();
-
         }
+
+        public List<E.Article> Articles { get; set; }
+        public int pageSize { get; } = 2;
+        public int PageIndex { get; set; }
+        public int PageCount { get; set; }
+        public int ArticlesCount { get; set; }
+
         public void OnGet()
         {
             PageIndex = 1;
@@ -28,14 +31,22 @@ namespace assignment.Pages.Article
             {
                 PageIndex = Convert.ToInt32(RouteData.Values["id"]);
             }
-            articles = new ArticleRepository().Get(PageIndex, pageSize);
-            if (articleRepository.ArticlesCount() % pageSize == 0)
+            Articles = articleRepository.Get(PageIndex, pageSize);
+            ArticlesCount = articleRepository.ArticlesCount();
+
+            if (ArticlesCount % pageSize == 0)
             {
-                PageCount = articleRepository.ArticlesCount() / pageSize;
+                PageCount = ArticlesCount / pageSize;
             }
             else
             {
-                PageCount = articleRepository.ArticlesCount() / pageSize + 1;
+                PageCount = ArticlesCount / pageSize + 1;
+            }
+
+            foreach (var item in Articles)
+            {
+                item.keyWords = new KeyWordRepository().FindsArticle(item.Id);
+                item.Author = new UserRepository().Find(item.Author.Id);
             }
 
         }

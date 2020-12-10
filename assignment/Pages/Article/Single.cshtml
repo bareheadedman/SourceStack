@@ -2,33 +2,33 @@
 @model assignment.Pages.Article.SingleModel
 @{
     Layout = "Layout/_SingleAside";
-    ViewData["Title"] = Model.article.Title;
+    ViewData["Title"] = Model.Article.Title;
 }
 
 <div>
     <img src="~/Images/源栈上课啦.jpg" />
-    <h2>@Model.article.Title</h2>
+    <h2>@Model.Article.Title</h2>
     <hr />
     <div>
         <small class="text-muted">
             <span class="fa fa-calculator"></span>
-            <span>@Model.article.PublishTime.ToString("yyyy年MM月dd日hh点mm分")</span>
+            <span>@Model.Article.PublishTime.ToString("yyyy年MM月dd日hh点mm分")</span>
         </small>
         <small class="pull-right">
             <span>作者：</span>
-            <a href="#">@Model.article.Author.Name</a>
+            <a href="#">@Model.Article.Author.Name</a>
         </small>
     </div>
     <div>
-        @Model.article.Body
+        @Model.Article.Body
     </div>
     <div>
         <label>
             <span class="fa fa-tags"></span>
             关键字：
-            @if (Model.article.keyWords != null)
+            @if (Model.Article.keyWords != null)
             {
-                @foreach (var item in Model.article.keyWords)
+                @foreach (var item in Model.Article.keyWords)
                 {
                     <span class="badge badge-pill badge-dark">@item.Content</span>
                 }
@@ -40,9 +40,9 @@
         <a href="#" style="margin-left:14px;color:#31708f">
             <span class="fa fa-thumbs-o-up"></span>
             <span>赞：</span>
-            @if (Model.article.appraises != null)
+            @if (Model.Article.appraises != null)
             {
-                @Model.article.appraises.Where(a => a.Direction == Entities.UpOrdown.Up).Count()
+                @Model.Article.appraises.Where(a => a.Direction == Entities.UpOrdown.Up).Count()
 
             }
             else
@@ -53,9 +53,9 @@
         <a href="#" style="margin-left:14px;color:#31708f">
             <span class="fa fa-thumbs-o-down"></span>
             <span>踩：</span>
-            @if (Model.article.appraises != null)
+            @if (Model.Article.appraises != null)
             {
-                @Model.article.appraises.Where(a => a.Direction == Entities.UpOrdown.Down).Count()
+                @Model.Article.appraises.Where(a => a.Direction == Entities.UpOrdown.Down).Count()
 
             }
             else
@@ -68,9 +68,9 @@
         <span>评论</span>
         <span>
             （ <span>
-                @if (Model.article.comments != null)
+                @if (Model.Article.comments != null)
                 {
-                    @Model.article.comments.Count
+                    @Model.Article.comments.Count
 
                 }
                 else
@@ -81,9 +81,9 @@
         </span>
     </div>
 
-    @if (Model.article.comments != null)
+    @if (Model.Article.comments != null)
     {
-        @foreach (var item in Model.article.comments)
+        @foreach (var item in Model.Article.comments)
         {
             <div style="margin-top:50px">
                 <div>

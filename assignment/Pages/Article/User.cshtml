@@ -9,12 +9,12 @@
         <div style="margin-left:15px;margin-top:15px">
             <h3>
                 <span class="fa fa-folder-open"></span>
-                <a>@Model.user.Name</a>
+                <a>@Model.User.Name</a>
                 <span>的系列文章</span>
             </h3>
             <hr />
         </div>
-        @foreach (var item in Model.user.Categorys)
+        @foreach (var item in Model.User.Categorys)
         {
             <div style="margin-left:15px;margin-top:15px">
                 <h5>
@@ -39,7 +39,7 @@
 }
 
 <body>
-    @foreach (var item in Model.user.Articles)
+    @foreach (var item in Model.User.Articles)
     {
         <div style="border-bottom-width:1px;border-bottom-style:dashed;padding-top:10px">
             <div>
