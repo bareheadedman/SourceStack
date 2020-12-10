@@ -12,14 +12,6 @@ namespace assignment.Repository
     {
         private string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=17BANG;Integrated Security=True;";
 
-
-        public static List<E.KeyWord> KeyWords { get; set; }
-
-        static KeyWordRepository()
-        {
-            KeyWords = new List<E.KeyWord>();
-        }
-
         public E.KeyWord Find(int id)
         {
             E.KeyWord keyWord = new E.KeyWord();

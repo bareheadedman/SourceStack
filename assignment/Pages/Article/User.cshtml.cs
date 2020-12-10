@@ -28,7 +28,7 @@ namespace assignment.Pages.Article
         public void OnGet()
         {
 
-            Id = 1;
+            Id = 1005;
             if (RouteData.Values.ContainsKey("id"))
             {
                 Id = Convert.ToInt32(RouteData.Values["id"]);
@@ -36,6 +36,11 @@ namespace assignment.Pages.Article
             user = userRepository.Find(Id);
             user.Categorys = categoryRepository.Find(Id);
 
+
+            for (int i = 0; i < user.Articles.Count; i++)
+            {
+                user.Articles[i] = new ArticleRepository().Find(user.Articles[i].Id);
+            }
 
         }
         public void OnPost()
