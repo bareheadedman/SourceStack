@@ -15,11 +15,11 @@ namespace assignment.Pages
     public class RegisterModel : PageModel
     {
 
-        private UserRepository UserRepository;
+        private UserRepository userRepository;
 
         public RegisterModel()
         {
-            UserRepository = new UserRepository();
+            userRepository = new UserRepository();
         }
 
         public E.User User { get; set; }
@@ -60,7 +60,7 @@ namespace assignment.Pages
                 return;
             }
 
-            E.User inviterBy = UserRepository.GetByName(User.InviterBy.Name);
+            E.User inviterBy = userRepository.GetByName(User.InviterBy.Name);
             if (inviterBy == null)
             {
                 ModelState.AddModelError("InviterBy.Name", "邀请人不存在");
@@ -71,14 +71,17 @@ namespace assignment.Pages
                 ModelState.AddModelError(nameof(InviterCode), "邀请码错误");
                 return;
             }
-
-
+            if (User.Name == userRepository.GetByName(User.Name).Name)
+            {
+                ModelState.AddModelError("User.Name", "用户名字已存在");
+                return;
+            }
 
 
             User.PassWord = PassWord;
             User.InviterBy = inviterBy;
             User.Register();
-            UserRepository.Save(User);
+            userRepository.Save(User);
         }
     }
 }

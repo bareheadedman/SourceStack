@@ -34,7 +34,7 @@ namespace assignment.Repository
                 using (IDbCommand command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = $"SELECT {UserRepository.id},{userName},{passWord},{inviter} FROM [User] WHERE Id = {id}";
+                    command.CommandText = $"SELECT {UserRepository.id},{userName},{passWord},{inviterCode},{inviter} FROM [User] WHERE Id = {id}";
                     IDataReader reader = command.ExecuteReader();
 
                     using (reader)
@@ -43,6 +43,7 @@ namespace assignment.Repository
                         {
                             user.Name = reader[userName].ToString();
                             user.PassWord = reader[passWord].ToString();
+                            user.InviterCode = reader[inviterCode].ToString();
                             user.Id = Convert.ToInt32(reader[UserRepository.id]);
                             user.InviterBy.Id = Convert.ToInt32(reader[inviter]);
                             user.Articles = new List<Article>();
@@ -81,13 +82,14 @@ namespace assignment.Repository
                 using (IDbCommand command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = $"SELECT {UserRepository.id},{userName},{passWord},{inviter} FROM [User] WHERE UserName ='{name}';";
+                    command.CommandText = $"SELECT {UserRepository.id},{userName},{passWord},{inviter},{inviterCode} FROM [User] WHERE UserName ='{name}';";
                     IDataReader reader = command.ExecuteReader();
                     if (reader.Read())
                     {
                         user.Name = reader[userName].ToString();
                         user.PassWord = reader[passWord].ToString();
                         user.Id = Convert.ToInt32(reader[id]);
+                        user.InviterCode = reader[inviterCode].ToString();
                         user.InviterBy.Id = Convert.ToInt32(reader[inviter]);
                         user.Articles = new List<Article>();
                     }
