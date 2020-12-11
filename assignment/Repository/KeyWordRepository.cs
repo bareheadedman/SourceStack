@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
@@ -28,7 +29,9 @@ namespace assignment.Repository
                 using (IDbCommand command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = $"SELECT {KeyWordRepository.id},{word} FROM [keyword] WHERE Id ={id}";
+                    command.CommandText = $"SELECT {KeyWordRepository.id},{word} FROM [keyword] WHERE Id = @id ";
+                    DbParameter pId = new SqlParameter("@id", id);
+                    command.Parameters.Add(pId);
                     IDataReader reader = command.ExecuteReader();
 
                     if (reader.Read())
@@ -59,7 +62,9 @@ namespace assignment.Repository
                 using (IDbCommand command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = $"SELECT {keyWordId} FROM [Keyword2Article] WHERE Id= '{articleid}'";
+                    command.CommandText = $"SELECT {keyWordId} FROM [Keyword2Article] WHERE Id= @id ";
+                    DbParameter PId = new SqlParameter("@id", articleid);
+                    command.Parameters.Add(PId);
                     IDataReader reader = command.ExecuteReader();
 
                     List<int> result = new List<int>();

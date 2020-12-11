@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
@@ -34,7 +35,9 @@ namespace assignment.Repository
                 using (IDbCommand command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = $"SELECT {UserRepository.id},{userName},{passWord},{inviterCode},{inviter} FROM [User] WHERE Id = {id}";
+                    command.CommandText = $"SELECT {UserRepository.id},{userName},{passWord},{inviterCode},{inviter} FROM [User] WHERE Id = @id ";
+                    DbParameter pId = new SqlParameter("@id", id);
+                    command.Parameters.Add(pId);
                     IDataReader reader = command.ExecuteReader();
 
                     using (reader)
@@ -67,7 +70,14 @@ namespace assignment.Repository
                 using (IDbCommand command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = $"INSERT [User]({userName},{passWord},{inviter}) VALUES('{user.Name}','{user.PassWord}',{user.InviterBy.Id});";
+                    command.CommandText = $"INSERT [User]({userName},{passWord},{inviter}) VALUES(@uName,@uPassWord,@uInviterById);";
+                    DbParameter pUName = new SqlParameter("@uName", user.Name);
+                    DbParameter pUPassWord = new SqlParameter("@uPassWord", user.PassWord);
+                    DbParameter pUInviterById = new SqlParameter("@uInviterById", user.InviterBy.Id);
+                    command.Parameters.Add(pUName);
+                    command.Parameters.Add(pUPassWord);
+                    command.Parameters.Add(pUInviterById);
+
                     command.ExecuteNonQuery();
                 }
             }
@@ -82,7 +92,9 @@ namespace assignment.Repository
                 using (IDbCommand command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = $"SELECT {UserRepository.id},{userName},{passWord},{inviter},{inviterCode} FROM [User] WHERE UserName ='{name}';";
+                    command.CommandText = $"SELECT {UserRepository.id},{userName},{passWord},{inviter},{inviterCode} FROM [User] WHERE UserName = @name ;";
+                    DbParameter pName = new SqlParameter("@name", name);
+                    command.Parameters.Add(pName);
                     IDataReader reader = command.ExecuteReader();
                     if (reader.Read())
                     {

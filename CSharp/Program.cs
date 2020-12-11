@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
@@ -22,6 +23,8 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
+            string user = Console.ReadLine().ToString();
+
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=17BANG;Integrated Security=True;";
 
             using (IDbConnection connection = new SqlConnection(connectionString))
@@ -30,7 +33,9 @@ namespace CSharp
                 using (IDbCommand command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = "SELECT Inviter FROM[User] Where Id >5000";
+                    command.CommandText = $"SELECT Inviter FROM[User] Where UserName ='@name'";
+                    DbParameter pname = new SqlParameter("@name", user);
+                    command.Parameters.Add(pname);
 
                     object count = command.ExecuteScalar();
 

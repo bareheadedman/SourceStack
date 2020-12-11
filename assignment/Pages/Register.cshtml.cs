@@ -71,10 +71,7 @@ namespace assignment.Pages
                 ModelState.AddModelError(nameof(InviterCode), "邀请码错误");
                 return;
             }
-
-            E.User dbUser = userRepository.GetByName(User.Name);
-
-            if (dbUser != null)
+            if (userRepository.GetByName(User.Name) != null)
             {
                 ModelState.AddModelError("User.Name", "用户名字已存在");
                 return;

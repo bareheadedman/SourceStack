@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
@@ -28,7 +29,13 @@ namespace assignment.Repository
                 using (IDbCommand command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = $"SELECT Id FROM Article ORDER BY PublishDateTime OFFSET {(pageIndex - 1) * pageSize} ROWS FETCH NEXT {pageSize} ROWS ONLY";
+                    command.CommandText = $"SELECT Id FROM Article ORDER BY PublishDateTime OFFSET @index ROWS FETCH NEXT @size ROWS ONLY";
+                    DbParameter pPageIndex = new SqlParameter("@index", (pageIndex - 1) * pageSize);
+                    DbParameter pPageSize = new SqlParameter("@size", pageSize);
+
+                    command.Parameters.Add(pPageIndex);
+                    command.Parameters.Add(pPageSize);
+
                     IDataReader reader = command.ExecuteReader();
 
                     while (reader.Read())
@@ -62,8 +69,14 @@ namespace assignment.Repository
                 using (IDbCommand command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = $" SELECT {ArticleRepository.id} FROM Article WHERE {authorId}= {id} ";
+                    command.CommandText = $" SELECT {ArticleRepository.id} FROM Article WHERE {authorId}= @id ";
+
+                    DbParameter pId = new SqlParameter("@id", id);
+                    command.Parameters.Add(pId);
+
                     IDataReader reader = command.ExecuteReader();
+
+
                     while (reader.Read())
                     {
                         articles.Add(Find(Convert.ToInt32(reader[ArticleRepository.id])));
@@ -86,7 +99,11 @@ namespace assignment.Repository
                 using (IDbCommand command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = $"SELECT {ArticleRepository.id},{title},{content},{authorId},{publishDateTime},{category} FROM [Article] WHERE Id = '{id}'";
+                    command.CommandText = $"SELECT {ArticleRepository.id},{title},{content},{authorId},{publishDateTime},{category} FROM [Article] WHERE Id = @id";
+
+                    DbParameter pId = new SqlParameter("@id", id);
+                    command.Parameters.Add(pId);
+
                     IDataReader reader = command.ExecuteReader();
                     if (reader.Read())
                     {
