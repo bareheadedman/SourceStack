@@ -46,7 +46,7 @@ namespace assignment.Pages.Article
             foreach (var item in Articles)
             {
                 item.keyWords = new KeyWordRepository().FindsArticle(item.Id);
-                item.Author = new UserRepository().Find(item.Author.Id);
+                item.Author = new UserRepository().Find(item.Author.Id);  
             }
 
         }

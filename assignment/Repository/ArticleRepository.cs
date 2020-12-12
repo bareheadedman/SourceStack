@@ -18,12 +18,12 @@ namespace assignment.Repository
         private const string publishDateTime = "PublishDateTime";
         private const string category = "Category";
 
-        private string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=17BANG;Integrated Security=True;";
 
         public List<E.Article> Get(int pageIndex, int pageSize)
         {
             List<E.Article> articles = new List<Article>();
-            using (IDbConnection connection = new SqlConnection(connectionString))
+            DBHelp help = new DBHelp();
+            using (IDbConnection connection = help.GetNewConnection())
             {
                 connection.Open();
                 using (IDbCommand command = new SqlCommand())
@@ -61,8 +61,9 @@ namespace assignment.Repository
         public List<Article> FindAuthorId(int id)
         {
             List<Article> articles = new List<Article>();
+            DBHelp help = new DBHelp();
 
-            using (IDbConnection connection = new SqlConnection(connectionString))
+            using (IDbConnection connection = help.GetNewConnection())
             {
                 connection.Open();
 
@@ -93,7 +94,8 @@ namespace assignment.Repository
         public E.Article Find(int id)
         {
             E.Article article = new Article();
-            using (IDbConnection connection = new SqlConnection(connectionString))
+            DBHelp help = new DBHelp();
+            using (IDbConnection connection = help.GetNewConnection())
             {
                 connection.Open();
                 using (IDbCommand command = new SqlCommand())
@@ -130,21 +132,10 @@ namespace assignment.Repository
 
         public int ArticlesCount()
         {
-            int result = 0;
-            using (IDbConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                using (IDbCommand command = new SqlCommand())
-                {
-                    command.Connection = connection;
-                    command.CommandText = "SELECT count(*) FROM [Article] ";
-                    result = Convert.ToInt32(command.ExecuteScalar());
-                }
+            DBHelp help = new DBHelp();
+            string commandText = "SELECT count(*) FROM [Article] ";
 
-
-            }
-
-            return result;
+            return Convert.ToInt32(help.SelectScalar(commandText));
         }
     }
 }

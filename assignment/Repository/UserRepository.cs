@@ -22,14 +22,14 @@ namespace assignment.Repository
         private const string isMale = "IsMale";
 
 
-        private string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=17BANG;Integrated Security=True;";
 
         public User Find(int id)
         {
+            DBHelp help = new DBHelp();
             User user = new User();
             user.InviterBy = new User();
             user.Articles = new List<Article>();
-            using (IDbConnection connection = new SqlConnection(connectionString))
+            using (IDbConnection connection = help.GetNewConnection())
             {
                 connection.Open();
                 using (IDbCommand command = new SqlCommand())
@@ -62,31 +62,22 @@ namespace assignment.Repository
 
             return user;
         }
-        public void Save(User user)
+        public int Save(User user)
         {
-            using (IDbConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                using (IDbCommand command = new SqlCommand())
-                {
-                    command.Connection = connection;
-                    command.CommandText = $"INSERT [User]({userName},{passWord},{inviter}) VALUES(@uName,@uPassWord,@uInviterById);";
-                    DbParameter pUName = new SqlParameter("@uName", user.Name);
-                    DbParameter pUPassWord = new SqlParameter("@uPassWord", user.PassWord);
-                    DbParameter pUInviterById = new SqlParameter("@uInviterById", user.InviterBy.Id);
-                    command.Parameters.Add(pUName);
-                    command.Parameters.Add(pUPassWord);
-                    command.Parameters.Add(pUInviterById);
-
-                    command.ExecuteNonQuery();
-                }
-            }
+            DBHelp help = new DBHelp();
+            string cmdText = $"INSERT [User]({userName},{passWord},{inviter}) VALUES(@uName,@uPassWord,@uInviterById)SELECT @@IDENTITY;";
+            IDataParameter[] parameters = new IDataParameter[3];
+            parameters[0] = new SqlParameter("@uName", user.Name);
+            parameters[1] = new SqlParameter("@uPassWord", user.PassWord);
+            parameters[2] = new SqlParameter("@uInviterById", user.InviterBy.Id);
+            return help.Inster(cmdText, parameters);
         }
         public User GetByName(string name)
         {
+            DBHelp help = new DBHelp();
             User user = new User();
             user.InviterBy = new User();
-            using (IDbConnection connection = new SqlConnection(connectionString))
+            using (IDbConnection connection = help.GetNewConnection())
             {
                 connection.Open();
                 using (IDbCommand command = new SqlCommand())

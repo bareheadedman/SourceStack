@@ -23,64 +23,115 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
-            string user = Console.ReadLine().ToString();
+
 
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=17BANG;Integrated Security=True;";
+            string cmdText = "SELECT [Id],[Content] FROM [TMessage] WHERE Id = @id";
+            IDataParameter parameter = new SqlParameter("@id", 5);
+
 
             using (IDbConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
-                using (IDbCommand command = new SqlCommand())
+                IDataReader reader = ExecuteReader(cmdText, connection, parameter);
+
+                if (reader.Read())
                 {
-                    command.Connection = connection;
-                    command.CommandText = $"SELECT Inviter FROM[User] Where UserName ='@name'";
-                    DbParameter pname = new SqlParameter("@name", user);
-                    command.Parameters.Add(pname);
-
-                    object count = command.ExecuteScalar();
-
-                    if (count == DBNull.Value)
-                    {
-
-                    }
-
-
-
-                    //IDataReader reader = command.ExecuteReader();
-
-                    // while (reader.Read())
-                    // {
-                    //     for (int i = 0; i < reader.FieldCount; i++)
-                    //     {
-                    //         Console.Write(reader[i]+",");
-                    //     }
-                    //     Console.WriteLine();
-                    // }
-
-
-
-
-                    //Object count = command.ExecuteScalar();
-                    //Console.WriteLine(count);
-
-
-
-                    //command.CommandText = @"INSERT [User]([UserName],[PassWord]) VALUES('mabaoguo','1234');";
-                    //int rowsAffected = command.ExecuteNonQuery();
-                    //Console.WriteLine(rowsAffected);
+                    int Id = Convert.ToInt32(reader["Id"]);
+                    string content = reader["Content"].ToString();
                 }
+                else
+                {
 
+                }
 
             }
 
 
 
+            //using (IDbConnection connection = new SqlConnection(connectionString))
+            //{
+            //    connection.Open();
+            //    using (IDbTransaction transaction = connection.BeginTransaction())
+            //    {
+
+            //        try
+            //        {
+            //            using (IDbCommand command = new SqlCommand())
+            //            {
+            //                command.Connection = connection;
+            //                command.Transaction = transaction;
+            //                command.CommandText = "INSERT [User] ([UserName],[PassWord]) VALUES('lg','85277') ";
+            //                command.ExecuteNonQuery();
+            //                transaction.Commit();
+
+            //            }
+            //        }
+            //        catch (Exception)
+            //        {
+            //            transaction.Rollback();
+            //            throw;
+            //        }
+            //    }
+
+
+            //}
+        }
+        private static int batchExecute(string cmdText, params IDataParameter[] parameters)
+        {
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=17BANG;Integrated Security=True;";
+            int result = 0;
+            using (IDbConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (IDbTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        IDbCommand command = new SqlCommand();
+                        command.Connection = connection;
+                        command.Transaction = transaction;
+                        command.CommandText = cmdText;
+                        for (int i = 0; i < parameters.Length; i++)
+                        {
+                            command.Parameters.Add(parameters[i]);
+                            result += command.ExecuteNonQuery();
+                            command.Parameters.Clear();
+                        }
+                        transaction.Commit();
+                        return result;
+                    }
+                    catch (Exception)
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
+        public static IDataReader ExecuteReader(string cmdText, IDbConnection connection, params IDataParameter[] parameters)
+        {
+            IDbCommand command = new SqlCommand();
+            command.CommandText = cmdText;
+            for (int i = 0; i < parameters.Length; i++)
+            {
+                command.Parameters.Add(parameters[i]);
+            }
+            return executeReader(command, connection);
+        }
+
+        private static IDataReader executeReader(IDbCommand cmd, IDbConnection connection)
+        {
+            connection.Open();
+            cmd.Connection = connection;
+            return cmd.ExecuteReader();
 
 
 
         }
+
+
     }
-
-
 }
+
 

@@ -17,13 +17,13 @@ namespace assignment.Repository
         private const string articleId = "ArticleId";
 
 
-        private string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=17BANG;Integrated Security=True;";
+
 
         public E.KeyWord Find(int id)
         {
             E.KeyWord keyWord = new E.KeyWord();
-
-            using (IDbConnection connection = new SqlConnection(connectionString))
+            DBHelp help = new DBHelp();
+            using (IDbConnection connection = help.GetNewConnection())
             {
                 connection.Open();
                 using (IDbCommand command = new SqlCommand())
@@ -55,8 +55,8 @@ namespace assignment.Repository
         public List<E.KeyWord> FindsArticle(int articleid)
         {
             List<E.KeyWord> keyWords = new List<E.KeyWord>();
-
-            using (IDbConnection connection = new SqlConnection(connectionString))
+            DBHelp help = new DBHelp();
+            using (IDbConnection connection = help.GetNewConnection())
             {
                 connection.Open();
                 using (IDbCommand command = new SqlCommand())
