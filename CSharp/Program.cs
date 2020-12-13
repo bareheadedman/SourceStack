@@ -25,112 +25,46 @@ namespace CSharp
         {
 
 
+
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=17BANG;Integrated Security=True;";
-            string cmdText = "SELECT [Id],[Content] FROM [TMessage] WHERE Id = @id";
-            IDataParameter parameter = new SqlParameter("@id", 5);
+            string queryString = @"SELECT * FROM [TMessage]";
+
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlDataAdapter adapter = new SqlDataAdapter(queryString, connection);
+
+            DataSet yqBang = new DataSet();
+            adapter.Fill(yqBang, "TMessage");
+
+            yqBang.Tables[0].Rows[3]["Content"] = "马保国闪电鞭5连鞭";
+
+            DataRow row = yqBang.Tables[0].NewRow();
+            row["Content"] = "太极形意门掌门人";
+
+            yqBang.Tables[0].Rows.Add(row);
+            SqlCommand insertCmd = new SqlCommand("INSERT [TMessage]([Content]) VALUES(@content)", connection);
+            IDbDataParameter pContent = new SqlParameter("@content", SqlDbType.NVarChar);
+            pContent.SourceColumn = "Content";
+            insertCmd.Parameters.Add(pContent);
+
+            adapter.InsertCommand = insertCmd;
+
+            SqlCommand updateCmd = new SqlCommand("UPDATE [TMessage] SET [Content]= @content Where Id = @id", connection);
+            IDbDataParameter pName = new SqlParameter("@content", SqlDbType.NVarChar);
+            pName.SourceColumn = "Content";
+            IDbDataParameter pId = new SqlParameter("@id", SqlDbType.Int);
+            pId.SourceColumn = "Id";
+
+            updateCmd.Parameters.Add(pName);
+            updateCmd.Parameters.Add(pId);
+
+            adapter.UpdateCommand = updateCmd;
+
+            adapter.Update(yqBang.Tables[0]);
 
 
-            using (IDbConnection connection = new SqlConnection(connectionString))
-            {
-                IDataReader reader = ExecuteReader(cmdText, connection, parameter);
-
-                if (reader.Read())
-                {
-                    int Id = Convert.ToInt32(reader["Id"]);
-                    string content = reader["Content"].ToString();
-                }
-                else
-                {
-
-                }
-
-            }
-
-
-
-            //using (IDbConnection connection = new SqlConnection(connectionString))
-            //{
-            //    connection.Open();
-            //    using (IDbTransaction transaction = connection.BeginTransaction())
-            //    {
-
-            //        try
-            //        {
-            //            using (IDbCommand command = new SqlCommand())
-            //            {
-            //                command.Connection = connection;
-            //                command.Transaction = transaction;
-            //                command.CommandText = "INSERT [User] ([UserName],[PassWord]) VALUES('lg','85277') ";
-            //                command.ExecuteNonQuery();
-            //                transaction.Commit();
-
-            //            }
-            //        }
-            //        catch (Exception)
-            //        {
-            //            transaction.Rollback();
-            //            throw;
-            //        }
-            //    }
-
-
-            //}
-        }
-        private static int batchExecute(string cmdText, params IDataParameter[] parameters)
-        {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=17BANG;Integrated Security=True;";
-            int result = 0;
-            using (IDbConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                using (IDbTransaction transaction = connection.BeginTransaction())
-                {
-                    try
-                    {
-                        IDbCommand command = new SqlCommand();
-                        command.Connection = connection;
-                        command.Transaction = transaction;
-                        command.CommandText = cmdText;
-                        for (int i = 0; i < parameters.Length; i++)
-                        {
-                            command.Parameters.Add(parameters[i]);
-                            result += command.ExecuteNonQuery();
-                            command.Parameters.Clear();
-                        }
-                        transaction.Commit();
-                        return result;
-                    }
-                    catch (Exception)
-                    {
-                        transaction.Rollback();
-                        throw;
-                    }
-                }
-            }
-        }
-
-        public static IDataReader ExecuteReader(string cmdText, IDbConnection connection, params IDataParameter[] parameters)
-        {
-            IDbCommand command = new SqlCommand();
-            command.CommandText = cmdText;
-            for (int i = 0; i < parameters.Length; i++)
-            {
-                command.Parameters.Add(parameters[i]);
-            }
-            return executeReader(command, connection);
-        }
-
-        private static IDataReader executeReader(IDbCommand cmd, IDbConnection connection)
-        {
-            connection.Open();
-            cmd.Connection = connection;
-            return cmd.ExecuteReader();
-
-
+            //object result = dtStudents.AsEnumerable().Where(s => s["Name"].ToString() == "刘伟1").SingleOrDefault()?["Id"];
 
         }
-
-
     }
 }
 
