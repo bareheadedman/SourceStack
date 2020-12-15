@@ -22,7 +22,7 @@ namespace assignment.Repository
                     CreateTime= new DateTime(2020,1,2),
                     Reason = "奖励",
                     Content="暴打马保国奖励10个帮帮点",
-                    Belong= userRepository.Find(1)
+                    Belong= userRepository.Find(1005)
                 },
                 new Message()
                 {
@@ -30,7 +30,7 @@ namespace assignment.Repository
                     CreateTime= new DateTime(2020,1,3),
                     Reason = "奖励",
                     Content="使用闪电五连鞭奖励15个帮帮点",
-                    Belong= userRepository.Find(1)
+                    Belong= userRepository.Find(1005)
                 },
                 new Message()
                 {
@@ -38,7 +38,7 @@ namespace assignment.Repository
                     CreateTime= new DateTime(2020,1,2),
                     Reason = "奖励",
                     Content="被暴打没有闪奖励5个帮帮点",
-                    Belong= userRepository.Find(2)
+                    Belong= userRepository.Find(1005)
                 },
             };
         }

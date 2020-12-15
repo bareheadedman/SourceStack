@@ -22,7 +22,7 @@ namespace assignment.Pages
 
         public void OnGet()
         {
-            messages = messageRepository.GetByUserId(1);
+            messages = messageRepository.GetByUserId(1005);
         }
         public void OnPost()
         {
