@@ -10,8 +10,9 @@
 --依次备份/删除/恢复该数据库
 
 
-
-
+ALTER TABLE TMessage
+ADD   CONSTRAINT PK_TMessage_Id  PRIMARY KEY(Id)  ;
+--添加约束
 
 
 
