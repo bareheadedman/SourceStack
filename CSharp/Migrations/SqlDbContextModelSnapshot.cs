@@ -85,13 +85,13 @@ namespace CSharp.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("HelpBean")
+                    b.Property<int?>("HelpBean")
                         .HasColumnType("int");
 
-                    b.Property<int>("HelpMoney")
+                    b.Property<int?>("HelpMoney")
                         .HasColumnType("int");
 
-                    b.Property<int>("HelpPoint")
+                    b.Property<int?>("HelpPoint")
                         .HasColumnType("int");
 
                     b.Property<int>("Id")

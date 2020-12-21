@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharp.Migrations
 {
     [DbContext(typeof(SqlDbContext))]
-    [Migration("20201221125835_Add_HomeWork_Register")]
+    [Migration("20201221130724_Add_HomeWork_Register")]
     partial class Add_HomeWork_Register
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -87,13 +87,13 @@ namespace CSharp.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("HelpBean")
+                    b.Property<int?>("HelpBean")
                         .HasColumnType("int");
 
-                    b.Property<int>("HelpMoney")
+                    b.Property<int?>("HelpMoney")
                         .HasColumnType("int");
 
-                    b.Property<int>("HelpPoint")
+                    b.Property<int?>("HelpPoint")
                         .HasColumnType("int");
 
                     b.Property<int>("Id")

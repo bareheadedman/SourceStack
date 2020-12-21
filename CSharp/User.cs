@@ -28,10 +28,10 @@ namespace CSharp
         public string Name { get; set; }
         public string Password { get; private set; }
         //public TokenManager Tokens { get; set; }
-        public int HelpMoney { get; set; }
-        public int HelpPoint { get; set; }
-        public int HelpBean { get; set; }
-        public int FailedTry { get; set; }
+        public int? HelpMoney { get; set; }
+        public int? HelpPoint { get; set; }
+        public int? HelpBean { get; set; }
+        public int? FailedTry { get; set; }
         public DateTime CreateTime { get; set; }
 
 

@@ -13,9 +13,9 @@ namespace CSharp.Migrations
                 {
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HelpMoney = table.Column<int>(type: "int", nullable: false),
-                    HelpPoint = table.Column<int>(type: "int", nullable: false),
-                    HelpBean = table.Column<int>(type: "int", nullable: false),
+                    HelpMoney = table.Column<int>(type: "int", nullable: true),
+                    HelpPoint = table.Column<int>(type: "int", nullable: true),
+                    HelpBean = table.Column<int>(type: "int", nullable: true),
                     CreateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Id = table.Column<int>(type: "int", nullable: false)
                 },
