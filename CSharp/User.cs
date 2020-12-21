@@ -24,60 +24,15 @@ namespace CSharp
 
     sealed public class User : Entity<int>, ISendMessage, IChat
     {
-        private string _name;
 
-        public string Name
-        {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                if (value.Contains("admin") || value.Contains("17bang") || value.Contains("管理员"))
-                {
-                    Console.WriteLine("请不要使用敏感词");
-                    return;
-                }
-                _name = value;
-
-
-            }
-        }
-
-        private string _password;
-
-        public string Password
-        {
-            set
-            {
-                if (value.Length < 6)
-                {
-                    Console.WriteLine("密码长度不能低于6");
-                    return;
-                }
-                if (! PassWordCondition(value))
-                {
-                    Console.WriteLine("密码必须由大小写英语字母、数字和特殊符号（~!@#$%^&*()_+）组成");
-                    return;
-                }
-                _password = value;
-            }
-        }
-
-
-        private string _repeatPassword;
-        private string _invitedBy;
-        private string _invitedCode;
-        private string _securityCode;
-
-
-        public TokenManager Tokens { get; set; }
+        public string Name { get; set; }
+        public string Password { get; private set; }
+        //public TokenManager Tokens { get; set; }
         public int HelpMoney { get; set; }
         public int HelpPoint { get; set; }
-
         public int HelpBean { get; set; }
-
+        public int FailedTry { get; set; }
+        public DateTime CreateTime { get; set; }
 
 
 

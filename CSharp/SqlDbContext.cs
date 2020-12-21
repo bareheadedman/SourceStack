@@ -10,6 +10,7 @@ namespace CSharp
         public DbSet<Student> Students { get; set; }
         public DbSet<Major> Majors { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -41,12 +42,30 @@ namespace CSharp
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>()
+                .ToTable("Register")
+                .Property(u => u.Name)
+                .HasColumnName("UserName")
+                .HasMaxLength(256);
+            modelBuilder.Entity<User>()
+                .Property(u => u.Password)
+                .IsRequired();
+            modelBuilder.Entity<User>()
+                .HasKey(u => u.Name);
+            modelBuilder.Entity<User>()
+                .Ignore(u => u.FailedTry);
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.CreateTime).IsUnique();
+            modelBuilder.Entity<User>()
+                .HasCheckConstraint("CK_Register_CreateTime", "CreateTime >'2000-1-1'");
+
+
+
             modelBuilder.Entity<Student>()
                 .HasCheckConstraint<Student>("CK_Age", "Age Between 0 AND 150 ")
                 //.ToTable("TB_Student")
                 .Property(m => m.Name)
                 .HasMaxLength(64);
-
             modelBuilder.Entity<Student>()
                 .Property(m => m.BeForm)
                 .IsRequired();

@@ -6,6 +6,7 @@ namespace CSharp
 {
     public class TokenManager
     {
+        public int Id { get; set; }
 
         public Token Tokens { get; private set; }
 

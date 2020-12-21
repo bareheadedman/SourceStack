@@ -33,7 +33,7 @@ namespace CSharp
             }
             finally 
             {
-                Console.WriteLine($"{DateTime.Now}请求发布内容Id:{content.id}" );
+                Console.WriteLine($"{DateTime.Now}请求发布内容Id:{content.Id}" );
             }
         }
 

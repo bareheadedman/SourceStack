@@ -7,15 +7,9 @@ namespace CSharp
     public class Entity<T>
     {
 
-        private T _Id;
 
-        public T id
-        {
-            get
-            {
-                return _Id;
-            }
-        }
+        public T Id { get; set; }
+
 
 
         protected private Entity()
