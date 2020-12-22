@@ -4,72 +4,33 @@ using System.Text;
 
 namespace CSharp
 {
-
-
-
-    class Problem : Content
+    public class Problem : Content
     {
         public string Title { get; set; }
+        public int? Reward { get; set; }
 
-        private int _reward;
-        public int Reward
-        {
-            get
-            {
-                return _reward;
-            }
-            set
-            {
-                if (value > 0)
-                {
-                    _reward = value;
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException("参数越界");
-                }
-            }
-        }
+        public ProblemStatus ProblemStatus { get; set; }
 
-        public IList<Comment<Problem>> Comments;
+        public Summary Summary { get; set; }
+
+        public IList<Comment<Problem>>? Comments;
         public Problem(string body) : base("problem")
         {
             Body = body;
         }
 
-        private string[] _keyWord = new string[10];
-
-        public string this[int index]
-        {
-            get
-            {
-                return _keyWord[index - 1];
-            }
-            set
-            {
-                _keyWord[index - 1] = value;
-            }
-        }
-
-
-
         public void Load(int id)
         {
 
         }
-
         public void Delete(int id)
         {
 
         }
-
         public void repoistory()
         {
 
         }
-
-
-
 
 
         [HelpMoneyChanged(Amount = (-1)/*Reward*/, Message = "发布悬赏")]

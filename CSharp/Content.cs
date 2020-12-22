@@ -18,10 +18,10 @@ namespace CSharp
         public string Body { get; set; }
 
         protected private string kind;
-        public DateTime CreateTime { get; private set; }
+        public DateTime? CreateTime { get; private set; }
 
 
-        public DateTime PublishTime { get; protected set; }
+        public DateTime? PublishTime { get; protected set; }
 
 
         protected private Content(string kind)

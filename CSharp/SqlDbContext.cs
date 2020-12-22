@@ -11,6 +11,8 @@ namespace CSharp
         public DbSet<Major> Majors { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Problem> Problems { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -58,6 +60,8 @@ namespace CSharp
                 .HasIndex(u => u.CreateTime).IsUnique();
             modelBuilder.Entity<User>()
                 .HasCheckConstraint("CK_Register_CreateTime", "CreateTime >'2000-1-1'");
+
+
 
 
 
