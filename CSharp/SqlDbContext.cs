@@ -13,6 +13,10 @@ namespace CSharp
         public DbSet<User> Users { get; set; }
         public DbSet<Problem> Problems { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<Content> Contents { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<Suggest> Suggests { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -61,6 +65,10 @@ namespace CSharp
             modelBuilder.Entity<User>()
                 .HasCheckConstraint("CK_Register_CreateTime", "CreateTime >'2000-1-1'");
 
+            modelBuilder.Entity<User>()
+                .HasOne<Email>(u => u.Email)
+                .WithOne()
+                .HasForeignKey<User>(u => u.EmailId);
 
 
 

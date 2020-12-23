@@ -40,7 +40,7 @@ namespace CSharp
             //User mbg = new User("马保国", "1234")
             //{
             //    CreateTime = DateTime.Now,
-            //    Id=1
+            //    Id = 1
             //};
 
             //User mxg = new User("马大国", "1234")
@@ -54,7 +54,7 @@ namespace CSharp
             //    CreateTime = DateTime.Now,
             //    Id = 3
             //};
-            //context.AddRange(mbg,mxg,mdg);
+            //context.AddRange(mbg, mxg, mdg);
 
 
 
@@ -125,6 +125,13 @@ namespace CSharp
             //);
 
             //IList<Message> messages = GetMessages();
+
+
+            //            观察一起帮的功能，思考并
+            //Email和User有一对一的关系，参照课堂演示，在数据库上建立User外键引用Email的映射
+            //按继承映射：Blog / Article / Suggest以及他们的父类Content
+
+
 
 
 
