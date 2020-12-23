@@ -12,7 +12,6 @@ namespace CSharp
 
         //Content中的createTime，不能被子类使用，但只读属性PublishTime使用它为外部提供内容的发布时间
 
-
         public User Author { get; set; }
 
         public string Body { get; set; }
@@ -24,11 +23,6 @@ namespace CSharp
         public DateTime? PublishTime { get; protected set; }
 
 
-        protected private Content(string kind)
-        {
-            CreateTime = DateTime.Now;
-            this.kind = kind;
-        }
 
         virtual public void Publish()
         {

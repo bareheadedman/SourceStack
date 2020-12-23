@@ -8,9 +8,5 @@ namespace CSharp
     {
         public string Sites { get; set; }
 
-        public Blog() : base("Blog")
-        {
-
-        }
     }
 }

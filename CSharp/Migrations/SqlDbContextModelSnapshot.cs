@@ -35,10 +35,6 @@ namespace CSharp.Migrations
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime?>("PublishTime")
                         .HasColumnType("datetime2");
 
@@ -47,8 +43,6 @@ namespace CSharp.Migrations
                     b.HasIndex("AuthorName");
 
                     b.ToTable("Contents");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Content");
                 });
 
             modelBuilder.Entity("CSharp.Email", b =>
@@ -219,7 +213,7 @@ namespace CSharp.Migrations
 
                     b.HasIndex("targetId");
 
-                    b.HasDiscriminator().HasValue("Article");
+                    b.ToTable("ArticleS");
                 });
 
             modelBuilder.Entity("CSharp.Blog", b =>
@@ -229,7 +223,7 @@ namespace CSharp.Migrations
                     b.Property<string>("Sites")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasDiscriminator().HasValue("Blog");
+                    b.ToTable("Blogs");
                 });
 
             modelBuilder.Entity("CSharp.Problem", b =>
@@ -246,12 +240,11 @@ namespace CSharp.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Problem_Title");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasIndex("SummaryId");
 
-                    b.HasDiscriminator().HasValue("Problem");
+                    b.ToTable("Porblem");
                 });
 
             modelBuilder.Entity("CSharp.Suggest", b =>
@@ -259,10 +252,9 @@ namespace CSharp.Migrations
                     b.HasBaseType("CSharp.Content");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Suggest_Title");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasDiscriminator().HasValue("Suggest");
+                    b.ToTable("Suggests");
                 });
 
             modelBuilder.Entity("CSharp.Content", b =>
@@ -285,6 +277,12 @@ namespace CSharp.Migrations
 
             modelBuilder.Entity("CSharp.Article", b =>
                 {
+                    b.HasOne("CSharp.Content", null)
+                        .WithOne()
+                        .HasForeignKey("CSharp.Article", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+
                     b.HasOne("CSharp.Article", "target")
                         .WithMany()
                         .HasForeignKey("targetId");
@@ -292,13 +290,37 @@ namespace CSharp.Migrations
                     b.Navigation("target");
                 });
 
+            modelBuilder.Entity("CSharp.Blog", b =>
+                {
+                    b.HasOne("CSharp.Content", null)
+                        .WithOne()
+                        .HasForeignKey("CSharp.Blog", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("CSharp.Problem", b =>
                 {
+                    b.HasOne("CSharp.Content", null)
+                        .WithOne()
+                        .HasForeignKey("CSharp.Problem", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+
                     b.HasOne("CSharp.Summary", "Summary")
                         .WithMany()
                         .HasForeignKey("SummaryId");
 
                     b.Navigation("Summary");
+                });
+
+            modelBuilder.Entity("CSharp.Suggest", b =>
+                {
+                    b.HasOne("CSharp.Content", null)
+                        .WithOne()
+                        .HasForeignKey("CSharp.Suggest", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -9,14 +9,10 @@ namespace CSharp
         public string Title { get; set; }
 
 
-        public Suggest() : base("suggest")
-        {
 
-        }
-
-        public IList<Comment<Suggest>> Comments;
-        public IList<Keyword<Suggest>> Keywords;
-        public IList<Appraise> Appraises;
+        //public IList<Comment<Suggest>> Comments;
+        //public IList<Keyword<Suggest>> Keywords;
+        //public IList<Appraise> Appraises;
         override public void Publish()
         {
             if (Author == null)

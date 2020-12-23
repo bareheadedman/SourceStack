@@ -11,12 +11,13 @@ namespace CSharp
         public DbSet<Major> Majors { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Problem> Problems { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Content> Contents { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Article> Articles { get; set; }
-        public DbSet<Suggest> Suggests { get; set; }
+        public DbSet<Problem> Problems { get; set; }
+        public DbSet<Suggest> suggests { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -81,6 +82,14 @@ namespace CSharp
             modelBuilder.Entity<Student>()
                 .Property(m => m.BeForm)
                 .IsRequired();
+
+
+            modelBuilder.Entity<Blog>().ToTable("Blogs");
+            modelBuilder.Entity<Article>().ToTable("ArticleS");
+            modelBuilder.Entity<Suggest>().ToTable("Suggests");
+            modelBuilder.Entity<Problem>().ToTable("Porblem");
+
+
 
 
             //modelBuilder.Entity<Major>()

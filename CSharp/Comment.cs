@@ -19,9 +19,6 @@ namespace CSharp
         public List<Appraise> Appraises;
         public IList<Comment<T>> Comments;
 
-        public Comment() : base("comment")
-        {
-        }
 
 
     }

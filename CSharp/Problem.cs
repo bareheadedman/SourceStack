@@ -14,10 +14,6 @@ namespace CSharp
         public Summary Summary { get; set; }
 
         public IList<Comment<Problem>>? Comments;
-        public Problem(string body) : base("problem")
-        {
-            Body = body;
-        }
 
         public void Load(int id)
         {

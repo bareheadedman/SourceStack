@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharp.Migrations
 {
     [DbContext(typeof(SqlDbContext))]
-    [Migration("20201222134124_Email")]
-    partial class Email
+    [Migration("20201223124604_Content-Blog-Article-Suggest-Problem")]
+    partial class ContentBlogArticleSuggestProblem
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,32 @@ namespace CSharp.Migrations
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.1");
+
+            modelBuilder.Entity("CSharp.Content", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("AuthorName")
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("Body")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("PublishTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorName");
+
+                    b.ToTable("Contents");
+                });
 
             modelBuilder.Entity("CSharp.Email", b =>
                 {
@@ -76,46 +102,6 @@ namespace CSharp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Messages");
-                });
-
-            modelBuilder.Entity("CSharp.Problem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("AuthorName")
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("Body")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CreateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ProblemStatus")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("PublishTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("Reward")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SummaryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuthorName");
-
-                    b.HasIndex("SummaryId");
-
-                    b.ToTable("Problems");
                 });
 
             modelBuilder.Entity("CSharp.Student", b =>
@@ -217,19 +203,69 @@ namespace CSharp.Migrations
                     b.HasCheckConstraint("CK_Register_CreateTime", "CreateTime >'2000-1-1'");
                 });
 
+            modelBuilder.Entity("CSharp.Article", b =>
+                {
+                    b.HasBaseType("CSharp.Content");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("targetId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("targetId");
+
+                    b.ToTable("ArticleS");
+                });
+
+            modelBuilder.Entity("CSharp.Blog", b =>
+                {
+                    b.HasBaseType("CSharp.Content");
+
+                    b.Property<string>("Sites")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("Blogs");
+                });
+
             modelBuilder.Entity("CSharp.Problem", b =>
+                {
+                    b.HasBaseType("CSharp.Content");
+
+                    b.Property<int>("ProblemStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Reward")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SummaryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasIndex("SummaryId");
+
+                    b.ToTable("Porblem");
+                });
+
+            modelBuilder.Entity("CSharp.Suggest", b =>
+                {
+                    b.HasBaseType("CSharp.Content");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("Suggests");
+                });
+
+            modelBuilder.Entity("CSharp.Content", b =>
                 {
                     b.HasOne("CSharp.User", "Author")
                         .WithMany()
                         .HasForeignKey("AuthorName");
 
-                    b.HasOne("CSharp.Summary", "Summary")
-                        .WithMany()
-                        .HasForeignKey("SummaryId");
-
                     b.Navigation("Author");
-
-                    b.Navigation("Summary");
                 });
 
             modelBuilder.Entity("CSharp.User", b =>
@@ -239,6 +275,54 @@ namespace CSharp.Migrations
                         .HasForeignKey("CSharp.User", "EmailId");
 
                     b.Navigation("Email");
+                });
+
+            modelBuilder.Entity("CSharp.Article", b =>
+                {
+                    b.HasOne("CSharp.Content", null)
+                        .WithOne()
+                        .HasForeignKey("CSharp.Article", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+
+                    b.HasOne("CSharp.Article", "target")
+                        .WithMany()
+                        .HasForeignKey("targetId");
+
+                    b.Navigation("target");
+                });
+
+            modelBuilder.Entity("CSharp.Blog", b =>
+                {
+                    b.HasOne("CSharp.Content", null)
+                        .WithOne()
+                        .HasForeignKey("CSharp.Blog", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CSharp.Problem", b =>
+                {
+                    b.HasOne("CSharp.Content", null)
+                        .WithOne()
+                        .HasForeignKey("CSharp.Problem", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+
+                    b.HasOne("CSharp.Summary", "Summary")
+                        .WithMany()
+                        .HasForeignKey("SummaryId");
+
+                    b.Navigation("Summary");
+                });
+
+            modelBuilder.Entity("CSharp.Suggest", b =>
+                {
+                    b.HasOne("CSharp.Content", null)
+                        .WithOne()
+                        .HasForeignKey("CSharp.Suggest", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
