@@ -132,7 +132,7 @@ namespace CSharp
             //按继承映射：Blog / Article / Suggest以及他们的父类Content
 
 
-            context.Add<Problem>(new Problem() { Author = new User("过过过", "") { CreateTime = DateTime.Now }, Body = "闪电鞭", Title = "打好闪电鞭", ProblemStatus = ProblemStatus.Helping });
+            //context.Add<Problem>(new Problem() { Author = new User("过过过", "") { CreateTime = DateTime.Now }, Body = "闪电鞭", Title = "打好闪电鞭", ProblemStatus = ProblemStatus.Helping });
 
 
             context.SaveChanges();

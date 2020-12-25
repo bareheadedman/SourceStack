@@ -4,6 +4,9 @@ using System.Text;
 
 namespace CSharp
 {
+    /// <summary>
+    /// 求助的状态
+    /// </summary>
     public enum ProblemStatus
     {
         /// <summary>

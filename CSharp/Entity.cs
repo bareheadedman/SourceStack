@@ -4,24 +4,9 @@ using System.Text;
 
 namespace CSharp
 {
-    public class Entity<T>
+    public class Entity
     {
-
-
-        public T Id { get; set; }
-
-
-
-        protected private Entity()
-        {
-
-        }
-
-
-
-
-
-
+        public int Id { get; set; }
 
     }
 }

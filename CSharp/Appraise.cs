@@ -4,30 +4,43 @@ using System.Text;
 
 namespace CSharp
 {
-    public class Appraise
+    /// <summary>
+    /// 评价
+    /// </summary>
+    public class Appraise : IAppraise
     {
-        //每个文章和评论都有一个评价
-
-
+        /// <summary>
+        /// 投票人
+        /// </summary>
         public User vote { get; set; }
+        /// <summary>
+        /// 投的什么票
+        /// </summary>
         public UpOrdown Direction { get; private set; }
 
+        /// <summary>
+        /// 投票赞
+        /// </summary>
+        /// <param name="vote"> 投票人</param>
+        public void AgreeBy(User vote)
+        {
+            Direction = UpOrdown.Up;
 
-
-        public void Disagree()
+        }
+        /// <summary>
+        /// 投票踩
+        /// </summary>
+        /// <param name="vote">投票人</param>
+        public void DisAgreeBy(User vote)
         {
             Direction = UpOrdown.Down;
+
         }
-
-        public void Agree()
-        {
-
-            Direction = UpOrdown.Up;
-        }
-
-
     }
 
+    /// <summary>
+    /// 储存投的什么票
+    /// </summary>
     public enum UpOrdown
     {
         Up,

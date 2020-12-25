@@ -5,21 +5,21 @@ using System.Text;
 namespace CSharp
 {
 
-    class Article : Content, IAppraise
+    /// <summary>
+    /// 文章
+    /// </summary>
+    public class Article : Content, IAppraise
     {
-
-
-        //一篇文章可以有多个评论
-        //每个文章和评论都有一个评价
-
-
-        //public IList<Comment<Article>> Comments;
-        //public IList<Keyword<Article>> Keywords;
-        //public IList<Appraise> AppraiseS;
-
-        
+        /// <summary>
+        /// 标题
+        /// </summary>
         public string Title { get; set; }
-        public Article target { get; set; }
+
+        public Category Category { get; set; }
+        public IList<Comment> Comments { get; set; }
+        public IList<Keyword> Keywords { get; set; }
+        public IList<Appraise> AppraiseS { get; set; }
+
 
 
 

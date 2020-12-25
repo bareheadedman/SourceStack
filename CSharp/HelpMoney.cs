@@ -4,27 +4,22 @@ using System.Text;
 
 namespace CSharp
 {
-    //帮帮币版块，定义一个类HelpMoney，表示一行帮帮币交易数据，包含你认为应该包含的字段和方法
 
-    public class HelpMoney : Entity<int>
+    /// <summary>
+    /// 帮帮币
+    /// </summary>
+    public class HelpMoney
     {
-        public DateTime Time;
-
-
-
-        public int Usable;
-        public int NotAvailable;
-        public string Kind;
-        public int Variation;
-        public string Explain;
-        public string User;
-
-        public void Get(HelpMoney Helpmoney)
-        {
-            Console.WriteLine("");
-        }
-
-
-
+        public int Id { get; set; }
+        /// <summary>
+        /// 还剩多少可用
+        /// </summary>
+        public int Surplus { get; set; }
+        /// <summary>
+        /// 帮帮币收支的具体明细
+        /// </summary>
+        public IList<Account> Accounts { get; set; }
     }
+
 }
+

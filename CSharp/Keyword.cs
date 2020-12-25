@@ -4,14 +4,21 @@ using System.Text;
 
 namespace CSharp
 {
-    public class Keyword<T> // 关键字
+    /// <summary>
+    /// 关键字
+    /// </summary>
+    public class Keyword
     {
 
-        //一篇文章可以有多个关键字，一个关键字可以对应多篇文章
-
-        public string Name;
-
-        public IList<T> contents;
+        public int Id { get; set; }
+        /// <summary>
+        /// 关键字的名字
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
+        /// 被使用
+        /// </summary>
+        public IList<Content> References { get; set; }
 
 
     }

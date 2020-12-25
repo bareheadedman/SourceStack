@@ -7,17 +7,28 @@ namespace CSharp
 
 
 
-    //一个评论必须有一个它所评论的文章
-    //每个文章和评论都有一个评价
 
-
-
-    public class Comment<T> : Content //评论
+    /// <summary>
+    /// 评论
+    /// </summary>
+    public class Comment : Content
     {
+        /// <summary>
+        /// 内容
+        /// </summary>
         public string Content;
-        public T Refer;
+        /// <summary>
+        /// 评论的谁
+        /// </summary>
+        public Comment Refer;
+        /// <summary>
+        /// 评价
+        /// </summary>
         public List<Appraise> Appraises;
-        public IList<Comment<T>> Comments;
+        /// <summary>
+        /// 被评论
+        /// </summary>
+        public IList<Comment> Comments;
 
 
 

@@ -4,6 +4,9 @@ using System.Text;
 
 namespace CSharp
 {
+    /// <summary>
+    /// 总结
+    /// </summary>
     public class Summary
     {
         public int Id { get; set; }
