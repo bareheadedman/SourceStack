@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Repositories
+namespace BLL.Repositories
 {
     class HelpMoneyRepository
     {

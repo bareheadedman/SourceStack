@@ -1,10 +1,10 @@
-﻿using Entities;
+﻿using BLL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Text;
 
-namespace Repositories
+namespace BLL.Repositories
 {
     class SqlDbContext : DbContext
     {
@@ -39,7 +39,19 @@ namespace Repositories
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
+
+
+
             modelBuilder.Entity<User>().ToTable("Users");
+            modelBuilder.Entity<Message>().ToTable("Messages");
+            modelBuilder.Entity<Content>().ToTable("Contents");
+            modelBuilder.Entity<Article>().ToTable("Articles");
+            modelBuilder.Entity<Problem>().ToTable("Problems");
+            modelBuilder.Entity<Suggest>().ToTable("suggests");
+            modelBuilder.Entity<Keyword>().ToTable("Keywords");
+            modelBuilder.Entity<Category>().ToTable("Categories");
+            modelBuilder.Entity<HelpMoney>().ToTable("HelpMoneys");
+
 
 
             base.OnModelCreating(modelBuilder);

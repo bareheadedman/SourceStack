@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Entities
+namespace BLL.Entities
 {
     /// <summary>
     /// 总结

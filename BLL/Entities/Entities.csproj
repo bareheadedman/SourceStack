@@ -7,8 +7,8 @@
     <ProjectGuid>{F37F079C-93F5-4672-AA94-0BE901EB6B6E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Entities</RootNamespace>
-    <AssemblyName>Entities</AssemblyName>
+    <RootNamespace>BLL.Entities</RootNamespace>
+    <AssemblyName>BLL.Entities</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

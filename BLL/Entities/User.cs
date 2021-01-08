@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Entities
+namespace BLL.Entities
 {
     /// <summary>
     /// 用户

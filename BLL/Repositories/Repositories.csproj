@@ -8,8 +8,8 @@
     <ProjectGuid>{0E09EEC0-1809-4817-84B5-A0606412D810}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Repositories</RootNamespace>
-    <AssemblyName>Repositories</AssemblyName>
+    <RootNamespace>BLL.Repositories</RootNamespace>
+    <AssemblyName>BLL.Repositories</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -53,6 +53,11 @@
   <ItemGroup>
     <Compile Include="ArticleRepository.cs" />
     <Compile Include="HelpMoneyRepository.cs" />
+    <Compile Include="Migrations\202101081242015_init.cs" />
+    <Compile Include="Migrations\202101081242015_init.designer.cs">
+      <DependentUpon>202101081242015_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProblemRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlDbContext.cs" />
@@ -67,6 +72,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202101081242015_init.resx">
+      <DependentUpon>202101081242015_init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

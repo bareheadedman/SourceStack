@@ -1,9 +1,9 @@
-﻿using Entities;
+﻿using BLL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Repositories
+namespace BLL.Repositories
 {
     class ProblemRepository
     {

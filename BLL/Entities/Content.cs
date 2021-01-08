@@ -5,7 +5,7 @@ using System.Dynamic;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace Entities
+namespace BLL.Entities
 {
     /// <summary>
     /// 内容的抽象类
