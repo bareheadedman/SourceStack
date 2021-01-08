@@ -7,26 +7,38 @@ using System.Text;
 
 namespace CSharp
 {
-    public abstract class Content : Entity<int>
+    /// <summary>
+    /// 内容的抽象类
+    /// </summary>
+    public abstract class Content : Entity
     {
-
-        //Content中的createTime，不能被子类使用，但只读属性PublishTime使用它为外部提供内容的发布时间
-
+        /// <summary>
+        /// 作者
+        /// </summary>
         public User Author { get; set; }
-
+        /// <summary>
+        /// 内容的主体
+        /// </summary>
         public string Body { get; set; }
+        /// <summary>
+        /// 内容的种类
+        /// </summary>
+        protected private string Kind { get; set; }
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreateTime { get; set; }
+        /// <summary>
+        /// 发布时间
+        /// </summary>
+        public DateTime PublishTime { get; set; }
 
-        protected private string kind;
-        public DateTime? CreateTime { get; private set; }
 
 
-        public DateTime? PublishTime { get; protected set; }
-
-
-
-        virtual public void Publish()
+        public Content(string kind)
         {
-
+            Kind = kind;
+            CreateTime = DateTime.Now;
         }
 
 

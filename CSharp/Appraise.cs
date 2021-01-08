@@ -9,6 +9,7 @@ namespace CSharp
     /// </summary>
     public class Appraise : IAppraise
     {
+        public int Id { get; set; }
         /// <summary>
         /// 投票人
         /// </summary>

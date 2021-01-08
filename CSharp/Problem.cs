@@ -10,6 +10,12 @@ namespace CSharp
     /// </summary>
     public class Problem : Content
     {
+
+        public Problem() : base("求助")
+        {
+        }
+
+
         /// <summary>
         /// 标题
         /// </summary>
@@ -17,7 +23,7 @@ namespace CSharp
         /// <summary>
         /// 悬赏
         /// </summary>
-        public int? Reward { get; set; }
+        public int Reward { get; set; }
         /// <summary>
         /// 求助的状态
         /// </summary>
@@ -29,39 +35,11 @@ namespace CSharp
         /// <summary>
         /// 被评论
         /// </summary>
-        public IList<Comment>? Comments;
-
-
-
-
-        public void Load(int id)
-        {
-
-        }
-        public void Delete(int id)
-        {
-
-        }
-        public void repoistory()
-        {
-
-        }
-
-
-        [HelpMoneyChanged(Amount = (-1)/*Reward*/, Message = "发布悬赏")]
-        override public void Publish()
-        {
-            if (Author == null)
-            {
-                throw new ArgumentNullException("参数为空");
-            }
-            PublishTime = DateTime.Now;
-            Author.HelpMoney -= Reward;
-            Console.WriteLine("消耗悬赏的帮帮币");
-        }
-
-
-
+        public IList<Comment>? Comments { get; set; }
+        /// <summary>
+        /// 使用的那些关键字
+        /// </summary>
+        public IList<Keyword> Keywords { get; set; }
 
     }
 }

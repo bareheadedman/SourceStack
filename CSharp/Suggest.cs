@@ -8,8 +8,16 @@ namespace CSharp
     /// <summary>
     /// 意见建议
     /// </summary>
-    class Suggest : Content, IAppraise
+    public class Suggest : Content, IAppraise
     {
+
+        public Suggest() : base("意见建议")
+        {
+
+        }
+
+        
+
         /// <summary>
         /// 标题
         /// </summary>
@@ -21,15 +29,6 @@ namespace CSharp
         //public IList<Keyword<Suggest>> Keywords;
         //public IList<Appraise> Appraises;
 
-        override public void Publish()
-        {
-            if (Author == null)
-            {
-                throw new ArgumentNullException("参数为空");
-            }
-            PublishTime = DateTime.Now;
-            Console.WriteLine("不消耗帮帮币");
-        }
         public void AgreeBy(User vote)
         {
             this.Author.HelpPoint++;

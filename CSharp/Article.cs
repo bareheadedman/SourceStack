@@ -10,28 +10,45 @@ namespace CSharp
     /// </summary>
     public class Article : Content, IAppraise
     {
+
+        public Article() : base("文章")
+        {
+        }
+
+
         /// <summary>
         /// 标题
         /// </summary>
         public string Title { get; set; }
-
+        /// <summary>
+        /// 属于哪个系列分类
+        /// </summary>
         public Category Category { get; set; }
+        /// <summary>
+        /// 有那些评论
+        /// </summary>
         public IList<Comment> Comments { get; set; }
+        /// <summary>
+        /// 使用了那些关键字
+        /// </summary>
         public IList<Keyword> Keywords { get; set; }
+        /// <summary>
+        /// 有那些评价
+        /// </summary>
         public IList<Appraise> AppraiseS { get; set; }
 
 
 
 
-        [HelpMoneyChanged(Amount = (-1), Message = "发布文章")]
-        override public void Publish()
+        public void Publish()
         {
+
             if (Author == null)
             {
                 throw new ArgumentNullException("参数为空");
             }
             PublishTime = DateTime.Now;
-            Author.HelpMoney--;
+            Author.HelpMoney.Surplus--;
             Console.WriteLine("消耗一个帮帮币");
         }
 
@@ -46,6 +63,8 @@ namespace CSharp
             this.Author.HelpPoint++;
             vote.HelpPoint++;
         }
+
+
 
     }
 }

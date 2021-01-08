@@ -4,8 +4,9 @@ using System.Text;
 
 namespace CSharp
 {
-    public class Blog : Content
+    public class Blog
     {
+        public int Id { get; set; }
         public string Sites { get; set; }
 
     }

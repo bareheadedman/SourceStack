@@ -12,7 +12,7 @@ namespace NUnitTestProject1
         [Test]
         public void PassWordTest()
         {
-            User lw = new User("", "");
+            User lw = new User();
 
 
             //"abcdefghijklmnopqrstuvwxyz"
@@ -40,7 +40,7 @@ namespace NUnitTestProject1
         [Test]
         public void GetCountTest()
         {
-            User lw = new User("", "");
+            User lw = new User();
 
             Assert.AreEqual(3, lw.GetCount(",,,6321", ","));
             Assert.AreEqual(3, lw.GetCount("12,,2,4", ","));
@@ -55,7 +55,7 @@ namespace NUnitTestProject1
         [Test]
         public void MiniJoin()
         {
-            User lw = new User("", "");
+            User lw = new User();
 
             Assert.AreEqual("飞哥a2a3", lw.mimicJoin("a", "飞哥", "2", "3"));
 

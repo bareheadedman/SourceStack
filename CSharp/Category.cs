@@ -21,10 +21,12 @@ namespace CSharp
         /// </summary>
         public string Name { get; set; }
 
+
         /// <summary>
         /// 有哪些文章
         /// </summary>
         public IList<Article> Articles { get; set; }
+
 
         /// <summary>
         /// 有哪些子系列

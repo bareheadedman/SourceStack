@@ -28,11 +28,10 @@ namespace CSharp
 
             SqlDbContext context = new SqlDbContext();
 
+
             //var db = context.Database;
-            //db.Migrate();
             //db.EnsureDeleted();
             //db.EnsureCreated();
-
 
 
             //利用EF，插入3个User对象
@@ -132,7 +131,140 @@ namespace CSharp
             //按继承映射：Blog / Article / Suggest以及他们的父类Content
 
 
-            //context.Add<Problem>(new Problem() { Author = new User("过过过", "") { CreateTime = DateTime.Now }, Body = "闪电鞭", Title = "打好闪电鞭", ProblemStatus = ProblemStatus.Helping });
+            //contexkt.Add<Problem>(new Problem() { Author = new User("过过过", "") { CreateTime = DateTime.Now }, Body = "闪电鞭", Title = "打好闪电鞭", ProblemStatus = ProblemStatus.Helping });
+
+
+
+
+            //发布文章和求助时包含关键字（keyword）
+
+            //ProblemRepository problemRepository = new ProblemRepository();
+
+            //context.Add(
+            //    new Problem()
+            //    {
+            //        Title = "如何打好闪电五连鞭",
+            //        Body = "求大佬解答",
+            //        Keywords = new List<Keyword>() { new Keyword() { Name = "闪电鞭" } },
+            //        Reward = 5,
+            //        PublishTime = DateTime.Now,
+            //        Author = context.Users.Where(U => U.Id == 1).Include(U => U.HelpMoney).FirstOrDefault()
+            //    }
+
+            //    );
+
+            //context.Add(
+            //    new Problem()
+            //    {
+            //        Title = "闪电五连鞭",
+            //        Body = "等马保国老师",
+            //        Keywords = new List<Keyword>() { context.Keywords.Find(1) },
+            //        Reward = 5,
+            //        PublishTime = DateTime.Now,
+            //        Author = context.Users.Where(U => U.Id == 1).Include(U => U.HelpMoney).FirstOrDefault()
+            //    }
+
+            //    );
+
+
+            //context.Add(
+            //    new Problem()
+            //    {
+            //        Title = "马保国是骗子",
+            //        Body = "我被马保国骗了",
+            //        Keywords = new List<Keyword>() { new Keyword() { Name = "骗子" } },
+            //        Reward = 5,
+            //        PublishTime = DateTime.Now,
+            //        Author = context.Users.Where(U => U.Id == 1).Include(U => U.HelpMoney).FirstOrDefault()
+            //    }
+
+            //    );
+
+
+            //可以按关键字筛选求助
+
+            //var result = context.Keywords.Where(k => k.Name == "闪电鞭").Include(k => k.Problems).ToList();
+
+
+
+            //能够按作者（Author）/ 分类（Category）显示文章列表
+
+            //User xm = new User() { Name = "小马", Password = "", CreateTime = DateTime.Now, HelpMoney = new HelpMoney() { Surplus = 20 } };
+            //User xn = new User() { Name = "小牛", Password = "", CreateTime = DateTime.Now, HelpMoney = new HelpMoney() { Surplus = 20 } };
+
+            //context.AddRange(xm, xn);
+
+            //context.Add(new Article() { Title = "小马发布的文章", Body = "", PublishTime = DateTime.Now, Author = xm });
+            //context.Add(new Article() { Title = "小牛发布的文章", Body = "", PublishTime = DateTime.Now, Author = xn });
+
+            //var article = context.Articles.Where(a => a.Author.Name == "小马").ToList();
+
+            //var xm = context.Users.Where(u => u.Name == "小马").SingleOrDefault();
+            //var xn = context.Users.Where(u => u.Name == "小牛").SingleOrDefault();
+
+            //Category category1 = new Category() { Name = "精品文章", Author = xm };
+            //Category category2 = new Category() { Name = "精品文章", Author = xn };
+
+            //context.Add(category1);
+            //context.Add(category2);
+            //context.Add(new Article() { Title = "精品系列-小马发布", Body = "", PublishTime = DateTime.Now, Category = category1 });
+            //context.Add(new Article() { Title = "日常系列-小牛发布", Body = "", PublishTime = DateTime.Now, Category = category2 });
+
+            //var result = context.Categories.Where(c => c.Id == 1).Include(c => c.Author).Include(c => c.Articles).SingleOrDefault();
+
+
+            //能够选择文章列表的排序方向（按发布时间顺序倒序）和每页显示格式（50篇标题 / 10篇标题 + 摘要）
+
+
+            //var result = GetbyArticles(true, false);
+
+
+
+            //发布文章会：扣掉作者1枚帮帮币、增加10个帮帮点
+
+            //帮帮点和帮帮币的每一次变更都会被记录并可以显示
+
+            //UserRepository userRepository = new UserRepository();
+
+            //User xm = userRepository.GetUserById(1);
+
+            //Article article = new Article()
+            //{
+            //    Title = "精品系列666-小马发布",
+            //    Body = "",
+            //    PublishTime = DateTime.Now,
+            //    Author = xm
+            //};
+
+            //xm.Articles = new List<Article>();
+            //xm.Articles.Add(article);
+            //article.Publish();
+
+            //xm.HelpMoney.Accounts = new List<Account>() { new Account() { CreateTime = DateTime.Now, Freeze = 0, Remark = "发布文章", Variation = "-1", Usable = xm.HelpMoney.Surplus } };
+
+            //userRepository.Save();
+
+
+            //发布求助时可以设置悬赏帮帮币，发布后会被冻结，求助被解决时会划拨给好心人
+
+            User xn = context.Users.Include(u => u.HelpMoney).Where(u => u.Id == 2).SingleOrDefault();
+
+            Problem p1 = new Problem()
+            {
+                Title = "想学闪电五连鞭",
+                Body = "强身健体",
+                ProblemStatus = ProblemStatus.Helping,
+                Author = xn,
+                CreateTime = DateTime.Now,
+                PublishTime = DateTime.Now,
+                Reward = 5,
+
+            };
+            xn.HelpMoney.Surplus -= 5;
+            xn.HelpMoney.Accounts = new List<Account>() { new Account() { CreateTime = DateTime.Now, Freeze = 5, Remark = "求助的悬赏", Usable = xn.HelpMoney.Surplus, Variation = "-5" } };
+            context.Add(p1);
+
+
 
 
             context.SaveChanges();
@@ -184,6 +316,36 @@ namespace CSharp
 
             return context.Messages.FromSqlInterpolated($"SELECT * FROM Messages ORDER bY HasRead , DateTime DESC").ToList();
 
+        }
+
+        static IList<Article> GetbyArticles(bool LongORshort, bool desctime)
+        {
+            SqlDbContext context = new SqlDbContext();
+            IQueryable<Article> articles = context.Articles;
+
+            if (LongORshort)
+            {
+                articles = context.Articles.Take(50);
+            }
+            else
+            {
+                articles = context.Articles.Take(10);
+
+            }
+
+
+            if (desctime)
+            {
+                articles = context.Articles.OrderByDescending(a => a.PublishTime);
+            }
+            else
+            {
+                articles = context.Articles.OrderBy(a => a.PublishTime);
+
+            }
+
+
+            return articles.ToList();
         }
 
     }

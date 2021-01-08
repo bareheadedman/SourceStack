@@ -19,12 +19,12 @@ namespace CSharp
         /// <summary>
         /// 用户名密码
         /// </summary>
-        public string Password { get; private set; }
+        public string Password { get; set; }
         //public TokenManager Tokens { get; set; }
         /// <summary>
         /// 帮帮币
         /// </summary>
-        public int? HelpMoney { get; set; }
+        public HelpMoney HelpMoney { get; set; }
         /// <summary>
         /// 帮帮点
         /// </summary>
@@ -37,6 +37,22 @@ namespace CSharp
         /// 创建时间
         /// </summary>
         public DateTime CreateTime { get; set; }
+        /// <summary>
+        /// 用户发布的文章
+        /// </summary>
+        public IList<Article> Articles { get; set; }
+        /// <summary>
+        /// 用户发布的求助
+        /// </summary>
+        public IList<Problem> Problems { get; set; }
+        /// <summary>
+        /// 用户发布的意见建议
+        /// </summary>
+        public IList<Suggest> Suggests { get; set; }
+        /// <summary>
+        /// 用户发布的系列分类
+        /// </summary>
+        public IList<Category> Categories { get; set; }
 
         //public int? EmailId { get; set; }
         //public Email Email { get; set; }

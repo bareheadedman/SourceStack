@@ -17,6 +17,9 @@ namespace CSharp
         public DbSet<Article> Articles { get; set; }
         public DbSet<Problem> Problems { get; set; }
         public DbSet<Suggest> suggests { get; set; }
+        public DbSet<Keyword> Keywords { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<HelpMoney> HelpMoneys { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -26,8 +29,10 @@ namespace CSharp
 
             optionsBuilder
                 .UseSqlServer(connectString)
+                .UseLazyLoadingProxies()  //Lazyload 懒惰加载 引入Proxies 配置  关联属性加上Virtual
                 .EnableSensitiveDataLogging()
                 .LogTo(
+
 
 #if DEBUG
                 (id, level) => level == Microsoft.Extensions.Logging.LogLevel.Debug,  //过滤条件 
@@ -49,45 +54,50 @@ namespace CSharp
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>()
-                .ToTable("Register")
-                .Property(u => u.Name)
-                .HasColumnName("UserName")
-                .HasMaxLength(256);
-            modelBuilder.Entity<User>()
-                .Property(u => u.Password)
-                .IsRequired();
-            modelBuilder.Entity<User>()
-                .HasKey(u => u.Name);
-            modelBuilder.Entity<User>()
-                .Ignore(u => u.FailedTry);
-            modelBuilder.Entity<User>()
-                .HasIndex(u => u.CreateTime).IsUnique();
-            modelBuilder.Entity<User>()
-                .HasCheckConstraint("CK_Register_CreateTime", "CreateTime >'2000-1-1'");
 
-            modelBuilder.Entity<User>()
-                .HasOne<Email>(u => u.Email)
-                .WithOne()
-                .HasForeignKey<User>(u => u.EmailId);
-
-
-
-
-            modelBuilder.Entity<Student>()
-                .HasCheckConstraint<Student>("CK_Age", "Age Between 0 AND 150 ")
-                //.ToTable("TB_Student")
-                .Property(m => m.Name)
-                .HasMaxLength(64);
-            modelBuilder.Entity<Student>()
-                .Property(m => m.BeForm)
-                .IsRequired();
+            modelBuilder.Entity<User>().HasIndex(u => u.Name).IsUnique();
 
 
             modelBuilder.Entity<Blog>().ToTable("Blogs");
-            modelBuilder.Entity<Article>().ToTable("ArticleS");
+            modelBuilder.Entity<Article>().ToTable("Articles");
             modelBuilder.Entity<Suggest>().ToTable("Suggests");
             modelBuilder.Entity<Problem>().ToTable("Porblem");
+            modelBuilder.Entity<Comment>().ToTable("Comments");
+
+
+
+
+
+            //        modelBuilder.Entity<User>()
+            //.ToTable("Register")
+            //.Property(u => u.Name)
+            //.HasColumnName("UserName")
+            //.HasMaxLength(256);
+            //        modelBuilder.Entity<User>()
+            //            .Property(u => u.Password)
+            //            .IsRequired();
+            //        modelBuilder.Entity<User>()
+            //            .HasKey(u => u.Name);
+            //        modelBuilder.Entity<User>()
+            //            .HasIndex(u => u.CreateTime).IsUnique();
+            //        modelBuilder.Entity<User>()
+            //            .HasCheckConstraint("CK_Register_CreateTime", "CreateTime >'2000-1-1'");
+
+
+
+
+
+
+            //modelBuilder.Entity<Student>()
+            //    .HasCheckConstraint<Student>("CK_Age", "Age Between 0 AND 150 ")
+            //    //.ToTable("TB_Student")
+            //    .Property(m => m.Name)
+            //    .HasMaxLength(64);
+            //modelBuilder.Entity<Student>()
+            //    .Property(m => m.BeForm)
+            //    .IsRequired();
+
+
 
 
 
