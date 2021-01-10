@@ -5,16 +5,8 @@ using System.Text;
 
 namespace BLL.Repositories
 {
-    class ProblemRepository
+    public class ProblemRepository : Repository<Problem>
     {
-        SqlDbContext context;
-        public ProblemRepository()
-        {
-            context = new SqlDbContext();
-        }
-
-
-
 
         public void Publish(Problem problem)
         {

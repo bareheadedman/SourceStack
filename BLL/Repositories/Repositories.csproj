@@ -53,13 +53,14 @@
   <ItemGroup>
     <Compile Include="ArticleRepository.cs" />
     <Compile Include="HelpMoneyRepository.cs" />
-    <Compile Include="Migrations\202101081242015_init.cs" />
-    <Compile Include="Migrations\202101081242015_init.designer.cs">
-      <DependentUpon>202101081242015_init.cs</DependentUpon>
+    <Compile Include="Migrations\202101091234336_init.cs" />
+    <Compile Include="Migrations\202101091234336_init.designer.cs">
+      <DependentUpon>202101091234336_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProblemRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository.cs" />
     <Compile Include="SqlDbContext.cs" />
     <Compile Include="UserRepository.cs" />
   </ItemGroup>
@@ -74,8 +75,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202101081242015_init.resx">
-      <DependentUpon>202101081242015_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202101091234336_init.resx">
+      <DependentUpon>202101091234336_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

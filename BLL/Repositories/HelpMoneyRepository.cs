@@ -1,21 +1,12 @@
-﻿using System;
+﻿using BLL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BLL.Repositories
 {
-    class HelpMoneyRepository
+    class HelpMoneyRepository : Repository<HelpMoney>
     {
-        SqlDbContext context;
-
-        public HelpMoneyRepository()
-        {
-            context = new SqlDbContext();
-        }
-
-
-
-
 
     }
 }

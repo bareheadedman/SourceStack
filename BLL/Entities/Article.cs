@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using BLL.Entities;
 
 namespace BLL.Entities
 
@@ -11,11 +12,6 @@ namespace BLL.Entities
     /// </summary>
     public class Article : Content, IAppraise
     {
-
-        public Article() : base("文章")
-        {
-        }
-
 
         /// <summary>
         /// 标题

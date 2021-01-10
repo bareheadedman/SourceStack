@@ -13,11 +13,7 @@ namespace BLL.Entities
     /// </summary>
     public class Comment : Content
     {
-        public Comment() : base("评论")
-        {
-
-        }
-
+ 
 
         /// <summary>
         /// 内容

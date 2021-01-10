@@ -11,11 +11,6 @@ namespace BLL.Entities
     public class Suggest : Content, IAppraise
     {
 
-        public Suggest() : base("意见建议")
-        {
-
-        }
-
         
 
         /// <summary>

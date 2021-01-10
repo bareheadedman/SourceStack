@@ -11,10 +11,6 @@ namespace BLL.Entities
     public class Problem : Content
     {
 
-        public Problem() : base("求助")
-        {
-        }
-
 
         /// <summary>
         /// 标题

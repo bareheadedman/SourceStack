@@ -17,10 +17,6 @@ namespace BLL.Entities
         /// </summary>
         public User Author { get; set; }
         /// <summary>
-        /// 内容的种类
-        /// </summary>
-        protected private string Kind { get; set; }
-        /// <summary>
         /// 创建时间
         /// </summary>
         public DateTime CreateTime { get; set; }
@@ -30,12 +26,6 @@ namespace BLL.Entities
         public DateTime PublishTime { get; set; }
 
 
-
-        public Content(string kind)
-        {
-            Kind = kind;
-            CreateTime = DateTime.Now;
-        }
 
 
     }
