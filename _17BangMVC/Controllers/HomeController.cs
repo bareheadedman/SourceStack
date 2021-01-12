@@ -10,6 +10,7 @@ namespace _17BangMVC.Controllers
     {
         public ActionResult Index()
         {
+            //return RedirectToAction("Index", "Register");
             return View();
         }
 

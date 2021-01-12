@@ -1,0 +1,108 @@
+﻿@model _17BangMVC.Models.RegisterModels
+
+
+@{
+    ViewBag.Title = "注册";
+}
+
+
+<div>
+    <main class="container" style="margin-top:100px">
+        <div class="row col-12">
+            <h2>
+                <i class="fa fa-registered" aria-hidden="true"></i>
+                注册
+            </h2>
+        </div>
+        <hr />
+        <div class="row" style="margin-top:30px">
+            <div class="col-lg-4 col-md-5">
+                @using (Html.BeginForm())
+                {
+                    <form method="post" asp-page="/Register">
+                        <div style="background-color:lightyellow;border-width:2px;border-style:dashed;border-color:#eee;border-radius:10px">
+                            <div class="text-right" style="padding-top:10px;padding-right:10px">
+                                <a href="#">
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                    为什么需要邀请
+                                </a>
+                            </div>
+                            <div class="form-group mx-2">
+                                <label>邀请人：（*必填）</label>
+                                @Html.TextBoxFor(m => m.InvitedName,
+                               new { @class = "form-control", placeholder = "他的用户名，模糊查询只能从头开始" }
+                               )
+                            </div>
+                            <div class="form-group mx-2">
+                                <label>邀请码：（*必填）</label>
+                                @Html.TextBoxFor(m => m.InvitedCode,
+                               new { @class = "form-control", placeholder = "4位数字" }
+                               )
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>用户名：（*必填）</label>
+                            @Html.TextBoxFor(m => m.Name,
+                           new { @class = "form-control", placeholder = "登录用户名，可修改，不能重复" }
+                           )
+                        </div>
+                        <div class="form-group">
+                            <label>密码：（*必填）</label>
+                            @Html.PasswordFor(m => m.Password,
+                           new { @class = "form-control", placeholder = "不少于4个字符" }
+                           )
+                        </div>
+                        <div class="form-group">
+                            <label>验证密码：（*必填）</label>
+                            @Html.TextBoxFor(m => m.ConfirmPassword,
+                           new { @class = "form-control", placeholder = "和密码相同" }
+                           )
+                        </div>
+                        <div class="form-group">
+                            <label>验证码：（*必填）</label><br />
+                            @Html.TextBoxFor(m => m.InputImageCode,
+                           new { @class = "form-control form-check-inline", style = "width:100px" }
+                           )
+                            <span class="">看不清楚</span>
+                            <br />
+                            <span asp-validation-for="InputImageCode"></span>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">提交</button>
+                            <button type="reset" class="btn btn-secondary">重置</button>
+                            <a href="/Log/On.html" class=" pull-right btn">
+                                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                登录
+                            </a>
+                        </div>
+                    </form>
+                }
+            </div>
+            <div class="col-lg-5 col-md-5 " style=" margin-left:60px">
+                <h3>
+                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                    说明
+                </h3>
+                <ol>
+                    <li>我们希望通过一起帮，能直接解决大家在电脑操作/软件使用/编程学习等方面的具体问题。</li>
+                    <li>现在互联网远程技术（比如QQ桌面共享）已经非常成熟，当我们再遇到上述问题，如果别人能直接远程给予帮助，岂不是好？</li>
+                    <li>当然，你也可以在你熟悉的领域去帮助别人。由此而形成我们这个“你帮他他帮我我帮你，大家一起帮”的网上互助社区平台。</li>
+                    <li>公平起见，我们还引入了 帮帮点/币/豆 三级概念，以记录和衡量社区成员的收获和贡献。</li>
+                    <li>赶快加入我们，赚取帮帮币吧！</li>
+                    <li><a>了解更多</a></li>
+                </ol>
+            </div>
+        </div>
+        <a href="#" class="btn btn-primary text-center" style="position: fixed;bottom: 150px;right:338px">
+            <span class="fa fa-question-circle-o"></span>
+            <br />
+            帮助
+        </a>
+        <a href="#" class=" btn btn-primary  text-center" style="position:fixed;bottom:85px; right:338px">
+            <span class="fa fa-comments-o"></span>
+            <br />
+            反馈
+        </a>
+        <hr />
+    </main>
+</div>

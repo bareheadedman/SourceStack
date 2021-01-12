@@ -4,12 +4,14 @@ using BLL.Entities;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace BLL.Repositories
 {
     public class Repository<T> where T : BaseEntity, new()
     {
         public SqlDbContext context;
+        private DbSet<T> dbset;
         public Repository(SqlDbContext context)
         {
             this.context = context;
@@ -48,7 +50,7 @@ namespace BLL.Repositories
         public T LoadProxy(int id)
         {
             T entity = new T { Id = id };
-            context.Set<T>().Attach(entity);
+           dbset.Attach(entity);
             return entity;
         }
 
