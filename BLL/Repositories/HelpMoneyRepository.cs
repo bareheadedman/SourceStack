@@ -7,6 +7,9 @@ namespace BLL.Repositories
 {
     class HelpMoneyRepository : Repository<HelpMoney>
     {
+        public HelpMoneyRepository(SqlDbContext context) : base(context)
+        {
 
+        }
     }
 }

@@ -7,6 +7,11 @@ namespace BLL.Repositories
 {
     public class ProblemRepository : Repository<Problem>
     {
+        public ProblemRepository(SqlDbContext context) : base(context)
+        {
+
+        }
+
 
         public void Publish(Problem problem)
         {

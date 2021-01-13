@@ -23,6 +23,10 @@ namespace BLL.Entities
         public string Password { get; set; }
         //public TokenManager Tokens { get; set; }
         /// <summary>
+        /// 邀请别人时，需要填写的邀请码
+        /// </summary>
+        public string InviteCode { get; set; }
+        /// <summary>
         /// 帮帮币
         /// </summary>
         public HelpMoney HelpMoney { get; set; }
