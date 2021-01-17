@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "BLL\Reposit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF6", "EF6\EF6.csproj", "{BB0ECBFC-924E-42B8-844A-D054A637DD99}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavaSrcipt", "JavaSrcipt\JavaSrcipt.csproj", "{5A12ADAB-82FF-452B-B750-9B9EFD00DC8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{BB0ECBFC-924E-42B8-844A-D054A637DD99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB0ECBFC-924E-42B8-844A-D054A637DD99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB0ECBFC-924E-42B8-844A-D054A637DD99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A12ADAB-82FF-452B-B750-9B9EFD00DC8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A12ADAB-82FF-452B-B750-9B9EFD00DC8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A12ADAB-82FF-452B-B750-9B9EFD00DC8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A12ADAB-82FF-452B-B750-9B9EFD00DC8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
