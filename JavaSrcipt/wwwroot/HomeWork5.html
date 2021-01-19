@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+
+    <!--循环和数组-->
+    <!--声明一个数组odds，利用循环把100以内的奇数按从小到大的顺序存入其中-->
+    <!--<script>
+
+        var odds =[],
+            i = 0,
+            number = 1;
+
+        while (number < 100)
+        {
+            odds[i] = number;
+            console.log(odds[i]);
+            i++;
+            number += 2;
+        }
+
+    </script>-->
+    <!--计算从odds数组中所有元素的和-->
+    <!--<script>
+
+        var sum=0;
+        for (var i = 0; i < odds.length; i++)
+        {
+            sum += odds[i];
+        }
+
+        console.log(sum);
+    </script>-->
+    <!--找到数组中的最小值-->
+    <!--<script>
+
+        var number = [5, 9, 2, 11, 1, 4, 7],
+            min = 6;
+
+
+        for (var i = 0; i < number.length; i++)
+        {
+            if (min > number[i])
+            {
+                min = number[i];
+            }
+        }
+        console.log(min);
+
+    </script>-->
+    <!--去除一个数组中重复的值（提示：仔细思考需求）-->
+    <!--<script>
+
+        var number = [1, 5, 9, 7, 3, 5, 6, 8, 7, 2],
+            result = [];
+
+
+        for (var i = 0; i < number.length; i++)
+        {
+            temp = number[i];
+            for (var j = 0; j <i; j++)
+            {
+                if (temp == number[j])
+                {
+                    console.log("保留的数字：" + number[i] + "下标为：" + i);
+                    console.log("删除的数字：" + number[j] + "下标为：" + j);
+                }
+            }
+        }
+
+
+    </script>-->
+    <!--输出用空格代替0的杨辉三角形-->
+
+
+
+
+
+    <script>
+
+        var row = 5,
+            column = 2 * row - 1,
+            yh = [];
+            
+
+        for (var i = 0; i < row; i++)
+        {
+             yh[i] = [];
+             var lines="";
+
+            for (var j = 0; j < column; j++)
+            {
+                if (i == 0)
+                {
+                    yh[i][j] = (j == row - 1) ? 1 : 0;
+
+                }
+                else
+                {
+                    var preRow = i - 1,
+                        preColumn = (j - 1)  >= 0 ? yh[preRow][j - 1] : 0,
+                        nextColumn = (j + 1) < column ? yh[preRow][j + 1] : 0;
+                    yh[i][j] = preColumn + nextColumn;
+
+                }
+                lines += yh[i][j] + " ";
+            }
+
+            console.log(lines);
+        }
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--输出1000以内的所有“素数/质数”（只能被自己和1整除的数）-->
+    <!--<script>
+
+        for (var i = 2; i < 100; i++)
+        {
+            var number = true;
+            for (var j = 2; j < i; j++)
+            {
+                if (i%j==0)
+                {
+                    number = false;
+                    break;
+                }
+                //else if (j == i - 1)
+                //{
+                //    console.log(i);
+                //}
+            }
+            if (number)
+            {
+                console.log(i   );
+            }
+        }
+
+    </script>-->
+    <!--完成冒泡排序（必做，参考C#）-->
+    <!--完成：二分查找/快速排序（选做，参考C#）-->
+
+
+</body>
+</html>
