@@ -8,28 +8,50 @@
 
     <!--作用域：函数作用域/全局变量污染/命名空间-->
 
-
-
     <!--使用“模拟名称空间”技术，构建一个函数函数yz.fei.get(number)；-->
 
 
 
     <script>
-
         var yz = {};
         yz.fei = {};
 
-        yz.fei.get = { function(number) {
-
-        }};
-
-        yz.fei = function get(number)
+        yz.fei =
         {
+            get: function (number,handler)
+            {
+                if (handler(number))
+                {
+
+                } 
+            },
+
+            getOddNumber: function (number)
+            {
+                var array = [],
+                    index = 0;
+                for (var i = 1; i <= number; i += 2)
+                {
+                    array[index] = i;
+                    index++;
+                }
+                return array;
+            },
+
+            has5: function (number)
+            {
+                number += "";
+                for (var i = 0; i < number.length; i++)
+                {
+                    if (number[i] == 5)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            },
 
         };
-
-
-        
 
 
 
@@ -37,7 +59,36 @@
     </script>
 
 
+    <!--yz.fei.get(number, handler)除number以外，还可以接受任意多个回调函数handler做参数，得到：0到number间有多少个满足handler条件的整数。-->
 
+    <!--<script>
+
+        var temp;
+
+        temp = yz.fei.get(11, yz.fei.getOddNumber);
+
+
+    </script>-->
+
+
+    <!--回调函数handler能对number进行运算，并返回bool值的，比如has6()-->
+
+
+
+    <!--<script>
+        console.log(yz.fei.get(10500, yz.fei.has5));
+    </script>-->
+
+
+
+
+
+
+    <!--get()函数调用回调函数进行运算，只要回调函数运行结果为真，就累加计数    最后返回累加值-->
+
+
+
+    <!--让yz.fei.get(number)调用实现之前“统计含9/8/6数字个数”的作业-->
 
 
 
