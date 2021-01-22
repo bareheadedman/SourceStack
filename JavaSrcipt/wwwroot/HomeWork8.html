@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+
+    <!--内置：包装 / 数组 / Math / Date-->
+
+
+
+
+
+    <!--使用JavaScript内置字符串函数，处理 “‘源栈’：飞哥小班教学，线下免费收看” ：将“飞哥”改成“大神”，“线下”改成“线上”。-->
+
+
+
+    <!--<script>
+
+        var str = "源栈：飞哥小班教学，线下免费收看";
+
+        str = str.replace("飞哥", "大神");
+        str = str.replace("线下","线上");
+
+        console.log(str);
+    </script>-->
+
+
+
+
+
+
+
+
+    <!--将数组['why','gIT','vs2019','community','VERSION']规范化，让所有元素：-->
+            <!--首字母大写开头，其他字母小写-->
+            <!--截去超过6个字符的部分，如'community'将变成'Commun'-->
+
+
+    <!--<script>
+
+        var arr = ['why', 'gIT', 'vs2019', 'community', 'VERSION'];
+
+        for (var i = 0; i < arr.length; i++)
+        {
+            arr[i] = arr[i].toLowerCase();
+            arr[i] = arr[i].replace(arr[i][0], arr[i][0].toUpperCase());
+            arr[i] = arr[i].substring(0,6);
+
+        };
+
+
+    </script>-->
+
+
+    <!--使用正则表达式判断某个字符串:-->
+             <!--是否是合格的Email格式-->
+             <!--是否是小数（正负小数都可以）-->
+             <!--将所有以zyf-开头的属性去掉zyf- （尽可能多的制造测试用例，比如：<a lzyf-old='' ，或者：<span>zyf---+---fyz</span> ……）-->
+
+
+    <!--<script>
+
+        var email = "852773351@qq.com",
+            num = "",
+            prop = "";
+
+        var reg = /<a[\s\S]+?>/gi;
+        var regex = new RegExp("<a[\\s\\S]+?>","gi");     
+
+    </script>-->
+
+
+
+
+
+
+
+
+<!--利用新学到的Array函数，重新完成之前的数组相关作业-->
+
+
+<!--在上述数组头部加上小鱼老师，末尾加上大飞哥-->
+
+
+
+    <!--<script>
+        var arr = [1, 2, 3, 4, 5];
+
+
+        arr.push("大飞哥");
+        //console.log(arr);
+        arr.unshift("小鱼老师");
+        console.log(arr);
+
+
+    </script>-->
+
+
+
+<!--创建一个函数getRandomArray(length, max)，能返回一个长度不大于length，每个元素值不大于max的随机整数数组。-->
+
+
+    <!--<script>
+
+        function getRandomArray(length,max)
+        {
+            var arr = [];
+            for (var i = 0; i < length; i++)
+            {
+                arr[i] = Math.floor(Math.random() * max);
+            }
+            return arr;
+        };
+
+
+        console.log(getRandomArray(5,20));
+
+
+    </script>-->
+
+
+<!--生成一个函数toChinese()，可将传入的日期参数（如：new Date()）转换成中文日期格式（如：2019年10月4日 16点54分）-->
+
+    <!--<script>
+
+        function toChinese()
+        {
+            var chinesetime = "",
+                arg = arguments[0];
+            chinesetime += arg.getFullYear() + "年";
+            chinesetime += (arg.getMonth() + 1) + "月";
+            chinesetime += arg.getDate() + "日";
+            chinesetime += arg.getHours() + "点";
+            chinesetime += arg.getMinutes() + "分";
+
+            return chinesetime;
+        }
+
+
+        console.log(new Date());
+        console.log(toChinese(new Date()));
+
+    </script>-->
+
+
+<!--生成一个函数addDays(number)，可在当前日期的基础上增加number天-->
+
+    <!--<script>
+
+        function addDays(number)
+        {
+            return new Date(new Date().setDate(new Date().getDate() + number));
+        };
+
+        console.log(addDays(1));
+
+    </script>-->
+
+<!--按自己的情况，生成一个JSON字符串，包括真实姓名、QQ昵称、年龄、性别、兴趣爱好、自我介绍……，上传到QQ群：一起帮·有意向（729600626）
+根据其他同学的JSON获得其个人资料，生成一个表格显示。-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
