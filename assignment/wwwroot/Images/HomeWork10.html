@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)https://localhost:44364/HomeWork10.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="stylesheet" href="./HomeWork10_files/font-awesome.css">
+    <title></title>
+</head>
+<body>
+
+
+
+
+    <div id="problem1">
+        <div>
+            <span class="problem-status">协助中</span>
+            <span class="title">ASP 网站迁移</span>
+        </div>
+        <p class="body">
+            在服务器上把原先的asp网站整体迁移出来，在新的服务器上重新布置
+        </p>
+        <div class="keyword">
+            <span>asp</span>
+        </div>
+        <span class="reward">
+            悬赏：
+            <span>2</span>
+        </span>
+        <span class="answer">
+            应答：
+            <span>10</span>
+        </span>
+        <span class="conclusion">
+            总结：
+            <span>0</span>
+        </span>
+
+    </div>
+    <hr>
+    <div id="problem2">
+        <div>
+            <span class="problem-status">协助中</span>
+            <span class="title">c#监控本进程退出</span>
+        </div>
+        <p class="body">
+            我已经做了哪些努力：已经使用下面的方法，但是都不起作用
+        </p>
+        <div class="keyword">
+            <span>asp</span>
+            <span>数据库</span>
+        </div>
+        <span class="reward">
+            悬赏：
+            <span>0</span>
+        </span>
+        <span class="answer">
+            应答：
+            <span>10</span>
+        </span>
+        <span class="conclusion">
+            总结：
+            <span>0</span>
+        </span>
+
+    </div>
+    <hr>
+    <div id="problem3">
+        <div>
+            <span class="problem-status">已撤销</span>
+            <span class="title">thinkphp5运行</span>
+        </div>
+        <p class="body">
+            有人会THINKPHP吗？初学，
+        </p>
+        <div class="keyword">
+            <span>PHP</span>
+            <span>编程开发语言</span>
+            <span>开发</span>
+        </div>
+        <span class="reward">
+            悬赏：
+            <span>3</span>
+        </span>
+        <span class="answer">
+            应答：
+            <span>10</span>
+        </span>
+        <span class="conclusion">
+            总结：
+            <span>1</span>
+        </span>
+
+    </div>
+    <hr>
+
+    <label> 密码：</label>
+    <input id="password" type="password">
+    <label>确认密码：</label>
+    <input id="confirmPassword" type="password">
+
+    <hr>
+
+    <span id="bell" class="fa fa-bell" style="red"></span>
+
+
+    <!--DOM元素增删改查-->
+    <!--模拟求助首页，并：-->
+    <!--统计有多少个悬赏大于1的求助-->
+
+    <!--<script>
+        var reward = document.getElementsByClassName("reward"),
+            count = 0;
+
+        for (var i = 0; i < reward.length; i++)
+        {
+            if (reward[i].children[0].innerText>=1)
+            {
+                count++;
+            }
+            
+        }
+        console.log(count);
+    </script>-->
+
+    <!--将状态为“协助中”的求助背景改成灰黑色-->
+
+    <!--<script>
+
+        var problem = document.getElementsByClassName("problem-status");
+
+        for (var i = 0; i < problem.length; i++)
+        {
+            if (problem[i].innerText == "协助中")
+            {
+                problem[i].setAttribute("style", "background: bisque");
+            }
+
+        }
+
+
+    </script>-->
+
+    <!--如果总结数为0，将其从DOM树中删除-->
+
+    <!--<script>
+
+        var conclusion = document.getElementsByClassName("conclusion"),
+            index = 0;
+
+        while (index < conclusion.length)
+        {
+            if (conclusion[index].children[0].innerText == 0)
+            {
+                conclusion[index].parentElement.remove();
+            } else
+            {
+                index++;
+            }
+        };
+            
+
+    </script>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--写一个函数getKeywordsCount()，可以统计某个求助使用了多少关键字-->
+
+
+    <!--<script>
+
+        function getKeywordsCount(id)
+        {
+
+            return document.getElementById(id).getElementsByClassName("keyword")[0].children.length;;
+        };
+
+        console.log(getKeywordsCount("problem2"));
+
+    </script>-->
+
+
+
+
+
+
+    <!--参考用户注册页面，显示错误提示：-->
+    <!--密码的长度不能小于4-->
+    <!--密码和确认密码必须一致-->
+
+    <!--<script>
+
+        document.getElementById("password").onblur = function(event)
+        {
+            var password = this.value;
+            console.log(password);
+            if (password.length<4)
+            {
+                console.log("密码得长度不能小于4");
+            }
+
+        }
+
+        document.getElementById("confirmPassword").onblur = function (event)
+        {
+            var confirmPassword = this.value,
+                password = document.getElementById("password").value;
+            console.log(password);
+            console.log(confirmPassword);
+            if (confirmPassword != password)
+            {
+                console.log("密码和确认密码不一致");
+            }
+
+        }
+
+    </script>-->
+
+
+
+
+
+    <!--参考用户资料页面，控制台显示出用户的：性别 / 出生年月 / 关注（关键字）/ 自我介绍-->
+
+    <!--<script>
+
+        var lw = {
+            image: "",
+            gender: "男",
+            year: "1999",
+            month: "7",
+            day: "27",
+            keyword: "大神",
+            describe:"123132",
+        }
+
+        console.log(lw);
+    </script>-->
+    <!--实现铃铛（没有学bootstrap的同学用文字代替）闪烁效果-->
+
+
+
+    <script>
+
+
+        var bell = document.getElementById("bell");
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>
