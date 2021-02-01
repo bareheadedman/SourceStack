@@ -258,13 +258,18 @@
 
         setInterval(function ()
         {
-           bell.setAttribute("style", "color:blue");
+            var bellcolor = bell.style.color;
+            if (bellcolor!="red")
+            {
+                bell.setAttribute("style", "color:red");
+
+            } else
+            {
+                bell.setAttribute("style", "color:blue");
+
+            }
         },500);
 
-        setInterval(function ()
-        {
-            bell.setAttribute("style", "color:red");
-        },1000);
 
     </script>
 
