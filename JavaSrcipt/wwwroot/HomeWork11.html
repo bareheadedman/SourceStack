@@ -6,16 +6,53 @@
 </head>
 <body>
 
+
+
+    <a id="previous" href="#">上一页</a>
+    <a id="next" href="#">下一页</a>
+    <a id="click" href="http://17bang.ren">点击</a>
+    <input id="href" type="text" />
+    <a id="skip" href="#">跳转</a>
+
     <!--事件：绑定/this/event-->
 
-
-    <!--一个“前一页”按钮，点击可以跳到上一页；一个“下一页”按钮，点击可以跳到下一页；-->
+    <!--一个“前一页”按钮，点击可以跳到上一页；一个“下一页”按钮，点击可以跳到下一页；-->  
 
     <!--一个a标签，点击不会跳转到href指定页面，而是将href的值赋值给下面的一个文本框，-->
 
     <!--一个“转到”按钮，点击该按钮页面可跳转到文本框指定的网址页面-->
 
 
+
+    <script>
+
+        document.getElementById("previous").onclick=function(event)
+        {
+            event.preventDefault();
+            history.go(-1);
+            console.log("-1");
+        };
+
+        document.getElementById("next").onclick=function (event)
+        {
+            event.preventDefault();
+            history.go(1);
+            console.log("1");
+        };
+
+        document.getElementById("click").onclick = function (event)
+        {
+            event.preventDefault();
+            document.getElementById("href").value=this.href
+        };
+
+        document.getElementById("skip").onclick = function (event)
+        {
+            event.preventDefault();
+            location.href = document.getElementById("href").value;
+        };
+
+    </script>
 
 
 
