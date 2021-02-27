@@ -1,0 +1,451 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="  col-7" id="left">
+                <br />
+                <br />
+                <br />
+                <br />
+
+                <div>
+                    <span id="Keyword">
+                        应答
+                    </span>
+
+                </div>
+
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <span style="background-color:red"> 底部对齐</span>
+            </div>
+            <div class="  col-5" id="right">
+                <span style="background-color:red;position:fixed;top:150px;right:150px;" id="text">
+                    滴滴滴滴
+                </span>
+            </div>
+
+        </div>
+        <br />
+
+        <div id="message">
+            <label><input type="checkbox" />全选</label>
+            <label><input type="checkbox" />消息1</label>
+            <label><input type="checkbox" />消息2</label>
+            <label><input type="checkbox" />消息3</label>
+            <label><input type="checkbox" />消息4</label>
+        </div>
+
+        <form method="post">
+
+            <br />
+            <div>
+                <label>用户名：</label>
+                <input id="username" name="username" type="text" />
+            </div>
+            <div>
+                <label> 密码：</label>
+                <input id="password" name="password" type="password" />
+            </div>
+            <div>
+                <label>确认密码：</label>
+                <input id="confirmPassword" name="confirmPassword" type="password" />
+            </div>
+
+            <button type="submit" id="submit"> 提交</button>
+        </form>
+
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div>
+            <form>
+                <div>
+                    <label>之前使用过得广告：</label>
+                </div>
+                <select>
+                    <option value="0" selected>使用新得广告</option>
+                    <option value="1">广告1</option>
+                    <option value="2">广告2</option>
+                    <option value="3">广告3</option>
+                </select>
+                <div style="background-color:antiquewhite">
+                    <label>
+                        <input type="checkbox" id="option" />
+                        修改
+                    </label>
+                    <div>
+                        <label>文章内容（*必填） </label>
+                        <input type="text" id="context" />
+                    </div>
+                    <div>
+                        <label>链接（*必填）</label>
+                        <input type="text" id="link" />
+                    </div>
+                </div>
+
+                <div id="keyword">
+
+                </div>
+
+                <div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                            ---一级---
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="keyword1">
+                            <a class="dropdown-item">编程语言</a>
+                            <a class="dropdown-item">工具软件</a>
+                            <a class="dropdown-item">操作系统</a>
+                            <a class="dropdown-item">咨询顾问</a>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                            ---二级---
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="keyword2">
+                        </div>
+                    </div>
+                    <input id="designKeyword" type="text" placeholder="自定义关键字：" />
+                </div>
+
+            </form>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>------</p>
+    </div>
+
+
+
+    <!--事件：常用类型详述-->
+    <!--参考求助首页侧边栏关键字，实现：当鼠标移动到关键字上，显示关键字被使用次数-->
+
+
+    <script>
+        document.getElementById("Keyword").addEventListener("mouseover", function ()
+        {
+            var keywordTitle = document.createElement('span');
+            keywordTitle.style = 'background-color:black; color:white';
+            keywordTitle.setAttribute('id', 'titile')
+            var text = document.createTextNode('已经使用了10次');
+            keywordTitle.appendChild(text);
+
+            this.parentElement.append(keywordTitle);
+        });
+
+        document.getElementById("Keyword").addEventListener("mouseout", function ()
+        {
+            document.getElementById("titile").remove();
+        });
+
+    </script>
+
+    <!--参考一起帮首页，实现右侧漂浮并底对齐左侧文本框的效果-->
+
+    <script>
+
+        document.addEventListener("scroll", function ()
+        {
+            document.documentElement
+            left = document.getElementById('left');
+            text = document.getElementById('text');
+
+            if (document.documentElement.scrollTop < (left.scrollHeight - text.scrollHeight - 150))
+            {
+                text.style.top = '150px';
+            } else
+            {
+                text.style.top = left.scrollHeight - text.scrollHeight - document.documentElement.scrollTop + 'px';
+            };
+
+        });
+
+
+    </script>
+
+
+
+
+    <!--参考消息页面：完成勾选全选功能-->
+
+    <script>
+
+        document.getElementById("message").children[0].addEventListener('change', function ()
+        {
+            lableLists = document.getElementById("message");
+            var change = true;
+            if (this.children[0].checked != true)
+            {
+                change = false;
+            }
+            for (var i = 1; i < lableLists.children.length; i++)
+            {
+                lableLists.children[i].children[0].checked = change;
+            }
+
+
+        }); 7
+
+
+    </script>
+
+    <!--参考注册页面：-->
+    <!--1.提交时，如果用户名重复（已有用户名用数组保存），阻止form提交，提示“用户名重复”。-->
+    <!--2.重新输入用户名，一旦输入用户名部分没有重复，“用户名重复”的提示消失-->
+    <!--2.当用户名或密码等有值时，关闭页面前弹出确认框-->
+
+    <script>
+
+        var user = ['qwe123', 'asd123', 'zxc123'];
+
+
+        document.getElementsByTagName('form')[0].onsubmit = function (event)
+        {
+            for (var i = 0; i < user.length; i++)
+            {
+                if (user[i] == document.getElementById('username').value)
+                {
+                    return false;
+                }
+            }
+
+        };
+
+
+        document.getElementById('username').onkeyup = function ()
+        {
+            var username = document.getElementById('username').value;
+
+            for (var i = 0; i < user.length; i++)
+            {
+                if (username == user[i])
+                {
+                    var usernameMessage = document.createElement('p');
+                    usernameMessage.style = 'background-color:red';
+                    usernameMessage.setAttribute("id", "usernameMessage")
+                    var usernameText = document.createTextNode('用户名已存在');
+                    usernameMessage.appendChild(usernameText);
+                    this.after(usernameMessage);
+                    return;
+                } else if (document.getElementById("usernameMessage") != undefined)
+                {
+                    document.getElementById("usernameMessage").remove();
+                }//else nothing
+            }
+        };
+
+
+
+        window.onbeforeunload = function ()
+        {
+            if (document.getElementById('password').value.length > 0 || document.getElementById('confirmPassword').value.length > 0 || document.getElementById('username').value.length > 0)
+            {
+                return "是否要离开";
+            }
+        }
+
+
+    </script>
+
+
+
+    <!--参考求助首页侧边栏“免费广告发布”弹出Modal，实现（不需要弹出Modal）：-->
+    <!--1.根据下拉列表选中项，填充“文字内容”和“链接”文本框-->
+    <!--2.勾选修改的checkbox，实现“文字内容”和“链接”文本框的禁用和启用-->
+
+
+    <script>
+
+        var context = document.getElementById('context'),
+            link = document.getElementById('link'),
+            option = document.getElementById('option');
+
+        document.getElementsByTagName("select")[0].onchange = function ()
+        {
+
+            switch (+this.value)
+            {
+                case 0:
+                    context.value = "";
+                    link.value = "";
+                    option.checked = true;
+                    context.disabled = '';
+                    link.disabled = '';
+                    break;
+                case 1:
+                    context.value = "广告1";
+                    link.value = "17bang.ren/Article/1";
+                    option.checked = false;
+                    context.disabled = '1';
+                    link.disabled = '1';
+                    break;
+                case 2:
+                    context.value = "广告2";
+                    link.value = "17bang.ren/Article/2";
+                    option.checked = false;
+                    context.disabled = '1';
+                    link.disabled = '1';
+                    break;
+                case 3:
+                    context.value = "广告3";
+                    link.value = "17bang.ren/Article/3";
+                    option.checked = false;
+                    context.disabled = '1';
+                    link.disabled = '1';
+                    break;
+
+            }
+
+            option.onchange = function ()
+            {
+                if (this.checked == true)
+                {
+                    context.disabled = '';
+                    link.disabled = '';
+                } else
+                {
+                    context.disabled = '1';
+                    link.disabled = '1';
+                }
+
+            };
+
+
+        };
+
+
+
+    </script>
+
+
+
+    <!--参考发布求助，实现其关键字功能：-->
+    <!--1. 没有选择一级关键字，不能选择二级关键字-->
+    <!--2.选择一级关键字后，二级关键字只能是一级关键字下的子集-->
+    <!--3.一级关键字和二级关键字被选中后，会显示在下拉列表上方-->
+    <!--4.自定义关键字输入完成后（按空格键），输入的关键字显示在下拉列表上方-->
+    <!--5.后输入的关键字显示在前面-->
+
+
+    <span class="badge badge-pill badge-dark">Dark</span>
+
+    <a class="dropdown-item">编程语言</a>
+
+
+    <script>
+
+        var keyword1List = document.getElementById('keyword1').children,
+            keyword2list = document.getElementById('keyword2'),
+            keyword = document.getElementById('keyword');
+
+        keyword1List[0].onclick = function ()
+        {
+           language = ['c#', 'java'];
+
+            var newKeyword = document.createElement('span');
+            newKeyword.setAttribute('class', 'badge badge-pill badge-dark');
+            var newKeywordText = document.createTextNode(this.innerText);
+            newKeyword.appendChild(newKeywordText);
+            keyword.prepend(newKeyword);
+
+
+               var newKeyword2 = document.createElement('a');
+                newKeyword2.setAttribute('class', 'dropdown-item');
+                newKeyword2.onclick = function ()
+                {
+                    var newKeyword = document.createElement('span');
+                    newKeyword.setAttribute('class', 'badge badge-pill badge-dark');
+                    var newKeywordText = document.createTextNode(language[0]);
+                    newKeyword.appendChild(newKeywordText);
+                    keyword.prepend(newKeyword);
+                };
+                var newKeywordText2 = document.createTextNode(language[0]);
+                newKeyword2.appendChild(newKeywordText2);
+                keyword2list.appendChild(newKeyword2);
+
+
+                var newKeyword2 = document.createElement('a');
+                newKeyword2.setAttribute('class', 'dropdown-item');
+                newKeyword2.onclick = function ()
+                {
+                    var newKeyword = document.createElement('span');
+                    newKeyword.setAttribute('class', 'badge badge-pill badge-dark');
+                    var newKeywordText = document.createTextNode(language[1]);
+                    newKeyword.appendChild(newKeywordText);
+                    keyword.prepend(newKeyword);
+                };
+                var newKeywordText2 = document.createTextNode(language[1]);
+                newKeyword2.appendChild(newKeywordText2);
+                keyword2list.appendChild(newKeyword2);
+
+
+        }
+
+
+        document.getElementById("designKeyword").onkeydown = function (e)
+        {
+            if (e.keyCode==32)
+            {
+                var newKeyword = document.createElement('span');
+                newKeyword.setAttribute('class', 'badge badge-pill badge-dark');
+                var newKeywordText = document.createTextNode(this.value);
+                newKeyword.appendChild(newKeywordText);
+                keyword.prepend(newKeyword);
+                this.value = '';
+            }
+        };
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+</body>
+</html>
