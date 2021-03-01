@@ -3,23 +3,188 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <link rel="stylesheet" href="css/font-awesome.css" />
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
     <script src="lib/jquery/dist/jquery.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
 
 </head>
 <body>
+    <div id="message">
 
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown button
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-        </div>
     </div>
+    <div id="keywords">
+        <iframe src="Keyword.html" style="border:0px"></iframe>
+    </div>
+    <button>下一批</button>
+
+
+    <span id="bell" class="fa fa-bell" style="color:red"></span>
+
+    <label>
+        邀请人：
+    </label>
+    <input type="text" id="inviteName" />
+    <div id="selectedName">
+
+    </div>
+
+
+
+
+
+    <!--根据Ajax动态加载导航栏下的“新消息”-->
+    <script>
+
+
+
+
+
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.open('GET', '/Message.html');
+        xhttp.send();
+
+        //xhttp.onload = function()
+        //{
+        //    document.getElementById('message').innerHTML = this.responseText
+        //}
+
+        xhttp.onreadystatechange = function ()
+        {
+            if (this.readyState == 4)
+            {
+                document.getElementById('message').innerHTML = this.responseText;
+            }
+        };
+
+
+
+    </script>
+
+
+    <!--分别通过iframe和Ajax完成侧边栏关键字“换一批”的功能-->
+
+    <script>
+
+        document.getElementsByTagName('button')[0].onclick = function myfunction()
+        {
+            document.getElementById('keywords').children[0].src = '/Keyword2.Html';
+        }
+
+        //document.getElementsByTagName('button')[0].onclick = function ()
+        //{
+        //    var xhttp = new XMLHttpRequest();
+        //    xhttp.open('GET', '/Keyword2.Html');
+        //    xhttp.send();
+        //    xhttp.onload = function ()
+        //    {
+        //        document.getElementById('keywords').innerHTML = this.responseText;
+        //    }
+        //}
+
+    </script>
+
+    <!--能通过Json获得（有无未读消息的）数据，决定是否闪烁铃铛图标（注意：要能闪还能不闪）-->
+
+    <script>
+
+        setInterval(jsonRequest, 2000);
+
+        var bell = document.getElementById('bell'),
+            intervalCode = setInterval(function ()
+        {
+            var bellcolor = bell.style.color;
+            if (bellcolor != "red")
+            {
+                bell.setAttribute("style", "color:red");
+
+            } else
+            {
+                bell.setAttribute("style", "color:blue");
+
+            }
+        }, 500);
+
+        function jsonRequest()
+        {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open('GET', '/Message');
+            xhttp.send();
+            xhttp.onload = function ()
+            {
+               
+                if (!JSON.parse(this.responseText).hasRead)
+                {
+                    clearInterval(intervalCode);
+
+                } //else nothing
+                
+                
+            };
+        };
+
+
+
+
+
+
+
+
+
+    </script>
+
+    <!--发布求助时，能够-->
+    <!--根据一级关键字，通过Ajax获取到该一级关键字下的二级关键字，并予以显示-->
+
+
+
+    <!--定向求助时移出焦点，就能找到相关用户-->
+
+    <script>
+
+        var inviteName = document.getElementById('inviteName'),
+            selectedName = document.getElementById("selectedName");
+
+        inviteName.onblur = function ()
+        {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open('GET', '/selectedName');
+            xhttp.send('name' + inviteName.value);
+
+            xhttp.onload = function ()
+            {
+                selectedName.innerHTML = this.response;
+
+                for (var i = 0; i < selectedNames.length; i++)
+                {
+                    selectedNames[i].onclick = function ()
+                    {
+                        inviteName.value = this.innerText;
+                    };
+                }
+            };
+        }
+
+        inviteName.onfocus = function ()
+        {
+            selectedName.innerHTML = '';
+        }
+
+        var selectedNames = selectedName.children;
+
+
+       
+
+
+    </script>
+
+
+
+
+    <!--刷新帮帮币-->
+
+
 
 
 

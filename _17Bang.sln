@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "BLL\Reposit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF6", "EF6\EF6.csproj", "{BB0ECBFC-924E-42B8-844A-D054A637DD99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavaSrcipt", "JavaSrcipt\JavaSrcipt.csproj", "{5A12ADAB-82FF-452B-B750-9B9EFD00DC8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JavaSrcipt", "JavaSrcipt\JavaSrcipt.csproj", "{5A12ADAB-82FF-452B-B750-9B9EFD00DC8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
