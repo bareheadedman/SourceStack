@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="css/font-awesome.css" />
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</head>
+<body>
+
+    <div id="articles" style="margin-top:50px">
+
+        <div id="article1" style="padding-top:50px">
+            <p id="1" draggable="true">我是1</p>
+            <p style="background-color:red">* </p>
+        </div>
+        <div id="article2" style="padding-top:50px">
+            <p id="2" draggable="true">我是2</p>
+            <p style="background-color:red"> *</p>
+        </div>
+        <div id="article3" style="padding-top:50px">
+            <p id="3" draggable="true">我是3</p>
+            <p style="background-color:red"> *</p>
+        </div>
+        <div id="article4" style="padding-top:50px">
+            <p id="4" draggable="true">我是4</p>
+            <p style="background-color:red"> *</p>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <!--用canvas绘制一枚铜钱（外圆内方）-->
+    <!--为文章列表页面添加一个功能，可以通过拖放调整文章的顺序，并确保调整之后的顺序能够被浏览器永久记录，不应页面关闭而消失。-->
+    <script>
+
+
+        var articles = document.getElementById('articles');
+
+
+        for (var i = 0; i < articles.children.length; i++)
+        {
+            articles.children[i].ondragstart = function (event)
+            {
+                event.dataTransfer.setData('Text', this.id)
+            };
+            articles.children[i].ondragover = function (event)
+            {
+                event.preventDefault();
+            };
+
+            articles.children[i].ondrop = function (event)
+            {
+
+                this.parentNode.insertBefore(document.getElementById(event.dataTransfer.getData('Text')), this);
+
+                var articleIds = [];
+                for (var i = 0; i < articles.children.length; i++)
+                {
+                    articleIds[i] = document.getElementById('articles').children[i].children[0].id
+                };
+                localStorage.setItem('articlelist', articleIds);
+            };
+        }
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>
