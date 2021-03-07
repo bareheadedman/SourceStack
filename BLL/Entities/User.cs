@@ -26,6 +26,7 @@ namespace BLL.Entities
         /// 邀请别人时，需要填写的邀请码
         /// </summary>
         public string InviteCode { get; set; }
+
         /// <summary>
         /// 帮帮币
         /// </summary>
@@ -64,34 +65,11 @@ namespace BLL.Entities
 
 
 
-        public bool PassWordHasAny(string passWord, string condition)
+        public void Regisert()
         {
-            char[] temp = passWord.ToCharArray();
-
-            for (int i = 0; i < temp.Length; i++)
-            {
-                if (condition.Contains(temp[i]))
-                {
-                    return true;
-                }
-            }
-            return false;
+            this.CreateTime = DateTime.Now;
+            this.InviteCode = "";
         }
-
-        public bool PassWordCondition(string passWord)
-        {
-            return
-            (
-
-            PassWordHasAny(passWord, "abcdefghijklmnopqrstuvwxyz") &&
-            PassWordHasAny(passWord, "ABCDEFGHIJKLMNOPQRSTUVWXYZ") &&
-            PassWordHasAny(passWord, "0123456789") &&
-            PassWordHasAny(passWord, "~!@#$%^&*()_+")
-
-            );
-
-        }
-
 
 
     }

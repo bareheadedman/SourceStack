@@ -53,9 +53,9 @@
   <ItemGroup>
     <Compile Include="ArticleRepository.cs" />
     <Compile Include="HelpMoneyRepository.cs" />
-    <Compile Include="Migrations\202101091234336_init.cs" />
-    <Compile Include="Migrations\202101091234336_init.designer.cs">
-      <DependentUpon>202101091234336_init.cs</DependentUpon>
+    <Compile Include="Migrations\202103070841341_init.cs" />
+    <Compile Include="Migrations\202103070841341_init.designer.cs">
+      <DependentUpon>202103070841341_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProblemRepository.cs" />
@@ -65,19 +65,19 @@
     <Compile Include="UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{f37f079c-93f5-4672-aa94-0be901eb6b6e}</Project>
-      <Name>Entities</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202101091234336_init.resx">
-      <DependentUpon>202101091234336_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103070841341_init.resx">
+      <DependentUpon>202103070841341_init.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{f37f079c-93f5-4672-aa94-0be901eb6b6e}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

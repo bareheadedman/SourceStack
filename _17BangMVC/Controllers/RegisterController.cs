@@ -1,18 +1,25 @@
-﻿using _17BangMVC.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BLL.Entities;
-using BLL.Repositories;
 using _17BangMVC.Filters;
+using GLB.Global;
+using SRV.ServiceInterface;
+using SRV.ViewModel;
 
 namespace _17BangMVC.Controllers
 {
     [ModelErrorTransferFilter]
     public class RegisterController : Controller
     {
+        private IUserService userService;
+        public RegisterController()
+        {
+            userService = new SRV.ProdService.UserService();
+            //userService = new SRV.MockService.UserService();
+        }
+
 
         public ActionResult Index()
         {
@@ -26,8 +33,10 @@ namespace _17BangMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(RegisterModels model)
+        public ActionResult Index(RegisterModel model)
         {
+
+
             if (!ModelState.IsValid)
             {
                 TempData[Keys.ErrorInModel] = ModelState;
@@ -40,25 +49,27 @@ namespace _17BangMVC.Controllers
                 return RedirectToAction(nameof(Index));
 
             }
-            User invitedby = new UserRepository(new SqlDbContext()).GetByName(model.InvitedName);
+
+            RegisterModel invitedby = userService.GetByName(model.InvitedName);
             if (invitedby == null)
             {
                 ModelState.AddModelError(nameof(model.InvitedName), "* 邀请人不存在");
                 TempData[Keys.ErrorInModel] = ModelState;
                 return RedirectToAction(nameof(Index));
             }
-            if (invitedby.InviteCode != model.InvitedCode)
+            if (invitedby.InvitedCode != model.InvitedCode)
             {
                 ModelState.AddModelError(nameof(model.InvitedCode), "* 邀请码不正确");
                 TempData[Keys.ErrorInModel] = ModelState;
                 return RedirectToAction(nameof(Index));
             }
-            if (new UserRepository(new SqlDbContext()).GetByName(model.Name) != null)
+            if (userService.GetByName(model.Name)!= null)
             {
                 ModelState.AddModelError(nameof(model.Name), "*  用户名已存在");
                 TempData[Keys.ErrorInModel] = ModelState;
                 return RedirectToAction(nameof(Index));
             }
+            userService.Save(model);
 
             return View();
         }

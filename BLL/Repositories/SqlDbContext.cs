@@ -30,14 +30,15 @@ namespace BLL.Repositories
 
 
             modelBuilder.Entity<User>().ToTable("Users");
-            modelBuilder.Entity<Message>().ToTable("Messages");
-            modelBuilder.Entity<Content>().ToTable("Contents");
-            modelBuilder.Entity<Article>().ToTable("Articles");
-            modelBuilder.Entity<Problem>().ToTable("Problems");
-            modelBuilder.Entity<Suggest>().ToTable("suggests");
             modelBuilder.Entity<Keyword>().ToTable("Keywords");
             modelBuilder.Entity<Category>().ToTable("Categories");
             modelBuilder.Entity<HelpMoney>().ToTable("HelpMoneys");
+            modelBuilder.Entity<Message>();
+            modelBuilder.Entity<Content>();
+            modelBuilder.Entity<Article>();
+            modelBuilder.Entity<Problem>();
+            modelBuilder.Entity<Suggest>();
+
 
 
 

@@ -3,16 +3,142 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title  ·一起帮</title>
+    <link rel="shortcut icon" href="~/Image/logo.ico" />
+    <link rel="stylesheet" href="~/Content/font-awesome.css" />
+    <link rel="stylesheet" href="~/css/BangCss.css" />
+    <script type="text/javascript" src="~/Scripts/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+   <style>
+       .field-validation-error {
+           color: red;
+           font-size:16px;
+       }
+
+       
+   </style>
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    <header style="padding-bottom:9px">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <a href="/">
+                    <img src="~/Image/logo-big.ico" alt="一起帮Logo" class="pull-left" />
+                </a>
+                <p class="navbar-text pull-left">
+                    <span style="font-weight:900;font-size:18px">
+                        一起帮
+                    </span>
+                    <span>
+                        · 网络互助平台
+                    </span>
+                    <span class="fa fa-bell" bang-bell id="bell" style="margin-left:20px;font-size:18px"></span>
+                </p>
 
-    @RenderBody()
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="fa fa-question-circle"></span>求助
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="fa fa-eye"></span>督促
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="fa fa-book"></span>文章
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="fa fa-user-circle-o"></span>用户
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="fa fa-tachometer"></span>后台
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+    </header>
+    <div class="container" style=" background-color:#f8f8f8;padding-top:5px;padding-bottom:5px">
+        <a href="/" class="pull-right">
+            <span class="fa fa-hand-o-right"></span>
+            全部消息
+        </a>
+        <div>
+            <span class="fa fa-calendar" title="2021年02月28日 12点45分"></span>
+            用户知名跳伞体验家使用了 Zoulily2 ① 的邀请码进行注册，系统奖励 Zoulily2 ① 帮帮点 10点
+        </div>
+
+    </div>
+    <div class="container">
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+        <a href="#" class="btn btn-primary text-center" style="position: fixed;bottom: 150px;right:338px">
+            <span class="fa fa-question-circle-o"></span>
+            <br />
+            帮助
+        </a>
+        <a href="#" class=" btn btn-primary  text-center" style="position:fixed;bottom:85px; right:338px">
+            <span class="fa fa-comments-o"></span>
+            <br />
+            反馈
+        </a>
+    </div>
+
+
+
+    <footer class="border-top footer text-muted">
+    </footer>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script type="text/javascript" src="~/BangScript/Layout.js"></script>
 </body>
 </html>

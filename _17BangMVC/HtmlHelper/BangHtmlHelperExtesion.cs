@@ -17,7 +17,7 @@ namespace System.Web.Mvc.Html
             TProperty property = func(htmlHelper.ViewData.Model);
 
             //待真正实现
-            string output = "<a>1</a>";
+            string output = $"<a>{property}</a>";
 
             return new MvcHtmlString(output);
         }
