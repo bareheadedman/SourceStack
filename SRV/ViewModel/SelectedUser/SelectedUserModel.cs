@@ -12,6 +12,6 @@ namespace SRV.ViewModel
         public string Name { get; set; }
         public int Id { get; set; }
         public int InvitedById { get; set; }
-        public IList<RegisterModel> SelectedUsers { get; set; }
+        public IList<UserModel> SelectedUsers { get; set; }
     }
 }

@@ -67,6 +67,7 @@
 
             })
 
+        //进行验证码的刷新
         $("[bang-refresh-image-code]").click(
             function (event)
             {

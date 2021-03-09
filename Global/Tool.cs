@@ -7,6 +7,7 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
+using System.Security.Cryptography;
 
 namespace GLB.Global
 {
@@ -56,8 +57,6 @@ namespace GLB.Global
             return ms.ToArray();//将流内容写入byte数组返回
         }
 
-
-
         /// <summary>
         /// 随机生成一个大写的字母
         /// </summary>
@@ -68,7 +67,6 @@ namespace GLB.Global
             int nub = DiceRandom(0, 26, random);
             return table[nub].ToString();
         }
-
 
         /// <summary>
         /// 生成一个随机数
@@ -103,6 +101,24 @@ namespace GLB.Global
                 }
             }
             return imageCode;
+        }
+
+        /// <summary>
+        /// 使用MD5进行加密
+        /// </summary>
+        /// <param name="source">要加密的字符串</param>
+        /// <returns> 返回加密过后的字符串</returns>
+        public static string MD5Crytp(string source)
+        {
+            byte[] bytes = MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(source));
+
+            StringBuilder SB = new StringBuilder();
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                SB.Append(bytes[i].ToString("x2"));
+            }
+
+            return SB.ToString();
         }
 
 

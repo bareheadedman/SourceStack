@@ -16,7 +16,7 @@ namespace SRV.ServiceInterface
         /// user的Name
         /// </param>
         /// <returns>返回找到后的entity没有则返回为NULL</returns>
-        RegisterModel GetByName(string name);
+        UserModel GetByName(string name);
 
         /// <summary>
         /// 查找是否存在name
@@ -37,12 +37,13 @@ namespace SRV.ServiceInterface
         /// </summary>
         /// <param name="name">要查找的字符串</param>
         /// <returns> 返回所有查出来的用户没有则返回NULL</returns>
-        IList<RegisterModel> Selected(string name);
+        IList<UserModel> Selected(string name);
 
         /// <summary>
-        /// 赋予注册时所需要的东西,并且保存
+        /// 赋予注册时所需要的东西,并且持久化到数据库
         /// </summary>
         /// <param name="model">与eneity相对应的model</param>
-        void Regisert(RegisterModel model);
+        /// <returns> 返回持久化到数据库之后的Id</returns>    
+        int Regisert(RegisterModel model);
     }
 }

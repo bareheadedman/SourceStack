@@ -64,12 +64,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisterModel.cs" />
-    <Compile Include="SelectedUserModel.cs" />
-    <Compile Include="UserModel.cs" />
+    <Compile Include="Register\RegisterModel.cs" />
+    <Compile Include="SelectedUser\SelectedUserModel.cs" />
+    <Compile Include="User\UserModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

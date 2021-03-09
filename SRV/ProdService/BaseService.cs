@@ -20,9 +20,13 @@ namespace SRV.ProdService
             config = new MapperConfiguration(
                 cfg =>
                 {
+                    cfg.CreateMap<User, UserModel>()
+                       .ForMember(dest => dest.InvitedCode, opt => opt.MapFrom(src => src.InviteCode))
+                       .ReverseMap();
                     cfg.CreateMap<User, RegisterModel>()
-                        .ForMember(dest => dest.InvitedCode, opt => opt.MapFrom(src => src.InviteCode))
-                        .ReverseMap();
+                       //配置指定的两个属性进行映射
+                       .ForMember(dest => dest.InvitedCode, opt => opt.MapFrom(src => src.InviteCode))
+                       .ReverseMap();
 
                 });
         }

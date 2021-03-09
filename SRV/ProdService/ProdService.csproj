@@ -60,6 +60,10 @@
       <Project>{0e09eec0-1809-4817-84b5-a0606412d810}</Project>
       <Name>Repositories</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Global\Global.csproj">
+      <Project>{9e8fe831-5556-4228-9d51-eb98f0524564}</Project>
+      <Name>Global</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ServiceInterface\ServiceInterface.csproj">
       <Project>{6da4a328-549c-4e16-8fc5-13282a69dcbf}</Project>
       <Name>ServiceInterface</Name>

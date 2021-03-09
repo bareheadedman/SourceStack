@@ -16,12 +16,12 @@ namespace SRV.MockService
             throw new NotImplementedException();
         }
 
-        public RegisterModel GetByName(string name)
+        public UserModel GetByName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public void Regisert(RegisterModel model)
+        public int Regisert(RegisterModel model)
         {
             throw new NotImplementedException();
         }
@@ -31,7 +31,7 @@ namespace SRV.MockService
             throw new NotImplementedException();
         }
 
-        public IList<RegisterModel> Selected(string name)
+        public IList<UserModel> Selected(string name)
         {
             throw new NotImplementedException();
         }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BLL.Entities;
+using GLB.Global;
 
 namespace SRV.ProdService
 {
@@ -34,17 +35,18 @@ namespace SRV.ProdService
 
         }
 
-        public RegisterModel GetByName(string name)
+        public UserModel GetByName(string name)
         {
             User user = userRepository.GetByName(name);
-            return mapper.Map<RegisterModel>(user);
+            return mapper.Map<UserModel>(user);
         }
 
-        public void Regisert(RegisterModel model)
+        public int Regisert(RegisterModel model)
         {
             User user = mapper.Map<User>(model);
+            user.Password = Tool.MD5Crytp(user.Password);
             user.Regisert();
-            userRepository.Save(user);
+            return userRepository.Save(user);
         }
 
         public int Save(RegisterModel model)
@@ -53,7 +55,7 @@ namespace SRV.ProdService
             return userRepository.Save(user);
         }
 
-        public IList<RegisterModel> Selected(string name)
+        public IList<UserModel> Selected(string name)
         {
 
             IList<User> users = userRepository.Selected(name);
@@ -61,7 +63,7 @@ namespace SRV.ProdService
             {
                 return null;
             } // else nothing
-            return mapper.Map<IList<User>, IList<RegisterModel>>(users);
+            return mapper.Map<IList<User>, IList<UserModel>>(users);
         }
     }
 }

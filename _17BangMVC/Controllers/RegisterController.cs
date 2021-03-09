@@ -50,7 +50,7 @@ namespace _17BangMVC.Controllers
 
             }
 
-            RegisterModel invitedby = userService.GetByName(model.InvitedName);
+            UserModel invitedby = userService.GetByName(model.InvitedName);
             if (invitedby == null)
             {
                 ModelState.AddModelError(nameof(model.InvitedName), "* 邀请人不存在");
@@ -69,7 +69,14 @@ namespace _17BangMVC.Controllers
                 TempData[Keys.ErrorInModel] = ModelState;
                 return RedirectToAction(nameof(Index));
             }
-            userService.Regisert(model);
+
+            int id = userService.Regisert(model);
+
+            HttpCookie cookie = new HttpCookie(Keys.User);
+            cookie.Values.Add(Keys.Id, id.ToString());
+            cookie.Values.Add(Keys.Password, Tool.MD5Crytp(model.Password));
+            Response.Cookies.Add(cookie);
+
 
             return View();
         }
