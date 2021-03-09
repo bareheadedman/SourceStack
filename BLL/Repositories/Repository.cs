@@ -17,6 +17,12 @@ namespace BLL.Repositories
             this.context = context;
         }
 
+
+        /// <summary>
+        /// 保存实体entity到数据库
+        /// </summary>
+        /// <param name="entity">entity实体</param>
+        /// <returns>返回保存到数据库实体的Id</returns>
         public int Save(T entity)
         {
             context.Set<T>().Add(entity);

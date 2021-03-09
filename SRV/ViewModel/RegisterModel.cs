@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace SRV.ViewModel
 {
     public class RegisterModel
     {
+        public int Id { get; set; }
+
         [Display(Name = "邀请人")]
         [Required(ErrorMessage = "* 邀请人不能为空")]
         public string InvitedName { get; set; }
@@ -19,6 +22,7 @@ namespace SRV.ViewModel
 
         [Display(Name = "用户名")]
         [Required(ErrorMessage = "* 用户名不能为空")]
+        [Remote("UserIsExist", "User", ErrorMessage = "* 用户名已存在")]
         public string Name { get; set; }
 
         [Display(Name = "密码")]
@@ -28,6 +32,7 @@ namespace SRV.ViewModel
 
         [Display(Name = "确认密码")]
         [Required(ErrorMessage = "* 确认密码不能为空")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "* 确认密码和密码不一致")]
         public string ConfirmPassword { get; set; }
 
         [Display(Name = "验证码")]

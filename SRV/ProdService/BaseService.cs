@@ -20,7 +20,10 @@ namespace SRV.ProdService
             config = new MapperConfiguration(
                 cfg =>
                 {
-                    cfg.CreateMap<User, RegisterModel>().ReverseMap();
+                    cfg.CreateMap<User, RegisterModel>()
+                        .ForMember(dest => dest.InvitedCode, opt => opt.MapFrom(src => src.InviteCode))
+                        .ReverseMap();
+
                 });
         }
         protected IMapper mapper

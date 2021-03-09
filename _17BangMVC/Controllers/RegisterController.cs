@@ -63,13 +63,13 @@ namespace _17BangMVC.Controllers
                 TempData[Keys.ErrorInModel] = ModelState;
                 return RedirectToAction(nameof(Index));
             }
-            if (userService.GetByName(model.Name)!= null)
+            if (userService.GetByName(model.Name) != null)
             {
                 ModelState.AddModelError(nameof(model.Name), "*  用户名已存在");
                 TempData[Keys.ErrorInModel] = ModelState;
                 return RedirectToAction(nameof(Index));
             }
-            userService.Save(model);
+            userService.Regisert(model);
 
             return View();
         }

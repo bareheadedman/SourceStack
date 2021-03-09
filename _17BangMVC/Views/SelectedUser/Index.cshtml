@@ -1,0 +1,43 @@
+﻿@model SRV.ViewModel.SelectedUserModel
+
+
+
+
+
+<div bang-selected-invited>
+    @if (Model.SelectedUsers == null)
+    {
+        <span>* 没有找到以 @Model.Name 开头的用户名</span>
+    }
+    else
+    {
+        foreach (var item in Model.SelectedUsers)
+        {
+            <div bang-selected-invited-row class="row">
+                <div bang-selected-invited-radio class=" col-xs-4">
+                    <label>
+                        @if (item.Name == Model.Name)
+                        {
+                            <input type="radio" name="InvitedById" checked value=@item.Id>
+                        }
+                        else
+                        {
+                            <input type="radio" name="InvitedById" value=@item.Id>
+                        }
+                        @item.Name
+                    </label>
+                </div>
+                <div bang-selected-invited-href class=" col-xs-4">
+                    <a href="/">
+                        <span class="fa fa-hand-o-right"></span>
+                        主页
+                    </a>
+                </div>
+
+            </div>
+        }
+
+    }
+
+</div>
+

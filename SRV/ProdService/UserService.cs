@@ -10,7 +10,7 @@ using BLL.Entities;
 
 namespace SRV.ProdService
 {
-    public class UserService:BaseService,IUserService
+    public class UserService : BaseService, IUserService
     {
         private UserRepository userRepository;
         public UserService()
@@ -19,22 +19,49 @@ namespace SRV.ProdService
             userRepository = new UserRepository(dbContext);
         }
 
-        /// <summary>
-        ///  通过name找到实体entity返回model
-        ///  </summary>
-        /// <param name="invitedName">
-        /// user的Name
-        /// </param>
-        /// <returns></returns>
+        public bool Exist(string name)
+        {
+
+            if (userRepository.GetByName(name) == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+
+            }
+
+        }
+
         public RegisterModel GetByName(string name)
         {
-            User user= userRepository.GetByName(name);
+            User user = userRepository.GetByName(name);
             return mapper.Map<RegisterModel>(user);
         }
 
-        public void Save(RegisterModel model)
+        public void Regisert(RegisterModel model)
         {
-            throw new NotImplementedException();
+            User user = mapper.Map<User>(model);
+            user.Regisert();
+            userRepository.Save(user);
+        }
+
+        public int Save(RegisterModel model)
+        {
+            User user = mapper.Map<User>(model);
+            return userRepository.Save(user);
+        }
+
+        public IList<RegisterModel> Selected(string name)
+        {
+
+            IList<User> users = userRepository.Selected(name);
+            if (users == null)
+            {
+                return null;
+            } // else nothing
+            return mapper.Map<IList<User>, IList<RegisterModel>>(users);
         }
     }
 }

@@ -14,7 +14,6 @@ namespace _17BangMVC
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 
-            
 
             routes.MapRoute(
                 name: "Default",

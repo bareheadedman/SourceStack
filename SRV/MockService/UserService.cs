@@ -11,12 +11,27 @@ namespace SRV.MockService
 {
     public class UserService : IUserService
     {
+        public bool Exist(string name)
+        {
+            throw new NotImplementedException();
+        }
+
         public RegisterModel GetByName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public void Save(RegisterModel model)
+        public void Regisert(RegisterModel model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Save(RegisterModel model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<RegisterModel> Selected(string name)
         {
             throw new NotImplementedException();
         }

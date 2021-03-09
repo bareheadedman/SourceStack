@@ -25,6 +25,28 @@ namespace BLL.Repositories
             return context.Set<User>().Where(u => u.Name == name).SingleOrDefault();
         }
 
+        /// <summary>
+        /// 找到以name开头的用户
+        /// </summary>
+        /// <param name="name">模糊查询以name为开头</param>
+        /// <returns>返回查询到的所有用户，没有则返回NULL</returns>
+        public IList<User> Selected(string name)
+        {
+
+
+            IList<User> users = (from u in context.Set<User>()
+                                 where u.Name.StartsWith(name)
+                                 select u
+                                ).ToList();
+            if (users.Count == 0)
+            {
+                return null;
+
+            }
+
+            return users;
+        }
+
 
     }
 }

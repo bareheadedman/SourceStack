@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using GLB.Global;
 
 
 namespace BLL.Entities
@@ -64,12 +65,21 @@ namespace BLL.Entities
 
 
 
-
+        /// <summary>
+        /// 赋予注册时所需要的东西
+        /// </summary>
         public void Regisert()
         {
             this.CreateTime = DateTime.Now;
-            this.InviteCode = "";
+            string code = "";
+            Random random = new Random();
+            for (int i = 0; i < 4; i++)
+            {
+                code += Tool.DiceRandom(0, 9, random);
+            }
+            this.InviteCode = code;
         }
+
 
 
     }
