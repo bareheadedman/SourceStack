@@ -21,6 +21,11 @@ namespace SRV.MockService
             throw new NotImplementedException();
         }
 
+        public UserModel GetCurrentUserAsModel()
+        {
+            throw new NotImplementedException();
+        }
+
         public int Regisert(RegisterModel model)
         {
             throw new NotImplementedException();

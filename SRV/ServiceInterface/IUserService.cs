@@ -26,6 +26,12 @@ namespace SRV.ServiceInterface
         bool Exist(string name);
 
         /// <summary>
+        /// 获取当前用户
+        /// </summary>
+        /// <returns>拿到当前用户转换成model</returns>
+        UserModel GetCurrentUserAsModel();
+
+        /// <summary>
         /// 保存eneity到数据库
         /// </summary>
         /// <param name="model">与eneity对应的model</param>
@@ -45,5 +51,7 @@ namespace SRV.ServiceInterface
         /// <param name="model">与eneity相对应的model</param>
         /// <returns> 返回持久化到数据库之后的Id</returns>    
         int Regisert(RegisterModel model);
+
+        
     }
 }

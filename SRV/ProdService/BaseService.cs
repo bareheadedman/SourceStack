@@ -1,12 +1,17 @@
 ﻿using AutoMapper;
 using BLL.Entities;
+using BLL.Repositories;
+using GLB.Global;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace SRV.ProdService
 {
@@ -14,7 +19,31 @@ namespace SRV.ProdService
     {
         protected readonly static MapperConfiguration config;
 
-        //在实例构造函数,配置AutoMapper,节省性能
+        protected IMapper mapper
+        {
+            get { return config.CreateMapper(); }
+        }
+
+        //保证ContextPerRequest
+        protected SqlDbContext context
+        {
+            get
+            {
+                if (HttpContext.Current.Items[Keys.DBContext] == null)
+                {
+                    HttpContext.Current.Items[Keys.DBContext] = new SqlDbContext();
+                }
+                return (SqlDbContext)HttpContext.Current.Items[Keys.DBContext];
+            }
+        }
+
+        private UserRepository UserRepository;
+
+        public BaseService()
+        {
+            UserRepository = new UserRepository(context);
+        }
+        //在构造函数配置AutoMapper,节省性能
         static BaseService()
         {
             config = new MapperConfiguration(
@@ -30,9 +59,52 @@ namespace SRV.ProdService
 
                 });
         }
-        protected IMapper mapper
+
+
+        /// <summary>
+        /// 获取当前用户
+        /// </summary>
+        /// <returns>返回当前cookie用户,没有则返回NULL</returns>
+        public User GetCurrentUser()
         {
-            get { return config.CreateMapper(); }
+            //拿到当前请求的cookie
+            NameValueCollection userInfo = HttpContext.Current.Request.Cookies[Keys.User].Values;
+            if (userInfo == null)
+            {
+                return null;
+            }
+            //拿到cookie的Id
+            bool hasUserId = int.TryParse(userInfo[Keys.Id], out int current);
+            if (!hasUserId)
+            {
+                HttpCookie restCookie = new HttpCookie(Keys.User);
+                restCookie.Expires = DateTime.Now.AddDays(-1);
+                HttpContext.Current.Response.Cookies.Add(restCookie);
+                return null;
+            }
+            //拿到cookie的密码
+            string pswInCookie = userInfo[Keys.Password];
+            if (string.IsNullOrWhiteSpace(pswInCookie))
+            {
+                HttpCookie restCookie = new HttpCookie(Keys.User);
+                restCookie.Expires = DateTime.Now.AddDays(-1);
+                HttpContext.Current.Response.Cookies.Add(restCookie);
+                return null;
+            }
+            //拿到当前用户的信息
+            User userInRepository = UserRepository.GetById(current);
+            if (userInRepository.Password != pswInCookie)
+            {
+                HttpCookie restCookie = new HttpCookie(Keys.User);
+                restCookie.Expires = DateTime.Now.AddDays(-1);
+                HttpContext.Current.Response.Cookies.Add(restCookie);
+                return null;
+            }
+            return userInRepository;
         }
+
+
+
+
     }
 }

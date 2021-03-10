@@ -16,8 +16,7 @@ namespace SRV.ProdService
         private UserRepository userRepository;
         public UserService()
         {
-            SqlDbContext dbContext = new SqlDbContext();
-            userRepository = new UserRepository(dbContext);
+            userRepository = new UserRepository(context);
         }
 
         public bool Exist(string name)
@@ -64,6 +63,13 @@ namespace SRV.ProdService
                 return null;
             } // else nothing
             return mapper.Map<IList<User>, IList<UserModel>>(users);
+        }
+
+        public UserModel GetCurrentUserAsModel()
+        {
+            User current = GetCurrentUser();
+            return mapper.Map<UserModel>(current);
+
         }
     }
 }

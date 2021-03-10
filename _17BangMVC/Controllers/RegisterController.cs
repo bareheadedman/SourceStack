@@ -19,7 +19,7 @@ namespace _17BangMVC.Controllers
             userService = new SRV.ProdService.UserService();
             //userService = new SRV.MockService.UserService();
         }
-
+        
 
         public ActionResult Index()
         {
@@ -27,6 +27,8 @@ namespace _17BangMVC.Controllers
             {
                 ModelState.Merge(TempData[Keys.ErrorInModel] as ModelStateDictionary);
             }
+
+            UserModel model = userService.GetCurrentUserAsModel();
 
 
             return View();
