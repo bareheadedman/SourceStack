@@ -11,6 +11,7 @@ namespace _17BangMVC.Filters
     {
         public void OnActionExecuted(ActionExecutedContext filterContext)
         {
+            //保证业务逻辑错误也能回滚
             if (filterContext.Exception == null)
             {
                 BaseService.CommintTransaction();
