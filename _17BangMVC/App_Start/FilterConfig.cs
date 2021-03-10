@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using _17BangMVC.Filters;
+using System.Web;
 using System.Web.Mvc;
 
 namespace _17BangMVC
@@ -8,6 +9,7 @@ namespace _17BangMVC
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new ContextPerRequet());
         }
     }
 }

@@ -134,6 +134,7 @@
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SelectedUserController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Filters\ContextPerRequet.cs" />
     <Compile Include="Filters\ModelErrorTransferFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

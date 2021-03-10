@@ -7,6 +7,7 @@ using SRV.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,27 +18,6 @@ namespace SRV.ProdService
 {
     public class BaseService
     {
-        protected readonly static MapperConfiguration config;
-
-        protected IMapper mapper
-        {
-            get { return config.CreateMapper(); }
-        }
-
-        //保证ContextPerRequest
-        protected SqlDbContext context
-        {
-            get
-            {
-                if (HttpContext.Current.Items[Keys.DBContext] == null)
-                {
-                    HttpContext.Current.Items[Keys.DBContext] = new SqlDbContext();
-                }
-                return (SqlDbContext)HttpContext.Current.Items[Keys.DBContext];
-            }
-        }
-
-        private UserRepository UserRepository;
 
         public BaseService()
         {
@@ -58,6 +38,29 @@ namespace SRV.ProdService
                        .ReverseMap();
 
                 });
+        }
+        protected readonly static MapperConfiguration config;
+
+        protected IMapper mapper
+        {
+            get { return config.CreateMapper(); }
+        }
+
+        private UserRepository UserRepository;
+
+        //保证一个HTTP请求不会重复获取context
+        protected SqlDbContext context
+        {
+            get
+            {
+                if (HttpContext.Current.Items[Keys.DBContext] == null)
+                {
+                    SqlDbContext sc = new SqlDbContext();
+                    sc.Database.BeginTransaction();
+                    HttpContext.Current.Items[Keys.DBContext] = sc;
+                } // else nothing
+                return (SqlDbContext)HttpContext.Current.Items[Keys.DBContext];
+            }
         }
 
 
@@ -103,7 +106,52 @@ namespace SRV.ProdService
             return userInRepository;
         }
 
+        /// <summary>
+        /// 拿到当前Http请求的context !!!(仅用于提交或回滚,获取后会清除)
+        /// </summary>
+        /// <returns>当前Http请求的context</returns>
+        private static SqlDbContext getContextFromHttp()
+        {
+            object objContext = HttpContext.Current.Items[Keys.DBContext];
+            HttpContext.Current.Items.Remove(Keys.DBContext);
+            return objContext as SqlDbContext;
+        }
 
+        /// <summary>
+        /// 提交当前Http事务
+        /// </summary>
+        public static void CommintTransaction()
+        {
+            SqlDbContext context = getContextFromHttp();
+            if (context != null)
+            {
+                using (context)
+                {
+                    using (DbContextTransaction transaction = context.Database.CurrentTransaction)
+                    {
+                        transaction.Commit();
+                    }
+                }
+            }//else nothing
+        }
+
+        /// <summary>
+        /// 回滚当前Http事务
+        /// </summary>
+        public static void RollbackTransaction()
+        {
+            SqlDbContext context = getContextFromHttp();
+            if (context != null)
+            {
+                using (context)
+                {
+                    using (DbContextTransaction transaction = context.Database.CurrentTransaction)
+                    {
+                        transaction.Rollback();
+                    }
+                }
+            }//else nothing
+        }
 
 
     }
