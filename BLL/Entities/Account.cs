@@ -10,10 +10,7 @@ namespace BLL.Entities
     public class Account : BaseEntity
     {
 
-        /// <summary>
-        /// 收入或指出的时间
-        /// </summary>
-        public DateTime CreateTime { get; set; }
+
         /// <summary>
         /// 还能使用的
         /// </summary>

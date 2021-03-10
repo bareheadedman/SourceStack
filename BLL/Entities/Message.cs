@@ -6,10 +6,7 @@ namespace BLL.Entities
 {
     public class Message: BaseEntity
     {
-        /// <summary>
-        /// 发送时间
-        /// </summary>
-        public DateTime DateTime { get; set; }
+
         /// <summary>
         /// 内容
         /// </summary>

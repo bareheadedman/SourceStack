@@ -43,7 +43,6 @@ namespace SRV.ProdService
         public int Regisert(RegisterModel model)
         {
             User user = mapper.Map<User>(model);
-            user.Password = Tool.MD5Crytp(user.Password);
             user.Regisert();
             return userRepository.Save(user);
         }

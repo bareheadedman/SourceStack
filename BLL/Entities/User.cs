@@ -40,10 +40,7 @@ namespace BLL.Entities
         /// 帮帮豆
         /// </summary>
         public int? HelpBean { get; set; }
-        /// <summary>
-        /// 创建时间
-        /// </summary>
-        public DateTime CreateTime { get; set; }
+
         /// <summary>
         /// 用户发布的文章
         /// </summary>
@@ -71,6 +68,7 @@ namespace BLL.Entities
         public void Regisert()
         {
             this.CreateTime = DateTime.Now;
+            this.Password = Tool.MD5Crytp(this.Password);
             string code = "";
             Random random = new Random();
             for (int i = 0; i < 4; i++)
