@@ -15,5 +15,6 @@ namespace GLB.Global
         public const string Id = "Id";
         public const string Password = "Password";
         public const string DBContext = "DBContext";
+        public const string ImageCode = "ImageCode";
     }
 }

@@ -19,7 +19,7 @@ namespace _17BangMVC.Controllers
             userService = new SRV.ProdService.UserService();
             //userService = new SRV.MockService.UserService();
         }
-        
+
 
         public ActionResult Index()
         {
@@ -27,8 +27,6 @@ namespace _17BangMVC.Controllers
             {
                 ModelState.Merge(TempData[Keys.ErrorInModel] as ModelStateDictionary);
             }
-
-            UserModel model = userService.GetCurrentUserAsModel();
 
 
             return View();
@@ -49,9 +47,7 @@ namespace _17BangMVC.Controllers
                 ModelState.AddModelError(nameof(model.ConfirmPassword), "* 确认密码和密码不一致");
                 TempData[Keys.ErrorInModel] = ModelState;
                 return RedirectToAction(nameof(Index));
-
             }
-
             UserModel invitedby = userService.GetByName(model.InvitedName);
             if (invitedby == null)
             {
@@ -68,6 +64,12 @@ namespace _17BangMVC.Controllers
             if (userService.GetByName(model.Name) != null)
             {
                 ModelState.AddModelError(nameof(model.Name), "*  用户名已存在");
+                TempData[Keys.ErrorInModel] = ModelState;
+                return RedirectToAction(nameof(Index));
+            }
+            if (model.InputImageCode != Session[Keys.ImageCode].ToString())
+            {
+                ModelState.AddModelError(nameof(model.InputImageCode), "*  验证码错误");
                 TempData[Keys.ErrorInModel] = ModelState;
                 return RedirectToAction(nameof(Index));
             }

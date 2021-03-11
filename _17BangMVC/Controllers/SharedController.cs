@@ -12,8 +12,10 @@ namespace _17BangMVC.Controllers
 
         public ActionResult GetImageCode()
         {
-            byte[] img = Tool.CreateImageCode(Tool.ImageCode(4));
 
+            string imageCode = Tool.ImageCode(4);
+            byte[] img = Tool.CreateImageCode(imageCode);
+            Session.Add(Keys.ImageCode, imageCode);
             return File(img, @"image/jpeg");
         }
     }
