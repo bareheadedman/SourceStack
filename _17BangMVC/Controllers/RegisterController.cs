@@ -33,7 +33,7 @@ namespace _17BangMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(UserModel model)
+        public ActionResult Index(RegisterModel model)
         {
 
 
@@ -84,8 +84,5 @@ namespace _17BangMVC.Controllers
 
             return View();
         }
-
-
-
     }
 }

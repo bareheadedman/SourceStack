@@ -36,7 +36,7 @@ namespace SRV.ServiceInterface
         /// </summary>
         /// <param name="model">与eneity对应的model</param>
         /// <returns>返回保存后eneity的Id</returns>
-        int Save(UserModel model);
+        int Save(RegisterModel model);
 
         /// <summary>
         /// 查到以name开头或者等于name的用户
@@ -50,7 +50,7 @@ namespace SRV.ServiceInterface
         /// </summary>
         /// <param name="model">与eneity相对应的model</param>
         /// <returns> 返回持久化到数据库之后的Id</returns>    
-        int Regisert(UserModel model);
+        int Regisert(RegisterModel model);
 
         
     }

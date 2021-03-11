@@ -40,14 +40,14 @@ namespace SRV.ProdService
             return mapper.Map<UserModel>(user);
         }
 
-        public int Regisert(UserModel model)
+        public int Regisert(RegisterModel model)
         {
             User user = mapper.Map<User>(model);
             user.Regisert();
             return userRepository.Save(user);
         }
 
-        public int Save(UserModel model)
+        public int Save(RegisterModel model)
         {
             User user = mapper.Map<User>(model);
             return userRepository.Save(user);
