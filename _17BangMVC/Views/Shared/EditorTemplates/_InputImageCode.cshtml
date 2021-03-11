@@ -1,0 +1,25 @@
+﻿@model string
+
+@{
+    Layout = null;
+}
+
+
+<div class="form-group">
+    <label>验证码：（*必填）</label><br />
+    <span>
+        @Html.TextBoxFor(m => m, new
+   {
+       @class = "form-control form-check-inline",
+       style = "width:100px;display:inline ",
+       bang_input_Image_Code = ""
+   })
+        <img src="/Shared/GetImageCode" style="display:none" bang-image-code />
+        <a href="#" style="display:none" bang-refresh-image-code>看不清楚</a>
+        <span bang-image-code-reminder>点击输入框显示</span>
+    </span>
+    <br />
+    @Html.ValidationMessageFor(m => m)
+</div>
+
+<script type="text/javascript" src="~/BangScript/InputImageCode.js"></script>

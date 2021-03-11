@@ -20,87 +20,70 @@
             <div class="col-lg-4 col-md-5">
                 @using (Html.BeginForm())
                 {
-                    <form method="post" asp-page="/Register">
-                        <div style="background-color:lightyellow;border-width:2px;border-style:dashed;border-color:#eee;border-radius:10px">
-                            <div class="text-right" style="padding-top:10px;padding-right:10px">
-                                <a href="#">
-                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                    为什么需要邀请
-                                </a>
-                            </div>
-                            <div class="form-group mx-2" bang-invitedBy>
-                                <label>邀请人：（*必填）</label>
-                                @Html.TextBoxFor(m => m.InvitedName, new
-                                {
-                               @class = "form-control",
-                               placeholder = "他的用户名，模糊查询只能从头开始",
-                               bang_invitedBy_name = ""
-                                })
-                                @Html.ValidationMessageFor(m => m.InvitedName)
-                            </div>
-                            <div class="form-group mx-2">
-                                <label>邀请码：（*必填）</label>
-                                @Html.TextBoxFor(m => m.InvitedCode, new
-                           {
-                               @class = "form-control",
-                               placeholder = "4位数字"
-                           })
-                                @Html.ValidationMessageFor(m => m.InvitedCode)
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>用户名：（*必填）</label>
-                            @Html.TextBoxFor(m => m.Name, new
-                       {
-                           @class = "form-control",
-                           placeholder = "登录用户名，可修改，不能重复"
-                       })
-                            @Html.ValidationMessageFor(m => m.Name)
-                        </div>
-                        <div class="form-group">
-                            <label>密码：（*必填）</label>
-                            @Html.PasswordFor(m => m.Password, new
-                       {
-                           @class = "form-control",
-                           placeholder = "不少于4个字符",
-                           bang_invitedBy_password = ""
-                       })
-                            @Html.ValidationMessageFor(m => m.Password)
-                        </div>
-                        <div class="form-group">
-                            <label>验证密码：（*必填）</label>
-                            @Html.PasswordFor(m => m.ConfirmPassword, new
-                       {
-                           @class = "form-control",
-                           placeholder = "和密码相同",
-                       })
-                            @Html.ValidationMessageFor(m => m.ConfirmPassword)
-                        </div>
-                        <div class="form-group">
-                            <label>验证码：（*必填）</label><br />
-                            <span>
-                                @Html.TextBoxFor(m => m.InputImageCode, new
-                           {
-                               @class = "form-control form-check-inline",
-                               style = "width:100px;display:inline ",
-                               bang_input_Image_Code = ""
-                           })
-                                <img src="/Shared/GetImageCode" style="display:none" bang-image-code />
-                                <a href="#" style="display:none" bang-refresh-image-code>看不清楚</a>
-                                <span bang-image-code-reminder>点击输入框显示</span>
-                            </span>
-                            <br />
-                            @Html.ValidationMessageFor(m => m.InputImageCode)
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">提交</button>
-                            <button type="reset" class="btn btn-secondary">重置</button>
-                            <a href="/Log/On.html" class=" pull-right btn">
-                                <i class="fa fa-sign-in" aria-hidden="true"></i>
-                                登录
+                    <div style="background-color:lightyellow;border-width:2px;border-style:dashed;border-color:#eee;border-radius:10px">
+                        <div class="text-right" style="padding-top:10px;padding-right:10px">
+                            <a href="#">
+                                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                为什么需要邀请
                             </a>
                         </div>
-                    </form>
+                        <div class="form-group mx-2" bang-invitedBy>
+                            <label>邀请人：（*必填）</label>
+                            @Html.TextBoxFor(m => m.InvitedName, new
+                            {
+                           @class = "form-control",
+                           placeholder = "他的用户名，模糊查询只能从头开始",
+                           bang_invitedBy_name = ""
+                            })
+                            @Html.ValidationMessageFor(m => m.InvitedName)
+                        </div>
+                        <div class="form-group mx-2">
+                            <label>邀请码：（*必填）</label>
+                            @Html.TextBoxFor(m => m.InvitedCode, new
+                       {
+                           @class = "form-control",
+                           placeholder = "4位数字"
+                       })
+                            @Html.ValidationMessageFor(m => m.InvitedCode)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>用户名：（*必填）</label>
+                        @Html.TextBoxFor(m => m.Name, new
+                   {
+                       @class = "form-control",
+                       placeholder = "登录用户名，可修改，不能重复"
+                   })
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                    <div class="form-group">
+                        <label>密码：（*必填）</label>
+                        @Html.PasswordFor(m => m.Password, new
+                   {
+                       @class = "form-control",
+                       placeholder = "不少于4个字符",
+                       bang_invitedBy_password = ""
+                   })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                    <div class="form-group">
+                        <label>验证密码：（*必填）</label>
+                        @Html.PasswordFor(m => m.ConfirmPassword, new
+                   {
+                       @class = "form-control",
+                       placeholder = "和密码相同",
+                   })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                    </div>
+                    @Html.EditorFor(m => m.InputImageCode,"_InputImageCode")
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">提交</button>
+                        <button type="reset" class="btn btn-secondary">重置</button>
+                        <a href="/Log/On.html" class=" pull-right btn">
+                            <i class="fa fa-sign-in" aria-hidden="true"></i>
+                            登录
+                        </a>
+                    </div>
                 }
             </div>
             <div class="col-lg-5 col-md-5 " style=" margin-left:60px">

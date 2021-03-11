@@ -13,7 +13,7 @@ namespace SRV.ViewModel
         public string Password { get; set; }
         public string InvitedName { get; set; }
         public string InvitedCode { get; set; }
-
+        public string InputImageCode { get; set; }
 
     }
 }

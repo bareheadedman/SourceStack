@@ -23,6 +23,8 @@ namespace _17BangMVC
             builder.RegisterAssemblyTypes(typeof(UserService).Assembly)
                .AsImplementedInterfaces();
 
+            IContainer container = builder.Build();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

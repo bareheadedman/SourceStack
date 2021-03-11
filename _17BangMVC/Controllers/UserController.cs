@@ -12,10 +12,9 @@ namespace _17BangMVC.Controllers
     {
         private IUserService userService;
 
-        public UserController()
+        public UserController(IUserService service)
         {
-            userService = new SRV.ProdService.UserService();
-            //userService = new SRV.MockService.UserService();
+            userService = service;
         }
 
         /// <summary>
@@ -27,7 +26,7 @@ namespace _17BangMVC.Controllers
         public JsonResult UserIsExist(String Name)
         {
             bool Exist = userService.Exist(Name);
-            return Json(!Exist,JsonRequestBehavior.AllowGet);
+            return Json(!Exist, JsonRequestBehavior.AllowGet);
 
         }
     }

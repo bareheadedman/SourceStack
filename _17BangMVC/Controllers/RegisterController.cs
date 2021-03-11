@@ -14,10 +14,9 @@ namespace _17BangMVC.Controllers
     public class RegisterController : Controller
     {
         private IUserService userService;
-        public RegisterController()
+        public RegisterController(IUserService service)
         {
-            userService = new SRV.ProdService.UserService();
-            //userService = new SRV.MockService.UserService();
+            userService = service;
         }
 
 

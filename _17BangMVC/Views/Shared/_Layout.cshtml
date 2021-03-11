@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="~/Content/font-awesome.css" />
     <link rel="stylesheet" href="~/css/BangCss.css" />
 
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
     <style>
         .field-validation-error {
             color: red;
@@ -131,11 +136,6 @@
     </footer>
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-    <script type="text/javascript" src="~/BangScript/Layout.js"></script>
 
 </body>
 </html>

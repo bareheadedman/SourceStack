@@ -11,10 +11,9 @@ namespace _17BangMVC.Controllers
     public class SelectedUserController : Controller
     {
         private IUserService userService;
-        public SelectedUserController()
+        public SelectedUserController(IUserService service)
         {
-            userService = new SRV.ProdService.UserService();
-            //userService = new SRV.MockService.UserService();
+            userService = service;
         }
 
         public ActionResult Index()
