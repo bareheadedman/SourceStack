@@ -1,0 +1,108 @@
+﻿@model SRV.ViewModel.UserModel
+
+
+@if (Model == null)
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="fa fa-question-circle"></span>求助
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#">列表</a></li>
+                <li><a href="#">发布</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="fa fa-eye"></span>督促
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#">求督促</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="fa fa-book"></span>文章
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#">列表</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="fa fa-user-secret"></span>未登录
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="/Log/On">登录</a></li>
+                <li><a href="/Register">注册</a></li>
+                <li><a href="#">忘记密码</a></li>
+            </ul>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="fa fa-question-circle"></span>求助
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#">列表</a></li>
+                <li><a href="#">发布</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="fa fa-eye"></span>督促
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#">求督促</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="fa fa-book"></span>文章
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#">列表</a></li>
+                <li><a href="#">开通</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" style="color:cornflowerblue" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="fa fa-user-circle-o"></span>@Model.Name
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#">新手任务</a></li>
+                <li><a href="#">我的主页</a></li>
+                <li class="divider"></li>
+                <li><a href="#">我的密码</a></li>
+                <li><a href="#">联系方式</a></li>
+                <li><a href="#">个人资料</a></li>
+                <li class="divider"></li>
+                <li><a href="/Log/Off">退出登录</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="fa fa-tachometer"></span>后台
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#">邀请注册</a></li>
+                <li><a href="#">我的消息</a></li>
+            </ul>
+        </li>
+    </ul>
+}
+

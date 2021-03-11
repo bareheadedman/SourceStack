@@ -1,4 +1,6 @@
 ﻿using GLB.Global;
+using SRV.ServiceInterface;
+using SRV.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,12 @@ namespace _17BangMVC.Controllers
 {
     public class SharedController : Controller
     {
+        private IUserService userService;
+
+        public SharedController(IUserService service)
+        {
+            userService = service;
+        }
 
         public ActionResult GetImageCode()
         {
@@ -17,6 +25,13 @@ namespace _17BangMVC.Controllers
             byte[] img = Tool.CreateImageCode(imageCode);
             Session.Add(Keys.ImageCode, imageCode);
             return File(img, @"image/jpeg");
+        }
+
+
+        public ActionResult _NavigationBars()
+        {
+            UserModel user = userService.GetCurrentUserAsModel();
+            return PartialView(user);
         }
     }
 }

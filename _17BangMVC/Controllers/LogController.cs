@@ -68,6 +68,15 @@ namespace _17BangMVC.Controllers
             return View();
         }
 
+        public ActionResult Off()
+        {
+            HttpCookie cookei = new HttpCookie(Keys.User);
+            cookei.Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies.Add(cookei);
+            return RedirectPermanent("/");
+        }
+
+
 
     }
 }

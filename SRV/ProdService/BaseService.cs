@@ -70,8 +70,9 @@ namespace SRV.ProdService
         /// <returns>返回当前cookie用户,没有则返回NULL</returns>
         public User GetCurrentUser()
         {
+
             //拿到当前请求的cookie
-            NameValueCollection userInfo = HttpContext.Current.Request.Cookies[Keys.User].Values;
+            HttpCookie userInfo = HttpContext.Current.Request.Cookies.Get(Keys.User);
             if (userInfo == null)
             {
                 return null;

@@ -205,6 +205,7 @@
     <Content Include="Views\User\UserIsExist.cshtml" />
     <Content Include="Views\Log\On.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\_InputImageCode.cshtml" />
+    <Content Include="Views\Shared\_NavigationBars.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
