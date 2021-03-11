@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace SRV.ViewModel
 {
-    public class RegisterModel
+    public class UserModel
     {
         public int Id { get; set; }
 
