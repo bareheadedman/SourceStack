@@ -12,7 +12,7 @@ namespace BLL.Entities
     /// <summary>
     /// 用户
     /// </summary>
-    sealed public class User : BaseEntity
+    public class User : BaseEntity
     {
         /// <summary>
         /// 用户名
@@ -57,7 +57,10 @@ namespace BLL.Entities
         /// 用户发布的系列分类
         /// </summary>
         public IList<Category> Categories { get; set; }
-
+        /// <summary>
+        /// 用户使用的关键字
+        /// </summary>
+        public virtual IList<Keyword> Keywords { get; set; }
 
 
 

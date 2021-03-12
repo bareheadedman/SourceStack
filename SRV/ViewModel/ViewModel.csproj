@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KeywordModel.cs" />
     <Compile Include="Log\LogModel.cs" />
     <Compile Include="Profile\WriteModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

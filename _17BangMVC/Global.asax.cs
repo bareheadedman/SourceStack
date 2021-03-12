@@ -22,6 +22,8 @@ namespace _17BangMVC
             //拿到整个程序集作为实现类
             builder.RegisterAssemblyTypes(typeof(UserService).Assembly)
                .AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(typeof(KeywordService).Assembly)
+                .AsImplementedInterfaces();
 
             IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

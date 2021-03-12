@@ -36,6 +36,8 @@ namespace SRV.ProdService
                        //配置指定的两个属性进行映射
                        .ForMember(dest => dest.InvitedCode, opt => opt.MapFrom(src => src.InviteCode))
                        .ReverseMap();
+                    cfg.CreateMap<Keyword, KeywordModel>()
+                       .ReverseMap();
 
                 });
         }

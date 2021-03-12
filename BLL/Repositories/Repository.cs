@@ -34,7 +34,8 @@ namespace BLL.Repositories
 
         public void Remove(T entity)
         {
-            throw new NotImplementedException();
+            context.Set<T>().Remove(entity);
+            context.SaveChanges();
         }
 
 
@@ -48,6 +49,7 @@ namespace BLL.Repositories
             return context.Set<T>().Find(id);
         }
 
+
         /// <summary>
         /// 创建仅有一个Id的entity,它会被Attach,它不是真正的在数据库里面查找
         /// </summary>
@@ -56,7 +58,7 @@ namespace BLL.Repositories
         public T LoadProxy(int id)
         {
             T entity = new T { Id = id };
-           dbset.Attach(entity);
+            dbset.Attach(entity);
             return entity;
         }
 

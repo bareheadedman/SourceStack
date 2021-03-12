@@ -18,8 +18,17 @@ namespace DBFactory
 
             UserFactory.Create();
 
+            KeywordFactory.Create();
+
+            User laowang = UserFactory.laowang;
+            laowang.Keywords = new List<Keyword>();
+
+            laowang.Keywords.Add(KeywordFactory.android);
+            laowang.Keywords.Add(KeywordFactory.yuyan);
 
 
+
+            Helper.GetDbContext().SaveChanges();
 
         }
     }

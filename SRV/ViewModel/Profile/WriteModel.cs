@@ -19,6 +19,8 @@ namespace SRV.ViewModel.Profile
 
         public string Keyword { get; set; }
 
+        public IList<KeywordModel> keywords { get; set; }
+
         public string SelfIntorduction { get; set; }
 
         //星座

@@ -1,4 +1,6 @@
-﻿using SRV.ViewModel.Profile;
+﻿using SRV.ServiceInterface;
+using SRV.ViewModel;
+using SRV.ViewModel.Profile;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +11,26 @@ namespace _17BangMVC.Controllers
 {
     public class ProfileController : Controller
     {
+        private IUserService userService;
+        private IKeywordService keywordService;
+
+        public ProfileController(IUserService userService, IKeywordService keywordService)
+        {
+            this.userService = userService;
+            this.keywordService = keywordService;
+        }
 
         public ActionResult Write()
         {
-            return View();
+            UserModel user = userService.GetCurrentUserAsModel();
+            if (user == null || user.keywords.Count == 0)
+            {
+                return View(new WriteModel() { IsMale = true });
+            }
+            WriteModel writeModel = new WriteModel();
+            writeModel.keywords = user.keywords;
+            writeModel.IsMale = true;
+            return View(writeModel);
         }
 
         [HttpPost]

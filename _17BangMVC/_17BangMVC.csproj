@@ -208,6 +208,7 @@
     <Content Include="Views\Shared\EditorTemplates\_InputImageCode.cshtml" />
     <Content Include="Views\Shared\_NavigationBars.cshtml" />
     <Content Include="Views\Profile\Write.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\_InputKeyword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

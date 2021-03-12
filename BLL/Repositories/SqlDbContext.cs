@@ -19,6 +19,7 @@ namespace BLL.Repositories
             //Database.Log = s => Debug.Write(s);//打印Log在output/Debug窗口
             //Database.Log = s => File.AppendAllText("D:\\Debug\\EF6.txt", s); //Log记录到 D:\Debug\EF6.txt 文件下, 不写后缀名会自动添加文件
 
+
         }
 
 
