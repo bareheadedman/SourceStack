@@ -81,7 +81,7 @@ namespace _17BangMVC.Controllers
             Response.Cookies.Add(cookie);
 
 
-            return View();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

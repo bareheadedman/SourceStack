@@ -65,7 +65,7 @@ namespace _17BangMVC.Controllers
 
 
 
-            return View();
+            return RedirectToAction(nameof(On));
         }
 
         public ActionResult Off()
@@ -73,7 +73,15 @@ namespace _17BangMVC.Controllers
             HttpCookie cookei = new HttpCookie(Keys.User);
             cookei.Expires = DateTime.Now.AddDays(-1);
             Response.Cookies.Add(cookei);
-            return RedirectPermanent("/");
+
+            //发起请求的页面
+            string urlReferrer = Convert.ToString(Request.UrlReferrer);
+            if (string.IsNullOrEmpty(urlReferrer))
+            {
+
+            }
+
+            return RedirectPermanent("/Register");
         }
 
 

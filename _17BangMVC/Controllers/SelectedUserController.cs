@@ -28,7 +28,7 @@ namespace _17BangMVC.Controllers
 
             model.SelectedUsers = userService.Selected(model.Name);
 
-            return PartialView(model);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

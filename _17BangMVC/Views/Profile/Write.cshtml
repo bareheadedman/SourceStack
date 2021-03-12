@@ -1,0 +1,180 @@
+﻿@model SRV.ViewModel.Profile.WriteModel
+
+@{
+    ViewData["Title"] = "个人资料";
+
+    int[] year = new int[60];
+
+    for (int i = 0; i < year.Length; i++)
+    {
+        year[i] = (DateTime.Now.Year - 60) + i;
+    }
+
+    int[] month = new int[12];
+
+    for (int i = 0; i < month.Length; i++)
+    {
+        month[i] = i + 1;
+    }
+
+    IDictionary<int, string> constellation = new Dictionary<int, string>
+{
+        {1,"白羊座" },
+        {2,"金牛座" },
+        {3,"双子座" },
+        {4,"巨蟹座" },
+        {5,"狮子座" },
+        {6,"处女座" },
+        {7,"天枰座" },
+        {8,"天蝎座" },
+        {9,"射手座" },
+        {10,"摩羯座" },
+        {11,"水瓶座" },
+        {12,"双鱼座" }
+
+
+    };
+
+}
+
+
+
+
+<div class="container">
+    <div class="row ">
+        <h2 class="col-12">
+            <i class="fa fa-user-circle-o"></i>
+            个人资料
+        </h2>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-lg-4 col-md-5">
+            @using (Html.BeginForm())
+            {
+                <div class="form-group">
+                    <label>头像：（* 仅限jpg/png/gif）</label>
+                    @Html.TextBoxFor(
+                   m => m.Icon,
+                   new
+                   {
+                       @class = "form-control",
+                       placeholder = "页面提交时上传文件"
+                   })
+                </div>
+
+                <div class="form-group form-inline">
+                    <label>性别：</label>
+                    <label style="display:inline;margin-left:30px">
+                        @Html.RadioButtonFor(
+                       m => m.IsMale,
+                       true,
+                       new
+                       {
+                           @checked = ""
+                       })
+                        男
+                    </label>
+                    <label style="display:inline;margin-left:30px">
+                        @Html.RadioButtonFor(
+                       m => m.IsMale,
+                       false)
+                        女
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>生日：</label>
+                    <div class="input-group">
+                        @Html.DropDownListFor(m => m.BirthdayYear, new SelectList(year), new { @class = "form-control" })
+                        <span class="input-group-addon">年</span>
+                        @Html.DropDownListFor(m => m.BirthdayMonth, new SelectList(month), new { @class = "form-control" })
+                        <span class="input-group-addon">月</span>
+                        @Html.DropDownListFor(m => m.SelfIntorduction, new SelectList(constellation, "Key", "value"), new { @class = "form-control" })
+                        <span class="input-group-addon">星座</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>关键字：（* 使用空格分隔）</label><br />
+                    <span class="badge">
+                        Python
+                        <small><span class="fa fa-times"></span></small>
+                    </span>
+                    <span class="badge">
+                        Java
+                        <small><span class="fa fa-times"></span></small>
+                    </span>
+                    <span class="badge">
+                        C#
+                        <small><span class="fa fa-times"></span></small>
+                    </span>
+
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default">---一级---</button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                                <span class="sr-only"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                        <div class="input-group-btn input-group-btn-middle">
+                            <button type="button" class="btn btn-default">---二级---</button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                                <span class="sr-only"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                        <input type="text" class="form-control" placeholder="自定义关键字,使用空格分隔">
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label>自我介绍</label>
+                    <textarea class="form-control" name="SelfDescription" rows="4" placeholder="简单的介绍一下自己吧，不超过255字"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">提交</button>
+                </div>
+
+
+            }
+        </div>
+        <div class="col-lg-6 col-md-5 " style=" margin-left:40px">
+            <div class="container" style="margin-bottom:16px"></div>
+            <h3>
+                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                说明
+            </h3>
+            <ol>
+                <li style="margin-bottom:10px">头像仅接受jpg/png/gif格式，大小不超过256KB。</li>
+                <li style="margin-bottom:10px">头像图片的建议宽度为300像素左右，过宽或过窄都有可能失真。</li>
+                <li style="margin-bottom:10px">头像图片的建议宽度为300像素左右，过宽或过窄都有可能失真。</li>
+            </ol>
+        </div>
+    </div>
+    <a href="#" class="btn btn-primary text-center" style="position: fixed;bottom: 150px;right:338px">
+        <span class="fa fa-question-circle-o"></span>
+        <br />
+        帮助
+    </a>
+    <a href="#" class=" btn btn-primary  text-center" style="position:fixed;bottom:85px; right:338px">
+        <span class="fa fa-comments-o"></span>
+        <br />
+        反馈
+    </a>
+    <hr />
+</div>
+
+
+
