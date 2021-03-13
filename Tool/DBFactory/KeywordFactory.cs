@@ -33,48 +33,37 @@ namespace DBFactory
         public static void Create()
         {
 
+            //一级
+            yuyan = register("编程开发语言", 1);
+            gongju = register("工具软件", 1);
+            caozuo = register("操作系统", 1);
+
 
             // 二级关键字 
             java = register("Java", 2);
+            java.UpLevel = yuyan;
             js = register("JavaScript", 2);
+            js.UpLevel = yuyan;
             sql = register("SQL", 2);
+            sql.UpLevel = yuyan;
 
             cad = register("CAD", 2);
+            cad.UpLevel = gongju;
             word = register("Word", 2);
+            word.UpLevel = gongju;
             vs = register("VisualStudio", 2);
+            vs.UpLevel = gongju;
+
 
             windows = register("Windows", 2);
+            windows.UpLevel = caozuo;
             unix = register("Unix", 2);
+            unix.UpLevel = caozuo;
             android = register("Android", 2);
+            android.UpLevel = caozuo;
 
 
-
-
-
-            //一级
-            yuyan = register("编程开发语言", 1);
-
-            yuyan.DownLevels = new List<Keyword>();
-            yuyan.DownLevels.Add(java);
-            yuyan.DownLevels.Add(js);
-            yuyan.DownLevels.Add(sql);
-
-
-            gongju = register("工具软件", 1);
-            gongju.DownLevels = new List<Keyword>();
-            gongju.DownLevels.Add(cad);
-            gongju.DownLevels.Add(word);
-            gongju.DownLevels.Add(vs);
-
-
-            caozuo = register("操作系统", 1);
-            caozuo.DownLevels = new List<Keyword>();
-            caozuo.DownLevels.Add(windows);
-            caozuo.DownLevels.Add(unix);
-            caozuo.DownLevels.Add(android);
-
-
-            save(caozuo);
+            Helper.GetDbContext().SaveChanges();
 
         }
 
@@ -88,17 +77,10 @@ namespace DBFactory
                 CreateTime = DateTime.Now
 
             };
-            save(keyword);
-            return keyword;
-        }
-
-
-        private static void save(Keyword keyword)
-        {
             KeywordRepository keywordRepository = new KeywordRepository(Helper.GetDbContext());
             keywordRepository.Save(keyword);
+            return keyword;
         }
-
 
 
     }

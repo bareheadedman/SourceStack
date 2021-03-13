@@ -154,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BangScript\InputImageCode.js" />
+    <Content Include="BangScript\_InputKeyword.js" />
     <Content Include="Bang\Images\InputCode.jpeg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -209,6 +210,7 @@
     <Content Include="Views\Shared\_NavigationBars.cshtml" />
     <Content Include="Views\Profile\Write.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\_InputKeyword.cshtml" />
+    <Content Include="Views\Shared\SelectedKeyword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

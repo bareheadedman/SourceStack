@@ -10,8 +10,7 @@ namespace SRV.ViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public IList<KeywordModel> DownLevels { get; set; }
-        public IList<KeywordModel> UpLevels { get; set; }
+        public KeywordModel UpLevel { get; set; }
         /// <summary>
         /// 关键字属于那一级
         /// </summary>

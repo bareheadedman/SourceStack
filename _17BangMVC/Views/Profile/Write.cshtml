@@ -39,7 +39,6 @@
 
 
 
-
 <div class="container">
     <div class="row ">
         <h2 class="col-12">
@@ -54,13 +53,13 @@
             {
                 <div class="form-group">
                     <label>头像：（* 仅限jpg/png/gif）</label>
-                    @Html.TextBoxFor(
-                   m => m.Icon,
-                   new
-                   {
-                       @class = "form-control",
-                       placeholder = "页面提交时上传文件"
-                   })
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="页面提交时上传文件">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">浏览</button>
+                        </span>
+                    </div>
+                    <input type="file" name="Icon" accept="image/*" style="display:none" />
                 </div>
                 <div class="form-group form-inline">
                     <label>性别：</label>
@@ -125,6 +124,39 @@
     </a>
     <hr />
 </div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade" bang-keyword-modal tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">友情提示</h4>
+            </div>
+            <div class="modal-body" bang-keyword-modal-body>
+             
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 
 
 

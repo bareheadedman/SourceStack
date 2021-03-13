@@ -12,10 +12,12 @@ namespace _17BangMVC.Controllers
     public class SharedController : Controller
     {
         private IUserService userService;
+        private IKeywordService keywordService;
 
-        public SharedController(IUserService service)
+        public SharedController(IUserService userService, IKeywordService keywordService)
         {
-            userService = service;
+            this.userService = userService;
+            this.keywordService = keywordService;
         }
 
         public ActionResult GetImageCode()
@@ -33,5 +35,28 @@ namespace _17BangMVC.Controllers
             UserModel user = userService.GetCurrentUserAsModel();
             return PartialView(user);
         }
+
+
+        [HttpPost]
+        public ActionResult SelectedKeyword(int? level, string name)
+        {
+
+            if (level!=null)
+            {
+                return PartialView(keywordService.GetByLevel((int)level));
+
+            } // else nothing
+
+            if (name != null)
+            {
+                return PartialView(keywordService.GetByNameToDownLevel(name));
+            }// else nothing
+
+
+            return PartialView(null);
+        }
+
+
+
     }
 }

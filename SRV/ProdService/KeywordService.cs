@@ -1,4 +1,5 @@
-﻿using BLL.Repositories;
+﻿using BLL.Entities;
+using BLL.Repositories;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System;
@@ -17,6 +18,21 @@ namespace SRV.ProdService
             keywordRepository = new KeywordRepository(context);
         }
 
+        public IList<KeywordModel> GetByLevel(int level)
+        {
+            IList<Keyword> keywords = keywordRepository.GetByLevel(level);
+            if (keywords == null)
+            {
+                return null;
+            }// else nothing
+            return mapper.Map<IList<Keyword>, IList<KeywordModel>>(keywords);
+        }
 
+        public IList<KeywordModel> GetByNameToDownLevel(string name)
+        {
+            IList<Keyword> keywords = keywordRepository.GetByDownLevel(name);
+            return mapper.Map<IList<Keyword>, IList<KeywordModel>>(keywords);
+
+        }
     }
 }

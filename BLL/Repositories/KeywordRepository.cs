@@ -36,6 +36,15 @@ namespace BLL.Repositories
             return context.Set<Keyword>().Where(k => k.Level == level).ToList();
         }
 
+        /// <summary>
+        /// 查到当前关键字的下一级所有关键字
+        /// </summary>
+        /// <param name="name">当前关键字name</param>
+        /// <returns>没有则返回null</returns>
+        public IList<Keyword> GetByDownLevel(string name)
+        {
+            return context.Set<Keyword>().Where(k => k.UpLevel.Name == name).ToList();
+        }
 
     }
 }

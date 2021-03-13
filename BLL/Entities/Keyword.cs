@@ -16,14 +16,11 @@ namespace BLL.Entities
         /// </summary>
         public string Name { get; set; }
 
+
         /// <summary>
-        /// 下一级的所有关键字
+        /// 上一级关键字
         /// </summary>
-        public IList<Keyword> DownLevels { get; set; }
-        /// <summary>
-        /// 上一级的所有关键字
-        /// </summary>
-        public IList<Keyword> UpLevels { get; set; }
+        public  Keyword UpLevel { get; set; }
 
         /// <summary>
         /// 关键字属于那一级
@@ -34,12 +31,12 @@ namespace BLL.Entities
         /// <summary>
         /// 被求助使用
         /// </summary>
-        public IList<Problem> Problems { get; set; }
+        public  IList<Problem> Problems { get; set; }
 
         /// <summary>
         /// 被文章使用
         /// </summary>
-        public IList<Article> Articles { get; set; }
+        public  IList<Article> Articles { get; set; }
 
     }
 }
