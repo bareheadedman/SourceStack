@@ -29,6 +29,11 @@ namespace BLL.Entities
         public string InviteCode { get; set; }
 
         /// <summary>
+        /// 用户的头像路径
+        /// </summary>
+        public string icon { get; set; }
+
+        /// <summary>
         /// 帮帮币
         /// </summary>
         public HelpMoney HelpMoney { get; set; }

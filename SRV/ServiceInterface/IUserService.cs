@@ -52,6 +52,12 @@ namespace SRV.ServiceInterface
         /// <returns> 返回持久化到数据库之后的Id</returns>    
         int Regisert(RegisterModel model);
 
-        
+        /// <summary>
+        /// 保存用户上传的图片路径
+        /// </summary>
+        /// <param name="id">用户</param>
+        /// <param name="iconPath">图片路径</param>
+        void SaveIconPathToUser(int id, string iconPath);
+
     }
 }

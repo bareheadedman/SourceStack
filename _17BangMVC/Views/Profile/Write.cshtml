@@ -49,17 +49,18 @@
     <hr />
     <div class="row">
         <div class="col-lg-4 col-md-5">
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("Write", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
+                <img src="" bang-image-preview />
                 <div class="form-group">
                     <label>头像：（* 仅限jpg/png/gif）</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="页面提交时上传文件">
+                        <input type="text" class="form-control" bang-image-source placeholder="页面提交时上传文件">
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">浏览</button>
+                            <button class="btn btn-default" bang-image-preview type="button">浏览</button>
                         </span>
                     </div>
-                    <input type="file" name="Icon" accept="image/*" style="display:none" />
+                    <input type="file" name="Icon" accept="image/*" bang-image-file style="display:none" />
                 </div>
                 <div class="form-group form-inline">
                     <label>性别：</label>
@@ -131,19 +132,15 @@
 
 
 
-
-
-
-
-<div class="modal fade" bang-keyword-modal tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" bang-modal tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">友情提示</h4>
             </div>
-            <div class="modal-body" bang-keyword-modal-body>
-             
+            <div class="modal-body" bang-modal-body>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -153,6 +150,10 @@
 </div>
 
 
+
+
+
+<script type="text/javascript" src="~/BangScript/Write.js"></script>
 
 
 

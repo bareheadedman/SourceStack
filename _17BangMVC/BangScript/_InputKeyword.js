@@ -60,8 +60,8 @@
                                                 {
                                                     if (keywords[i] == this.innerText)
                                                     {
-                                                        $("[bang-keyword-modal-body]").html($(`<span>关键字 <span class="badge">${this.innerText}</span>重复了 </span>`));
-                                                        $('[bang-keyword-modal]').modal("show");
+                                                        $("[bang-modal-body]").html($(`<span>关键字 <span class="badge">${this.innerText}</span>重复了 </span>`));
+                                                        $('[bang-modal]').modal("show");
                                                         break;
                                                     }
                                                     if (keywords.length - 1 == i)
@@ -114,8 +114,8 @@
             {
                 if ($("[bang-keywordList-2]").children("li").length == 0)
                 {
-                    $("[bang-keyword-modal-body]").html($('<span>还没有选择 --- 1级 --- 关键字呢。</span>'));
-                    $('[bang-keyword-modal]').modal("show")
+                    $("[bang-modal-body]").html($('<span>还没有选择 --- 1级 --- 关键字呢。</span>'));
+                    $('[bang-modal]').modal("show")
                 }
             }
         )
@@ -140,8 +140,8 @@
                         {
                             if (keywords[i] == value)
                             {
-                                $("[bang-keyword-modal-body]").html($(`<span>关键字 <span class="badge">${value}</span>重复了 </span>`));
-                                $('[bang-keyword-modal]').modal("show");
+                                $("[bang-modal-body]").html($(`<span>关键字 <span class="badge">${value}</span>重复了 </span>`));
+                                $('[bang-modal]').modal("show");
                                 $("[bang-keywork-userDefine]")[0].value = "";
                                 break;
                             }

@@ -70,5 +70,13 @@ namespace SRV.ProdService
             return mapper.Map<UserModel>(current);
 
         }
+
+        public void SaveIconPathToUser(int id, string iconPath)
+        {
+            User user = userRepository.GetById(id);
+            user.icon = iconPath;
+            context.SaveChanges();
+            return;
+        }
     }
 }

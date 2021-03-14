@@ -36,6 +36,11 @@ namespace SRV.MockService
             throw new NotImplementedException();
         }
 
+        public void SaveIconPathToUser(int id, string iconPath)
+        {
+            throw new NotImplementedException();
+        }
+
         public IList<UserModel> Selected(string name)
         {
             throw new NotImplementedException();

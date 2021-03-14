@@ -1,4 +1,5 @@
-﻿using SRV.ServiceInterface;
+﻿using _17BangMVC.Filters;
+using SRV.ServiceInterface;
 using SRV.ViewModel;
 using SRV.ViewModel.Profile;
 using System;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace _17BangMVC.Controllers
 {
+    [ModelErrorTransferFilter]
     public class ProfileController : Controller
     {
         private IUserService userService;
@@ -19,6 +21,7 @@ namespace _17BangMVC.Controllers
             this.userService = userService;
             this.keywordService = keywordService;
         }
+
 
         public ActionResult Write()
         {
@@ -38,5 +41,16 @@ namespace _17BangMVC.Controllers
         {
             return View();
         }
+
+
+
+
+
+
+
+
+
+
+
     }
 }

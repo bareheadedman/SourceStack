@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace SRV.ViewModel.Profile
 {
     public class WriteModel
     {
 
-        public string Icon { get; set; }
+        public HttpPostedFileBase Icon { get; set; }
 
         public bool IsMale { get; set; }
 
